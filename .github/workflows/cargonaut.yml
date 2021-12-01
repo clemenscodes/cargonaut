@@ -7,8 +7,6 @@ on:
         types: [opened, synchronize]
 jobs:
     build:
-        if: ${{ (github.event == 'pull_request') || (github.event == 'pull_request_target')}}
-        name: Cargonaut CI/CD
         runs-on: ubuntu-latest
         defaults:
             run:
@@ -53,6 +51,7 @@ jobs:
                   path: dist
     deploy:
         name: Firebase deployment
+        if: ${{ (github.ref == 'refs/heads/main')}}
         needs: [build]
         runs-on: ubuntu-latest
         steps:
