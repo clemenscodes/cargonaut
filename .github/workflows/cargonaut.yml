@@ -7,7 +7,7 @@ on:
         types: [opened, synchronize]
 jobs:
     build:
-        if: ${{ (github.head_ref == 'pull_request') || (github.head_ref == 'pull_request_target')}}
+        if: ${{ (github.event == 'pull_request') || (github.event == 'pull_request_target')}}
         name: Cargonaut CI/CD
         runs-on: ubuntu-latest
         defaults:
