@@ -9,11 +9,15 @@ jobs:
         steps:
             - name: Checkout Repo
               uses: actions/checkout@v2
-            - name: Download Artifact
-              uses: actions/download-artifact@master
+            - name: Cache
+              uses: actions/cache@v2
               with:
-                name: dist
-                path: dist
+                  path: |
+                      ~/.npm
+                      ~/dist
+                  key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+                  restore-keys: |
+                      ${{ runner.os }}-node-
             - name: Deploy to Firebase
               uses: w9jds/firebase-action@master
               with:
