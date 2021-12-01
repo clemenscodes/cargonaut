@@ -23,8 +23,9 @@ jobs:
                   key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
                   restore-keys: |
                       ${{ runner.os }}-node-
-            - name: Deploy to Firebase
-              run: npm i -g firebase-tools \
-                firebase deploy --token ${{ secrets.FIREBASE_TOKEN }}
+            - name: Install Firebase
+              run: npm i -g firebase-tools
+            - name: Deploy
+              run: firebase deploy --token ${{ secrets.FIREBASE_TOKEN }}
 
 
