@@ -13,6 +13,12 @@ jobs:
             run:
                 shell: bash
         steps:
+            - uses: actions/checkout@v2
+            - name: Use Node.js
+              uses: actions/setup-node@v2
+              with:
+                  node-version: 14.x
+                  cache: 'npm'
             - name: Firebase Deployment
               if: ${{ github.event.pull_request.merged }}
               run: npx firebase deploy --token '${{ secrets.FIREBASE_TOKEN }}'
