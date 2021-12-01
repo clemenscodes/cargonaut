@@ -1,5 +1,5 @@
 export interface Message {
-  message: string;
+    message: string;
 }
 
 export interface Environment {

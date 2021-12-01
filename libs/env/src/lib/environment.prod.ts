@@ -10,5 +10,5 @@ export const environment: Environment = {
         messagingSenderId: '255425502650',
         appId: '1:255425502650:web:8fb593da639e47ab601183',
     },
-    apiUrl: 'https://europe-west1-cargonaut.cloudfunctions.net/api'
+    apiUrl: 'https://europe-west1-cargonaut.cloudfunctions.net/api',
 };

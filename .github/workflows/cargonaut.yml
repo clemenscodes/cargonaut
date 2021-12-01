@@ -34,4 +34,3 @@ jobs:
               run: npm run all:test
             - name: E2E
               run: npm run all:e2e
-              
