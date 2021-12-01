@@ -24,5 +24,7 @@ jobs:
                   restore-keys: |
                       ${{ runner.os }}-node-
             - name: Deploy to Firebase
-            - run: npm i -g firebase-tools
-            - run: firebase deploy --token ${{ secrets.FIREBASE_TOKEN }}
+              run: npm i -g firebase-tools \
+                firebase deploy --token ${{ secrets.FIREBASE_TOKEN }}
+
+
