@@ -20,15 +20,6 @@ jobs:
               with:
                   node-version: ${{ matrix.node-version }}
                   cache: 'npm'
-            - name: Cache
-              uses: actions/cache@v2
-              with:
-                  path: |
-                      ~/.npm
-                      ~/dist
-                  key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-                  restore-keys: |
-                      ${{ runner.os }}-node-
             - name: Install dependencies
               run: npm ci
             - name: Format
@@ -43,3 +34,8 @@ jobs:
               run: npm run all:test
             - name: E2E
               run: npm run all:e2e
+            - name: Upload Artifacts
+              uses: actions/upload-artifact@master
+              with:
+                name: dist
+                path: dist
