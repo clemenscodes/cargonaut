@@ -13,8 +13,5 @@ jobs:
         steps:
             - name: Firebase Deployment
               if: ${{ github.event.pull_request.merged }}
-              uses: FirebaseExtended/action-hosting-deploy@v0
-              with:
-                  repoToken: '${{ secrets.GITHUB_TOKEN }}'
-                  firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_CARGONAUT }}'
-                  projectId: cargonaut
+              run: npm i -g firebase-tools && \
+                   firebase deploy --token '${{ secrets.FIREBASE_TOKEN }}'
