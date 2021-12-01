@@ -25,12 +25,13 @@ jobs:
             - name: Format
               run: npm run format:check
             - name: Lint
-              run: npm run ci:lint
+              run: npm run all:lint
             - name: Documentation
-              run: npm run ci:doc
+              run: npm run all:doc
             - name: Build
-              run: npm run ci:build
+              run: npm run all:build
             - name: Test
-              run: npm run ci:test
+              run: npm run all:test
             - name: E2E
-              run: npm run ci:e2e
+              run: npm run all:e2e
+              

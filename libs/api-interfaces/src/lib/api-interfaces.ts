@@ -3,7 +3,7 @@ export interface Message {
 }
 
 export interface Environment {
-    firebase?: {
+    firebase: {
         projectId: string;
         appId: string;
         storageBucket: string;
@@ -12,7 +12,5 @@ export interface Environment {
         messagingSenderId: string;
     };
     production: boolean;
-    apiUrl?: string;
-    clientUrl?: string;
-    port?: number;
+    apiUrl: string;
 }

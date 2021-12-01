@@ -11,7 +11,7 @@ jobs:
             run:
                 shell: bash
         steps:
-            - name: Deploy Firebase
+            - name: Firebase Deployment
               if: ${{ github.event.pull_request.merged }}
               uses: FirebaseExtended/action-hosting-deploy@v0
               with:
