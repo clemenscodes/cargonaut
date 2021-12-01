@@ -1,10 +1,10 @@
-name: Test Cargonaut
+name: Build Cargonaut
 on:
     pull_request:
         branches: [main]
         types: [opened, synchronize]
 jobs:
-    workflow:
+    build:
         name: Cargonaut CI/CD
         runs-on: ubuntu-latest
         defaults:
