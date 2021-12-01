@@ -27,7 +27,6 @@ export async function getApp(): Promise<INestApplication> {
         AppModule,
         server
     );
-    app.setGlobalPrefix('api');
     app.useGlobalPipes(new ValidationPipe({ transform: true }));
     app.useStaticAssets(join(__dirname, 'docs', 'cargonaut'), {
         prefix: '/docs/cargonaut',
