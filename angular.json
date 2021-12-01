@@ -188,7 +188,7 @@
                         "passWithNoTests": true
                     }
                 },
-                 "compodoc": {
+                "compodoc": {
                     "builder": "@nrwl/workspace:run-commands",
                     "options": {
                         "commands": [
