@@ -29,8 +29,8 @@ export async function getApp(): Promise<INestApplication> {
     );
     app.setGlobalPrefix('api');
     app.useGlobalPipes(new ValidationPipe({ transform: true }));
-    app.useStaticAssets(join(__dirname, 'docs', 'mate-team'), {
-        prefix: '/docs/mate-team',
+    app.useStaticAssets(join(__dirname, 'docs', 'cargonaut'), {
+        prefix: '/docs/cargonaut',
     });
     app.useStaticAssets(join(__dirname, 'docs', 'api'), {
         prefix: '/docs/api/',
