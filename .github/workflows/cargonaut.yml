@@ -8,18 +8,12 @@ on:
 jobs:
     build:
         runs-on: ubuntu-latest
-        defaults:
-            run:
-                shell: bash
-        strategy:
-            matrix:
-                node-version: [12.x, 14.x, 16.x]
         steps:
             - uses: actions/checkout@v2
-            - name: Use Node.js ${{ matrix.node-version }}
+            - name: Use Node.js 14
               uses: actions/setup-node@v2
               with:
-                  node-version: ${{ matrix.node-version }}
+                  node-version: 14
                   cache: 'npm'
             - name: Cache
               uses: actions/cache@v2
@@ -35,37 +29,15 @@ jobs:
             - name: Format
               run: npm run format:check
             - name: Lint
-              run: npm run all:lint
+              run: npm run ci:lint
             - name: Documentation
-              run: npm run all:doc
+              run: npm run ci:doc
             - name: Build
-              run: npm run all:build
+              run: npm run ci:build
             - name: Test
-              run: npm run all:test
+              run: npm run ci:test
             - name: E2E
-              run: npm run all:e2e
-            - name: Archive production artifacts
-              uses: actions/upload-artifact@v2
-              with:
-                  name: dist
-                  path: dist
-    deploy:
-        name: Firebase deployment
-        if: ${{ (github.ref == 'refs/heads/main')}}
-        needs: [build]
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v2
-            - name: Use Node.js ${{ matrix.node-version }}
-              uses: actions/setup-node@v2
-              with:
-                  node-version: ${{ matrix.node-version }}
-                  cache: 'npm'
-            - name: Download dist
-              uses: actions/download-artifact@v2
-              with:
-                  name: dist
-            - name: Install Firebase
-              run: npm i -g firebase-tools
-            - name: Deploy
-              run: firebase deploy --token ${{ secrets.FIREBASE_TOKEN }}
+              run: npm run ci:e2e
+            - name: Firebase deployment
+              if: ${{ (github.ref == 'refs/heads/main')}}
+              run: npm i -g firebase-tools && firebase deploy --token ${{ secrets.FIREBASE_TOKEN }}
