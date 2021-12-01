@@ -1,7 +1,7 @@
 {
     "name": "cargonaut",
     "version": "0.0.0",
-    "description": "platform to share rides",
+    "description": "A platform to share rides",
     "license": "MIT",
     "private": true,
     "repository": {
