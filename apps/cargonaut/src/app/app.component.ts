@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Message } from '@cargonaut/api-interfaces';
+import { Message } from '@api-interfaces';
 
 @Component({
   selector: 'cargonaut-root',

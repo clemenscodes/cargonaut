@@ -128,16 +128,15 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "cargonaut:build:production"
+              "browserTarget": "cargonaut:build:production",
+              "proxyConfig": "apps/cargonaut/proxy.conf.json"
             },
             "development": {
-              "browserTarget": "cargonaut:build:development"
+              "browserTarget": "cargonaut:build:development",
+              "proxyConfig": "apps/cargonaut/proxy.dev.conf.json"
             }
           },
-          "defaultConfiguration": "development",
-          "options": {
-            "proxyConfig": "apps/cargonaut/proxy.conf.json"
-          }
+          "defaultConfiguration": "development"
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
