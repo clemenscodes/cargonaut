@@ -1,5 +1,9 @@
-name: Build Cargonaut
+name: Cargonaut
 on:
+    push:
+        tags:
+          - '*'
+        branches: [ main ]
     pull_request:
         branches: [main]
         types: [opened, synchronize]
