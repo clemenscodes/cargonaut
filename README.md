@@ -1,6 +1,12 @@
 # Cargonaut
 
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/clemenscodes/cargonaut/Cargonaut?style=plastic)  ![GitHub issues](https://img.shields.io/github/issues-raw/clemenscodes/cargonaut)  ![GitHub pull requests](https://img.shields.io/github/issues-pr-raw/clemenscodes/cargonaut) ![GitHub](https://img.shields.io/github/license/clemenscodes/cargonaut)
+## [Homepage](https://cargonaut.web.app)
+
+View here: <https://cargonaut.web.app>
+
+## [API](https://europe-west1-cargonaut.cloudfunctions.net/api)
+
+View here: <https://europe-west1-cargonaut.cloudfunctions.net/api>
 
 ## Installation
 
@@ -28,13 +34,12 @@ firebase deploy
 
 ## Documentation
 
-![Website](https://img.shields.io/website?color=dark&down_color=red&down_message=https%3A%2F%2Fcargonaut.web.app%2F&label=Homepage&up_color=green&up_message=https%3A%2F%2Fcargonaut.web.app%2F&url=https%3A%2F%2Fcargonaut.web.app%2F)
-![Website](https://img.shields.io/website?color=dark&down_color=red&down_message=https%3A%2F%2Feurope-west1-cargonaut.cloudfunctions.net%2Fapi&label=API&up_color=green&up_message=https%3A%2F%2Feurope-west1-cargonaut.cloudfunctions.net%2Fapi&url=https%3A%2F%2Feurope-west1-cargonaut.cloudfunctions.net%2Fapi)
-![Website](https://img.shields.io/website?color=dark&down_color=red&down_message=https%3A%2F%2Feurope-west1-cargonaut.cloudfunctions.net%2Fapi%2Fdocs%2Fcargonaut%2F&label=Frontend%20Documentation&up_color=green&up_message=https%3A%2F%2Feurope-west1-cargonaut.cloudfunctions.net%2Fapi%2Fdocs%2Fcargonaut%2F&url=https%3A%2F%2Feurope-west1-cargonaut.cloudfunctions.net%2Fapi%2Fdocs%2Fcargonaut%2F)
-![Website](https://img.shields.io/website?color=dark&down_color=red&down_message=https%3A%2F%2Feurope-west1-cargonaut.cloudfunctions.net%2Fapi%2Fdocs%2Fapi%2F&label=API%20Documentation&up_color=green&up_message=https%3A%2F%2Feurope-west1-cargonaut.cloudfunctions.net%2Fapi%2Fdocs%2Fapi%2F&url=https%3A%2F%2Feurope-west1-cargonaut.cloudfunctions.net%2Fapi%2Fdocs%2Fapi%2F)
-![Website](https://img.shields.io/website?color=dark&down_color=red&down_message=https%3A%2F%2Feurope-west1-cargonaut.cloudfunctions.net%2Fapi%2Fdocs%2Fswagger%2F&label=Swagger%20API&up_color=green&up_message=https%3A%2F%2Feurope-west1-cargonaut.cloudfunctions.net%2Fapi%2Fdocs%2Fswagger%2F&url=https%3A%2F%2Feurope-west1-cargonaut.cloudfunctions.net%2Fapi%2Fdocs%2Fswagger%2F)
+- [Frontend](https://europe-west1-cargonaut.cloudfunctions.net/api/docs/cargonaut/)
 
-This project was generated using [Nx](https://nx.dev).
+- [Backend](https://europe-west1-cargonaut.cloudfunctions.net/api/docs/api/)
+
+- [Swagger API](https://europe-west1-cargonaut.cloudfunctions.net/api/docs/swagger/)
+
 
 <p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="450"></p>
 
