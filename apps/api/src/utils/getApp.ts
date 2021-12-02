@@ -35,7 +35,7 @@ export async function getApp(): Promise<INestApplication> {
         prefix: '/docs/api/',
     });
     const config = new DocumentBuilder()
-        .setTitle('Mate Team API')
+        .setTitle('Cargonaut')
         .addServer(environment.apiUrl)
         .setDescription(packagejson.description)
         .setVersion(packagejson.version)
