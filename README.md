@@ -1,5 +1,29 @@
 # Cargonaut
 
+## Installation
+
+```bash
+npm i -g firebase-tools
+npm i -g nx
+npm ci
+firebase serve
+```
+
+## Testing
+
+```bash
+tools/scripts/.sh // To run a script that simulates the pipeline
+
+npm run all:test
+npm run all:e2e
+```
+
+## Deployment
+
+```bash
+firebase deploy
+```
+
 This project was generated using [Nx](https://nx.dev).
 
 <p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="450"></p>
