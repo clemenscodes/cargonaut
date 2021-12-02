@@ -11,10 +11,9 @@
     "engines": {
         "node": "14"
     },
-    "main": "dist/apps/api/main.js",
+    "main": "main.js",
     "scripts": {
         "ng": "nx",
-        "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2015 browser module main",
         "predev": "npm run all:build:dev",
         "preprod": "npm run all:build:prod",
         "dev": "concurrently \"npm run client:start:dev\" \"npm run api:start:dev\"",
@@ -74,8 +73,10 @@
         "class-validator": "^0.13.2",
         "firebase-admin": "^10.0.0",
         "firebase-functions": "^3.16.0",
-        "reflect-metadata": "^0.1.13",
+        "firebase": "^9.5.0",
+        "rxfire": "^6.0.3",
         "rxjs": "~7.4.0",
+        "reflect-metadata": "^0.1.13",
         "swagger-ui-express": "^4.2.0",
         "tslib": "^2.0.0",
         "zone.js": "~0.11.4"
@@ -98,7 +99,7 @@
         "@nrwl/linter": "13.2.3",
         "@nrwl/nest": "13.2.3",
         "@nrwl/node": "13.2.3",
-        "@nrwl/nx-cloud": "latest",
+        "@nrwl/nx-cloud": "12.5.4",
         "@nrwl/tao": "13.2.3",
         "@nrwl/workspace": "13.2.3",
         "@twittwer/compodoc": "^1.6.5",
