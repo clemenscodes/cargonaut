@@ -11,7 +11,7 @@
     "engines": {
         "node": "14"
     },
-    "main": "main.js",
+    "main": "dist/apps/api/main.js",
     "scripts": {
         "ng": "nx",
         "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2015 browser module main",
@@ -19,7 +19,8 @@
         "preprod": "npm run all:build:prod",
         "dev": "concurrently \"npm run client:start:dev\" \"npm run api:start:dev\"",
         "prod": "concurrently \"npm run client:start:prod\" \"npm run api:start:prod\"",
-        "firebase:serve:all": "firebase emulators:start --import=.firebase --export-on-exit",
+        "serve": "firebase serve",
+        "firebase": "firebase emulators:start --import=.firebase --export-on-exit",
         "firebase:serve:api": "firebase emulators:start --only functions --import=.firebase --export-on-exit",
         "firebase:serve:client": "firebase emulators:start --only hosting --import=.firebase --export-on-exit",
         "client:test": "nx test",
@@ -39,6 +40,11 @@
         "all:build": "nx run-many --target=build --all --parallel",
         "all:test": "nx run-many --target=test --all --parallel",
         "all:e2e": "nx run-many --target=e2e --all --parallel",
+        "ci:lint": "nx run-many --target=lint --all --parallel --skip-nx-cache",
+        "ci:doc": "nx run-many --target=compodoc --all --parallel --skip-nx-cache",
+        "ci:build": "nx run-many --target=build --all --parallel --skip-nx-cache",
+        "ci:test": "nx run-many --target=test --all --parallel --skip-nx-cache",
+        "ci:e2e": "nx run-many --target=e2e --all --parallel --skip-nx-cache",
         "affected:lint": "nx affected --target=lint --parallel",
         "affected:test": "nx affected --target=test --parallel",
         "affected:build": "nx affected --target=build --parallel",
