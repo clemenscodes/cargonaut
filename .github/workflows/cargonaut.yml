@@ -10,7 +10,7 @@ env:
 jobs:
     agents:
         runs-on: ubuntu-latest
-        name: Agent 1
+        name: Agent
         timeout-minutes: 60
         strategy:
           matrix:
