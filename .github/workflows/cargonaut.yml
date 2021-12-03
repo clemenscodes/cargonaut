@@ -8,21 +8,6 @@ on:
 env:
   NX_CLOUD_DISTRIBUTED_EXECUTION: true
 jobs:
-    agents:
-        runs-on: ubuntu-latest
-        name: Agent
-        timeout-minutes: 60
-        strategy:
-          matrix:
-            agent: [ 1, 2, 3 ]
-        steps:
-          - uses: actions/checkout@v2
-          - uses: actions/setup-node@v1
-            with:
-              node-version: '14'
-          - run: npm ci
-          - name: Start Nx Agent ${{ matrix.agent }}
-            run: npx nx-cloud start-agent
     ci:
         runs-on: ubuntu-latest
         steps:
@@ -61,3 +46,18 @@ jobs:
             - name: Firebase deployment
               if: ${{ (github.ref == 'refs/heads/main')}}
               run: npm i -g firebase-tools && firebase deploy --token ${{ secrets.FIREBASE_TOKEN }}
+    agents:
+        runs-on: ubuntu-latest
+        name: Agent
+        timeout-minutes: 60
+        strategy:
+          matrix:
+            agent: [ 1, 2, 3 ]
+        steps:
+          - uses: actions/checkout@v2
+          - uses: actions/setup-node@v1
+            with:
+              node-version: '14'
+          - run: npm ci
+          - name: Start Nx Agent ${{ matrix.agent }}
+            run: npx nx-cloud start-agent
