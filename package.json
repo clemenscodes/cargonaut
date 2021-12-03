@@ -38,7 +38,7 @@
         "all:e2e": "nx run-many --target=e2e --all --parallel --skip-nx-cache",
         "ci:lint": "nx affected --target=lint --parallel --max-parallel=3",
         "ci:test": "nx affected --target=test --parallel  --max-parallel=3",
-        "ci:build": "nx affected --target=build --parallel  --max-parallel=3",
+        "ci:build": "nx affected --target=build --parallel  --max-parallel=3 --skip-nx-cache",
         "ci:doc": "nx affected --target=compodoc --parallel  --max-parallel=3",
         "ci:e2e": "nx affected --target=e2e --parallel  --max-parallel=3",
         "format": "nx format:write",
