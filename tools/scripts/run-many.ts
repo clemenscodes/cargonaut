@@ -1,10 +1,10 @@
-import { execSync } from 'child_process';
+import { execSync } from "child_process";
 
 const target = process.argv[2];
 const jobIndex = Number(process.argv[3]);
 const jobCount = Number(process.argv[4]);
-const isMain = process.argv[5] === 'main';
-const baseSha = isMain ? 'main~1' : 'main';
+const isMain = process.argv[5] === "main";
+const baseSha = isMain ? "main~1" : "main";
 
 interface ITask {
     id: string;
