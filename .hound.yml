@@ -1,13 +1,13 @@
 fail_on_violations: true
 
 scss:
-  enabled: false
+    enabled: false
 
 jshint:
-  enabled: true
+    enabled: true
 
 eslint:
-  enabled: true
+    enabled: true
 
 tslint:
-  enabled: true
+    enabled: true

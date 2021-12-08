@@ -6,15 +6,15 @@ const jobCount = Number(process.argv[4]);
 const isMain = process.argv[5] === 'main';
 const baseSha = isMain ? 'main~1' : 'main';
 
-interface Task {
+interface ITask {
     id: string;
     overrides: {};
-    target: Target;
+    target: ITarget;
     command: string;
     outputs: [];
 }
 
-interface Target {
+interface ITarget {
     project: string;
     target: string;
 }
@@ -29,9 +29,9 @@ function restArgs() {
 let affected = `npx nx print-affected --base=${baseSha} --target=${target}`;
 affected = execSync(affected).toString('utf-8');
 
-const tasksArray: Task[] = JSON.parse(affected).tasks.sort();
+const tasksArray: ITask[] = JSON.parse(affected).tasks.sort();
 
-let projectsArray = tasksArray.map(task => task.target.project);
+let projectsArray = tasksArray.map((task) => task.target.project);
 
 const sliceSize = Math.floor(projectsArray.length / jobCount);
 

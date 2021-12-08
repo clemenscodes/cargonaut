@@ -6,7 +6,7 @@ on:
         branches: [main]
         types: [opened, synchronize]
 env:
-  NX_CLOUD_DISTRIBUTED_EXECUTION: true
+    NX_CLOUD_DISTRIBUTED_EXECUTION: true
 jobs:
     ci:
         runs-on: ubuntu-latest
@@ -53,13 +53,13 @@ jobs:
         runs-on: ubuntu-latest
         name: Agent
         strategy:
-          matrix:
-            agent: [ 1, 2, 3 ]
+            matrix:
+                agent: [1, 2, 3]
         steps:
-          - uses: actions/checkout@v2
-          - uses: actions/setup-node@v1
-            with:
-              node-version: '14'
-          - run: npm ci
-          - name: Start Nx Agent ${{ matrix.agent }}
-            run: npx nx-cloud start-agent
+            - uses: actions/checkout@v2
+            - uses: actions/setup-node@v1
+              with:
+                  node-version: '14'
+            - run: npm ci
+            - name: Start Nx Agent ${{ matrix.agent }}
+              run: npx nx-cloud start-agent
