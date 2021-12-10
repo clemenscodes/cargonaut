@@ -5,8 +5,6 @@ on:
     pull_request:
         branches: [main]
         types: [opened, synchronize]
-env:
-    NX_CLOUD_DISTRIBUTED_EXECUTION: true
 jobs:
     ci:
         runs-on: ubuntu-latest
