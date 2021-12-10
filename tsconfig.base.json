@@ -18,9 +18,6 @@
         "paths": {
             "@alert": ["libs/components/alert/src/index.ts"],
             "@api-interfaces": ["libs/api-interfaces/src/index.ts"],
-            "@register-form": [
-                "libs/components/register-form/src/index.ts"
-            ],
             "@core": ["libs/core/src/index.ts"],
             "@email-form": ["libs/components/email-form/src/index.ts"],
             "@env": ["libs/env/src/index.ts"],
@@ -28,6 +25,7 @@
             "@login": ["libs/components/login/src/index.ts"],
             "@login-form": ["libs/components/login-form/src/index.ts"],
             "@register": ["libs/components/register/src/index.ts"],
+            "@register-form": ["libs/components/register-form/src/index.ts"],
             "@services": ["libs/services/src/index.ts"]
         }
     },
