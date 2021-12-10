@@ -17,7 +17,10 @@
         "baseUrl": ".",
         "paths": {
             "@api-interfaces": ["libs/api-interfaces/src/index.ts"],
-            "@env": ["libs/env/src/index.ts"]
+            "@alert": ["libs/components/alert/src/index.ts"],
+            "@core": ["libs/core/src/index.ts"],
+            "@env": ["libs/env/src/index.ts"],
+            "@services": ["libs/services/src/index.ts"]
         }
     },
     "exclude": ["node_modules", "tmp"]

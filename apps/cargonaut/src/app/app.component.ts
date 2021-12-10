@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Message } from '@api-interfaces';
 import { environment } from '@env';
+import { AlertService } from '@services';
 
 @Component({
     selector: 'cargonaut-root',
@@ -11,5 +12,5 @@ import { environment } from '@env';
 export class AppComponent {
     apiUrl = environment.apiUrl;
     hello$ = this.http.get<Message>(this.apiUrl);
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient, public alertService: AlertService) {}
 }

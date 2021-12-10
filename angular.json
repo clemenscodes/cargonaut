@@ -1,6 +1,32 @@
 {
     "version": 1,
     "projects": {
+        "alert": {
+            "projectType": "library",
+            "root": "libs/components/alert",
+            "sourceRoot": "libs/components/alert/src",
+            "prefix": "cargonaut",
+            "architect": {
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "outputs": ["coverage/libs/components/alert"],
+                    "options": {
+                        "jestConfig": "libs/components/alert/jest.config.js",
+                        "passWithNoTests": true
+                    }
+                },
+                "lint": {
+                    "builder": "@nrwl/linter:eslint",
+                    "options": {
+                        "lintFilePatterns": [
+                            "libs/components/alert/src/**/*.ts",
+                            "libs/components/alert/src/**/*.html"
+                        ]
+                    }
+                }
+            },
+            "tags": []
+        },
         "api": {
             "root": "apps/api",
             "sourceRoot": "apps/api/src",
@@ -231,6 +257,32 @@
             "tags": [],
             "implicitDependencies": ["cargonaut"]
         },
+        "core": {
+            "projectType": "library",
+            "root": "libs/core",
+            "sourceRoot": "libs/core/src",
+            "prefix": "cargonaut",
+            "architect": {
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "outputs": ["coverage/libs/core"],
+                    "options": {
+                        "jestConfig": "libs/core/jest.config.js",
+                        "passWithNoTests": true
+                    }
+                },
+                "lint": {
+                    "builder": "@nrwl/linter:eslint",
+                    "options": {
+                        "lintFilePatterns": [
+                            "libs/core/src/**/*.ts",
+                            "libs/core/src/**/*.html"
+                        ]
+                    }
+                }
+            },
+            "tags": []
+        },
         "env": {
             "projectType": "library",
             "root": "libs/env",
@@ -251,6 +303,32 @@
                         "lintFilePatterns": [
                             "libs/env/src/**/*.ts",
                             "libs/env/src/**/*.html"
+                        ]
+                    }
+                }
+            },
+            "tags": []
+        },
+        "services": {
+            "projectType": "library",
+            "root": "libs/services",
+            "sourceRoot": "libs/services/src",
+            "prefix": "cargonaut",
+            "architect": {
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "outputs": ["coverage/libs/services"],
+                    "options": {
+                        "jestConfig": "libs/services/jest.config.js",
+                        "passWithNoTests": true
+                    }
+                },
+                "lint": {
+                    "builder": "@nrwl/linter:eslint",
+                    "options": {
+                        "lintFilePatterns": [
+                            "libs/services/src/**/*.ts",
+                            "libs/services/src/**/*.html"
                         ]
                     }
                 }
