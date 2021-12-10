@@ -1,9 +1,13 @@
-<div style="text-align: center">
-  <h1>Welcome to cargonaut!</h1>
-  <img
-    width="450"
-    src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png"
-    alt="Nx - Smart, Extensible Build Framework"
-  />
+<cargonaut-header></cargonaut-header>
+<div
+    class="alert-wrapper"
+    @alertAnimation
+    *ngFor="let alert of alertService.globalAlerts"
+>
+    <cargonaut-alert
+        [message]="alert.message"
+        [type]="alert.type"
+    ></cargonaut-alert>
 </div>
-<div>Message: {{ hello$ | async | json }}</div>
+<router-outlet></router-outlet>
+<cargonaut-footer></cargonaut-footer>

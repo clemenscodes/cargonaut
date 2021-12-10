@@ -1,0 +1,67 @@
+<form class="app-form" (ngSubmit)="login()" [formGroup]="loginForm">
+    <h1>Login</h1>
+    <p>Willkommen zurück! Melde dich jetzt an</p>
+    <div class="form-input">
+        <input
+            type="text"
+            formControlName="email"
+            placeholder="E-Mail"
+            required
+        />
+        <fa-icon icon="envelope"></fa-icon>
+    </div>
+    <div
+        class="form-error"
+        *ngIf="email.invalid && (email.dirty || email.touched)"
+    >
+        <div class="form-error-message">
+            <p>
+                <fa-icon icon="exclamation-circle"></fa-icon>
+                Email falsch formatiert
+            </p>
+        </div>
+    </div>
+    <div class="form-input">
+        <input
+            type="password"
+            formControlName="password"
+            placeholder="Passwort"
+            required
+        />
+        <fa-icon icon="lock"></fa-icon>
+    </div>
+    <div
+        class="form-error"
+        *ngIf="password.invalid && (password.dirty || password.touched)"
+    >
+        <div class="form-error-message">
+            <p>
+                <fa-icon icon="exclamation-circle"></fa-icon>
+                Das Passwort muss mindestens 6 Zeichen haben
+            </p>
+        </div>
+    </div>
+    <div class="form-btn">
+        <button
+            type="submit"
+            [class.disabled-btn]="!loginForm.valid"
+            [disabled]="!loginForm.valid"
+        >
+            Jetzt loslegen
+        </button>
+        <button
+            type="button"
+            class="google-login-btn"
+            *ngIf="!loading"
+            (click)="loginWithGoogle()"
+        >
+            Mit Google anmelden
+        </button>
+    </div>
+    <div class="form-link">
+        <p>
+            Noch kein Account?
+            <a routerLink="/register">Jetzt registrieren</a>
+        </p>
+    </div>
+</form>

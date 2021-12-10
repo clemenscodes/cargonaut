@@ -1,15 +1,30 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Message } from '@api-interfaces';
-import { environment } from '@env';
+import { animate, style, transition, trigger } from '@angular/animations';
+import { AlertService } from '@services';
 
 @Component({
     selector: 'cargonaut-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
+    animations: [
+        trigger('alertAnimation', [
+            transition(':enter', [
+                style({ opacity: 0, transform: 'translateY(-2rem)' }),
+                animate(
+                    '200ms',
+                    style({ opacity: 1, transform: 'translateY(0)' })
+                ),
+            ]),
+            transition(':leave', [
+                style({ transform: 'translateY(0)' }),
+                animate(
+                    '200ms',
+                    style({ opacity: 0, transform: 'translateY(-2rem)' })
+                ),
+            ]),
+        ]),
+    ],
 })
 export class AppComponent {
-    apiUrl = environment.apiUrl;
-    hello$ = this.http.get<Message>(this.apiUrl);
-    constructor(private http: HttpClient) {}
+    constructor(public alertService: AlertService) {}
 }

@@ -14,7 +14,7 @@ View here: <https://europe-west1-cargonaut.cloudfunctions.net/api>
 npm i -g firebase-tools
 npm i -g nx
 npm ci
-firebase serve
+npm run dev
 ```
 
 ## Testing

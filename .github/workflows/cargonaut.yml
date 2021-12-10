@@ -5,8 +5,6 @@ on:
     pull_request:
         branches: [main]
         types: [opened, synchronize]
-env:
-    NX_CLOUD_DISTRIBUTED_EXECUTION: true
 jobs:
     ci:
         runs-on: ubuntu-latest
@@ -25,14 +23,12 @@ jobs:
               uses: actions/cache@v2
               with:
                   path: |
-                      ~/.npm
                       ~/dist
                   key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
                   restore-keys: |
                       ${{ runner.os }}-node-
             - name: Install dependencies
               run: npm i
-            - run: npx nx-cloud start-ci-run
             - name: Format
               run: npm run format:check
             - name: Lint
@@ -48,18 +44,3 @@ jobs:
             - name: Firebase deployment
               if: ${{ (github.ref == 'refs/heads/main')}}
               run: npm i -g firebase-tools && firebase deploy --token ${{ secrets.FIREBASE_TOKEN }}
-            - run: npx nx-cloud stop-all-agents
-    agents:
-        runs-on: ubuntu-latest
-        name: Agent
-        strategy:
-            matrix:
-                agent: [1, 2, 3]
-        steps:
-            - uses: actions/checkout@v2
-            - uses: actions/setup-node@v1
-              with:
-                  node-version: '14'
-            - run: npm ci
-            - name: Start Nx Agent ${{ matrix.agent }}
-              run: npx nx-cloud start-agent
