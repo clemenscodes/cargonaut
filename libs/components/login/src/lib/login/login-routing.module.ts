@@ -9,7 +9,7 @@ import {
 const redirectAuthenticatedToHome = () => redirectLoggedInTo(['/']);
 
 const route = {
-    path: 'login',
+    path: '',
     component: LoginComponent,
     ...canActivate(redirectAuthenticatedToHome),
 };

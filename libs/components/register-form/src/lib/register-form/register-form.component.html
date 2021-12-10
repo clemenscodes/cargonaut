@@ -1,11 +1,11 @@
 <form class="app-form" (ngSubmit)="register()" [formGroup]="registerForm">
-    <h1>REGISTER</h1>
+    <h1>Registrieren</h1>
 
     <div class="form-input">
         <input
             type="text"
             formControlName="email"
-            placeholder="Email"
+            placeholder="E-Mail"
             required
         />
         <fa-icon icon="envelope"></fa-icon>
@@ -18,7 +18,7 @@
         <div class="form-error-message">
             <p>
                 <fa-icon icon="exclamation-circle"></fa-icon>
-                Email wrongly formatted
+                Email falsch formatiert
             </p>
         </div>
     </div>
@@ -27,7 +27,7 @@
         <input
             type="password"
             formControlName="password"
-            placeholder="Password"
+            placeholder="Passwort"
             required
         />
         <fa-icon icon="lock"></fa-icon>
@@ -40,14 +40,14 @@
         <div class="form-error-message">
             <p>
                 <fa-icon icon="exclamation-circle"></fa-icon>
-                Password has to be at least 6 characters
+                Das Passwort muss mindestens 6 Zeichen haben
             </p>
         </div>
     </div>
 
     <div class="form-link">
-        Account already created?
-        <a routerLink="/login">Sign in.</a>
+        Schon einen Account?
+        <a routerLink="/">Jetzt anmelden</a>
     </div>
 
     <div class="form-btn">
@@ -56,7 +56,7 @@
             [class.disabled-btn]="!registerForm.valid"
             [disabled]="!registerForm.valid"
         >
-            Register
+            Registrieren
         </button>
     </div>
 </form>

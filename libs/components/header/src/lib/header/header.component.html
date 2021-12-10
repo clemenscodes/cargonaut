@@ -6,16 +6,14 @@
                 alt="Cargonaut logo"
             />
         </a>
-        <h2></h2>
     </div>
     <nav *ngIf="!authenticated; else authenticatedNav">
-        <a routerLink="/login">Login</a>
-        <a routerLink="/">Register</a>
+        <fa-icon size="lg" icon="user-circle" routerLink="/"></fa-icon>
     </nav>
     <ng-template #authenticatedNav>
         <nav>
-            <fa-icon icon="user-circle" routerLink="/profile"></fa-icon>
-            <a (click)="logout()">Logout</a>
+            <fa-icon size="lg" icon="user-circle" routerLink="/profile"></fa-icon>
+            <fa-icon size="lg" icon="sign-out-alt" (click)="logout()"></fa-icon>
         </nav>
     </ng-template>
 </header>

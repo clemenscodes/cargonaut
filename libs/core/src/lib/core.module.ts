@@ -8,6 +8,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HeaderModule } from '@header';
 import { LoginModule } from '@login';
 import { RegisterModule } from '@register';
+import { FooterModule } from '@footer';
 @NgModule({
     exports: [
         BrowserModule,
@@ -15,6 +16,7 @@ import { RegisterModule } from '@register';
         ServicesModule,
         AlertModule,
         LoginModule,
+        FooterModule,
         RegisterModule,
         HeaderModule,
         FontAwesomeModule,

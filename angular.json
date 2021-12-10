@@ -335,6 +335,32 @@
             },
             "tags": []
         },
+        "footer": {
+            "projectType": "library",
+            "root": "libs/components/footer",
+            "sourceRoot": "libs/components/footer/src",
+            "prefix": "cargonaut",
+            "architect": {
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "outputs": ["coverage/libs/components/footer"],
+                    "options": {
+                        "jestConfig": "libs/components/footer/jest.config.js",
+                        "passWithNoTests": true
+                    }
+                },
+                "lint": {
+                    "builder": "@nrwl/linter:eslint",
+                    "options": {
+                        "lintFilePatterns": [
+                            "libs/components/footer/src/**/*.ts",
+                            "libs/components/footer/src/**/*.html"
+                        ]
+                    }
+                }
+            },
+            "tags": []
+        },
         "header": {
             "projectType": "library",
             "root": "libs/components/header",

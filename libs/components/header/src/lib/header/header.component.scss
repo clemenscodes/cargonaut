@@ -8,28 +8,16 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 4.3rem;
+    height: 3rem;
     padding: 0 1rem;
     box-shadow: 0 2px 0.5vw #000000;
     z-index: 101;
     @include for-tablet-landscape-up {
         padding: 0 1rem;
     }
-    h2 {
-        font-weight: normal;
-        letter-spacing: 1px;
-        font-size: 1.2rem;
-        a {
-            color: $white;
-            cursor: pointer;
-        }
-        @include for-phone-only {
-            font-size: 1.5rem;
-        }
-    }
     nav {
         a {
-            color: $darkgreen;
+            color: $black;
             transition: 0.25s;
             cursor: pointer;
             text-decoration: underline;
@@ -45,9 +33,11 @@ header {
         }
         fa-icon {
             cursor: pointer;
+            margin-left: 2rem;
+            color: $darkgreen;
             transition: 0.25s;
             &:hover {
-                color: $light;
+                color: $darkgreen;
             }
         }
     }
@@ -57,7 +47,7 @@ header {
     overflow: hidden;
     height: 5rem;
     img {
-        width: 150px;
+        width: 100px;
     }
     h2 {
         margin-top: 5px;

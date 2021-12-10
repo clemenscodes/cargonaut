@@ -7,6 +7,7 @@ import {
     FaIconLibrary,
 } from '@fortawesome/angular-fontawesome';
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
+import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
@@ -17,5 +18,6 @@ import { BrowserModule } from '@angular/platform-browser';
 export class HeaderModule {
     constructor(library: FaIconLibrary) {
         library.addIcons(faUserCircle);
+        library.addIcons(faSignOutAlt);
     }
 }
