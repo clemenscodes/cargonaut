@@ -46,7 +46,7 @@ export class HeaderComponent implements OnDestroy {
             await this.authService.logout();
             this.alertService.addAlert({
                 type: 'success',
-                message: 'Successfully logged out',
+                message: 'Erfolgreich abgemeldet.',
             });
         } catch (e) {
             if (e instanceof Error) {

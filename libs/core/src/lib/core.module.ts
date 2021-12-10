@@ -9,12 +9,14 @@ import { HeaderModule } from '@header';
 import { LoginModule } from '@login';
 import { RegisterModule } from '@register';
 import { FooterModule } from '@footer';
+import { ProfileModule } from '@profile';
 @NgModule({
     exports: [
         BrowserModule,
         CommonModule,
         ServicesModule,
         AlertModule,
+        ProfileModule,
         LoginModule,
         FooterModule,
         RegisterModule,

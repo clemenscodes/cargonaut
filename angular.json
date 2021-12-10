@@ -156,8 +156,8 @@
                                 },
                                 {
                                     "type": "anyComponentStyle",
-                                    "maximumWarning": "2kb",
-                                    "maximumError": "4kb"
+                                    "maximumWarning": "8kb",
+                                    "maximumError": "16kb"
                                 }
                             ],
                             "fileReplacements": [
@@ -256,6 +256,86 @@
             },
             "tags": [],
             "implicitDependencies": ["cargonaut"]
+        },
+        "change-email-form": {
+            "projectType": "library",
+            "root": "libs/components/change-email-form",
+            "sourceRoot": "libs/components/change-email-form/src",
+            "prefix": "cargonaut",
+            "architect": {
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "outputs": ["coverage/libs/components/change-email-form"],
+                    "options": {
+                        "jestConfig": "libs/components/change-email-form/jest.config.js",
+                        "passWithNoTests": true
+                    }
+                },
+                "lint": {
+                    "builder": "@nrwl/linter:eslint",
+                    "options": {
+                        "lintFilePatterns": [
+                            "libs/components/change-email-form/src/**/*.ts",
+                            "libs/components/change-email-form/src/**/*.html"
+                        ]
+                    }
+                }
+            },
+            "tags": []
+        },
+        "change-password-form": {
+            "projectType": "library",
+            "root": "libs/components/change-password-form",
+            "sourceRoot": "libs/components/change-password-form/src",
+            "prefix": "cargonaut",
+            "architect": {
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "outputs": [
+                        "coverage/libs/components/change-password-form"
+                    ],
+                    "options": {
+                        "jestConfig": "libs/components/change-password-form/jest.config.js",
+                        "passWithNoTests": true
+                    }
+                },
+                "lint": {
+                    "builder": "@nrwl/linter:eslint",
+                    "options": {
+                        "lintFilePatterns": [
+                            "libs/components/change-password-form/src/**/*.ts",
+                            "libs/components/change-password-form/src/**/*.html"
+                        ]
+                    }
+                }
+            },
+            "tags": []
+        },
+        "change-profile-form": {
+            "projectType": "library",
+            "root": "libs/components/change-profile-form",
+            "sourceRoot": "libs/components/change-profile-form/src",
+            "prefix": "cargonaut",
+            "architect": {
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "outputs": ["coverage/libs/components/change-profile-form"],
+                    "options": {
+                        "jestConfig": "libs/components/change-profile-form/jest.config.js",
+                        "passWithNoTests": true
+                    }
+                },
+                "lint": {
+                    "builder": "@nrwl/linter:eslint",
+                    "options": {
+                        "lintFilePatterns": [
+                            "libs/components/change-profile-form/src/**/*.ts",
+                            "libs/components/change-profile-form/src/**/*.html"
+                        ]
+                    }
+                }
+            },
+            "tags": []
         },
         "core": {
             "projectType": "library",
@@ -433,6 +513,32 @@
                         "lintFilePatterns": [
                             "libs/components/login-form/src/**/*.ts",
                             "libs/components/login-form/src/**/*.html"
+                        ]
+                    }
+                }
+            },
+            "tags": []
+        },
+        "profile": {
+            "projectType": "library",
+            "root": "libs/components/profile",
+            "sourceRoot": "libs/components/profile/src",
+            "prefix": "cargonaut",
+            "architect": {
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "outputs": ["coverage/libs/components/profile"],
+                    "options": {
+                        "jestConfig": "libs/components/profile/jest.config.js",
+                        "passWithNoTests": true
+                    }
+                },
+                "lint": {
+                    "builder": "@nrwl/linter:eslint",
+                    "options": {
+                        "lintFilePatterns": [
+                            "libs/components/profile/src/**/*.ts",
+                            "libs/components/profile/src/**/*.html"
                         ]
                     }
                 }

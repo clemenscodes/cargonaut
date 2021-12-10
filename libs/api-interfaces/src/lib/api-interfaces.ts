@@ -27,3 +27,15 @@ export interface User {
     photoURL?: string;
     displayName?: string;
 }
+
+export interface ChangePasswordData {
+    oldPassword: string;
+    newPassword: string;
+}
+export interface ChangeEmailData {
+    password: string;
+    newEmail: string;
+}
+export interface ChangeProfileData {
+    displayName?: string;
+}
