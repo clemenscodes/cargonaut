@@ -1,0 +1,21 @@
+<header>
+    <div class="logo">
+        <a routerLink="/">
+            <img
+                src="assets/images/0.75x/semi_androidMyCargonautldpi.png"
+                alt="Cargonaut logo"
+            />
+        </a>
+        <h2></h2>
+    </div>
+    <nav *ngIf="!authenticated; else authenticatedNav">
+        <a routerLink="/login">Login</a>
+        <a routerLink="/">Register</a>
+    </nav>
+    <ng-template #authenticatedNav>
+        <nav>
+            <fa-icon icon="user-circle" routerLink="/profile"></fa-icon>
+            <a (click)="logout()">Logout</a>
+        </nav>
+    </ng-template>
+</header>

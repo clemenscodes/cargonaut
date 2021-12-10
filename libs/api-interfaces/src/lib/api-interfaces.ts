@@ -19,3 +19,11 @@ export interface Alert {
     type: 'error' | 'success' | 'neutral' | 'warn';
     message: string;
 }
+
+export interface User {
+    uid: string;
+    email?: string;
+    emailVerified?: boolean;
+    photoURL?: string;
+    displayName?: string;
+}

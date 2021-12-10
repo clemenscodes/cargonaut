@@ -1,0 +1,13 @@
+<main class="auth-container">
+    <section>
+        <cargonaut-login-form
+            *ngIf="showLogin; else emailForm"
+            (showEmailFormEvent)="showLogin = false"
+        ></cargonaut-login-form>
+        <ng-template #emailForm>
+            <cargonaut-email-form
+                (cancelResetEvent)="showLogin = true"
+            ></cargonaut-email-form>
+        </ng-template>
+    </section>
+</main>

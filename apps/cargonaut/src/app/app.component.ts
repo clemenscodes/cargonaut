@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { animate, style, transition, trigger } from '@angular/animations';
 import { AlertService } from '@services';
 
@@ -25,12 +25,6 @@ import { AlertService } from '@services';
         ]),
     ],
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
     constructor(public alertService: AlertService) {}
-    ngOnInit() {
-        this.alertService.addAlert({
-            type: 'success',
-            message: 'Cargonaut initialized',
-        });
-    }
 }

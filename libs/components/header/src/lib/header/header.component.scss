@@ -1,0 +1,65 @@
+@import '_variables';
+@import '_mixins';
+
+header {
+    position: relative;
+    background: $white;
+    color: $white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 4.3rem;
+    padding: 0 1rem;
+    box-shadow: 0 2px 0.5vw #000000;
+    z-index: 101;
+    @include for-tablet-landscape-up {
+        padding: 0 1rem;
+    }
+    h2 {
+        font-weight: normal;
+        letter-spacing: 1px;
+        font-size: 1.2rem;
+        a {
+            color: $white;
+            cursor: pointer;
+        }
+        @include for-phone-only {
+            font-size: 1.5rem;
+        }
+    }
+    nav {
+        a {
+            color: $darkgreen;
+            transition: 0.25s;
+            cursor: pointer;
+            text-decoration: underline;
+            &:hover {
+                color: $light;
+            }
+        }
+        a:nth-child(2) {
+            margin-left: 1rem;
+            @include for-tablet-portrait-up {
+                margin-left: 3rem;
+            }
+        }
+        fa-icon {
+            cursor: pointer;
+            transition: 0.25s;
+            &:hover {
+                color: $light;
+            }
+        }
+    }
+}
+.logo {
+    @include flex-center;
+    overflow: hidden;
+    height: 5rem;
+    img {
+        width: 150px;
+    }
+    h2 {
+        margin-top: 5px;
+    }
+}

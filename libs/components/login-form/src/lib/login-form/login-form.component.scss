@@ -1,0 +1,9 @@
+@import '_forms';
+
+.google-login-btn {
+    background: #962323 !important;
+    margin-top: 1rem;
+    &:hover {
+        background: #b02828 !important;
+    }
+}
