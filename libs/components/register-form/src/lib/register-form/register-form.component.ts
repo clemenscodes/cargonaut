@@ -74,10 +74,9 @@ export class RegisterFormComponent {
             this.alertService.addAlert({
                 type: 'success',
                 message:
-                    'Successfully logged in with new account. Please verify your email.',
+                    'Erfolgreich registriert und eingeloggt. Bitte bestätige deine E-Mail.',
             });
-            await this.router.navigate(['/']);
-            window.location.reload();
+            await this.router.navigate(['/profile']);
         } catch (e) {
             if (e instanceof Error) {
                 this.loading = false;

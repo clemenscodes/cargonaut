@@ -12,7 +12,11 @@
     </nav>
     <ng-template #authenticatedNav>
         <nav>
-            <fa-icon size="lg" icon="user-circle" routerLink="/profile"></fa-icon>
+            <fa-icon
+                size="lg"
+                icon="user-circle"
+                routerLink="/profile"
+            ></fa-icon>
             <fa-icon size="lg" icon="sign-out-alt" (click)="logout()"></fa-icon>
         </nav>
     </ng-template>
