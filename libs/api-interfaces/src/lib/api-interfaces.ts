@@ -40,10 +40,12 @@ export interface ChangeProfileData {
     displayName?: string;
 }
 
-export interface Rating {
+export interface Ratings {
     averageRating: number;
     ratingsCounter: number;
 }
+
+export type Rating = 1 | 2 | 3 | 4 | 5
 
 export enum Status {
     toBeStarted = 'toBeStarted',
@@ -52,6 +54,7 @@ export enum Status {
 }
 
 export interface Request {
+    userId: string;
     status: Status;
     startAddress: Address;
     targetAddress: Address;
@@ -67,8 +70,8 @@ export interface Address {
 }
 
 export interface Offer {
-    startAddress: Address;
-    targetAddress: Address;
+    userId: string;
+    requestId: string;
     date: Date;
     price: number;
     status: Status;
@@ -91,6 +94,7 @@ export enum VehicleKind {
 }
 
 export interface Vehicle {
+    userId: string;
     mark: string;
     kind: VehicleKind;
     manufacturer: string;
