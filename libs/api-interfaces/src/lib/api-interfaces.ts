@@ -80,7 +80,15 @@ export interface Driver {
     vehicleId: string;
 }
 
-export enum VehicleKind {}
+export enum VehicleKind {
+    mini = "Miniwagen",
+    compact = "Kompaktwagen",
+    combi = "Kombi",
+    cabrio = "Cabrio",
+    suv = "SUV",
+    van = "Van",
+    use = "Nutzfahrzeug"
+}
 
 export interface Vehicle {
     mark: string;
