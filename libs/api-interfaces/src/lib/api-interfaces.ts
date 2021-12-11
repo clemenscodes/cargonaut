@@ -39,3 +39,55 @@ export interface ChangeEmailData {
 export interface ChangeProfileData {
     displayName?: string;
 }
+
+export interface Rating {
+    averageRating: number;
+    ratingsCounter: number;
+}
+
+export enum Status {
+    toBeStarted = 'toBeStarted',
+    started = 'started',
+    finishe = 'finished',
+}
+
+export interface Request {
+    status: Status;
+    startAddress: Address;
+    targetAddress: Address;
+    seats: number;
+    volume: number;
+}
+
+export interface Address {
+    street: string;
+    house: number;
+    zipCode: number;
+    city: number;
+}
+
+export interface Offer {
+    startAddress: Address;
+    targetAddress: Address;
+    date: Date;
+    price: number;
+    status: Status;
+}
+
+export interface Driver {
+    userId: string;
+    offerId: string;
+    vehicleId: string;
+}
+
+export enum VehicleKind {}
+
+export interface Vehicle {
+    mark: string;
+    kind: VehicleKind;
+    manufacturer: string;
+    model: string;
+    constructionYear: number;
+    seats: number;
+    volume: number;
+}
