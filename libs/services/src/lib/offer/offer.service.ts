@@ -11,9 +11,7 @@ import { map, Observable } from 'rxjs';
 export class OfferService {
     private offersCollection: AngularFirestoreCollection<Offer>;
     offers: Observable<Offer[]>;
-    constructor(
-        private readonly afs: AngularFirestore,
-    ) {
+    constructor(private readonly afs: AngularFirestore) {
         this.offersCollection = this.afs.collection<Offer>('offers');
         this.offers = this.offersCollection.snapshotChanges().pipe(
             map((actions) =>

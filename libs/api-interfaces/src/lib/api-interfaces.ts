@@ -45,7 +45,7 @@ export interface Ratings {
     ratingsCounter: number;
 }
 
-export type Rating = 1 | 2 | 3 | 4 | 5
+export type Rating = 1 | 2 | 3 | 4 | 5;
 
 export enum Status {
     toBeStarted = 'toBeStarted',
@@ -84,13 +84,13 @@ export interface Driver {
 }
 
 export enum VehicleKind {
-    mini = "Miniwagen",
-    compact = "Kompaktwagen",
-    combi = "Kombi",
-    cabrio = "Cabrio",
-    suv = "SUV",
-    van = "Van",
-    use = "Nutzfahrzeug"
+    mini = 'Miniwagen',
+    compact = 'Kompaktwagen',
+    combi = 'Kombi',
+    cabrio = 'Cabrio',
+    suv = 'SUV',
+    van = 'Van',
+    use = 'Nutzfahrzeug',
 }
 
 export interface Vehicle {

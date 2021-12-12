@@ -25,7 +25,7 @@ export class OfferComponent implements OnInit {
                         .subscribe((req) => {
                             const data = req.data();
                             if (data) {
-                                console.log(data)
+                                console.log(data);
                                 this.requests?.set(offer.requestId, data);
                             }
                         });

@@ -1,15 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'cargonaut-vehicle',
-  templateUrl: './vehicle.component.html',
-  styleUrls: ['./vehicle.component.scss']
+    selector: 'cargonaut-vehicle',
+    templateUrl: './vehicle.component.html',
+    styleUrls: ['./vehicle.component.scss'],
 })
-export class VehicleComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
-}
+export class VehicleComponent {}
