@@ -12,23 +12,26 @@ header {
     padding: 0 1rem;
     box-shadow: 0 2px 0.5vw #000000;
     z-index: 101;
+    a.resource {
+        color: $black;
+        text-decoration: none;
+        justify-content: space-between;
+        margin-left: 3rem;
+        text-align: left;
+    }
     @include for-tablet-landscape-up {
         padding: 0 1rem;
     }
     nav {
         a {
-            color: $black;
             transition: 0.25s;
             cursor: pointer;
-            text-decoration: underline;
-            &:hover {
-                color: $light;
-            }
-        }
-        a:nth-child(2) {
             margin-left: 1rem;
             @include for-tablet-portrait-up {
                 margin-left: 3rem;
+            }
+            &:hover {
+                color: $light;
             }
         }
         fa-icon {
