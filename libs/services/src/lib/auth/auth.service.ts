@@ -229,9 +229,18 @@ export class AuthService {
             const email = user.email || '';
             const photoURL = user.photoURL || '';
             const emailVerified = user.emailVerified;
+            const firstName = user.firstName || '';
+            const lastName = user.lastName || '';
+            const birthDate = user.birthDate || '';
+            const rating = user.rating || '';
+
             return {
                 uid: user.uid,
                 email: email,
+                firstName: firstName,
+                lastName: lastName,
+                birthDate: birthDate,
+                rating: rating,
                 photoURL: photoURL,
                 emailVerified: emailVerified,
                 displayName: displayName,
