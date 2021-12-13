@@ -1,0 +1,45 @@
+@import '../../../../../../apps/cargonaut/src/styles/variables';
+@import '../../../../../../apps/cargonaut/src/styles/mixins';
+
+.offer {
+    background: $white;
+    position: relative;
+    padding: auto;
+    text-align: center;
+    padding: 2rem;
+    border-radius: 2px;
+    @include for-desktop-up {
+        display: block;
+    }
+    h1 {
+        position: relative;
+        margin-top: 6rem;
+    }
+    table {
+        margin-top: 2rem;
+        position: relative;
+        word-wrap: break-word;
+        box-shadow: rgba(0, 0, 0, 0.14) 0 3px 18px;
+        padding-bottom: 4rem;
+        thead {
+                th {
+                    text-align: center;
+                    padding: 0.4rem;
+                    padding-top: 1rem;
+                    margin: 0.4rem;
+                }
+        }
+        tbody {
+            word-wrap: break-word;
+            tr {
+                page-break-inside: avoid;
+                td {
+                    padding: 1rem;
+                    padding-bottom: 2rem;
+                    margin: 1rem;
+
+                }
+            }
+        }
+    }
+}

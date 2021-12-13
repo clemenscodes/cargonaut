@@ -1,32 +1,35 @@
-<div class="container">
-    <div class="card-body">
-        <table class="table table-bordered table-striped table-hover">
-            <thead>
-                <tr>
-                    <td>Status</td>
-                    <td>Von</td>
-                    <td>Nach</td>
-                    <td>Datum</td>
-                    <td>Dienstleistung</td>
-                    <td>Sitze</td>
-                    <td>Stauraum</td>
-                    <td>Preis</td>
-                    <td>Fahrer</td>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let offer of this.offers | async">
-                    <td>{{ offer.status }}</td>
-                    <td>{{ offer.startAddress.city }}</td>
-                    <td>{{ offer.targetAddress.city }}</td>
-                    <td>{{ offer.date }}</td>
-                    <td>{{ offer.serviceKind }}</td>
-                    <td>{{ offer.seats }}</td>
-                    <td>{{ offer.volume }}</td>
-                    <td>{{ offer.price }}</td>
-                    <td>{{ offer.userId }}</td>
-                </tr>
-            </tbody>
-        </table>
+<div class="offer">
+    <h1>Alle Angebote</h1>
+    <div *ngFor="let offer of this.offers | async" class="container">
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Status</th>
+                        <th>Von</th>
+                        <th>Nach</th>
+                        <th>Datum</th>
+                        <th>Dienstleistung</th>
+                        <th>Sitze</th>
+                        <th>Stauraum</th>
+                        <th>Preis</th>
+                        <th>Fahrer</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{ offer.status }}</td>
+                        <td>{{ offer.startAddress.city }}</td>
+                        <td>{{ offer.targetAddress.city }}</td>
+                        <td>{{ offer.date }}</td>
+                        <td>{{ offer.serviceKind }}</td>
+                        <td>{{ offer.seats }}</td>
+                        <td>{{ offer.volume }} L</td>
+                        <td>{{ offer.price }}</td>
+                        <td>{{ offer.userId }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
