@@ -74,6 +74,7 @@ export interface Address {
 }
 
 export interface Offer {
+    offerId: string;
     userId: string;
     date: Date;
     price: number;
@@ -83,6 +84,7 @@ export interface Offer {
     targetAddress: Address;
     seats: number;
     volume: number;
+    rating: Rating;
 }
 
 export interface Driver {
