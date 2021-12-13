@@ -6,6 +6,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { AuthService } from '@services';
 import { AbstractControl } from '@angular/forms';
 import { Location } from '@angular/common';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 describe('LoginFormComponent', () => {
     let component: LoginFormComponent;
@@ -27,6 +28,7 @@ describe('LoginFormComponent', () => {
                 LoginFormModule,
                 RouterTestingModule.withRoutes([]),
             ],
+            schemas: [CUSTOM_ELEMENTS_SCHEMA],
         }).compileComponents();
     });
 

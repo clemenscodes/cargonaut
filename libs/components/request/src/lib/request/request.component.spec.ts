@@ -1,26 +1,26 @@
-// import { ComponentFixture, TestBed } from '@angular/core/testing';
-// import { RequestModule } from '../request.module';
-// import { RequestComponent } from './request.component';
-// import { environment } from '@env';
-// import { AngularFireModule } from '@angular/fire/compat';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RequestService } from '@services';
+import { RequestModule } from '../request.module';
+import { RequestComponent } from './request.component';
 
 describe('RequestComponent', () => {
-    // let component: RequestComponent;
-    // let fixture: ComponentFixture<RequestComponent>;
-
+    let component: RequestComponent;
+    let fixture: ComponentFixture<RequestComponent>;
+    const requestServiceMock = {}
     beforeEach(async () => {
-        // await TestBed.configureTestingModule({
-        //     imports: [RequestModule]
-        // }).compileComponents();
+        await TestBed.configureTestingModule({
+            imports: [RequestModule],
+            providers: [{provide: RequestService, useValue: requestServiceMock}]
+        }).compileComponents();
     });
 
     beforeEach(() => {
-        // fixture = TestBed.createComponent(RequestComponent);
-        // component = fixture.componentInstance;
-        // fixture.detectChanges();
+        fixture = TestBed.createComponent(RequestComponent);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
     });
 
     it('should create', () => {
-        // expect(component).toBeTruthy();
+        expect(component).toBeTruthy();
     });
 });
