@@ -77,7 +77,7 @@ export class LoginFormComponent {
                 type: 'success',
                 message: 'Erfolgreich angemeldet',
             });
-            await this.router.navigate(['/profile']);
+            await this.router.navigate(['/offer']);
         } catch (e) {
             if (e instanceof Error) {
                 this.loading = false;

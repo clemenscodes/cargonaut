@@ -151,8 +151,8 @@
                             "budgets": [
                                 {
                                     "type": "initial",
-                                    "maximumWarning": "500kb",
-                                    "maximumError": "1mb"
+                                    "maximumWarning": "2mb",
+                                    "maximumError": "4mb"
                                 },
                                 {
                                     "type": "anyComponentStyle",
@@ -467,6 +467,32 @@
             },
             "tags": []
         },
+        "home": {
+            "projectType": "library",
+            "root": "libs/components/home",
+            "sourceRoot": "libs/components/home/src",
+            "prefix": "cargonaut",
+            "architect": {
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "outputs": ["coverage/libs/components/home"],
+                    "options": {
+                        "jestConfig": "libs/components/home/jest.config.js",
+                        "passWithNoTests": true
+                    }
+                },
+                "lint": {
+                    "builder": "@nrwl/linter:eslint",
+                    "options": {
+                        "lintFilePatterns": [
+                            "libs/components/home/src/**/*.ts",
+                            "libs/components/home/src/**/*.html"
+                        ]
+                    }
+                }
+            },
+            "tags": []
+        },
         "login": {
             "projectType": "library",
             "root": "libs/components/login",
@@ -513,6 +539,32 @@
                         "lintFilePatterns": [
                             "libs/components/login-form/src/**/*.ts",
                             "libs/components/login-form/src/**/*.html"
+                        ]
+                    }
+                }
+            },
+            "tags": []
+        },
+        "offer": {
+            "projectType": "library",
+            "root": "libs/components/offer",
+            "sourceRoot": "libs/components/offer/src",
+            "prefix": "cargonaut",
+            "architect": {
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "outputs": ["coverage/libs/components/offer"],
+                    "options": {
+                        "jestConfig": "libs/components/offer/jest.config.js",
+                        "passWithNoTests": true
+                    }
+                },
+                "lint": {
+                    "builder": "@nrwl/linter:eslint",
+                    "options": {
+                        "lintFilePatterns": [
+                            "libs/components/offer/src/**/*.ts",
+                            "libs/components/offer/src/**/*.html"
                         ]
                     }
                 }
@@ -597,6 +649,32 @@
             },
             "tags": []
         },
+        "request": {
+            "projectType": "library",
+            "root": "libs/components/request",
+            "sourceRoot": "libs/components/request/src",
+            "prefix": "cargonaut",
+            "architect": {
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "outputs": ["coverage/libs/components/request"],
+                    "options": {
+                        "jestConfig": "libs/components/request/jest.config.js",
+                        "passWithNoTests": true
+                    }
+                },
+                "lint": {
+                    "builder": "@nrwl/linter:eslint",
+                    "options": {
+                        "lintFilePatterns": [
+                            "libs/components/request/src/**/*.ts",
+                            "libs/components/request/src/**/*.html"
+                        ]
+                    }
+                }
+            },
+            "tags": []
+        },
         "services": {
             "projectType": "library",
             "root": "libs/services",
@@ -617,6 +695,32 @@
                         "lintFilePatterns": [
                             "libs/services/src/**/*.ts",
                             "libs/services/src/**/*.html"
+                        ]
+                    }
+                }
+            },
+            "tags": []
+        },
+        "vehicle": {
+            "projectType": "library",
+            "root": "libs/components/vehicle",
+            "sourceRoot": "libs/components/vehicle/src",
+            "prefix": "cargonaut",
+            "architect": {
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "outputs": ["coverage/libs/components/vehicle"],
+                    "options": {
+                        "jestConfig": "libs/components/vehicle/jest.config.js",
+                        "passWithNoTests": true
+                    }
+                },
+                "lint": {
+                    "builder": "@nrwl/linter:eslint",
+                    "options": {
+                        "lintFilePatterns": [
+                            "libs/components/vehicle/src/**/*.ts",
+                            "libs/components/vehicle/src/**/*.html"
                         ]
                     }
                 }
