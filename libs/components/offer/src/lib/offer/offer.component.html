@@ -18,7 +18,9 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td *ngIf="offer.status === 'toBeStarted'; else full">Frei</td>
+                        <td *ngIf="offer.status === 'toBeStarted'; else full">
+                            Frei
+                        </td>
                         <ng-template #full>
                             <td>Voll</td>
                         </ng-template>

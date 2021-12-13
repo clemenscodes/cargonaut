@@ -7,13 +7,16 @@ import { OfferService } from './offer/offer.service';
 import { RatingService } from './rating/rating.service';
 import { RequestService } from './request/request.service';
 import { VehicleService } from './vehicle/vehicle.service';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
+import {
+    AngularFirestore,
+    AngularFirestoreModule,
+} from '@angular/fire/compat/firestore';
 import {
     AngularFireAuth,
     AngularFireAuthModule,
 } from '@angular/fire/compat/auth';
 @NgModule({
-    imports: [CommonModule, AngularFireAuthModule],
+    imports: [CommonModule, AngularFireAuthModule, AngularFirestoreModule],
     providers: [
         AlertService,
         AuthService,
@@ -25,6 +28,6 @@ import {
         RequestService,
         VehicleService,
     ],
-    exports: [AngularFireAuthModule],
+    exports: [AngularFireAuthModule, AngularFirestoreModule],
 })
 export class ServicesModule {}
