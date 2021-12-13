@@ -3,14 +3,10 @@
 
 .offer {
     background: $white;
-    position: relative;
     padding: auto;
     text-align: center;
     padding: 2rem;
     border-radius: 2px;
-    @include for-desktop-up {
-        display: block;
-    }
     h1 {
         position: relative;
         margin-top: 6rem;
@@ -24,7 +20,8 @@
         thead {
                 th {
                     text-align: center;
-                    padding: 0.4rem;
+                    font-weight: normal;
+                    padding: 0.8rem;
                     padding-top: 1rem;
                     margin: 0.4rem;
                 }

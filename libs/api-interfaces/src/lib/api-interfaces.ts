@@ -1,3 +1,4 @@
+import { Timestamp } from 'firebase-admin/firestore';
 export interface Message {
     message: string;
 }
@@ -70,7 +71,7 @@ export interface Address {
 
 export interface Offer {
     userId: string;
-    date: Date;
+    date: Timestamp;
     price: number;
     status: Status;
     serviceKind: ServiceKind;

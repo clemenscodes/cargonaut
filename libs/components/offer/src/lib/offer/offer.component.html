@@ -18,14 +18,17 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>{{ offer.status }}</td>
+                        <td *ngIf="offer.status === 'toBeStarted'; else full">Frei</td>
+                        <ng-template #full>
+                            <td>Voll</td>
+                        </ng-template>
                         <td>{{ offer.startAddress.city }}</td>
                         <td>{{ offer.targetAddress.city }}</td>
-                        <td>{{ offer.date }}</td>
+                        <td>{{ offer.date.toDate() | date }}</td>
                         <td>{{ offer.serviceKind }}</td>
                         <td>{{ offer.seats }}</td>
-                        <td>{{ offer.volume }} L</td>
-                        <td>{{ offer.price }}</td>
+                        <td>{{ offer.volume }}l</td>
+                        <td>€ {{ offer.price }}</td>
                         <td>{{ offer.userId }}</td>
                     </tr>
                 </tbody>
