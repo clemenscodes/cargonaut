@@ -1,1 +1,32 @@
-<p>offer works!</p>
+<div class="container">
+    <div class="card-body">
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <td>Status</td>
+                    <td>Von</td>
+                    <td>Nach</td>
+                    <td>Datum</td>
+                    <td>Dienstleistung</td>
+                    <td>Sitze</td>
+                    <td>Stauraum</td>
+                    <td>Preis</td>
+                    <td>Fahrer</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let offer of this.offers | async">
+                    <td>{{ offer.status }}</td>
+                    <td>{{ offer.startAddress.city }}</td>
+                    <td>{{ offer.targetAddress.city }}</td>
+                    <td>{{ offer.date }}</td>
+                    <td>{{ offer.serviceKind }}</td>
+                    <td>{{ offer.seats }}</td>
+                    <td>{{ offer.volume }}</td>
+                    <td>{{ offer.price }}</td>
+                    <td>{{ offer.userId }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

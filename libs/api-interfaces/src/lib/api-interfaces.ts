@@ -55,9 +55,8 @@ export enum Status {
 
 export interface Request {
     userId: string;
-    status: Status;
-    startAddress: Address;
-    targetAddress: Address;
+    offerId: string;
+    accepted: boolean;
     seats: number;
     volume: number;
 }
@@ -71,16 +70,19 @@ export interface Address {
 
 export interface Offer {
     userId: string;
-    requestId: string;
     date: Date;
     price: number;
     status: Status;
+    serviceKind: ServiceKind;
+    startAddress: Address;
+    targetAddress: Address;
+    seats: number;
+    volume: number;
 }
 
-export interface Driver {
-    userId: string;
-    offerId: string;
-    vehicleId: string;
+export enum ServiceKind {
+    taxi = 'Mitfahrgelegenheit',
+    transport = 'Transport',
 }
 
 export enum VehicleKind {

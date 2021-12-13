@@ -36,6 +36,7 @@
         "all:build": "nx run-many --target=build --all --parallel --skip-nx-cache",
         "all:test": "nx run-many --target=test --all --parallel --skip-nx-cache",
         "all:e2e": "nx run-many --target=e2e --all --parallel --skip-nx-cache",
+        "failed": "nx run-many --target=test --all --parallel --skip-nx-cache --only-failed",
         "ci:lint": "nx affected --target=lint --parallel --skip-nx-cache",
         "ci:test": "nx affected --target=test --parallel --skip-nx-cache",
         "ci:build": "nx affected --target=build --parallel --skip-nx-cache",
