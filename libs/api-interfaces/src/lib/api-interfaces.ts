@@ -1,3 +1,5 @@
+import { Timestamp } from 'firebase-admin/firestore';
+
 export interface Message {
     message: string;
 }
@@ -30,6 +32,7 @@ export interface User {
     email?: string;
     emailVerified?: boolean;
     photoURL?: string;
+    providerData?: [{providerId: string}];
 }
 
 export interface ChangePasswordData {
@@ -99,13 +102,13 @@ export enum ServiceKind {
 }
 
 export enum VehicleKind {
-    mini = "Miniwagen",
-    compact = "Kompaktwagen",
-    combi = "Kombi",
-    cabrio = "Cabrio",
-    suv = "SUV",
-    van = "Van",
-    use = "Nutzfahrzeug"
+    mini = 'Miniwagen',
+    compact = 'Kompaktwagen',
+    combi = 'Kombi',
+    cabrio = 'Cabrio',
+    suv = 'SUV',
+    van = 'Van',
+    use = 'Nutzfahrzeug',
 }
 
 export interface Vehicle {

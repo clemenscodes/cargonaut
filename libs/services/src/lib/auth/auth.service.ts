@@ -20,7 +20,7 @@ export class AuthService {
     /**
      * Firebase user object
      */
-    user: firebase.User | null = null;
+    user: User | null = null;
     /**
      * Auth state Subject
      * @private
@@ -40,7 +40,15 @@ export class AuthService {
     constructor(private auth: AngularFireAuth) {
         this.auth.authState.subscribe(async (user) => {
             if (user) {
-                this.user = user;
+                const userData: User = {
+                    firstName: 'Test',
+                    lastName: 'Test',
+                    birthDate: 'Test',
+                    uid: 'Test',
+                    displayName: 'Test',
+                    rating: 5,
+                };
+                this.user = userData;
                 const token = await user.getIdToken(true);
                 localStorage.setItem('idToken', token);
                 this.authState.next(user);
@@ -222,30 +230,7 @@ export class AuthService {
      * @returns {User} The current user profile data
      */
     getCurrentUser(): User {
-        const auth = getAuth();
-        const user = auth.currentUser;
-        if (user !== null) {
-            const displayName = user.displayName || '';
-            const email = user.email || '';
-            const photoURL = user.photoURL || '';
-            const emailVerified = user.emailVerified;
-            const firstName = user.firstName || '';
-            const lastName = user.lastName || '';
-            const birthDate = user.birthDate || '';
-            const rating = user.rating || '';
-
-            return {
-                uid: user.uid,
-                email: email,
-                firstName: firstName,
-                lastName: lastName,
-                birthDate: birthDate,
-                rating: rating,
-                photoURL: photoURL,
-                emailVerified: emailVerified,
-                displayName: displayName,
-            };
-        }
+        if (this.user) return this.user;
         throw new Error();
     }
 }

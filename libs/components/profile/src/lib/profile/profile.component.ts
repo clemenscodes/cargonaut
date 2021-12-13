@@ -137,7 +137,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
      * Check provider of authenticated user and set provider id
      */
     checkProvider(): void {
-        this.authService.user?.providerData.forEach((provider) => {
+        this.authService.user?.providerData?.forEach((provider) => {
             if (provider) {
                 this.provider = provider.providerId;
             }
