@@ -76,7 +76,7 @@ export interface Address {
 export interface Offer {
     offerId: string;
     userId: string;
-    date: Date;
+    date: Timestamp;
     price: number;
     status: Status;
     serviceKind: ServiceKind;
