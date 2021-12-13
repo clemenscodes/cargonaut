@@ -6,11 +6,13 @@ import { RequestComponent } from './request.component';
 describe('RequestComponent', () => {
     let component: RequestComponent;
     let fixture: ComponentFixture<RequestComponent>;
-    const requestServiceMock = {}
+    const requestServiceMock = {};
     beforeEach(async () => {
         await TestBed.configureTestingModule({
             imports: [RequestModule],
-            providers: [{provide: RequestService, useValue: requestServiceMock}]
+            providers: [
+                { provide: RequestService, useValue: requestServiceMock },
+            ],
         }).compileComponents();
     });
 

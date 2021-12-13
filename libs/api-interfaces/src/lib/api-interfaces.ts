@@ -24,15 +24,15 @@ export interface Alert {
 
 export interface User {
     uid: string;
-    firstName: string;
-    lastName: string;
-    birthDate: string;
+    firstName?: string;
+    lastName?: string;
+    birthDate?: string;
     displayName?: string;
     rating?: number;
     email?: string;
     emailVerified?: boolean;
     photoURL?: string;
-    providerData?: [{providerId: string}];
+    providerData?: [{ providerId: string }];
 }
 
 export interface ChangePasswordData {

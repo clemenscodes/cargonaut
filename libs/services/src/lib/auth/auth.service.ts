@@ -66,14 +66,31 @@ export class AuthService {
      * @param email {string} The email of the user
      * @param password {string} The password of the user
      */
-    async register(email: string, password: string): Promise<void> {
+    async register(
+        email: string,
+        password: string,
+        firstName: string,
+        lastName: string,
+        birthDate: string
+    ): Promise<void> {
         const userCredential = await this.auth.createUserWithEmailAndPassword(
             email,
             password
         );
         if (userCredential.user) {
-            await userCredential.user.sendEmailVerification();
-            const token = await userCredential.user.getIdToken(true);
+            const user = userCredential.user;
+            await user.sendEmailVerification();
+            const { uid, emailVerified } = user;
+            this.user = {
+                uid,
+                firstName,
+                lastName,
+                birthDate,
+                email,
+                emailVerified,
+                rating: 0,
+            };
+            const token = await user.getIdToken(true);
             localStorage.setItem('idToken', token);
         }
     }

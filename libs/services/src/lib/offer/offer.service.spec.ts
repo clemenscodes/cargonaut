@@ -4,14 +4,14 @@ import { of } from 'rxjs';
 import { OfferService } from './offer.service';
 describe('OfferService', () => {
     let service: OfferService;
-    const offerMockData = {}
-    const data = of(offerMockData)
+    const offerMockData = {};
+    const data = of(offerMockData);
     const offerCollectionMock = {
-        snapshotChanges: jest.fn().mockReturnValue(data)
-    }
+        snapshotChanges: jest.fn().mockReturnValue(data),
+    };
     const angularFirestoreMock = {
-        collection: jest.fn().mockReturnValue(offerCollectionMock)
-    }
+        collection: jest.fn().mockReturnValue(offerCollectionMock),
+    };
     beforeEach(() => {
         TestBed.configureTestingModule({
             providers: [

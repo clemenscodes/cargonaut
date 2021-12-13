@@ -1,12 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AlertService, AuthService } from '@services';
-import firebase from 'firebase/compat';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import {
     ChangeEmailData,
     ChangePasswordData,
     ChangeProfileData,
+    User,
 } from '@api-interfaces';
 
 @Component({
@@ -23,7 +23,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
     /**
      * The current authenticated user
      */
-    user: firebase.User | null = null;
+    user: User | null = null;
     /**
      * The current selected nav
      */
@@ -45,7 +45,9 @@ export class ProfileComponent implements OnInit, OnDestroy {
     constructor(
         private authService: AuthService,
         private alertService: AlertService
-    ) {}
+    ) {
+        this.user = this.authService.getCurrentUser();
+    }
 
     /**
      * Change password of user
@@ -150,8 +152,11 @@ export class ProfileComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         this.authService.authState$
             .pipe(takeUntil(this.destroy$))
-            .subscribe((user) => (this.user = user));
+            .subscribe((user) => {
+                return user;
+            });
         this.checkProvider();
+        console.log(this.user);
     }
 
     /**

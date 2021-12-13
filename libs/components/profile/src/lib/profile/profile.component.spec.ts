@@ -22,6 +22,7 @@ describe('ProfileComponent', () => {
         updatePassword: jest.fn(),
         updateEmail: jest.fn(),
         updateProfile: jest.fn(),
+        getCurrentUser: jest.fn().mockReturnValue(mockUser),
     };
 
     beforeEach(async () => {

@@ -101,7 +101,7 @@
                     >
                         <cargonaut-change-profile-form
                             [userDisplayName]="
-                                user!.displayName ? user!.displayName : ''
+                                user?.displayName ? user!.displayName : ''
                             "
                             (changeProfileEvent)="changeProfile($event)"
                         >
