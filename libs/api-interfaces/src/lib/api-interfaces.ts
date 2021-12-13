@@ -1,4 +1,5 @@
 import { Timestamp } from 'firebase-admin/firestore';
+
 export interface Message {
     message: string;
 }
@@ -23,10 +24,15 @@ export interface Alert {
 
 export interface User {
     uid: string;
+    firstName: string;
+    lastName: string;
+    birthDate: string;
+    displayName?: string;
+    rating?: number;
     email?: string;
     emailVerified?: boolean;
     photoURL?: string;
-    displayName?: string;
+    providerData?: [{providerId: string}];
 }
 
 export interface ChangePasswordData {
@@ -57,6 +63,7 @@ export enum Status {
 export interface Request {
     userId: string;
     offerId: string;
+    status: Status;
     accepted: boolean;
     seats: number;
     volume: number;
@@ -66,10 +73,11 @@ export interface Address {
     street: string;
     house: number;
     zipCode: number;
-    city: string;
+    city: number;
 }
 
 export interface Offer {
+    offerId: string;
     userId: string;
     date: Timestamp;
     price: number;
@@ -79,6 +87,13 @@ export interface Offer {
     targetAddress: Address;
     seats: number;
     volume: number;
+    rating: Rating;
+}
+
+export interface Driver {
+    userId: string;
+    offerId: string;
+    vehicleId: string;
 }
 
 export enum ServiceKind {
