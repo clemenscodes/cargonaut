@@ -1,8 +1,4 @@
-import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
-import {
-    AbstractControl,
-    FormGroup,
-} from '@angular/forms';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'cargonaut-delete-profile-form',
@@ -13,9 +9,6 @@ export class DeleteProfileFormComponent {
     @Output() deleteProfileEvent = new EventEmitter();
 
     @Input() loading = false;
-
-    constructor() {
-    }
 
     deleteProfile(): void {
         this.deleteProfileEvent.emit();
