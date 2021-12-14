@@ -169,6 +169,19 @@ export class AuthService {
         return sendEmailVerification(user);
     }
 
+
+    /**
+     * Delete profile of current authentificated user
+     *
+     */
+    deleteProfile(): Promise<void> {
+        const user = getAuth().currentUser;
+        if (!user) {
+            throw new Error('Kein Benutzer gefunden');
+        }
+        return user.delete();
+    }
+
     /**
      * Update profile of current authenticated user
      *
