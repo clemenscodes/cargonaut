@@ -3,6 +3,8 @@ import { ProfileComponent } from './profile.component';
 import { of } from 'rxjs';
 import { ProfileModule } from '../profile.module';
 import { AuthService } from '@services';
+import { Location } from '@angular/common';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('ProfileComponent', () => {
     let component: ProfileComponent;
@@ -32,6 +34,7 @@ describe('ProfileComponent', () => {
         updatePassword: jest.fn(),
         updateEmail: jest.fn(),
         updateProfile: jest.fn(),
+        deleteProfile: jest.fn(),
         getCurrentUser: jest.fn().mockReturnValue(mockUser),
         getProfileData: jest.fn().mockReturnValue(mockProfileData),
     };
@@ -41,7 +44,7 @@ describe('ProfileComponent', () => {
                 AuthService,
                 { provide: AuthService, useValue: authServiceMock },
             ],
-            imports: [ProfileModule],
+            imports: [ProfileModule, RouterTestingModule.withRoutes([])],
         }).compileComponents();
     });
 
@@ -121,5 +124,18 @@ describe('ProfileComponent', () => {
             displayName: 'myName',
         });
         expect(spy).toHaveBeenCalled();
+    });
+
+    it('should call auth service to delete profile', () => {
+        const spy = jest.spyOn(authServiceMock, 'deleteProfile');
+        component.deleteProfile();
+        expect(spy).toHaveBeenCalled();
+    });
+
+    it('should route to /home after deleteProfile call', () => {
+        const location = TestBed.inject(Location);
+        component.deleteProfile().then(() => {
+            expect(location.path()).toBe('/');
+        });
     });
 });

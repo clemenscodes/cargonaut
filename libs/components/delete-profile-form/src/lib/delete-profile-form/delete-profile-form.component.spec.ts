@@ -22,4 +22,10 @@ describe('DeleteProfileFormComponent', () => {
     it('should create', () => {
         expect(component).toBeTruthy();
     });
+
+    it('should emit event on form submit', () => {
+        jest.spyOn(component.deleteProfileEvent, 'emit');
+        component.deleteProfile();
+        expect(component.deleteProfileEvent.emit).toHaveBeenCalled();
+    })
 });

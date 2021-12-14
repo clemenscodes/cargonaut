@@ -179,13 +179,11 @@ export class AuthService {
      *
      */
     async deleteProfile(): Promise<void> {
-        const user = getAuth().currentUser;
-        if (!user) {
+        if (!this.user) {
             throw new Error('Kein Benutzer gefunden');
         }
-        await this.afs.collection('/users').doc(user.uid).delete();
         await this.logout();
-        this.router.navigate(['/']);
+        return await this.afs.collection('/users').doc(this.user.uid).delete();
     }
 
     /**
@@ -253,6 +251,7 @@ export class AuthService {
      */
     async logout(): Promise<void> {
         localStorage.clear();
+        this.router.navigate(['/']);
         await this.auth.signOut();
     }
     getProfileData() {
@@ -297,15 +296,13 @@ export class AuthService {
      * @returns {User} The current user profile data
      */
     getCurrentUser(): User {
-        const auth = getAuth();
-        const user = auth.currentUser;
-        if (user !== null) {
-            const displayName = user.displayName || '';
-            const email = user.email || '';
-            const photoURL = user.photoURL || '';
-            const emailVerified = user.emailVerified;
+        if (this.user) {
+            const displayName = this.user.displayName || '';
+            const email = this.user.email || '';
+            const photoURL = this.user.photoURL || '';
+            const emailVerified = this.user.emailVerified;
             return {
-                uid: user.uid,
+                uid: this.user.uid,
                 email: email,
                 photoURL: photoURL,
                 emailVerified: emailVerified,

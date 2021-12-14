@@ -34,11 +34,12 @@ describe('AuthServiceService', () => {
         confirmPasswordReset: jest.fn(),
         signOut: jest.fn(),
     };
-    const update = {
+    const userDocEditMock= {
         update: jest.fn().mockReturnValue(mockUser),
+        delete: jest.fn().mockReturnValue(mockUser),
     };
     const userDocMock = {
-        doc: jest.fn().mockReturnValue(update),
+        doc: jest.fn().mockReturnValue(userDocEditMock),
     };
     const angularFirestoreMock = {
         collection: jest.fn().mockReturnValue(userDocMock),
@@ -47,7 +48,6 @@ describe('AuthServiceService', () => {
         TestBed.configureTestingModule({
             imports: [RouterTestingModule.withRoutes([])],
             providers: [
-                AngularFireAuth,
                 { provide: AngularFireAuth, useValue: angularFireAuthMock },
                 { provide: AngularFirestore, useValue: angularFirestoreMock },
             ],
@@ -140,6 +140,14 @@ describe('AuthServiceService', () => {
     it('should call firebase auth signOut in logout method', () => {
         const spy = jest.spyOn(angularFireAuthMock, 'signOut');
         service.logout();
+        expect(spy).toHaveBeenCalledTimes(1);
+    });
+
+    it('should delete authenticated user by call of deleteProfile', () => {
+        const spy = jest
+            .spyOn(angularFirestoreMock, 'collection')
+            .mockReturnValue(userDocMock)
+        service.deleteProfile();
         expect(spy).toHaveBeenCalledTimes(1);
     });
 });

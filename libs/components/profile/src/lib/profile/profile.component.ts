@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AlertService, AuthService } from '@services';
 import { Subject } from 'rxjs';
 import firebase from 'firebase/compat/app';
+import { Router } from '@angular/router';
 import { takeUntil } from 'rxjs/operators';
 import {
     ChangeEmailData,
@@ -41,10 +42,13 @@ export class ProfileComponent implements OnInit, OnDestroy {
      * Constructor of the profile component
      * @param authService {AuthService}
      * @param alertService {AlertService}
+     * @param router {Router}
      */
     constructor(
         private authService: AuthService,
-        private alertService: AlertService
+        private alertService: AlertService,
+        private router: Router
+
     ) {}
     /**
      * Change password of user
@@ -106,6 +110,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
         this.loading = true;
         try {
             await this.authService.deleteProfile();
+            await this.router.navigate(['/home']);
             this.alertService.addAlert({
                 type: 'success',
                 message: 'Profil erfolgreich gelöscht',
