@@ -87,7 +87,6 @@ export class AuthService {
                 birthDate,
                 rating: 0,
             };
-            console.log(user);
             this.afs.collection(`/users`).doc(uid).set(user);
         }
     }
