@@ -60,6 +60,12 @@
                     >
                         E-Mail ändern
                     </option>
+                    <option
+                        (click)="setActiveLink('delete')"
+                        [selected]="activeNavLink === 'delete'"
+                    >
+                        Profil löschen
+                    </option>
                 </select>
 
                 <nav>
@@ -89,6 +95,15 @@
                             <a>
                                 <fa-icon icon="envelope"></fa-icon>
                                 E-Mail ändern
+                            </a>
+                        </li>
+                        <li
+                            (click)="setActiveLink('delete')"
+                            [class.selected-nav]="activeNavLink === 'delete'"
+                        >
+                            <a>
+                                <fa-icon icon="user"></fa-icon>
+                                Profil löschen
                             </a>
                         </li>
                     </ul>
@@ -151,6 +166,12 @@
                                 auf dieser Seite deine Daten nicht bearbeiten
                             </p>
                         </ng-template>
+                    </div>
+                    <div class="delete-profile" *ngIf="activeNavLink === 'delete'">
+                        <cargonaut-delete-profile-form
+                            (deleteProfileEvent)="deleteProfile($event)"
+                        >
+                        </cargonaut-delete-profile-form>
                     </div>
                 </div>
             </div>
