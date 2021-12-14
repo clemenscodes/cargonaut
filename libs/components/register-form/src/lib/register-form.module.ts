@@ -13,6 +13,8 @@ import {
     faExclamationCircle,
     faCheckCircle,
     faTimesCircle,
+    faCalendarAlt,
+    faAddressCard,
     faExclamationTriangle,
 } from '@fortawesome/free-solid-svg-icons';
 import { RouterModule } from '@angular/router';
@@ -38,7 +40,9 @@ export class RegisterFormModule {
             faExclamationCircle,
             faCheckCircle,
             faTimesCircle,
-            faExclamationTriangle
+            faAddressCard,
+            faExclamationTriangle,
+            faCalendarAlt
         );
     }
 }
