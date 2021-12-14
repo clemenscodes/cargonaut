@@ -13,6 +13,7 @@ import {
 } from 'firebase/auth';
 import { User } from '@api-interfaces';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Router } from '@angular/router';
 
 @Injectable({
     providedIn: 'root',
@@ -39,7 +40,11 @@ export class AuthService {
      * Constructor of auth service
      * @param auth {AngularFireAuth}
      */
-    constructor(private auth: AngularFireAuth, private afs: AngularFirestore) {
+    constructor(
+        private auth: AngularFireAuth,
+        private afs: AngularFirestore,
+        private router: Router
+    ) {
         this.auth.authState.subscribe(async (user) => {
             if (user) {
                 this.user = user;
@@ -87,7 +92,7 @@ export class AuthService {
                 birthDate,
                 rating: 0,
             };
-            this.afs.collection(`/users`).doc(uid).set(user);
+            return await this.afs.collection(`/users`).doc(uid).update(user);
         }
     }
 
@@ -173,12 +178,14 @@ export class AuthService {
      * Delete profile of current authentificated user
      *
      */
-    deleteProfile(): Promise<void> {
+    async deleteProfile(): Promise<void> {
         const user = getAuth().currentUser;
         if (!user) {
             throw new Error('Kein Benutzer gefunden');
         }
-        return this.afs.collection('/users').doc(user.uid).delete();
+        await this.afs.collection('/users').doc(user.uid).delete();
+        await this.logout();
+        this.router.navigate(['/']);
     }
 
     /**
