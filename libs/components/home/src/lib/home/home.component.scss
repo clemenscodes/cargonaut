@@ -3,14 +3,15 @@
 
 /* Home button */
 .home-btn {
-    margin-top: 3rem;
+    margin-top: 2rem;
     @include flex-center-column;
     button {
         width: 37.125rem;
         padding: 0.75rem 0;
         background: $darkgreen;
-        font-size: 1rem;
+        font-size: 1.4rem;
         color: $white;
+        font-family: Brush Script MT;
         cursor: pointer;
         border: none;
         //border-radius: 4px;
@@ -21,27 +22,48 @@
     }
 }
 .home-img {
-    max-width: 80%;
+    max-width: 100%;
     height: auto;
+    object-fit: cover;
+    margin-top: 4rem;
+    margin-left: 4rem;
+    transform: scale(1)
+}
+
+.steps {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    font-weight: 280;
+    font-size: 2.2rem;
+    font-family: Brush Script MT;
 }
 
 .home-h1{
-
-
     //font
     font-family: Brush Script MT;
     font-style: normal;
     font-weight: normal;
-    font-size: 48px;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    font-size: 2.4rem;
     line-height: 60px;
     display: flex;
-    align-items: center;
+    justify-content: center;
+}
+p {
+    margin-bottom: 3rem;
+    font-family: Brush Script MT;
+    font-size: 1.4rem;
 }
 
+
 li{
-    margin-top: 40px;
-    margin-bottom: 40px;
+    font-family: Brush Script MT;
+    margin-top: 2.2rem;
+    margin-bottom: 2.2rem;
+    font-size: 1.4rem;
 }
 ol{
-    list-style-position: inside
+    list-style-position: inside;
+    margin-top: 1rem;
 }
