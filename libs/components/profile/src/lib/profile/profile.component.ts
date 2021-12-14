@@ -98,6 +98,30 @@ export class ProfileComponent implements OnInit, OnDestroy {
         this.loading = false;
     }
 
+
+/**
+ * Delete profile
+ *
+ */
+    async deleteProfil(): Promise<void> {
+        this.loading = true;
+        try {
+            await this.authService.deleteProfile();
+            this.alertService.addAlert({
+                type: 'success',
+                message: 'Profil erfolgreich gelöscht',
+            });
+        } catch (e) {
+            if (e instanceof Error) {
+                this.alertService.addAlert({
+                    type: 'error',
+                    message: e.message,
+                });
+            }
+        }
+        this.loading = false;
+    }
+
     /**
      * Change profile display name and icon
      *
