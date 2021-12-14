@@ -30,7 +30,7 @@ export interface User {
     lastName?: string;
     birthDate?: string;
     displayName?: string;
-    providerData?: [{provider: string}];
+    providerData?: [{ provider: string }];
 }
 
 export interface ChangePasswordData {
@@ -43,6 +43,9 @@ export interface ChangeEmailData {
 }
 export interface ChangeProfileData {
     displayName?: string;
+    //photoURL?: string;
+    //firstName?: string;
+    //lastName?: string;
 }
 
 export interface Ratings {

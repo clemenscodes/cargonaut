@@ -16,13 +16,11 @@ export class FooterComponent {
      * Subscription of the auth state
      */
     authSubscription: Subscription;
-     /**
+    /**
      * Constructor which subscribes the auth state
      * @param authService {AuthService}
      */
-    constructor(
-        private authService: AuthService,
-    ) {
+    constructor(private authService: AuthService) {
         this.authSubscription = this.authService.authState$.subscribe(
             (state) => {
                 state
@@ -31,5 +29,4 @@ export class FooterComponent {
             }
         );
     }
-
 }

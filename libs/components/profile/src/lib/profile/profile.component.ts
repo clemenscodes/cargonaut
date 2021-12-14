@@ -27,7 +27,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
     /**
      * The current selected nav
      */
-    activeNavLink: 'password' | 'email' | 'profile' = 'profile';
+    activeNavLink: 'password' | 'email' | 'delete' | 'profile' = 'profile';
     /**
      * User provider
      */
@@ -44,9 +44,9 @@ export class ProfileComponent implements OnInit, OnDestroy {
      */
     constructor(
         private authService: AuthService,
-        private alertService: AlertService,
+        private alertService: AlertService
     ) {}
-        /**
+    /**
      * Change password of user
      *
      * @param data {ChangePasswordData} Data required to change password
@@ -99,6 +99,29 @@ export class ProfileComponent implements OnInit, OnDestroy {
     }
 
     /**
+     * Delete profile
+     *
+     */
+    async deleteProfile(): Promise<void> {
+        this.loading = true;
+        try {
+            await this.authService.deleteProfile();
+            this.alertService.addAlert({
+                type: 'success',
+                message: 'Profil erfolgreich gelöscht',
+            });
+        } catch (e) {
+            if (e instanceof Error) {
+                this.alertService.addAlert({
+                    type: 'error',
+                    message: e.message,
+                });
+            }
+        }
+        this.loading = false;
+    }
+
+    /**
      * Change profile display name and icon
      *
      * @param data {ChangeProfileData} Data to change profile
@@ -125,9 +148,9 @@ export class ProfileComponent implements OnInit, OnDestroy {
     /**
      * Set the active navigation
      *
-     * @param nav {'password' | 'email' | 'profile} Active navigation
+     * @param nav {'password' | 'email' | 'delete' | 'profile} Active navigation
      */
-    setActiveLink(nav: 'password' | 'email' | 'profile'): void {
+    setActiveLink(nav: 'password' | 'email' | 'delete' | 'profile'): void {
         this.activeNavLink = nav;
         this.checkProvider();
     }

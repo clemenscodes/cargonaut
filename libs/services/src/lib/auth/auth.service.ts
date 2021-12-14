@@ -170,6 +170,18 @@ export class AuthService {
     }
 
     /**
+     * Delete profile of current authentificated user
+     *
+     */
+    deleteProfile(): Promise<void> {
+        const user = getAuth().currentUser;
+        if (!user) {
+            throw new Error('Kein Benutzer gefunden');
+        }
+        return this.afs.collection('/users').doc(user.uid).delete();
+    }
+
+    /**
      * Update profile of current authenticated user
      *
      * @param displayName {string} The new display name
