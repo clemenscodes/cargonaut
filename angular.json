@@ -363,6 +363,32 @@
             },
             "tags": []
         },
+        "delete-profile-form": {
+            "projectType": "library",
+            "root": "libs/components/delete-profile-form",
+            "sourceRoot": "libs/components/delete-profile-form/src",
+            "prefix": "cargonaut",
+            "architect": {
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "outputs": ["coverage/libs/components/delete-profile-form"],
+                    "options": {
+                        "jestConfig": "libs/components/delete-profile-form/jest.config.js",
+                        "passWithNoTests": true
+                    }
+                },
+                "lint": {
+                    "builder": "@nrwl/linter:eslint",
+                    "options": {
+                        "lintFilePatterns": [
+                            "libs/components/delete-profile-form/src/**/*.ts",
+                            "libs/components/delete-profile-form/src/**/*.html"
+                        ]
+                    }
+                }
+            },
+            "tags": []
+        },
         "email-form": {
             "projectType": "library",
             "root": "libs/components/email-form",
