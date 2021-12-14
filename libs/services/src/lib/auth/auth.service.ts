@@ -75,14 +75,19 @@ export class AuthService {
             await userCredential.user.sendEmailVerification();
             const token = await userCredential.user.getIdToken(true);
             localStorage.setItem('idToken', token);
+            const { emailVerified, uid } = userCredential.user
             const user = {
-                ...userCredential.user,
+                uid,
+                email,
+                emailVerified,
                 displayName,
                 firstName,
                 lastName,
                 birthDate,
+                rating: 0
             };
-            this.afs.doc(`/users/${userCredential.user.uid}`).update(user);
+            console.log(user)
+            this.afs.collection(`/users`).doc(uid).set(user)
         }
     }
 
