@@ -26,7 +26,10 @@ export interface User {
     email: string;
     emailVerified?: boolean;
     photoURL?: string;
-    displayName: string;
+    firstName?: string;
+    lastName?: string;
+    birthDate?: string;
+    displayName?: string;
 }
 
 export interface ChangePasswordData {

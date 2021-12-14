@@ -80,8 +80,8 @@ export class AuthService {
                 displayName,
                 firstName,
                 lastName,
-                birthDate
-            }
+                birthDate,
+            };
             this.afs.doc(`/users/${userCredential.user.uid}`).update(user);
         }
     }
