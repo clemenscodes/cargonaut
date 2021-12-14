@@ -1,0 +1,41 @@
+<form (ngSubmit)="changeProfile()" [formGroup]="changeProfileForm">
+    <div class="form-input">
+        <input
+            type="text"
+            formControlName="displayName"
+            placeholder="Benutzername"
+            required
+        />
+        <fa-icon icon="user-tag"></fa-icon>
+    </div>
+    <div
+        class="form-error"
+        *ngIf="
+            displayName.invalid && (displayName.dirty || displayName.touched)
+        "
+    >
+        <div class="form-error-message" *ngIf="displayName.errors?.required">
+            <p>
+                <fa-icon icon="exclamation-circle"></fa-icon>
+                Benutzername fehlt
+            </p>
+        </div>
+        <div class="form-error-message" *ngIf="displayName.errors?.maxlength">
+            <p>
+                <fa-icon icon="exclamation-circle"></fa-icon>
+                Nicht mehr als 15 Zeichen
+            </p>
+        </div>
+    </div>
+
+    <div class="form-submit">
+        <button
+            type="submit"
+            class="green-btn"
+            [class.disabled-btn]="!changeProfileForm.valid"
+            [disabled]="!changeProfileForm.valid"
+        >
+            Profil speichern
+        </button>
+    </div>
+</form>

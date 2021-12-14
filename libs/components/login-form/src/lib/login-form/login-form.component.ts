@@ -75,10 +75,9 @@ export class LoginFormComponent {
             this.loginForm.reset();
             this.alertService.addAlert({
                 type: 'success',
-                message: 'Successfully logged in',
+                message: 'Erfolgreich angemeldet',
             });
-            await this.router.navigate(['/']);
-            window.location.reload();
+            await this.router.navigate(['/offer']);
         } catch (e) {
             if (e instanceof Error) {
                 this.loading = false;
@@ -99,10 +98,9 @@ export class LoginFormComponent {
             await this.authService.loginWithGoogle();
             this.alertService.addAlert({
                 type: 'success',
-                message: 'Successfully logged in with google',
+                message: 'Erfolgreich mit Google angemeldet.',
             });
-            await this.router.navigate(['/']);
-            window.location.reload();
+            await this.router.navigate(['/profile']);
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
         } catch (e: any) {
             if (e.code !== 'auth/popup-closed-by-user') {

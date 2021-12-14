@@ -1,0 +1,159 @@
+<main class="auth-container">
+    <div class="profile">
+        <div class="profile-container">
+            <div class="profile-user">
+                <div class="profile-user-banner">
+                    <div class="profile-user-name">
+                        <p>
+                            <fa-icon icon="user-tag"></fa-icon>
+                            {{
+                                user?.displayName === null
+                                    ? 'Kein Benutzername'
+                                    : user?.displayName
+                            }}
+                        </p>
+                    </div>
+                </div>
+                <div class="profile-user-info">
+                    <div class="profile-card verified-card">
+                        <p>
+                            <fa-icon icon="certificate"></fa-icon>
+                            Bestätigt:
+                        </p>
+                        <fa-icon
+                            *ngIf="user?.emailVerified"
+                            icon="check-circle"
+                        ></fa-icon>
+                        <fa-icon
+                            *ngIf="!user?.emailVerified"
+                            icon="times-circle"
+                        ></fa-icon>
+                    </div>
+
+                    <div class="profile-card email-card">
+                        <p>
+                            <fa-icon icon="envelope"></fa-icon>
+                            E-Mail:
+                        </p>
+                        <p>{{ user?.email }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="profile-wrapper">
+                <select name="nav-selection-mobile" id="nav-selection">
+                    <option
+                        (click)="setActiveLink('profile')"
+                        [selected]="activeNavLink === 'profile'"
+                    >
+                        Profil bearbeiten
+                    </option>
+                    <option
+                        (click)="setActiveLink('password')"
+                        [selected]="activeNavLink === 'password'"
+                    >
+                        Passwort ändern
+                    </option>
+                    <option
+                        (click)="setActiveLink('email')"
+                        [selected]="activeNavLink === 'email'"
+                    >
+                        E-Mail ändern
+                    </option>
+                </select>
+
+                <nav>
+                    <ul>
+                        <li
+                            (click)="setActiveLink('profile')"
+                            [class.selected-nav]="activeNavLink === 'profile'"
+                        >
+                            <a>
+                                <fa-icon icon="user"></fa-icon>
+                                Profil bearbeiten
+                            </a>
+                        </li>
+                        <li
+                            (click)="setActiveLink('password')"
+                            [class.selected-nav]="activeNavLink === 'password'"
+                        >
+                            <a>
+                                <fa-icon icon="lock"></fa-icon>
+                                Passwort ändern
+                            </a>
+                        </li>
+                        <li
+                            (click)="setActiveLink('email')"
+                            [class.selected-nav]="activeNavLink === 'email'"
+                        >
+                            <a>
+                                <fa-icon icon="envelope"></fa-icon>
+                                E-Mail ändern
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="profile-edit">
+                    <div
+                        class="change-profile"
+                        *ngIf="activeNavLink === 'profile'"
+                    >
+                        <cargonaut-change-profile-form
+                            [userDisplayName]="
+                                user?.displayName ? user!.displayName : ''
+                            "
+                            (changeProfileEvent)="changeProfile($event)"
+                        >
+                        </cargonaut-change-profile-form>
+                    </div>
+
+                    <div
+                        class="change-password"
+                        *ngIf="activeNavLink === 'password'"
+                    >
+                        <div
+                            *ngIf="
+                                provider === 'password';
+                                else socialLoginInfo
+                            "
+                        >
+                            <cargonaut-change-password-form
+                                (changePasswordEvent)="changePassword($event)"
+                            >
+                            </cargonaut-change-password-form>
+                        </div>
+
+                        <ng-template #socialLoginInfo>
+                            <p class="change-warning">
+                                Du bist mit Google angemeldet und kannst daher
+                                auf dieser Seite deine Daten nicht bearbeiten
+                            </p>
+                        </ng-template>
+                    </div>
+
+                    <div class="change-email" *ngIf="activeNavLink === 'email'">
+                        <div
+                            *ngIf="
+                                provider === 'password';
+                                else socialLoginInfo
+                            "
+                        >
+                            <cargonaut-change-email-form
+                                (changeEmailEvent)="changeEmail($event)"
+                            >
+                            </cargonaut-change-email-form>
+                        </div>
+
+                        <ng-template #socialLoginInfo>
+                            <p class="change-warning">
+                                Du bist mit Google angemeldet und kannst daher
+                                auf dieser Seite deine Daten nicht bearbeiten
+                            </p>
+                        </ng-template>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

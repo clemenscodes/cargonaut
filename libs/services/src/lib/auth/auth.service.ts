@@ -20,7 +20,7 @@ export class AuthService {
     /**
      * Firebase user object
      */
-    user: firebase.User | null = null;
+    user: User | null = null;
     /**
      * Auth state Subject
      * @private
@@ -40,7 +40,15 @@ export class AuthService {
     constructor(private auth: AngularFireAuth) {
         this.auth.authState.subscribe(async (user) => {
             if (user) {
-                this.user = user;
+                const userData: User = {
+                    firstName: 'Test',
+                    lastName: 'Test',
+                    birthDate: 'Test',
+                    uid: 'Test',
+                    displayName: 'Test',
+                    rating: 5,
+                };
+                this.user = userData;
                 const token = await user.getIdToken(true);
                 localStorage.setItem('idToken', token);
                 this.authState.next(user);
@@ -58,16 +66,32 @@ export class AuthService {
      * @param email {string} The email of the user
      * @param password {string} The password of the user
      */
-    async register(email: string, password: string): Promise<void> {
+    async register(
+        email: string,
+        password: string,
+        firstName: string,
+        lastName: string,
+        birthDate: string
+    ): Promise<void> {
         const userCredential = await this.auth.createUserWithEmailAndPassword(
             email,
             password
         );
         if (userCredential.user) {
-            await userCredential.user.sendEmailVerification();
-            const token = await userCredential.user.getIdToken(true);
+            const user = userCredential.user;
+            await user.sendEmailVerification();
+            const { uid, emailVerified } = user;
+            this.user = {
+                uid,
+                firstName,
+                lastName,
+                birthDate,
+                email,
+                emailVerified,
+                rating: 0,
+            };
+            const token = await user.getIdToken(true);
             localStorage.setItem('idToken', token);
-            window.location.reload();
         }
     }
 
@@ -85,7 +109,6 @@ export class AuthService {
         if (user.user) {
             const token = await user.user.getIdToken(true);
             localStorage.setItem('idToken', token);
-            window.location.reload();
         }
     }
 
@@ -99,7 +122,6 @@ export class AuthService {
         if (user.user) {
             const token = await user.user.getIdToken(true);
             localStorage.setItem('idToken', token);
-            window.location.reload();
         }
     }
 
@@ -146,7 +168,7 @@ export class AuthService {
     sendEmailVerification(): Promise<void> {
         const user = getAuth().currentUser;
         if (!user) {
-            throw new Error('No user found');
+            throw new Error('Kein Benutzer gefunden');
         }
         return sendEmailVerification(user);
     }
@@ -157,14 +179,13 @@ export class AuthService {
      * @param displayName {string} The new display name
      * @param photoURL {string} The new icon code
      */
-    updateProfile(displayName?: string, photoURL?: string): Promise<void> {
+    updateProfile(displayName?: string): Promise<void> {
         const user = getAuth().currentUser;
         if (!user) {
-            throw new Error('No user found');
+            throw new Error('Kein Benutzer gefunden');
         }
         return updateProfile(user, {
             displayName: displayName,
-            photoURL: photoURL,
         });
     }
 
@@ -176,7 +197,7 @@ export class AuthService {
     updateEmail(newEmail: string): Promise<void> {
         const user = getAuth().currentUser;
         if (!user) {
-            throw new Error('No user found');
+            throw new Error('Kein Benutzer gefunden');
         }
         return updateEmail(user, newEmail);
     }
@@ -189,7 +210,7 @@ export class AuthService {
     updatePassword(newPassword: string): Promise<void> {
         const user = getAuth().currentUser;
         if (!user) {
-            throw new Error('No user found');
+            throw new Error('Kein Benutzer gefunden');
         }
         return updatePassword(user, newPassword);
     }
@@ -203,7 +224,7 @@ export class AuthService {
     reauthenticateUser(password: string): Promise<UserCredential> {
         const user = getAuth().currentUser;
         if (!user || !user.email) {
-            throw new Error('No user email found');
+            throw new Error('Keinen Benutzer gefunden');
         }
         const credential = firebase.auth.EmailAuthProvider.credential(
             user.email,
@@ -226,21 +247,7 @@ export class AuthService {
      * @returns {User} The current user profile data
      */
     getCurrentUser(): User {
-        const auth = getAuth();
-        const user = auth.currentUser;
-        if (user !== null) {
-            const displayName = user.displayName || '';
-            const email = user.email || '';
-            const photoURL = user.photoURL || '';
-            const emailVerified = user.emailVerified;
-            return {
-                uid: user.uid,
-                email: email,
-                photoURL: photoURL,
-                emailVerified: emailVerified,
-                displayName: displayName,
-            };
-        }
+        if (this.user) return this.user;
         throw new Error();
     }
 }
