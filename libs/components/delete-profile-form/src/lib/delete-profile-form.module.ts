@@ -10,5 +10,4 @@ import { DeleteProfileFormComponent } from './delete-profile-form/delete-profile
     exports: [DeleteProfileFormComponent],
 })
 export class DeleteProfileFormModule {
-    constructor() { };
 }
