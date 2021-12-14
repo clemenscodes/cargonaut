@@ -12,6 +12,7 @@ import {
     sendEmailVerification,
 } from 'firebase/auth';
 import { User } from '@api-interfaces';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 @Injectable({
     providedIn: 'root',
@@ -21,6 +22,7 @@ export class AuthService {
      * Firebase user object
      */
     user: firebase.User | null = null;
+    profileData: User | null = null;
     /**
      * Auth state Subject
      * @private
@@ -37,7 +39,7 @@ export class AuthService {
      * Constructor of auth service
      * @param auth {AngularFireAuth}
      */
-    constructor(private auth: AngularFireAuth) {
+    constructor(private auth: AngularFireAuth, private afs: AngularFirestore) {
         this.auth.authState.subscribe(async (user) => {
             if (user) {
                 this.user = user;
@@ -58,7 +60,14 @@ export class AuthService {
      * @param email {string} The email of the user
      * @param password {string} The password of the user
      */
-    async register(email: string, password: string): Promise<void> {
+    async register(
+        email: string,
+        password: string,
+        displayName: string,
+        firstName: string,
+        lastName: string,
+        birthDate: string
+    ): Promise<void> {
         const userCredential = await this.auth.createUserWithEmailAndPassword(
             email,
             password
@@ -67,6 +76,18 @@ export class AuthService {
             await userCredential.user.sendEmailVerification();
             const token = await userCredential.user.getIdToken(true);
             localStorage.setItem('idToken', token);
+            const { emailVerified, uid } = userCredential.user;
+            const user = {
+                uid,
+                email,
+                emailVerified,
+                displayName,
+                firstName,
+                lastName,
+                birthDate,
+                rating: 0,
+            };
+            this.afs.collection(`/users`).doc(uid).set(user);
         }
     }
 
@@ -214,6 +235,41 @@ export class AuthService {
     async logout(): Promise<void> {
         localStorage.clear();
         await this.auth.signOut();
+    }
+    getProfileData() {
+        this.authState$.subscribe((user) => {
+            if (user) {
+                this.user = user;
+                if (this.user) {
+                    const uid = this.user.uid;
+                    this.afs
+                        .doc(`users/${uid}`)
+                        .get()
+                        .subscribe((snapshot) => {
+                            if (snapshot) {
+                                if (snapshot.exists) {
+                                    const user: User = {
+                                        uid: snapshot.get('uid'),
+                                        email: snapshot.get('uid'),
+                                        firstName: snapshot.get('firstName'),
+                                        lastName: snapshot.get('lastName'),
+                                        birthDate: snapshot.get('birthDate'),
+                                        displayName:
+                                            snapshot.get('displayName'),
+                                        emailVerified:
+                                            snapshot.get('emailVerified'),
+                                        photoURL: snapshot.get('photoURL'),
+                                    };
+                                    this.profileData = user;
+                                    console.log(user);
+                                }
+                            }
+                        });
+                } else {
+                    this.profileData = null;
+                }
+            }
+        });
     }
 
     /**

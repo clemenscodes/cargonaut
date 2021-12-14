@@ -13,6 +13,16 @@ describe('ProfileComponent', () => {
         emailVerified: false,
         photoURL: undefined,
     };
+    const mockProfileData = {
+        email: 'mail@example.com',
+        displayName: 'Max',
+        emailVerified: false,
+        photoURL: undefined,
+        firstName: 'Max',
+        lastName: 'Mustermann',
+        birthDate: '01.01.2000',
+        uid: 'kjaflafjlsjflasfljsflf',
+    };
     const authServiceMock = {
         user: {
             providerData: [{ providerId: 'password' }],
@@ -22,8 +32,9 @@ describe('ProfileComponent', () => {
         updatePassword: jest.fn(),
         updateEmail: jest.fn(),
         updateProfile: jest.fn(),
+        getCurrentUser: jest.fn().mockReturnValue(mockUser),
+        getProfileData: jest.fn().mockReturnValue(mockProfileData),
     };
-
     beforeEach(async () => {
         await TestBed.configureTestingModule({
             providers: [

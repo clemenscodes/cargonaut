@@ -8,8 +8,8 @@ describe('OfferComponent', () => {
     let component: OfferComponent;
     let fixture: ComponentFixture<OfferComponent>;
     const dateMock = {
-        toDate: jest.fn()
-    }
+        toDate: jest.fn(),
+    };
     const data = [
         {
             date: dateMock,

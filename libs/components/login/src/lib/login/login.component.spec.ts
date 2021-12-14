@@ -9,12 +9,16 @@ import { AuthService } from '@services';
 describe('LoginComponent', () => {
     let component: LoginComponent;
     let fixture: ComponentFixture<LoginComponent>;
-    const authServiceMock = {}
+    const authServiceMock = {};
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            imports: [LoginModule, EmailFormModule, RouterTestingModule.withRoutes([])],
-            providers: [{provide: AuthService, useValue: authServiceMock}],
-            schemas: [CUSTOM_ELEMENTS_SCHEMA]
+            imports: [
+                LoginModule,
+                EmailFormModule,
+                RouterTestingModule.withRoutes([]),
+            ],
+            providers: [{ provide: AuthService, useValue: authServiceMock }],
+            schemas: [CUSTOM_ELEMENTS_SCHEMA],
         }).compileComponents();
     });
 

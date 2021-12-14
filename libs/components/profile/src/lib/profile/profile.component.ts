@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AlertService, AuthService } from '@services';
-import firebase from 'firebase/compat';
 import { Subject } from 'rxjs';
+import firebase from 'firebase/compat/app';
 import { takeUntil } from 'rxjs/operators';
 import {
     ChangeEmailData,
@@ -44,10 +44,9 @@ export class ProfileComponent implements OnInit, OnDestroy {
      */
     constructor(
         private authService: AuthService,
-        private alertService: AlertService
+        private alertService: AlertService,
     ) {}
-
-    /**
+        /**
      * Change password of user
      *
      * @param data {ChangePasswordData} Data required to change password
@@ -137,7 +136,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
      * Check provider of authenticated user and set provider id
      */
     checkProvider(): void {
-        this.authService.user?.providerData.forEach((provider) => {
+        this.authService.user?.providerData?.forEach((provider) => {
             if (provider) {
                 this.provider = provider.providerId;
             }
@@ -152,6 +151,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
             .pipe(takeUntil(this.destroy$))
             .subscribe((user) => (this.user = user));
         this.checkProvider();
+        this.authService.getProfileData();
     }
 
     /**

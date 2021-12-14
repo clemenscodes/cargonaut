@@ -48,7 +48,7 @@ describe('RegisterFormComponent', () => {
         const form =
             fixture.debugElement.nativeElement.querySelector('.app-form');
         const input = form.querySelectorAll('input');
-        expect(input.length).toEqual(2);
+        expect(input.length).toEqual(6);
     });
 
     it('should set error when email is wrongly formatted', () => {
