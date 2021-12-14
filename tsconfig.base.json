@@ -18,9 +18,6 @@
         "paths": {
             "@alert": ["libs/components/alert/src/index.ts"],
             "@api-interfaces": ["libs/api-interfaces/src/index.ts"],
-            "@delete-profile-form": [
-                "libs/components/delete-profile-form/src/index.ts"
-            ],
             "@change-email-form": [
                 "libs/components/change-email-form/src/index.ts"
             ],
@@ -31,6 +28,9 @@
                 "libs/components/change-profile-form/src/index.ts"
             ],
             "@core": ["libs/core/src/index.ts"],
+            "@delete-profile-form": [
+                "libs/components/delete-profile-form/src/index.ts"
+            ],
             "@email-form": ["libs/components/email-form/src/index.ts"],
             "@env": ["libs/env/src/index.ts"],
             "@footer": ["libs/components/footer/src/index.ts"],

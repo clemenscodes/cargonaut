@@ -167,7 +167,10 @@
                             </p>
                         </ng-template>
                     </div>
-                    <div class="delete-profile" *ngIf="activeNavLink === 'delete'">
+                    <div
+                        class="delete-profile"
+                        *ngIf="activeNavLink === 'delete'"
+                    >
                         <cargonaut-delete-profile-form
                             (deleteProfileEvent)="deleteProfile()"
                         >

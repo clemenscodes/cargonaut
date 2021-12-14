@@ -169,7 +169,6 @@ export class AuthService {
         return sendEmailVerification(user);
     }
 
-
     /**
      * Delete profile of current authentificated user
      *

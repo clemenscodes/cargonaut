@@ -30,7 +30,7 @@ export interface User {
     lastName?: string;
     birthDate?: string;
     displayName?: string;
-    providerData?: [{provider: string}];
+    providerData?: [{ provider: string }];
 }
 
 export interface ChangePasswordData {

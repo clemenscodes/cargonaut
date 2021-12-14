@@ -44,9 +44,9 @@ export class ProfileComponent implements OnInit, OnDestroy {
      */
     constructor(
         private authService: AuthService,
-        private alertService: AlertService,
+        private alertService: AlertService
     ) {}
-        /**
+    /**
      * Change password of user
      *
      * @param data {ChangePasswordData} Data required to change password
@@ -98,11 +98,10 @@ export class ProfileComponent implements OnInit, OnDestroy {
         this.loading = false;
     }
 
-
-/**
- * Delete profile
- *
- */
+    /**
+     * Delete profile
+     *
+     */
     async deleteProfile(): Promise<void> {
         this.loading = true;
         try {

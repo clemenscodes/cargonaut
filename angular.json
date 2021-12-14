@@ -9,7 +9,7 @@
             "architect": {
                 "test": {
                     "builder": "@nrwl/jest:jest",
-                    "outputs": [ "coverage/libs/components/alert" ],
+                    "outputs": ["coverage/libs/components/alert"],
                     "options": {
                         "jestConfig": "libs/components/alert/jest.config.js",
                         "passWithNoTests": true
@@ -34,7 +34,7 @@
             "architect": {
                 "build": {
                     "builder": "@nrwl/node:build",
-                    "outputs": [ "{options.outputPath}" ],
+                    "outputs": ["{options.outputPath}"],
                     "options": {
                         "outputPath": "dist/apps/api",
                         "main": "apps/api/src/main.ts",
@@ -76,14 +76,14 @@
                 },
                 "lint": {
                     "builder": "@nrwl/linter:eslint",
-                    "outputs": [ "{options.outputFile}" ],
+                    "outputs": ["{options.outputFile}"],
                     "options": {
-                        "lintFilePatterns": [ "apps/api/**/*.ts" ]
+                        "lintFilePatterns": ["apps/api/**/*.ts"]
                     }
                 },
                 "test": {
                     "builder": "@nrwl/jest:jest",
-                    "outputs": [ "coverage/apps/api" ],
+                    "outputs": ["coverage/apps/api"],
                     "options": {
                         "jestConfig": "apps/api/jest.config.js",
                         "passWithNoTests": true
@@ -109,9 +109,9 @@
             "architect": {
                 "lint": {
                     "builder": "@nrwl/linter:eslint",
-                    "outputs": [ "{options.outputFile}" ],
+                    "outputs": ["{options.outputFile}"],
                     "options": {
-                        "lintFilePatterns": [ "libs/api-interfaces/**/*.ts" ]
+                        "lintFilePatterns": ["libs/api-interfaces/**/*.ts"]
                     }
                 }
             },
@@ -125,7 +125,7 @@
             "architect": {
                 "build": {
                     "builder": "@angular-devkit/build-angular:browser",
-                    "outputs": [ "{options.outputPath}" ],
+                    "outputs": ["{options.outputPath}"],
                     "options": {
                         "outputPath": "dist/apps/cargonaut",
                         "index": "apps/cargonaut/src/index.html",
@@ -138,9 +138,9 @@
                             "apps/cargonaut/src/assets",
                             "apps/cargonaut/src/manifest.webmanifest"
                         ],
-                        "styles": [ "apps/cargonaut/src/styles.scss" ],
+                        "styles": ["apps/cargonaut/src/styles.scss"],
                         "stylePreprocessorOptions": {
-                            "includePaths": [ "apps/cargonaut/src/styles" ]
+                            "includePaths": ["apps/cargonaut/src/styles"]
                         },
                         "scripts": [],
                         "serviceWorker": true,
@@ -210,7 +210,7 @@
                 },
                 "test": {
                     "builder": "@nrwl/jest:jest",
-                    "outputs": [ "coverage/apps/cargonaut" ],
+                    "outputs": ["coverage/apps/cargonaut"],
                     "options": {
                         "jestConfig": "apps/cargonaut/jest.config.js",
                         "passWithNoTests": true
@@ -248,14 +248,14 @@
                 },
                 "lint": {
                     "builder": "@nrwl/linter:eslint",
-                    "outputs": [ "{options.outputFile}" ],
+                    "outputs": ["{options.outputFile}"],
                     "options": {
-                        "lintFilePatterns": [ "apps/cargonaut-e2e/**/*.{js,ts}" ]
+                        "lintFilePatterns": ["apps/cargonaut-e2e/**/*.{js,ts}"]
                     }
                 }
             },
             "tags": [],
-            "implicitDependencies": [ "cargonaut" ]
+            "implicitDependencies": ["cargonaut"]
         },
         "change-email-form": {
             "projectType": "library",
@@ -265,7 +265,7 @@
             "architect": {
                 "test": {
                     "builder": "@nrwl/jest:jest",
-                    "outputs": [ "coverage/libs/components/change-email-form" ],
+                    "outputs": ["coverage/libs/components/change-email-form"],
                     "options": {
                         "jestConfig": "libs/components/change-email-form/jest.config.js",
                         "passWithNoTests": true
@@ -319,7 +319,7 @@
             "architect": {
                 "test": {
                     "builder": "@nrwl/jest:jest",
-                    "outputs": [ "coverage/libs/components/change-profile-form" ],
+                    "outputs": ["coverage/libs/components/change-profile-form"],
                     "options": {
                         "jestConfig": "libs/components/change-profile-form/jest.config.js",
                         "passWithNoTests": true
@@ -345,7 +345,7 @@
             "architect": {
                 "test": {
                     "builder": "@nrwl/jest:jest",
-                    "outputs": [ "coverage/libs/core" ],
+                    "outputs": ["coverage/libs/core"],
                     "options": {
                         "jestConfig": "libs/core/jest.config.js",
                         "passWithNoTests": true
@@ -371,7 +371,7 @@
             "architect": {
                 "test": {
                     "builder": "@nrwl/jest:jest",
-                    "outputs": [ "coverage/libs/components/delete-profile-form" ],
+                    "outputs": ["coverage/libs/components/delete-profile-form"],
                     "options": {
                         "jestConfig": "libs/components/delete-profile-form/jest.config.js",
                         "passWithNoTests": true
@@ -397,7 +397,7 @@
             "architect": {
                 "test": {
                     "builder": "@nrwl/jest:jest",
-                    "outputs": [ "coverage/libs/components/email-form" ],
+                    "outputs": ["coverage/libs/components/email-form"],
                     "options": {
                         "jestConfig": "libs/components/email-form/jest.config.js",
                         "passWithNoTests": true
@@ -423,7 +423,7 @@
             "architect": {
                 "test": {
                     "builder": "@nrwl/jest:jest",
-                    "outputs": [ "coverage/libs/env" ],
+                    "outputs": ["coverage/libs/env"],
                     "options": {
                         "jestConfig": "libs/env/jest.config.js",
                         "passWithNoTests": true
@@ -449,7 +449,7 @@
             "architect": {
                 "test": {
                     "builder": "@nrwl/jest:jest",
-                    "outputs": [ "coverage/libs/components/footer" ],
+                    "outputs": ["coverage/libs/components/footer"],
                     "options": {
                         "jestConfig": "libs/components/footer/jest.config.js",
                         "passWithNoTests": true
@@ -475,7 +475,7 @@
             "architect": {
                 "test": {
                     "builder": "@nrwl/jest:jest",
-                    "outputs": [ "coverage/libs/components/header" ],
+                    "outputs": ["coverage/libs/components/header"],
                     "options": {
                         "jestConfig": "libs/components/header/jest.config.js",
                         "passWithNoTests": true
@@ -501,7 +501,7 @@
             "architect": {
                 "test": {
                     "builder": "@nrwl/jest:jest",
-                    "outputs": [ "coverage/libs/components/home" ],
+                    "outputs": ["coverage/libs/components/home"],
                     "options": {
                         "jestConfig": "libs/components/home/jest.config.js",
                         "passWithNoTests": true
@@ -527,7 +527,7 @@
             "architect": {
                 "test": {
                     "builder": "@nrwl/jest:jest",
-                    "outputs": [ "coverage/libs/components/login" ],
+                    "outputs": ["coverage/libs/components/login"],
                     "options": {
                         "jestConfig": "libs/components/login/jest.config.js",
                         "passWithNoTests": true
@@ -553,7 +553,7 @@
             "architect": {
                 "test": {
                     "builder": "@nrwl/jest:jest",
-                    "outputs": [ "coverage/libs/components/login-form" ],
+                    "outputs": ["coverage/libs/components/login-form"],
                     "options": {
                         "jestConfig": "libs/components/login-form/jest.config.js",
                         "passWithNoTests": true
@@ -579,7 +579,7 @@
             "architect": {
                 "test": {
                     "builder": "@nrwl/jest:jest",
-                    "outputs": [ "coverage/libs/components/offer" ],
+                    "outputs": ["coverage/libs/components/offer"],
                     "options": {
                         "jestConfig": "libs/components/offer/jest.config.js",
                         "passWithNoTests": true
@@ -605,7 +605,7 @@
             "architect": {
                 "test": {
                     "builder": "@nrwl/jest:jest",
-                    "outputs": [ "coverage/libs/components/profile" ],
+                    "outputs": ["coverage/libs/components/profile"],
                     "options": {
                         "jestConfig": "libs/components/profile/jest.config.js",
                         "passWithNoTests": true
@@ -631,7 +631,7 @@
             "architect": {
                 "test": {
                     "builder": "@nrwl/jest:jest",
-                    "outputs": [ "coverage/libs/components/register" ],
+                    "outputs": ["coverage/libs/components/register"],
                     "options": {
                         "jestConfig": "libs/components/register/jest.config.js",
                         "passWithNoTests": true
@@ -657,7 +657,7 @@
             "architect": {
                 "test": {
                     "builder": "@nrwl/jest:jest",
-                    "outputs": [ "coverage/libs/components/register-form" ],
+                    "outputs": ["coverage/libs/components/register-form"],
                     "options": {
                         "jestConfig": "libs/components/register-form/jest.config.js",
                         "passWithNoTests": true
@@ -683,7 +683,7 @@
             "architect": {
                 "test": {
                     "builder": "@nrwl/jest:jest",
-                    "outputs": [ "coverage/libs/components/request" ],
+                    "outputs": ["coverage/libs/components/request"],
                     "options": {
                         "jestConfig": "libs/components/request/jest.config.js",
                         "passWithNoTests": true
@@ -709,7 +709,7 @@
             "architect": {
                 "test": {
                     "builder": "@nrwl/jest:jest",
-                    "outputs": [ "coverage/libs/services" ],
+                    "outputs": ["coverage/libs/services"],
                     "options": {
                         "jestConfig": "libs/services/jest.config.js",
                         "passWithNoTests": true
@@ -735,7 +735,7 @@
             "architect": {
                 "test": {
                     "builder": "@nrwl/jest:jest",
-                    "outputs": [ "coverage/libs/components/vehicle" ],
+                    "outputs": ["coverage/libs/components/vehicle"],
                     "options": {
                         "jestConfig": "libs/components/vehicle/jest.config.js",
                         "passWithNoTests": true
