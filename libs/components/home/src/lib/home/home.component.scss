@@ -1,0 +1,45 @@
+@import '_variables';
+@import '_mixins';
+
+/* Home button */
+.home-btn {
+    margin-top: 3rem;
+    @include flex-center-column;
+    button {
+        width: 37.125rem;
+        padding: 0.75rem 0;
+        background: $darkgreen;
+        font-size: 1rem;
+        color: $white;
+        cursor: pointer;
+        border: none;
+        //border-radius: 4px;
+        transition: 0.25s;
+        &:hover {
+            background: $green;
+        }
+    }
+}
+.home-img {
+    max-width: 80%;
+    height: auto;
+}
+
+.home-h1{
+    //font
+    font-family: Brush Script MT;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 48px;
+    line-height: 60px;
+    display: flex;
+    align-items: center;
+}
+
+li{
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+ol{
+    list-style-position: inside
+}
