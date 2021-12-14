@@ -46,8 +46,8 @@ export class AuthService {
                 localStorage.setItem('idToken', token);
                 this.authState.next(user);
             } else {
-                this.user = null;
                 localStorage.clear();
+                this.user = null;
                 this.authState.next(null);
             }
         });
