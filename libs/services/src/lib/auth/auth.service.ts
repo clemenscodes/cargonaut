@@ -12,6 +12,7 @@ import {
     sendEmailVerification,
 } from 'firebase/auth';
 import { User } from '@api-interfaces';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 @Injectable({
     providedIn: 'root',
@@ -37,7 +38,7 @@ export class AuthService {
      * Constructor of auth service
      * @param auth {AngularFireAuth}
      */
-    constructor(private auth: AngularFireAuth) {
+    constructor(private auth: AngularFireAuth, private afs: AngularFirestore) {
         this.auth.authState.subscribe(async (user) => {
             if (user) {
                 const userData: User = {
@@ -69,6 +70,7 @@ export class AuthService {
     async register(
         email: string,
         password: string,
+        displayName: string,
         firstName: string,
         lastName: string,
         birthDate: string
@@ -80,18 +82,21 @@ export class AuthService {
         if (userCredential.user) {
             const user = userCredential.user;
             await user.sendEmailVerification();
-            const { uid, emailVerified } = user;
-            this.user = {
+            const token = await user.getIdToken(true);
+            localStorage.setItem('idToken', token);
+            const { emailVerified, uid } = userCredential.user;
+            const newUser = {
                 uid,
+                email,
+                emailVerified,
+                displayName,
                 firstName,
                 lastName,
                 birthDate,
-                email,
-                emailVerified,
                 rating: 0,
             };
-            const token = await user.getIdToken(true);
-            localStorage.setItem('idToken', token);
+            console.log(newUser);
+            this.afs.collection(`/users`).doc(uid).set(newUser);
         }
     }
 

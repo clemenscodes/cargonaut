@@ -50,33 +50,11 @@ export class RegisterFormComponent {
     }
 
     /**
-     * @returns {AbstractControl} The email input control of the form
-     */
-    get email(): AbstractControl {
-        return this.registerForm.controls.email;
-    }
-
-    /**
-     * @returns {AbstractControl} The password input control of the form
-     */
-    get password(): AbstractControl {
-        return this.registerForm.controls.password;
-    }
-
-    /**
      * @returns {AbstractControl} The firstName input control of the form
      */
     get firstName(): AbstractControl {
         return this.registerForm.controls.firstName;
     }
-
-    /**
-     * @returns {AbstractControl} The firstName input control of the form
-     */
-    get displayName(): AbstractControl {
-        return this.registerForm.controls.displayName;
-    }
-
 
     /**
      * @returns {AbstractControl} The lastName input control of the form
@@ -91,6 +69,27 @@ export class RegisterFormComponent {
     get birthDate(): AbstractControl {
         return this.registerForm.controls.birthDate;
     }
+
+    /**
+     * @returns {AbstractControl} The displayName input control of the form
+     */
+    get displayName(): AbstractControl {
+        return this.registerForm.controls.displayName;
+    }
+
+    /**
+     * @returns {AbstractControl} The email input control of the form
+     */
+    get email(): AbstractControl {
+        return this.registerForm.controls.email;
+    }
+
+    /**
+     * @returns {AbstractControl} The password input control of the form
+     */
+    get password(): AbstractControl {
+        return this.registerForm.controls.password;
+    }
     /**
      * Calls auth service to register user with email and password and handles success and error cases
      */
@@ -100,9 +99,10 @@ export class RegisterFormComponent {
             await this.authService.register(
                 this.email.value,
                 this.password.value,
+                this.birthDate.value,
                 this.firstName.value,
                 this.lastName.value,
-                this.birthDate.value
+                this.displayName.value
             );
             this.loading = false;
             this.registerForm.reset();

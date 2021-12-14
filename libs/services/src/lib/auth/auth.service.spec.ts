@@ -6,6 +6,7 @@ import { of } from 'rxjs';
 describe('AuthServiceService', () => {
     let service: AuthService;
     const email = 'email';
+    const displayName = 'maxman';
     const password = 'password';
     const firstName = 'Max';
     const lastName = 'Mustermann';
@@ -67,7 +68,14 @@ describe('AuthServiceService', () => {
         angularFireAuthMock.createUserWithEmailAndPassword.mockReturnValue(
             mockUser
         );
-        service.register(email, password, firstName, lastName, birthDate);
+        service.register(
+            email,
+            password,
+            firstName,
+            lastName,
+            birthDate,
+            displayName
+        );
         expect(spy).toHaveBeenCalledWith(email, password);
         expect(spy).toHaveBeenCalledTimes(1);
     });

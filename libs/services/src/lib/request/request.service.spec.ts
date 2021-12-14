@@ -5,20 +5,17 @@ import { RequestService } from './request.service';
 
 describe('RequestService', () => {
     let service: RequestService;
-    const offerMockData = {};
-    const data = of(offerMockData);
+    const offerMockData = {}
+    const data = of(offerMockData)
     const requestCollectionMock = {
-        snapshotChanges: jest.fn().mockReturnValue(data),
-    };
+        snapshotChanges: jest.fn().mockReturnValue(data)
+    }
     const angularFirestoreMock = {
-        collection: jest.fn().mockReturnValue(requestCollectionMock),
-    };
+        collection: jest.fn().mockReturnValue(requestCollectionMock)
+    }
     beforeEach(() => {
         TestBed.configureTestingModule({
-            providers: [
-                AngularFirestore,
-                { provide: AngularFirestore, useValue: angularFirestoreMock },
-            ],
+            providers: [AngularFirestore, {provide: AngularFirestore, useValue: angularFirestoreMock}],
         });
         service = TestBed.inject(RequestService);
     });

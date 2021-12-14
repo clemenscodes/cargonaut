@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AlertService, AuthService } from '@services';
 import { Subject } from 'rxjs';
+import firebase from 'firebase/compat/app';
 import { takeUntil } from 'rxjs/operators';
 import {
     ChangeEmailData,
@@ -8,6 +9,7 @@ import {
     ChangeProfileData,
     User,
 } from '@api-interfaces';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 @Component({
     selector: 'cargonaut-profile',
@@ -23,7 +25,8 @@ export class ProfileComponent implements OnInit, OnDestroy {
     /**
      * The current authenticated user
      */
-    user: User | null = null;
+    user: firebase.User | null = null;
+    profileData: User | null = null;
     /**
      * The current selected nav
      */
@@ -44,9 +47,44 @@ export class ProfileComponent implements OnInit, OnDestroy {
      */
     constructor(
         private authService: AuthService,
-        private alertService: AlertService
-    ) {
-        this.user = this.authService.getCurrentUser();
+        private alertService: AlertService,
+        private afs: AngularFirestore
+    ) {}
+    getProfileData() {
+        this.authService.authState$.subscribe((user) => {
+            if (user) {
+                this.user = user;
+                if (this.user) {
+                    const uid = this.user.uid;
+                    this.afs
+                        .doc(`users/${uid}`)
+                        .get()
+                        .subscribe((snapshot) => {
+                            if (snapshot) {
+                                if (snapshot.exists) {
+                                    const user: User = {
+                                        uid: snapshot.get('uid'),
+                                        email: snapshot.get('uid'),
+                                        firstName: snapshot.get('firstName'),
+                                        lastName: snapshot.get('lastName'),
+                                        birthDate: snapshot.get('birthDate'),
+                                        displayName:
+                                            snapshot.get('displayName'),
+                                        emailVerified:
+                                            snapshot.get('emailVerified'),
+                                        photoURL: snapshot.get('photoURL'),
+                                    };
+                                    this.profileData = user;
+                                    console.log(user);
+                                }
+                            }
+                        });
+                } else {
+                    this.profileData = null;
+                }
+            }
+        });
+        this.checkProvider();
     }
 
     /**
@@ -152,11 +190,9 @@ export class ProfileComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         this.authService.authState$
             .pipe(takeUntil(this.destroy$))
-            .subscribe((user) => {
-                return user;
-            });
+            .subscribe((user) => (this.user = user));
         this.checkProvider();
-        console.log(this.user);
+        this.getProfileData();
     }
 
     /**
