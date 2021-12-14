@@ -1,17 +1,16 @@
 {
   "ExpandedNodes": [
     "",
+    "\\apps\\cargonaut-e2e\\src",
     "\\libs",
     "\\libs\\components",
-    "\\libs\\components\\profile",
-    "\\libs\\components\\profile\\src",
-    "\\libs\\components\\profile\\src\\lib",
-    "\\libs\\components\\profile\\src\\lib\\profile",
-    "\\libs\\services",
-    "\\libs\\services\\src",
-    "\\libs\\services\\src\\lib",
-    "\\libs\\services\\src\\lib\\auth"
+    "\\libs\\components\\change-profile-form",
+    "\\libs\\components\\change-profile-form\\src",
+    "\\libs\\components\\change-profile-form\\src\\lib",
+    "\\libs\\components\\change-profile-form\\src\\lib\\change-profile-form",
+    "\\libs\\components\\delete-profile-form\\src\\lib",
+    "\\libs\\components\\profile"
   ],
-  "SelectedNode": "\\angular.json",
+  "SelectedNode": "\\libs\\components\\change-profile-form\\src\\lib\\change-profile-form\\change-profile-form.component.ts",
   "PreviewInSolutionExplorer": false
 }

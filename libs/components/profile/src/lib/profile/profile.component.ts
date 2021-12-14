@@ -103,7 +103,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
  * Delete profile
  *
  */
-    async deleteProfil(): Promise<void> {
+    async deleteProfile(): Promise<void> {
         this.loading = true;
         try {
             await this.authService.deleteProfile();

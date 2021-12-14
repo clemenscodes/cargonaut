@@ -18,7 +18,7 @@
         "paths": {
             "@alert": ["libs/components/alert/src/index.ts"],
             "@api-interfaces": ["libs/api-interfaces/src/index.ts"],
-            "@cargonaut/delete-profile-form": [
+            "@delete-profile-form": [
                 "libs/components/delete-profile-form/src/index.ts"
             ],
             "@change-email-form": [
