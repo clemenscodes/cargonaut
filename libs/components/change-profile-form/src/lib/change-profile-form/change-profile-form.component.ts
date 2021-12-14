@@ -21,7 +21,7 @@ export class ChangeProfileFormComponent {
     /**
      * User display name
      */
-    @Input() userDisplayName = '';
+    @Input() userDisplayName: string | null = '';
     /**
      * Loading state
      */

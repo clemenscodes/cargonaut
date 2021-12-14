@@ -23,10 +23,10 @@ export interface Alert {
 
 export interface User {
     uid: string;
-    email?: string;
+    email: string;
     emailVerified?: boolean;
     photoURL?: string;
-    displayName?: string;
+    displayName: string;
 }
 
 export interface ChangePasswordData {

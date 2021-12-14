@@ -37,12 +37,44 @@ export class RegisterFormComponent {
         private router: Router
     ) {
         this.registerForm = this.fb.group({
+            firstName: new FormControl('', [Validators.required]),
+            lastName: new FormControl('', [Validators.required]),
+            birthDate: new FormControl('', [Validators.required]),
+            displayName: new FormControl('', [Validators.required]),
             email: new FormControl('', [Validators.email, Validators.required]),
             password: new FormControl('', [
                 Validators.minLength(6),
                 Validators.required,
             ]),
         });
+    }
+
+    /**
+     * @returns {AbstractControl} The firstName input control of the form
+     */
+    get firstName(): AbstractControl {
+        return this.registerForm.controls.firstName;
+    }
+
+    /**
+     * @returns {AbstractControl} The lastName input control of the form
+     */
+    get lastName(): AbstractControl {
+        return this.registerForm.controls.lastName;
+    }
+
+    /**
+     * @returns {AbstractControl} The birthDate input control of the form
+     */
+    get birthDate(): AbstractControl {
+        return this.registerForm.controls.birthDate;
+    }
+
+    /**
+     * @returns {AbstractControl} The displayName input control of the form
+     */
+    get displayName(): AbstractControl {
+        return this.registerForm.controls.displayName;
     }
 
     /**
@@ -67,7 +99,11 @@ export class RegisterFormComponent {
             this.loading = true;
             await this.authService.register(
                 this.email.value,
-                this.password.value
+                this.password.value,
+                this.birthDate.value,
+                this.firstName.value,
+                this.lastName.value,
+                this.displayName.value
             );
             this.loading = false;
             this.registerForm.reset();
