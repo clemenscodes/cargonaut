@@ -3,6 +3,8 @@ import { ProfileComponent } from './profile.component';
 import { of } from 'rxjs';
 import { ProfileModule } from '../profile.module';
 import { AuthService } from '@services';
+import { Location } from '@angular/common';
+
 
 describe('ProfileComponent', () => {
     let component: ProfileComponent;
@@ -128,5 +130,12 @@ describe('ProfileComponent', () => {
         const spy = jest.spyOn(authServiceMock, 'deleteProfile');
         component.deleteProfile();
         expect(spy).toHaveBeenCalled();
+    });
+
+    it('should route to /home after deleteProfile call', () => {
+        const location = TestBed.inject(Location);
+        component.deleteProfile().then(() => {
+            expect(location.path()).toBe('/home');
+        });
     });
 });

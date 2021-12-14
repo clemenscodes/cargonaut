@@ -10,6 +10,7 @@ import {
     updateEmail,
     updateProfile,
     sendEmailVerification,
+    deleteUser,
 } from 'firebase/auth';
 import { User } from '@api-interfaces';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
@@ -178,7 +179,7 @@ export class AuthService {
         if (!user) {
             throw new Error('Kein Benutzer gefunden');
         }
-        return this.afs.collection('/users').doc(user.uid).delete();
+        return deleteUser(user);
     }
 
     /**

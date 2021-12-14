@@ -32,7 +32,11 @@ describe('AuthServiceService', () => {
         applyActionCode: jest.fn(),
         confirmPasswordReset: jest.fn(),
         signOut: jest.fn(),
+        collection: jest.fn(),
+        doc: jest.fn(),
+        delete: jest.fn(),
     };
+
     const set = {
         set: jest.fn().mockReturnValue(mockUser)
     }
@@ -140,4 +144,18 @@ describe('AuthServiceService', () => {
         service.logout();
         expect(spy).toHaveBeenCalledTimes(1);
     });
+
+
+    it('should delete autheticated user by call of deleteProfile', () => {
+        const user = mockUser;
+        service.deleteProfile();
+        expect(angularFirestoreMock.collection('/users'))
+            .not
+            .toContain(angularFirestoreMock
+                .collection('/users')
+                .doc(user.user.getIdToken));
+    });
+
+
+
 });
