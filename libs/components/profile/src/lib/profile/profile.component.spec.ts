@@ -32,6 +32,7 @@ describe('ProfileComponent', () => {
         updatePassword: jest.fn(),
         updateEmail: jest.fn(),
         updateProfile: jest.fn(),
+        deleteProfile: jest.fn(),
         getCurrentUser: jest.fn().mockReturnValue(mockUser),
         getProfileData: jest.fn().mockReturnValue(mockProfileData),
     };
@@ -120,6 +121,12 @@ describe('ProfileComponent', () => {
         component.changeProfile({
             displayName: 'myName',
         });
+        expect(spy).toHaveBeenCalled();
+    });
+
+    it('should call auth service to delete profile', () => {
+        const spy = jest.spyOn(authServiceMock, 'deleteProfile');
+        component.deleteProfile();
         expect(spy).toHaveBeenCalled();
     });
 });
