@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { VehicleModule } from '../vehicle.module';
 
 import { VehicleComponent } from './vehicle.component';
 
@@ -8,7 +9,7 @@ describe('VehicleComponent', () => {
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            declarations: [VehicleComponent],
+            imports: [VehicleModule],
         }).compileComponents();
     });
 
