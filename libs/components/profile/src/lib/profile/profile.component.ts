@@ -7,9 +7,7 @@ import {
     ChangeEmailData,
     ChangePasswordData,
     ChangeProfileData,
-    User,
 } from '@api-interfaces';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 @Component({
     selector: 'cargonaut-profile',
@@ -26,7 +24,6 @@ export class ProfileComponent implements OnInit, OnDestroy {
      * The current authenticated user
      */
     user: firebase.User | null = null;
-    profileData: User | null = null;
     /**
      * The current selected nav
      */
@@ -48,46 +45,8 @@ export class ProfileComponent implements OnInit, OnDestroy {
     constructor(
         private authService: AuthService,
         private alertService: AlertService,
-        private afs: AngularFirestore
     ) {}
-    getProfileData() {
-        this.authService.authState$.subscribe((user) => {
-            if (user) {
-                this.user = user;
-                if (this.user) {
-                    const uid = this.user.uid;
-                    this.afs
-                        .doc(`users/${uid}`)
-                        .get()
-                        .subscribe((snapshot) => {
-                            if (snapshot) {
-                                if (snapshot.exists) {
-                                    const user: User = {
-                                        uid: snapshot.get('uid'),
-                                        email: snapshot.get('uid'),
-                                        firstName: snapshot.get('firstName'),
-                                        lastName: snapshot.get('lastName'),
-                                        birthDate: snapshot.get('birthDate'),
-                                        displayName:
-                                            snapshot.get('displayName'),
-                                        emailVerified:
-                                            snapshot.get('emailVerified'),
-                                        photoURL: snapshot.get('photoURL'),
-                                    };
-                                    this.profileData = user;
-                                    console.log(user);
-                                }
-                            }
-                        });
-                } else {
-                    this.profileData = null;
-                }
-            }
-        });
-        this.checkProvider();
-    }
-
-    /**
+        /**
      * Change password of user
      *
      * @param data {ChangePasswordData} Data required to change password
@@ -192,7 +151,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
             .pipe(takeUntil(this.destroy$))
             .subscribe((user) => (this.user = user));
         this.checkProvider();
-        this.getProfileData();
+        this.authService.getProfileData();
     }
 
     /**

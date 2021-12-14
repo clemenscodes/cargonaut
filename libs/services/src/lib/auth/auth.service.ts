@@ -21,7 +21,8 @@ export class AuthService {
     /**
      * Firebase user object
      */
-    user: User | null = null;
+    user: firebase.User | null = null;
+    profileData: User | null = null;
     /**
      * Auth state Subject
      * @private
@@ -41,15 +42,7 @@ export class AuthService {
     constructor(private auth: AngularFireAuth, private afs: AngularFirestore) {
         this.auth.authState.subscribe(async (user) => {
             if (user) {
-                const userData: User = {
-                    firstName: 'Test',
-                    lastName: 'Test',
-                    birthDate: 'Test',
-                    uid: 'Test',
-                    displayName: 'Test',
-                    rating: 5,
-                };
-                this.user = userData;
+                this.user = user;
                 const token = await user.getIdToken(true);
                 localStorage.setItem('idToken', token);
                 this.authState.next(user);
@@ -80,12 +73,11 @@ export class AuthService {
             password
         );
         if (userCredential.user) {
-            const user = userCredential.user;
-            await user.sendEmailVerification();
-            const token = await user.getIdToken(true);
+            await userCredential.user.sendEmailVerification();
+            const token = await userCredential.user.getIdToken(true);
             localStorage.setItem('idToken', token);
             const { emailVerified, uid } = userCredential.user;
-            const newUser = {
+            const user = {
                 uid,
                 email,
                 emailVerified,
@@ -95,8 +87,8 @@ export class AuthService {
                 birthDate,
                 rating: 0,
             };
-            console.log(newUser);
-            this.afs.collection(`/users`).doc(uid).set(newUser);
+            console.log(user);
+            this.afs.collection(`/users`).doc(uid).set(user);
         }
     }
 
@@ -245,6 +237,41 @@ export class AuthService {
         localStorage.clear();
         await this.auth.signOut();
     }
+    getProfileData() {
+        this.authState$.subscribe((user) => {
+            if (user) {
+                this.user = user;
+                if (this.user) {
+                    const uid = this.user.uid;
+                    this.afs
+                        .doc(`users/${uid}`)
+                        .get()
+                        .subscribe((snapshot) => {
+                            if (snapshot) {
+                                if (snapshot.exists) {
+                                    const user: User = {
+                                        uid: snapshot.get('uid'),
+                                        email: snapshot.get('uid'),
+                                        firstName: snapshot.get('firstName'),
+                                        lastName: snapshot.get('lastName'),
+                                        birthDate: snapshot.get('birthDate'),
+                                        displayName:
+                                            snapshot.get('displayName'),
+                                        emailVerified:
+                                            snapshot.get('emailVerified'),
+                                        photoURL: snapshot.get('photoURL'),
+                                    };
+                                    this.profileData = user;
+                                    console.log(user);
+                                }
+                            }
+                        });
+                } else {
+                    this.profileData = null;
+                }
+            }
+        });
+    }
 
     /**
      * Get current user
@@ -252,7 +279,21 @@ export class AuthService {
      * @returns {User} The current user profile data
      */
     getCurrentUser(): User {
-        if (this.user) return this.user;
+        const auth = getAuth();
+        const user = auth.currentUser;
+        if (user !== null) {
+            const displayName = user.displayName || '';
+            const email = user.email || '';
+            const photoURL = user.photoURL || '';
+            const emailVerified = user.emailVerified;
+            return {
+                uid: user.uid,
+                email: email,
+                photoURL: photoURL,
+                emailVerified: emailVerified,
+                displayName: displayName,
+            };
+        }
         throw new Error();
     }
 }

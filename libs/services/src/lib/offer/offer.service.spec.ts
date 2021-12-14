@@ -15,7 +15,6 @@ describe('OfferService', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             providers: [
-                AngularFirestore,
                 { provide: AngularFirestore, useValue: angularFirestoreMock },
             ],
         });

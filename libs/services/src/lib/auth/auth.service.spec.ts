@@ -2,6 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { AuthService } from './auth.service';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { of } from 'rxjs';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 describe('AuthServiceService', () => {
     let service: AuthService;
@@ -32,12 +33,21 @@ describe('AuthServiceService', () => {
         confirmPasswordReset: jest.fn(),
         signOut: jest.fn(),
     };
-
+    const set = {
+        set: jest.fn().mockReturnValue(mockUser)
+    }
+    const userDocMock = {
+        doc: jest.fn().mockReturnValue(set),
+    };
+    const angularFirestoreMock = {
+        collection: jest.fn().mockReturnValue(userDocMock),
+    };
     beforeEach(() => {
         TestBed.configureTestingModule({
             providers: [
                 AngularFireAuth,
                 { provide: AngularFireAuth, useValue: angularFireAuthMock },
+                { provide: AngularFirestore, useValue: angularFirestoreMock },
             ],
         });
         service = TestBed.inject(AuthService);
