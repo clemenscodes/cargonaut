@@ -4,7 +4,7 @@ import { of } from 'rxjs';
 import { ProfileModule } from '../profile.module';
 import { AuthService } from '@services';
 import { Location } from '@angular/common';
-
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('ProfileComponent', () => {
     let component: ProfileComponent;
@@ -44,7 +44,7 @@ describe('ProfileComponent', () => {
                 AuthService,
                 { provide: AuthService, useValue: authServiceMock },
             ],
-            imports: [ProfileModule],
+            imports: [ProfileModule, RouterTestingModule.withRoutes([])],
         }).compileComponents();
     });
 
@@ -135,7 +135,7 @@ describe('ProfileComponent', () => {
     it('should route to /home after deleteProfile call', () => {
         const location = TestBed.inject(Location);
         component.deleteProfile().then(() => {
-            expect(location.path()).toBe('/home');
+            expect(location.path()).toBe('/');
         });
     });
 });

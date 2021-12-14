@@ -1,6 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { AuthService } from './auth.service';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { RouterTestingModule } from '@angular/router/testing';
 import { of } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 
@@ -32,24 +33,21 @@ describe('AuthServiceService', () => {
         applyActionCode: jest.fn(),
         confirmPasswordReset: jest.fn(),
         signOut: jest.fn(),
-        collection: jest.fn(),
-        doc: jest.fn(),
-        delete: jest.fn(),
     };
-
-    const set = {
-        set: jest.fn().mockReturnValue(mockUser)
-    }
+    const userDocEditMock= {
+        update: jest.fn().mockReturnValue(mockUser),
+        delete: jest.fn().mockReturnValue(mockUser),
+    };
     const userDocMock = {
-        doc: jest.fn().mockReturnValue(set),
+        doc: jest.fn().mockReturnValue(userDocEditMock),
     };
     const angularFirestoreMock = {
         collection: jest.fn().mockReturnValue(userDocMock),
     };
     beforeEach(() => {
         TestBed.configureTestingModule({
+            imports: [RouterTestingModule.withRoutes([])],
             providers: [
-                AngularFireAuth,
                 { provide: AngularFireAuth, useValue: angularFireAuthMock },
                 { provide: AngularFirestore, useValue: angularFirestoreMock },
             ],
@@ -145,17 +143,11 @@ describe('AuthServiceService', () => {
         expect(spy).toHaveBeenCalledTimes(1);
     });
 
-
-    it('should delete autheticated user by call of deleteProfile', () => {
-        const user = mockUser;
+    it('should delete authenticated user by call of deleteProfile', () => {
+        const spy = jest
+            .spyOn(angularFirestoreMock, 'collection')
+            .mockReturnValue(userDocMock)
         service.deleteProfile();
-        expect(angularFirestoreMock.collection('/users'))
-            .not
-            .toContain(angularFirestoreMock
-                .collection('/users')
-                .doc(user.user.getIdToken));
+        expect(spy).toHaveBeenCalledTimes(1);
     });
-
-
-
 });
