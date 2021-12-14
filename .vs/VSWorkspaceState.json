@@ -1,11 +1,17 @@
 {
-    "ExpandedNodes": [
-        "",
-        "\\libs",
-        "\\libs\\api-interfaces",
-        "\\libs\\api-interfaces\\src",
-        "\\libs\\api-interfaces\\src\\lib"
-    ],
-    "SelectedNode": "\\libs\\api-interfaces\\src\\lib\\api-interfaces.ts",
-    "PreviewInSolutionExplorer": false
+  "ExpandedNodes": [
+    "",
+    "\\libs",
+    "\\libs\\components",
+    "\\libs\\components\\profile",
+    "\\libs\\components\\profile\\src",
+    "\\libs\\components\\profile\\src\\lib",
+    "\\libs\\components\\profile\\src\\lib\\profile",
+    "\\libs\\services",
+    "\\libs\\services\\src",
+    "\\libs\\services\\src\\lib",
+    "\\libs\\services\\src\\lib\\auth"
+  ],
+  "SelectedNode": "\\angular.json",
+  "PreviewInSolutionExplorer": false
 }
