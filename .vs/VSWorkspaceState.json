@@ -1,11 +1,16 @@
 {
-    "ExpandedNodes": [
-        "",
-        "\\libs",
-        "\\libs\\api-interfaces",
-        "\\libs\\api-interfaces\\src",
-        "\\libs\\api-interfaces\\src\\lib"
-    ],
-    "SelectedNode": "\\libs\\api-interfaces\\src\\lib\\api-interfaces.ts",
-    "PreviewInSolutionExplorer": false
+  "ExpandedNodes": [
+    "",
+    "\\apps\\cargonaut-e2e\\src",
+    "\\libs",
+    "\\libs\\components",
+    "\\libs\\components\\change-profile-form",
+    "\\libs\\components\\change-profile-form\\src",
+    "\\libs\\components\\change-profile-form\\src\\lib",
+    "\\libs\\components\\change-profile-form\\src\\lib\\change-profile-form",
+    "\\libs\\components\\delete-profile-form\\src\\lib",
+    "\\libs\\components\\profile"
+  ],
+  "SelectedNode": "\\libs\\components\\change-profile-form\\src\\lib\\change-profile-form\\change-profile-form.component.ts",
+  "PreviewInSolutionExplorer": false
 }

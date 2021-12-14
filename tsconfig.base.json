@@ -18,6 +18,9 @@
         "paths": {
             "@alert": ["libs/components/alert/src/index.ts"],
             "@api-interfaces": ["libs/api-interfaces/src/index.ts"],
+            "@delete-profile-form": [
+                "libs/components/delete-profile-form/src/index.ts"
+            ],
             "@change-email-form": [
                 "libs/components/change-email-form/src/index.ts"
             ],

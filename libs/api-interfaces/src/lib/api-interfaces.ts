@@ -43,6 +43,9 @@ export interface ChangeEmailData {
 }
 export interface ChangeProfileData {
     displayName?: string;
+    //photoURL?: string;
+    //firstName?: string;
+    //lastName?: string;
 }
 
 export interface Ratings {
