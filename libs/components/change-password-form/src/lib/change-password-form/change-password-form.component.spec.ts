@@ -10,7 +10,6 @@ describe('ChangePasswordFormComponent', () => {
     beforeEach(async () => {
         await TestBed.configureTestingModule({
             imports: [ChangePasswordFormModule],
-            declarations: [ChangePasswordFormComponent],
         }).compileComponents();
     });
 

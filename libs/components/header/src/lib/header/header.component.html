@@ -1,4 +1,4 @@
-<header>
+<header *ngIf="!authenticated; else authenticatedHeader">
     <div class="logo">
         <a routerLink="/">
             <img
@@ -10,10 +10,23 @@
         <a class="resource" routerLink="/request">Anfragen</a>
         <a class="resource" routerLink="/vehicle">Deine Fahrzeuge</a>
     </div>
-    <nav *ngIf="!authenticated; else authenticatedNav">
+    <nav >
         <fa-icon size="lg" icon="user-circle" routerLink="/login"></fa-icon>
     </nav>
-    <ng-template #authenticatedNav>
+</header>
+<ng-template #authenticatedHeader>
+    <header>
+        <div class="logo">
+            <a routerLink="/offer">
+                <img
+                    src="assets/images/0.75x/semi_androidMyCargonautldpi.png"
+                    alt="Cargonaut logo"
+                />
+            </a>
+            <a class="resource" routerLink="/offer">Angebote</a>
+            <a class="resource" routerLink="/request">Anfragen</a>
+            <a class="resource" routerLink="/vehicle">Deine Fahrzeuge</a>
+        </div>
         <nav>
             <fa-icon
                 size="lg"
@@ -22,5 +35,5 @@
             ></fa-icon>
             <fa-icon size="lg" icon="sign-out-alt" (click)="logout()"></fa-icon>
         </nav>
-    </ng-template>
-</header>
+    </header>
+</ng-template>
