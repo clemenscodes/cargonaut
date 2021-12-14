@@ -179,7 +179,7 @@ export class AuthService {
         if (!user) {
             throw new Error('Kein Benutzer gefunden');
         }
-        return user.delete();
+        return this.afs.collection('/users').doc(user.uid).delete();
     }
 
     /**
