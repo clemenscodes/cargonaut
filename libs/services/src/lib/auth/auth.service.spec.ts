@@ -1,6 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { AuthService } from './auth.service';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { RouterTestingModule } from '@angular/router/testing';
 import { of } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 
@@ -33,17 +34,18 @@ describe('AuthServiceService', () => {
         confirmPasswordReset: jest.fn(),
         signOut: jest.fn(),
     };
-    const set = {
-        set: jest.fn().mockReturnValue(mockUser)
-    }
+    const update = {
+        update: jest.fn().mockReturnValue(mockUser),
+    };
     const userDocMock = {
-        doc: jest.fn().mockReturnValue(set),
+        doc: jest.fn().mockReturnValue(update),
     };
     const angularFirestoreMock = {
         collection: jest.fn().mockReturnValue(userDocMock),
     };
     beforeEach(() => {
         TestBed.configureTestingModule({
+            imports: [RouterTestingModule.withRoutes([])],
             providers: [
                 AngularFireAuth,
                 { provide: AngularFireAuth, useValue: angularFireAuthMock },
