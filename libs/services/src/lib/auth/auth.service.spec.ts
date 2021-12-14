@@ -69,7 +69,14 @@ describe('AuthServiceService', () => {
         angularFireAuthMock.createUserWithEmailAndPassword.mockReturnValue(
             mockUser
         );
-        service.register(email, password, firstName, lastName, birthDate, displayName);
+        service.register(
+            email,
+            password,
+            firstName,
+            lastName,
+            birthDate,
+            displayName
+        );
         expect(spy).toHaveBeenCalledWith(email, password);
         expect(spy).toHaveBeenCalledTimes(1);
     });
@@ -77,7 +84,7 @@ describe('AuthServiceService', () => {
     it('should call firebase auth signInWithEmailAndPassword in login method', () => {
         const spy = jest
             .spyOn(angularFireAuthMock, 'signInWithEmailAndPassword')
-            .mockReturnValue(mockUser);;
+            .mockReturnValue(mockUser);
         service.login(email, password);
         expect(spy).toHaveBeenCalledWith(email, password);
         expect(spy).toHaveBeenCalledTimes(1);
@@ -86,7 +93,7 @@ describe('AuthServiceService', () => {
     it('should call firebase auth signInWithPopup in loginWithGoogle method', () => {
         const spy = jest
             .spyOn(angularFireAuthMock, 'signInWithPopup')
-            .mockReturnValue(mockUser);;
+            .mockReturnValue(mockUser);
         service.loginWithGoogle();
         expect(spy).toHaveBeenCalledTimes(1);
     });
