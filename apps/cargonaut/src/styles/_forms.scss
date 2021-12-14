@@ -6,7 +6,6 @@
     background: $white;
     padding: 2rem;
     box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
-    width: 100%;
     max-width: 25rem;
     border-radius: 2px;
     h1 {
@@ -30,6 +29,7 @@
         color: $darkgreen;
         width: 100%;
         border: none;
+        margin-left: 0.4rem;
         border-bottom: 1px solid $darkgreen;
         padding: 0.5rem 0.5rem 0.5rem 2.5rem;
         transition: 0.25s;
@@ -37,7 +37,7 @@
             border-bottom: 1px solid $green;
         }
         &:focus + fa-icon {
-            color: $green;
+            color: $darkgreen;
         }
     }
     fa-icon {
