@@ -10,6 +10,6 @@ import { OfferService } from '@services';
 export class DashboardComponent {
     public faPlusCircle = faPlusCircle;
 
-  constructor(public offerService: OfferService) { }
+  constructor() { }
 
 }
