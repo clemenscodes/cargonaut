@@ -6,6 +6,7 @@ import {
 } from '@angular/fire/compat/storage';
 import { UploadTaskSnapshot } from '@angular/fire/compat/storage/interfaces';
 import { Observable, tap } from 'rxjs';
+import { AuthService } from '../auth/auth.service';
 
 @Injectable({
     providedIn: 'root',
@@ -15,6 +16,7 @@ export class UploadService {
     file!: File;
     url = '';
     constructor(
+        private authService: AuthService,
         private storage: AngularFireStorage,
         private afs: AngularFirestore
     ) {}
@@ -33,12 +35,20 @@ export class UploadService {
             }`;
             this.task = this.storage.ref(path).put(this.file);
             this.snapshot = this.task.snapshotChanges().pipe(
-                tap((snap) => {
+                tap(async (snap) => {
                     if (snap?.bytesTransferred === snap?.totalBytes) {
                         if (snap) {
-                            this.afs
-                                .collection('photos')
-                                .add({ path, size: snap?.totalBytes });
+                            const user = this.authService.getCurrentUser();
+                            user.uid;
+                            await this.afs
+                                .collection('users')
+                                .doc(user.uid)
+                                .update({
+                                    photo: {
+                                        path,
+                                        size: snap?.totalBytes,
+                                    },
+                                });
                             this.getUrl(snap);
                         }
                     }

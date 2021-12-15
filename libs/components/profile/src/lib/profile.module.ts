@@ -20,6 +20,7 @@ import { ChangePasswordFormModule } from '@change-password-form';
 import { ChangeEmailFormModule } from '@change-email-form';
 import { ChangeProfileFormModule } from '@change-profile-form';
 import { DeleteProfileFormModule } from '@delete-profile-form';
+import { UploadModule } from '@upload';
 
 @NgModule({
     imports: [
@@ -29,6 +30,7 @@ import { DeleteProfileFormModule } from '@delete-profile-form';
         ChangeEmailFormModule,
         ChangeProfileFormModule,
         DeleteProfileFormModule,
+        UploadModule,
         FontAwesomeModule,
     ],
     declarations: [ProfileComponent],

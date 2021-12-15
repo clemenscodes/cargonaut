@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { AlertService, AuthService } from '@services';
+import { AlertService, AuthService, UploadService } from '@services';
 import { Subject } from 'rxjs';
 import firebase from 'firebase/compat/app';
 import { Router } from '@angular/router';
@@ -25,6 +25,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
      * The current authenticated user
      */
     user: firebase.User | null = null;
+    profilePhotoUrl!: string;
     /**
      * The current selected nav
      */
@@ -47,6 +48,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
     constructor(
         private authService: AuthService,
         private alertService: AlertService,
+        public uploadService: UploadService,
         private router: Router
     ) {}
     /**

@@ -92,7 +92,7 @@ export class AuthService {
                 birthDate,
                 rating: 0,
             };
-            return await this.afs.collection(`/users`).doc(uid).update(user);
+            return await this.afs.collection(`users`).doc(uid).update(user);
         }
     }
 
