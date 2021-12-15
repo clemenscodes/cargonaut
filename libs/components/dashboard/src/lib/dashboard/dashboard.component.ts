@@ -17,13 +17,13 @@ export class DashboardComponent {
 
     public async addOffer() {
         const modalReference = this.modalService.open(AddOfferModalComponent);
-        //
-        // try {
-        //     const resultOffer: Offer = await modalReference.result;
-        //     //TODO: add resultOffer to Firestore
-        // } catch (error) {
-        //     console.log(error);
-        // }
+
+        try {
+            const resultOffer: Offer = await modalReference.result;
+            //TODO: add resultOffer to Firestore
+        } catch (error) {
+            console.log(error);
+        }
     }
 
 }
