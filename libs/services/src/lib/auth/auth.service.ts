@@ -13,6 +13,7 @@ import {
 } from 'firebase/auth';
 import { User } from '@api-interfaces';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Router } from '@angular/router';
 
 @Injectable({
     providedIn: 'root',
@@ -39,7 +40,11 @@ export class AuthService {
      * Constructor of auth service
      * @param auth {AngularFireAuth}
      */
-    constructor(private auth: AngularFireAuth, private afs: AngularFirestore) {
+    constructor(
+        private auth: AngularFireAuth,
+        private afs: AngularFirestore,
+        private router: Router
+    ) {
         this.auth.authState.subscribe(async (user) => {
             if (user) {
                 this.user = user;
@@ -87,7 +92,7 @@ export class AuthService {
                 birthDate,
                 rating: 0,
             };
-            this.afs.collection(`/users`).doc(uid).set(user);
+            return await this.afs.collection(`/users`).doc(uid).update(user);
         }
     }
 
@@ -173,12 +178,12 @@ export class AuthService {
      * Delete profile of current authentificated user
      *
      */
-    deleteProfile(): Promise<void> {
-        const user = getAuth().currentUser;
-        if (!user) {
+    async deleteProfile(): Promise<void> {
+        if (!this.user) {
             throw new Error('Kein Benutzer gefunden');
         }
-        return this.afs.collection('/users').doc(user.uid).delete();
+        await this.logout();
+        return await this.afs.collection('/users').doc(this.user.uid).delete();
     }
 
     /**
@@ -246,6 +251,7 @@ export class AuthService {
      */
     async logout(): Promise<void> {
         localStorage.clear();
+        this.router.navigate(['/']);
         await this.auth.signOut();
     }
     getProfileData() {
@@ -290,15 +296,13 @@ export class AuthService {
      * @returns {User} The current user profile data
      */
     getCurrentUser(): User {
-        const auth = getAuth();
-        const user = auth.currentUser;
-        if (user !== null) {
-            const displayName = user.displayName || '';
-            const email = user.email || '';
-            const photoURL = user.photoURL || '';
-            const emailVerified = user.emailVerified;
+        if (this.user) {
+            const displayName = this.user.displayName || '';
+            const email = this.user.email || '';
+            const photoURL = this.user.photoURL || '';
+            const emailVerified = this.user.emailVerified;
             return {
-                uid: user.uid,
+                uid: this.user.uid,
                 email: email,
                 photoURL: photoURL,
                 emailVerified: emailVerified,
