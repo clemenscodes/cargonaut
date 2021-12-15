@@ -363,6 +363,32 @@
             },
             "tags": []
         },
+        "dashboard": {
+            "projectType": "library",
+            "root": "libs/components/dashboard",
+            "sourceRoot": "libs/components/dashboard/src",
+            "prefix": "cargonaut",
+            "architect": {
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "outputs": ["coverage/libs/components/dashboard"],
+                    "options": {
+                        "jestConfig": "libs/components/dashboard/jest.config.js",
+                        "passWithNoTests": true
+                    }
+                },
+                "lint": {
+                    "builder": "@nrwl/linter:eslint",
+                    "options": {
+                        "lintFilePatterns": [
+                            "libs/components/dashboard/src/**/*.ts",
+                            "libs/components/dashboard/src/**/*.html"
+                        ]
+                    }
+                }
+            },
+            "tags": []
+        },
         "delete-profile-form": {
             "projectType": "library",
             "root": "libs/components/delete-profile-form",

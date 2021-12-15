@@ -1,0 +1,73 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col d-flex justify-content-center mt-4">
+            <h1 class="fw-bold">MEIN DASHBOARD</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <div class="row">
+                <div class="col d-flex justify-content-center mt-4">
+                    <h2>Aktive Fahrten</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col d-flex justify-content-center mt-2">
+                    <mat-tab-group mat-stretch-tabs class="stretched-tab-group">
+                        <mat-tab label="Angebote">
+                            <div class="container-fluid p-4">
+                                <div class="row">
+                                    <div class="col">
+                                        <!--Active Offer Cards-->
+                                    </div>
+                                </div>
+                            </div>
+                        </mat-tab>
+                        <mat-tab label="Anfragen">
+                            <div class="container-fluid p-4">
+                                <!--Active Request Cards-->
+                            </div>
+                        </mat-tab>
+                    </mat-tab-group>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col">
+            <div class="row">
+                <div class="col d-flex justify-content-center mt-4">
+                    <h2>Offene Fahrten</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col d-flex justify-content-center mt-2">
+                    <mat-tab-group mat-stretch-tabs class="stretched-tab-group">
+                        <mat-tab label="Angebote">
+                            <div class="container-fluid p-4">
+                                <div class="row">
+                                    <div class="col">
+                                        <!--Open Offer Cards-->
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <a class="btn"><fa-icon class="primary-color" [icon]="faPlusCircle" size="lg"></fa-icon> Angebot hinzufügen</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </mat-tab>
+                        <mat-tab label="Anfragen">
+                            <div class="container-fluid p-4">
+                                <!--Open Request Cards-->
+                            </div>
+                        </mat-tab>
+                    </mat-tab-group>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
