@@ -34,9 +34,8 @@ export class ChangeProfileFormComponent {
      * Encoded preview icon string
      */
     /**
-     * Constructor which initializes change profile reactive form and gets all icons
+     * Constructor which initializes change profile reactive for
      * @param fb {FormBuilder}
-     * @param iconService {IconService}
      */
     constructor(private fb: FormBuilder) {
         this.changeProfileForm = this.fb.group({

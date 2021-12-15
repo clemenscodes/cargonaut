@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AlertService, AuthService } from '@services';
 import { Subject } from 'rxjs';
 import firebase from 'firebase/compat/app';
+import { Router } from '@angular/router';
 import { takeUntil } from 'rxjs/operators';
 import {
     ChangeEmailData,
@@ -27,7 +28,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
     /**
      * The current selected nav
      */
-    activeNavLink: 'password' | 'email' | 'profile' = 'profile';
+    activeNavLink: 'password' | 'email' | 'delete' | 'profile' = 'profile';
     /**
      * User provider
      */
@@ -41,12 +42,15 @@ export class ProfileComponent implements OnInit, OnDestroy {
      * Constructor of the profile component
      * @param authService {AuthService}
      * @param alertService {AlertService}
+     * @param router {Router}
      */
     constructor(
         private authService: AuthService,
         private alertService: AlertService,
+        private router: Router
+
     ) {}
-        /**
+    /**
      * Change password of user
      *
      * @param data {ChangePasswordData} Data required to change password
@@ -99,6 +103,30 @@ export class ProfileComponent implements OnInit, OnDestroy {
     }
 
     /**
+     * Delete profile
+     *
+     */
+    async deleteProfile(): Promise<void> {
+        this.loading = true;
+        try {
+            await this.authService.deleteProfile();
+            await this.router.navigate(['/home']);
+            this.alertService.addAlert({
+                type: 'success',
+                message: 'Profil erfolgreich gelöscht',
+            });
+        } catch (e) {
+            if (e instanceof Error) {
+                this.alertService.addAlert({
+                    type: 'error',
+                    message: e.message,
+                });
+            }
+        }
+        this.loading = false;
+    }
+
+    /**
      * Change profile display name and icon
      *
      * @param data {ChangeProfileData} Data to change profile
@@ -125,9 +153,9 @@ export class ProfileComponent implements OnInit, OnDestroy {
     /**
      * Set the active navigation
      *
-     * @param nav {'password' | 'email' | 'profile} Active navigation
+     * @param nav {'password' | 'email' | 'delete' | 'profile} Active navigation
      */
-    setActiveLink(nav: 'password' | 'email' | 'profile'): void {
+    setActiveLink(nav: 'password' | 'email' | 'delete' | 'profile'): void {
         this.activeNavLink = nav;
         this.checkProvider();
     }
