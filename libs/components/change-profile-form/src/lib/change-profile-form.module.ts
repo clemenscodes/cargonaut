@@ -7,9 +7,14 @@ import {
     FontAwesomeModule,
     FaIconLibrary,
 } from '@fortawesome/angular-fontawesome';
-
+import { UploadModule } from '@upload';
 @NgModule({
-    imports: [CommonModule, ReactiveFormsModule, FontAwesomeModule],
+    imports: [
+        CommonModule,
+        ReactiveFormsModule,
+        FontAwesomeModule,
+        UploadModule,
+    ],
     declarations: [ChangeProfileFormComponent],
     exports: [ChangeProfileFormComponent],
 })

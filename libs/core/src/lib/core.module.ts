@@ -14,6 +14,9 @@ import { OfferModule } from '@offer';
 import { HomeModule } from '@home';
 import { RequestModule } from '@request';
 import { VehicleModule } from '@vehicle';
+import { UploadModule } from '@upload';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 @NgModule({
     exports: [
         BrowserModule,
@@ -28,6 +31,9 @@ import { VehicleModule } from '@vehicle';
         FooterModule,
         RegisterModule,
         HeaderModule,
+        UploadModule,
+        AngularFirestoreModule,
+        AngularFireStorageModule,
         FontAwesomeModule,
         OfferModule,
         BrowserAnimationsModule,

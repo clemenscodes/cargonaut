@@ -48,7 +48,6 @@ export class ProfileComponent implements OnInit, OnDestroy {
         private authService: AuthService,
         private alertService: AlertService,
         private router: Router
-
     ) {}
     /**
      * Change password of user

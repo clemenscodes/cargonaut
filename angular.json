@@ -389,6 +389,32 @@
             },
             "tags": []
         },
+        "directives": {
+            "projectType": "library",
+            "root": "libs/directives",
+            "sourceRoot": "libs/directives/src",
+            "prefix": "cargonaut",
+            "architect": {
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "outputs": ["coverage/libs/directives"],
+                    "options": {
+                        "jestConfig": "libs/directives/jest.config.js",
+                        "passWithNoTests": true
+                    }
+                },
+                "lint": {
+                    "builder": "@nrwl/linter:eslint",
+                    "options": {
+                        "lintFilePatterns": [
+                            "libs/directives/src/**/*.ts",
+                            "libs/directives/src/**/*.html"
+                        ]
+                    }
+                }
+            },
+            "tags": []
+        },
         "email-form": {
             "projectType": "library",
             "root": "libs/components/email-form",
@@ -721,6 +747,32 @@
                         "lintFilePatterns": [
                             "libs/services/src/**/*.ts",
                             "libs/services/src/**/*.html"
+                        ]
+                    }
+                }
+            },
+            "tags": []
+        },
+        "upload": {
+            "projectType": "library",
+            "root": "libs/components/upload",
+            "sourceRoot": "libs/components/upload/src",
+            "prefix": "cargonaut",
+            "architect": {
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "outputs": ["coverage/libs/components/upload"],
+                    "options": {
+                        "jestConfig": "libs/components/upload/jest.config.js",
+                        "passWithNoTests": true
+                    }
+                },
+                "lint": {
+                    "builder": "@nrwl/linter:eslint",
+                    "options": {
+                        "lintFilePatterns": [
+                            "libs/components/upload/src/**/*.ts",
+                            "libs/components/upload/src/**/*.html"
                         ]
                     }
                 }

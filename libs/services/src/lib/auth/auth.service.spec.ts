@@ -34,7 +34,7 @@ describe('AuthServiceService', () => {
         confirmPasswordReset: jest.fn(),
         signOut: jest.fn(),
     };
-    const userDocEditMock= {
+    const userDocEditMock = {
         update: jest.fn().mockReturnValue(mockUser),
         delete: jest.fn().mockReturnValue(mockUser),
     };
@@ -146,7 +146,7 @@ describe('AuthServiceService', () => {
     it('should delete authenticated user by call of deleteProfile', () => {
         const spy = jest
             .spyOn(angularFirestoreMock, 'collection')
-            .mockReturnValue(userDocMock)
+            .mockReturnValue(userDocMock);
         service.deleteProfile();
         expect(spy).toHaveBeenCalledTimes(1);
     });
