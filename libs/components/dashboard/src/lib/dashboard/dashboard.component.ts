@@ -9,7 +9,4 @@ import { OfferService } from '@services';
 })
 export class DashboardComponent {
     public faPlusCircle = faPlusCircle;
-
-  constructor() { }
-
 }
