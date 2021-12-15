@@ -14,6 +14,8 @@ import { OfferModule } from '@offer';
 import { HomeModule } from '@home';
 import { RequestModule } from '@request';
 import { VehicleModule } from '@vehicle';
+import { DashboardModule} from '@cargonaut/dashboard';
+
 @NgModule({
     exports: [
         BrowserModule,
@@ -31,6 +33,7 @@ import { VehicleModule } from '@vehicle';
         FontAwesomeModule,
         OfferModule,
         BrowserAnimationsModule,
+        DashboardModule
     ],
 })
 export class CoreModule {}
