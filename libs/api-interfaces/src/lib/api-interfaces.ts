@@ -122,3 +122,28 @@ export interface Vehicle {
     seats: number;
     volume: number;
 }
+
+export class Offer {
+    userId: string;
+    date: Timestamp;
+    price: number;
+    status: Status;
+    serviceKind: ServiceKind;
+    startCity: string;
+    targetCity: string;
+    seats: number;
+    volume: number;
+
+    constructor(userId: string, date: Timestamp, price: number, status: Status, serviceKind: ServiceKind,
+                startCity: string, targetCity: string, seats: number, volume: number) {
+        this.userId = userId;
+        this.date = date;
+        this.price = price;
+        this.status = status;
+        this.serviceKind = serviceKind;
+        this.startCity = startCity;
+        this.targetCity = targetCity;
+        this.seats = seats;
+        this.volume = volume;
+    }
+}

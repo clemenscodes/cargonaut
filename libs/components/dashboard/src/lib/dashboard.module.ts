@@ -5,6 +5,7 @@ import { DashboardRoutingModule } from './dashboard/dashboard-routing.module';
 import { MatTabsModule } from '@angular/material/tabs';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
+
 @NgModule({
     imports: [CommonModule,
         DashboardRoutingModule,
