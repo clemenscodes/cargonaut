@@ -103,13 +103,13 @@ export enum ServiceKind {
 }
 
 export enum VehicleKind {
-    mini = 'Miniwagen',
-    compact = 'Kompaktwagen',
-    combi = 'Kombi',
-    cabrio = 'Cabrio',
-    suv = 'SUV',
-    van = 'Van',
-    use = 'Nutzfahrzeug',
+    Miniwagen = 'Miniwagen',
+    Kompaktwagen = 'Kompaktwagen',
+    Kombi = 'Kombi',
+    Cabrio = 'Cabrio',
+    SUV = 'SUV',
+    Van = 'Van',
+    Nutzfahrzeug = 'Nutzfahrzeug',
 }
 
 export interface Vehicle {

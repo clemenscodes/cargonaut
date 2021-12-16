@@ -1,1 +1,33 @@
-<p>vehicle works!</p>
+<div class="vehicle">
+    <h1>Deine Fahrzeuge</h1>
+    <div *ngFor="let vehicle of this.vehicles | async" class="container">
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Foto</th>
+                        <th>Marke</th>
+                        <th>Art</th>
+                        <th>Baujahr</th>
+                        <th>Sitze</th>
+                        <th>Stauraum</th>
+                        <th>Bearbeiten</th>
+                        <th>Löschen</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>"Foto"</td>
+                        <td>{{vehicle.manufacturer}}</td>
+                        <td>{{vehicle.kind}}</td>
+                        <td>{{vehicle.constructionYear}}</td>
+                        <td>{{vehicle.seats}}</td>
+                        <td>{{vehicle.volume}} Liter</td>
+                        <td>"Edit-Button"</td>
+                        <td>"Delete-Button"</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
