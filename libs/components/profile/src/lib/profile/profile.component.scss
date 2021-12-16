@@ -6,6 +6,21 @@
     @include flex-center;
     width: 100%;
 }
+.profile-photo {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+.profile {
+    @include flex-center;
+    width: 100%;
+    img {
+        max-width: 10rem;
+        margin-top: 1.5rem;
+        border-radius: 5rem;
+        transform: scale(1.05);
+    }
+}
 .profile-container {
     position: relative;
     width: 100%;
@@ -40,7 +55,7 @@
     align-items: center;
     flex-direction: column;
     clip-path: circle(82.5% at 70% 9%);
-    padding: 2rem;
+    padding: 1rem;
     border-top-left-radius: 0.25rem;
     border-top-right-radius: 0.25rem;
     @include for-tablet-portrait-up {

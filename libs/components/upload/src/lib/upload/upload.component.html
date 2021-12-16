@@ -3,23 +3,8 @@
     cargonautDropZone
     (dropped)="this.uploadService.startUpload($event)"
 >
-    <h3>Profilbild</h3>
+    <h3>Profilbild wählen</h3>
     <div class="file">
-        <label class="file-label">
-            <input
-                type="file"
-                (change)="this.uploadService.startUpload($event)"
-            />
-            <span class="file-cta">
-                <span class="file-icon">
-                    <i class="fa fa-upload"></i>
-                </span>
-                <span class="file-label"></span>
-            </span>
-        </label>
+        <input id="upload" type="file" (change)="this.uploadService.startUpload($event)" />
     </div>
-    <div *ngIf="this.uploadService.snapshot | async as snap">
-        {{ snap.bytesTransferred }} of {{ snap.totalBytes }} bytes
-    </div>
-
 </div>

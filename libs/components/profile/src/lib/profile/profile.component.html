@@ -12,8 +12,7 @@
                                     : user?.displayName
                             }}
                         </p>
-
-                        <div *ngIf="authService.profileData">
+                        <div *ngIf="authService.profileData !== undefined" class="profile-photo">
                             <img [src]="authService.profileData.photoURL" alt="Profilbild" />
                         </div>
                     </div>

@@ -50,8 +50,13 @@ export class ProfileComponent implements OnInit, OnDestroy {
         private alertService: AlertService,
         public uploadService: UploadService,
         private router: Router
-    ) {}
-    /**
+    ) {
+        const url = this.authService.profileData?.photoURL;
+        if (url) {
+            this.profilePhotoUrl = url;
+        }
+    }
+    /*
      * Change password of user
      *
      * @param data {ChangePasswordData} Data required to change password
