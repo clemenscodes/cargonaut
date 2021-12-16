@@ -13,14 +13,15 @@
                             }}
                         </p>
                         <div
-                            *ngIf="authService.profileData !== undefined"
+                            *ngIf="
+                                authService.profileData?.photoURL !== undefined;
+                                else NoPicture
+                            "
                             class="profile-photo"
                         >
-                            <img
-                                [src]="authService.profileData.photoURL"
-                                alt="Profilbild"
-                            />
+                            <img [src]="authService.profileData?.photoURL" />
                         </div>
+                        <ng-template #NoPicture></ng-template>
                     </div>
                 </div>
                 <div class="profile-user-info">

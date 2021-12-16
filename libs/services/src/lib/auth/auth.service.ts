@@ -13,7 +13,6 @@ import {
 } from 'firebase/auth';
 import { User } from '@api-interfaces';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { Router } from '@angular/router';
 
 @Injectable({
     providedIn: 'root',
@@ -43,7 +42,6 @@ export class AuthService {
     constructor(
         private auth: AngularFireAuth,
         private afs: AngularFirestore,
-        private router: Router
     ) {
         this.auth.authState.subscribe(async (user) => {
             if (user) {
@@ -258,12 +256,11 @@ export class AuthService {
      */
     async logout(): Promise<void> {
         localStorage.clear();
-        this.router.navigate(['/']);
         await this.auth.signOut();
     }
 
     async getProfileData() {
-        const user = getAuth().currentUser;
+        const user = this.getCurrentUser();
         if (!user) {
             return;
         }

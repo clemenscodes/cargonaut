@@ -116,7 +116,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
         this.loading = true;
         try {
             await this.authService.deleteProfile();
-            await this.router.navigate(['/home']);
+            await this.router.navigate(['/']);
             this.alertService.addAlert({
                 type: 'success',
                 message: 'Profil erfolgreich gelöscht',
