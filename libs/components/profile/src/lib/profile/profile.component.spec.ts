@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ProfileComponent } from './profile.component';
 import { of } from 'rxjs';
 import { ProfileModule } from '../profile.module';
-import { AuthService } from '@services';
+import { AuthService, UploadService } from '@services';
 import { Location } from '@angular/common';
 import { RouterTestingModule } from '@angular/router/testing';
 
@@ -38,11 +38,13 @@ describe('ProfileComponent', () => {
         getCurrentUser: jest.fn().mockReturnValue(mockUser),
         getProfileData: jest.fn().mockReturnValue(mockProfileData),
     };
+    const uploadServiceMock = {};
     beforeEach(async () => {
         await TestBed.configureTestingModule({
             providers: [
                 AuthService,
                 { provide: AuthService, useValue: authServiceMock },
+                { provide: UploadService, useValue: uploadServiceMock },
             ],
             imports: [ProfileModule, RouterTestingModule.withRoutes([])],
         }).compileComponents();

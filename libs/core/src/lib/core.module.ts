@@ -14,6 +14,9 @@ import { OfferModule } from '@offer';
 import { HomeModule } from '@home';
 import { RequestModule } from '@request';
 import { VehicleModule } from '@vehicle';
+import { UploadModule } from '@upload';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { DashboardModule} from '@cargonaut/dashboard';
 
 @NgModule({
@@ -30,6 +33,9 @@ import { DashboardModule} from '@cargonaut/dashboard';
         FooterModule,
         RegisterModule,
         HeaderModule,
+        UploadModule,
+        AngularFirestoreModule,
+        AngularFireStorageModule,
         FontAwesomeModule,
         OfferModule,
         BrowserAnimationsModule,

@@ -1,0 +1,14 @@
+<div
+    class="dropzone"
+    cargonautDropZone
+    (dropped)="this.uploadService.startUpload($event)"
+>
+    <h3>Profilbild wählen</h3>
+    <div class="file">
+        <input
+            id="upload"
+            type="file"
+            (change)="this.uploadService.startUpload($event)"
+        />
+    </div>
+</div>

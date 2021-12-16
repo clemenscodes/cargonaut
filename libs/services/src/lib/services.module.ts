@@ -15,8 +15,18 @@ import {
     AngularFireAuth,
     AngularFireAuthModule,
 } from '@angular/fire/compat/auth';
+import {
+    AngularFireStorage,
+    AngularFireStorageModule,
+} from '@angular/fire/compat/storage';
+import { UploadService } from './upload/upload.service';
 @NgModule({
-    imports: [CommonModule, AngularFireAuthModule, AngularFirestoreModule],
+    imports: [
+        CommonModule,
+        AngularFireAuthModule,
+        AngularFirestoreModule,
+        AngularFireStorageModule,
+    ],
     providers: [
         AlertService,
         AuthService,
@@ -24,10 +34,16 @@ import {
         DriverService,
         OfferService,
         AngularFirestore,
+        AngularFireStorage,
         RatingService,
         RequestService,
+        UploadService,
         VehicleService,
     ],
-    exports: [AngularFireAuthModule, AngularFirestoreModule],
+    exports: [
+        AngularFireAuthModule,
+        AngularFirestoreModule,
+        AngularFireStorageModule,
+    ],
 })
 export class ServicesModule {}

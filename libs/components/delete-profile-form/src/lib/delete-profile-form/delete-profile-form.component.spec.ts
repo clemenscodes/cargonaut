@@ -27,5 +27,5 @@ describe('DeleteProfileFormComponent', () => {
         jest.spyOn(component.deleteProfileEvent, 'emit');
         component.deleteProfile();
         expect(component.deleteProfileEvent.emit).toHaveBeenCalled();
-    })
+    });
 });

@@ -6,3 +6,4 @@ export * from './lib/offer/offer.service';
 export * from './lib/rating/rating.service';
 export * from './lib/request/request.service';
 export * from './lib/vehicle/vehicle.service';
+export * from './lib/upload/upload.service';

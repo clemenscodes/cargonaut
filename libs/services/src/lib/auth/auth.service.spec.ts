@@ -34,9 +34,17 @@ describe('AuthServiceService', () => {
         confirmPasswordReset: jest.fn(),
         signOut: jest.fn(),
     };
-    const userDocEditMock= {
+    const dataMock = {
+        data: jest.fn(),
+    };
+    const refMock = {
+        get: jest.fn().mockResolvedValue(dataMock),
+    };
+    const userDocEditMock = {
+        ref: refMock,
+        get: jest.fn().mockReturnValue(mockUser),
         update: jest.fn().mockReturnValue(mockUser),
-        delete: jest.fn().mockReturnValue(mockUser),
+        delete: jest.fn(),
     };
     const userDocMock = {
         doc: jest.fn().mockReturnValue(userDocEditMock),
@@ -143,11 +151,9 @@ describe('AuthServiceService', () => {
         expect(spy).toHaveBeenCalledTimes(1);
     });
 
-    it('should delete authenticated user by call of deleteProfile', () => {
-        const spy = jest
-            .spyOn(angularFirestoreMock, 'collection')
-            .mockReturnValue(userDocMock)
+    it('should logout authenticated user by call of deleteProfile', () => {
+        const spy = jest.spyOn(angularFireAuthMock, 'signOut');
         service.deleteProfile();
-        expect(spy).toHaveBeenCalledTimes(1);
+        expect(spy).toHaveBeenCalledTimes(2);
     });
 });
