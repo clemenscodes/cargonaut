@@ -39,17 +39,17 @@ export class UploadService {
                     if (snap?.bytesTransferred === snap?.totalBytes) {
                         if (snap) {
                             const user = this.authService.getCurrentUser();
-                            user.uid;
+                            await this.afs.collection('photos').add({
+                                path,
+                                size: snap?.totalBytes,
+                            });
+                            const url = await this.getUrl(snap);
                             await this.afs
-                                .collection('users')
+                                .collection('/users')
                                 .doc(user.uid)
                                 .update({
-                                    photo: {
-                                        path,
-                                        size: snap?.totalBytes,
-                                    },
+                                    photoURL: url,
                                 });
-                            this.getUrl(snap);
                         }
                     }
                 })
@@ -61,5 +61,6 @@ export class UploadService {
         const url = await snap.ref.getDownloadURL();
         this.url = url; //store the URL
         console.log(this.url);
+        return url;
     }
 }

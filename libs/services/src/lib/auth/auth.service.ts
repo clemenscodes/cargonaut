@@ -23,7 +23,7 @@ export class AuthService {
      * Firebase user object
      */
     user: firebase.User | null = null;
-    profileData: User | null = null;
+    profileData: User | undefined;
     /**
      * Auth state Subject
      * @private
@@ -50,6 +50,7 @@ export class AuthService {
                 this.user = user;
                 const token = await user.getIdToken(true);
                 localStorage.setItem('idToken', token);
+                this.profileData = await this.getProfileData();
                 this.authState.next(user);
             } else {
                 this.user = null;
@@ -60,7 +61,7 @@ export class AuthService {
     }
 
     /**
-     * Creates new user with email and password and sends email verification link
+     *gCreates new user with email and password and sends email verification link
      *
      * @param email {string} The email of the user
      * @param password {string} The password of the user
@@ -81,18 +82,19 @@ export class AuthService {
             await userCredential.user.sendEmailVerification();
             const token = await userCredential.user.getIdToken(true);
             localStorage.setItem('idToken', token);
-            const { emailVerified, uid } = userCredential.user;
+            const { emailVerified, uid, photoURL } = userCredential.user;
             const user = {
                 uid,
                 email,
                 emailVerified,
+                photoURL,
                 displayName,
                 firstName,
                 lastName,
                 birthDate,
                 rating: 0,
             };
-            return await this.afs.collection(`users`).doc(uid).update(user);
+            return await this.afs.collection(`/users`).doc(uid).update(user);
         }
     }
 
@@ -254,40 +256,21 @@ export class AuthService {
         this.router.navigate(['/']);
         await this.auth.signOut();
     }
-    getProfileData() {
-        this.authState$.subscribe((user) => {
-            if (user) {
-                this.user = user;
-                if (this.user) {
-                    const uid = this.user.uid;
-                    this.afs
-                        .doc(`users/${uid}`)
-                        .get()
-                        .subscribe((snapshot) => {
-                            if (snapshot) {
-                                if (snapshot.exists) {
-                                    const user: User = {
-                                        uid: snapshot.get('uid'),
-                                        email: snapshot.get('uid'),
-                                        firstName: snapshot.get('firstName'),
-                                        lastName: snapshot.get('lastName'),
-                                        birthDate: snapshot.get('birthDate'),
-                                        displayName:
-                                            snapshot.get('displayName'),
-                                        emailVerified:
-                                            snapshot.get('emailVerified'),
-                                        photoURL: snapshot.get('photoURL'),
-                                    };
-                                    this.profileData = user;
-                                    console.log(user);
-                                }
-                            }
-                        });
-                } else {
-                    this.profileData = null;
-                }
-            }
-        });
+
+    async getProfileData() {
+        const user = getAuth().currentUser;
+        if (!user) {
+            return;
+        }
+        return await this.afs
+            .collection<User>('/users')
+            .doc(user.uid)
+            .ref.get()
+            .then((user) => {
+                const data = user.data();
+                console.log(data);
+                return data
+            });
     }
 
     /**

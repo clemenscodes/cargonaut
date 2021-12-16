@@ -46,7 +46,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
      * @param router {Router}
      */
     constructor(
-        private authService: AuthService,
+        public authService: AuthService,
         private alertService: AlertService,
         public uploadService: UploadService,
         private router: Router
