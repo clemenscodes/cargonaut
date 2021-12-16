@@ -5,7 +5,7 @@ import {
     AngularFireUploadTask,
 } from '@angular/fire/compat/storage';
 import { UploadTaskSnapshot } from '@angular/fire/compat/storage/interfaces';
-import { Observable, tap } from 'rxjs';
+import { AlertService } from '../alert/alert.service';
 import { AuthService } from '../auth/auth.service';
 
 @Injectable({
@@ -17,13 +17,13 @@ export class UploadService {
     url = '';
     constructor(
         private authService: AuthService,
+        private alertService: AlertService,
         private storage: AngularFireStorage,
         private afs: AngularFirestore
     ) {}
     task!: AngularFireUploadTask;
-    snapshot!: Observable<UploadTaskSnapshot | undefined>;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    async startUpload(event: any) {
+    startUpload(event: any) {
         this.file = event.target.files[0];
         if (this.file) {
             if (this.file.type.split('/')[0] !== 'image') {
@@ -34,26 +34,25 @@ export class UploadService {
                 this.file.name
             }`;
             this.task = this.storage.ref(path).put(this.file);
-            this.snapshot = this.task.snapshotChanges().pipe(
-                tap(async (snap) => {
-                    if (snap?.bytesTransferred === snap?.totalBytes) {
-                        if (snap) {
-                            const user = this.authService.getCurrentUser();
-                            await this.afs.collection('photos').add({
-                                path,
-                                size: snap?.totalBytes,
-                            });
-                            const url = await this.getUrl(snap);
-                            await this.afs
-                                .collection('/users')
-                                .doc(user.uid)
-                                .update({
-                                    photoURL: url,
-                                });
-                        }
-                    }
-                })
-            );
+            this.task.snapshotChanges().subscribe(async (snap) => {
+                if (snap && snap?.bytesTransferred === snap?.totalBytes) {
+                    const user = this.authService.getCurrentUser();
+                    await this.afs.collection('/photos').add({
+                        path,
+                        size: snap.totalBytes,
+                    });
+                    const url = await this.getUrl(snap);
+                    console.log(url);
+                    this.afs.collection('/users').doc(user.uid).update({
+                        photoURL: url,
+                    });
+                    location.reload();
+                    this.alertService.addAlert({
+                        type: 'success',
+                        message: 'Profilfoto erfolgreich hinzugefügt',
+                    });
+                }
+            });
         }
     }
 

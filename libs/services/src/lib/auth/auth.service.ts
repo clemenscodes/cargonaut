@@ -268,7 +268,6 @@ export class AuthService {
             .ref.get()
             .then((user) => {
                 const data = user.data();
-                console.log(data);
                 return data
             });
     }
