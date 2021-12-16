@@ -10,7 +10,7 @@ import { map, Observable } from 'rxjs';
 })
 export class OfferService {
     offersCollection: AngularFirestoreCollection<Offer> =
-        this.afs.collection<Offer>('offers');
+        this.afs.collection<Offer>('offers', (ref) => ref.limit(5));
     offers: Observable<Offer[]>;
     constructor(public afs: AngularFirestore) {
         this.offers = this.offersCollection.snapshotChanges().pipe(
