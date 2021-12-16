@@ -13,4 +13,13 @@ export class VehicleComponent {
     constructor(public vehicleService: VehicleService) {
         this.vehicles = this.vehicleService.vehicles.pipe();
     }
+    addVehicle() {
+        console.log('addVehicle');
+    }
+    editVehicle() {
+        console.log('editVehicle');
+    }
+    deleteVehicle() {
+        console.log('deleteVehicle');
+    }
 }

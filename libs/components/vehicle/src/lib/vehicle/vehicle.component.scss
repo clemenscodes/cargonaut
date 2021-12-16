@@ -1,5 +1,4 @@
 @import '../../../../../../apps/cargonaut/src/styles/variables';
-@import '../../../../../../apps/cargonaut/src/styles/mixins';
 
 .vehicle {
     background: $white;
@@ -40,6 +39,17 @@
                     padding: 1rem;
                     padding-bottom: 2rem;
                     margin: 1rem;
+                    img {
+                        max-width: 5rem;
+                        max-height: 5rem;
+                        margin-left: 2rem;
+                    }
+                    fa-icon[icon='trash'] {
+                        color: rgb(190, 15, 23)
+                    }
+                    fa-icon {
+                        cursor: pointer;
+                    }
                 }
             }
         }

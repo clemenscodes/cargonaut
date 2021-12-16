@@ -17,14 +17,31 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>"Foto"</td>
-                        <td>{{vehicle.manufacturer}}</td>
-                        <td>{{vehicle.kind}}</td>
-                        <td>{{vehicle.constructionYear}}</td>
-                        <td>{{vehicle.seats}}</td>
-                        <td>{{vehicle.volume}} Liter</td>
-                        <td>"Edit-Button"</td>
-                        <td>"Delete-Button"</td>
+                        <td
+                            *ngIf="
+                                vehicle.photoURL !== undefined;
+                                else noPicture
+                            "
+                        >
+                            <img
+                                [src]="vehicle.photoURL"
+                                alt="Foto des Autos"
+                            />
+                        </td>
+                        <ng-template #noPicture>
+                            <td>Kein Foto</td>
+                        </ng-template>
+                        <td>{{ vehicle.manufacturer }}</td>
+                        <td>{{ vehicle.kind }}</td>
+                        <td>{{ vehicle.constructionYear }}</td>
+                        <td>{{ vehicle.seats }}</td>
+                        <td>{{ vehicle.volume }} Liter</td>
+                        <td>
+                            <fa-icon (click)="editVehicle()" icon="pen" size="lg"></fa-icon>
+                        </td>
+                        <td>
+                            <fa-icon (click)="deleteVehicle()" icon="trash" size="lg"></fa-icon>
+                        </td>
                     </tr>
                 </tbody>
             </table>
