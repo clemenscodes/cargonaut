@@ -13,7 +13,6 @@ import {
 } from 'firebase/auth';
 import { User } from '@api-interfaces';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { Router } from '@angular/router';
 
 @Injectable({
     providedIn: 'root',
@@ -23,7 +22,7 @@ export class AuthService {
      * Firebase user object
      */
     user: firebase.User | null = null;
-    profileData: User | null = null;
+    profileData: User | undefined;
     /**
      * Auth state Subject
      * @private
@@ -43,13 +42,13 @@ export class AuthService {
     constructor(
         private auth: AngularFireAuth,
         private afs: AngularFirestore,
-        private router: Router
     ) {
         this.auth.authState.subscribe(async (user) => {
             if (user) {
                 this.user = user;
                 const token = await user.getIdToken(true);
                 localStorage.setItem('idToken', token);
+                this.profileData = await this.getProfileData();
                 this.authState.next(user);
             } else {
                 this.user = null;
@@ -60,7 +59,7 @@ export class AuthService {
     }
 
     /**
-     * Creates new user with email and password and sends email verification link
+     *gCreates new user with email and password and sends email verification link
      *
      * @param email {string} The email of the user
      * @param password {string} The password of the user
@@ -92,7 +91,13 @@ export class AuthService {
                 birthDate,
                 rating: 0,
             };
-            return await this.afs.collection(`/users`).doc(uid).update(user);
+            const doc = (
+                await this.afs.collection(`/users`).doc<User>(uid).ref.get()
+            ).data();
+            if (doc) {
+                this.afs.collection(`/users`).doc(uid).update(user);
+            }
+            return;
         }
     }
 
@@ -251,43 +256,22 @@ export class AuthService {
      */
     async logout(): Promise<void> {
         localStorage.clear();
-        this.router.navigate(['/']);
         await this.auth.signOut();
     }
-    getProfileData() {
-        this.authState$.subscribe((user) => {
-            if (user) {
-                this.user = user;
-                if (this.user) {
-                    const uid = this.user.uid;
-                    this.afs
-                        .doc(`users/${uid}`)
-                        .get()
-                        .subscribe((snapshot) => {
-                            if (snapshot) {
-                                if (snapshot.exists) {
-                                    const user: User = {
-                                        uid: snapshot.get('uid'),
-                                        email: snapshot.get('uid'),
-                                        firstName: snapshot.get('firstName'),
-                                        lastName: snapshot.get('lastName'),
-                                        birthDate: snapshot.get('birthDate'),
-                                        displayName:
-                                            snapshot.get('displayName'),
-                                        emailVerified:
-                                            snapshot.get('emailVerified'),
-                                        photoURL: snapshot.get('photoURL'),
-                                    };
-                                    this.profileData = user;
-                                    console.log(user);
-                                }
-                            }
-                        });
-                } else {
-                    this.profileData = null;
-                }
-            }
-        });
+
+    async getProfileData() {
+        const user = this.getCurrentUser();
+        if (!user) {
+            return;
+        }
+        return await this.afs
+            .collection<User>('/users')
+            .doc(user.uid)
+            .ref.get()
+            .then((user) => {
+                const data = user.data();
+                return data;
+            });
     }
 
     /**

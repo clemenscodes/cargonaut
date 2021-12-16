@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { AlertService, AuthService } from '@services';
+import { AlertService, AuthService, UploadService } from '@services';
 import { Subject } from 'rxjs';
 import firebase from 'firebase/compat/app';
 import { Router } from '@angular/router';
@@ -25,6 +25,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
      * The current authenticated user
      */
     user: firebase.User | null = null;
+    profilePhotoUrl!: string;
     /**
      * The current selected nav
      */
@@ -45,12 +46,17 @@ export class ProfileComponent implements OnInit, OnDestroy {
      * @param router {Router}
      */
     constructor(
-        private authService: AuthService,
+        public authService: AuthService,
         private alertService: AlertService,
+        public uploadService: UploadService,
         private router: Router
-
-    ) {}
-    /**
+    ) {
+        const url = this.authService.profileData?.photoURL;
+        if (url) {
+            this.profilePhotoUrl = url;
+        }
+    }
+    /*
      * Change password of user
      *
      * @param data {ChangePasswordData} Data required to change password
@@ -110,7 +116,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
         this.loading = true;
         try {
             await this.authService.deleteProfile();
-            await this.router.navigate(['/home']);
+            await this.router.navigate(['/']);
             this.alertService.addAlert({
                 type: 'success',
                 message: 'Profil erfolgreich gelöscht',
