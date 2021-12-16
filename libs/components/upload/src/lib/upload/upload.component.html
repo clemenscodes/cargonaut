@@ -5,8 +5,10 @@
 >
     <h3>Profilbild wählen</h3>
     <div class="file">
-        <label for="upload">
-        <input id="upload" type="file" (change)="this.uploadService.startUpload($event)" />
-        </label>
+        <input
+            id="upload"
+            type="file"
+            (change)="this.uploadService.startUpload($event)"
+        />
     </div>
 </div>

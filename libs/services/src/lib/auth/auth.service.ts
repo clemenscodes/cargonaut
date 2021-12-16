@@ -268,7 +268,7 @@ export class AuthService {
             .ref.get()
             .then((user) => {
                 const data = user.data();
-                return data
+                return data;
             });
     }
 

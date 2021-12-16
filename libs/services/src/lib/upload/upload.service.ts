@@ -47,13 +47,13 @@ export class UploadService {
                         photoURL: url,
                     });
                     location.reload();
-                    this.alertService.addAlert({
-                        type: 'success',
-                        message: 'Profilfoto erfolgreich hinzugefügt',
-                    });
                 }
             });
         }
+        this.alertService.addAlert({
+            type: 'success',
+            message: 'Profilfoto erfolgreich hinzugefügt',
+        });
     }
 
     private async getUrl(snap: UploadTaskSnapshot) {

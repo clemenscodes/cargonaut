@@ -4,7 +4,7 @@ h3 {
 }
 .file {
     margin-top: 2rem;
-    input[type="file"]::file-selector-button {
+    input[type='file']::file-selector-button {
         font-size: 1rem;
         color: $white;
         background-color: $success;
@@ -20,4 +20,3 @@ h3 {
         }
     }
 }
-
