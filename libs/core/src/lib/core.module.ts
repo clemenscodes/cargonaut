@@ -17,6 +17,8 @@ import { VehicleModule } from '@vehicle';
 import { UploadModule } from '@upload';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { DashboardModule} from '@cargonaut/dashboard';
+
 @NgModule({
     exports: [
         BrowserModule,
@@ -37,6 +39,7 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
         FontAwesomeModule,
         OfferModule,
         BrowserAnimationsModule,
+        DashboardModule
     ],
 })
 export class CoreModule {}

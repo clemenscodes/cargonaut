@@ -27,6 +27,10 @@ const routes: Routes = [
         path: 'vehicle',
         loadChildren: () => import('@vehicle').then((m) => m.VehicleModule),
     },
+    {
+        path: 'dashboard',
+        loadChildren: () => import('@cargonaut/dashboard').then((m) => m.DashboardModule),
+    },
 ];
 
 @NgModule({
