@@ -5,21 +5,31 @@ import {
 } from '@angular/fire/compat/firestore';
 import { Vehicle } from '@api-interfaces';
 import { map, Observable } from 'rxjs';
+import { AuthService } from '../auth/auth.service';
 
 @Injectable({
     providedIn: 'root',
 })
 export class VehicleService {
     vehicles!: Observable<Vehicle[]>;
-    vehiclesCollection: AngularFirestoreCollection<Vehicle> =
-        this.afs.collection<Vehicle>('vehicles');
-    constructor(public afs: AngularFirestore) {
+    vehiclesCollection!: AngularFirestoreCollection<Vehicle>;
+    constructor(
+        private afs: AngularFirestore,
+        private authService: AuthService
+    ) {
+        const { uid } = this.authService.getCurrentUser();
+        this.vehiclesCollection = this.afs.collection<Vehicle>(
+            'vehicles',
+            (ref) => ref.where('userId', '==', uid)
+        );
         this.vehicles = this.vehiclesCollection.snapshotChanges().pipe(
             map((actions) =>
                 actions.map((a) => {
                     const data = a.payload.doc.data() as Vehicle;
                     const id = a.payload.doc.id;
-                    return { id, ...data };
+                    const vehicle = { id, ...data };
+                    console.log(vehicle);
+                    return vehicle;
                 })
             )
         );
