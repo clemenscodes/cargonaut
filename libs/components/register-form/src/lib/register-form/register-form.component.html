@@ -45,14 +45,21 @@
         </div>
     </div>
 
-    <div class="form-input">
-        <input
-            type="text"
-            formControlName="birthDate"
-            placeholder="Geburtsdatum"
-            required
-        />
-        <fa-icon icon="calendar-alt"></fa-icon>
+    <div class="date-picker">
+        <mat-form-field appearance="fill">
+            <mat-datepicker-toggle
+                matSuffix
+                [for]="picker"
+            ></mat-datepicker-toggle>
+            <input
+                matInput
+                [matDatepicker]="picker"
+                formControlName="birthDate"
+                placeholder="Geburtsdatum"
+                required
+            />
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
     </div>
 
     <div

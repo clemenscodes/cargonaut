@@ -1,1 +1,18 @@
 @import '_forms';
+
+fa-icon {
+        color: black;
+}
+mat-form-field {
+    input {
+        margin-top: 2rem;
+        margin-left: 0.4rem;
+        border: none;
+    }
+    mat-datepicker-toggle {
+        color: rgb(189, 0, 0);
+    }
+}
+.date-picker {
+    border-bottom: 1px solid $darkgreen
+}

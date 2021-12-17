@@ -8,7 +8,7 @@ import {
 } from "@angular/forms";
 import { AlertService, AuthService } from "@services";
 import { Router } from "@angular/router";
-import { NAME_REGEX, PASSWORD_REGEX, USERNAME_REGEX } from "@utils";
+import { DATE_REGEX, NAME_REGEX, PASSWORD_REGEX, USERNAME_REGEX } from "@utils";
 @Component({
     selector: "cargonaut-register-form",
     templateUrl: "./register-form.component.html",
@@ -47,7 +47,6 @@ export class RegisterFormComponent {
                 Validators.required,
             ]),
             birthDate: new FormControl("", [
-                // Validators.pattern(DATE_REGEX),
                 Validators.maxLength(10),
                 Validators.required,
             ]),
@@ -111,14 +110,21 @@ export class RegisterFormComponent {
      */
     async register(): Promise<void> {
         try {
+            console.log({
+                email: this.email.value,
+                bd: this.birthDate.value,
+                fn: this.firstName.value,
+                ln: this.lastName.value,
+                dn: this.displayName.value
+            })
             this.loading = true;
             await this.authService.register(
                 this.email.value,
                 this.password.value,
-                this.birthDate.value,
+                this.displayName.value,
                 this.firstName.value,
                 this.lastName.value,
-                this.displayName.value
+                this.birthDate.value,
             );
             this.loading = false;
             this.registerForm.reset();

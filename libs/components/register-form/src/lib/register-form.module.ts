@@ -3,6 +3,7 @@ import { CommonModule } from "@angular/common";
 import { RegisterFormComponent } from "./register-form/register-form.component";
 import { AlertModule } from "@alert";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { MatDatepickerModule } from "@angular/material/datepicker";
 import {
     FontAwesomeModule,
     FaIconLibrary,
@@ -18,6 +19,7 @@ import {
     faExclamationTriangle,
 } from "@fortawesome/free-solid-svg-icons";
 import { RouterModule } from "@angular/router";
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
     imports: [
@@ -26,6 +28,8 @@ import { RouterModule } from "@angular/router";
         ReactiveFormsModule,
         FontAwesomeModule,
         AlertModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
         RouterModule,
     ],
     declarations: [RegisterFormComponent],
