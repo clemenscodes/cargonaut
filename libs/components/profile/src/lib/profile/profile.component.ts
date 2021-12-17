@@ -1,19 +1,19 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { AlertService, AuthService, UploadService } from '@services';
-import { Subject } from 'rxjs';
-import firebase from 'firebase/compat/app';
-import { Router } from '@angular/router';
-import { takeUntil } from 'rxjs/operators';
+import { Component, OnDestroy, OnInit } from "@angular/core";
+import { AlertService, AuthService, UploadService } from "@services";
+import { Subject } from "rxjs";
+import firebase from "firebase/compat/app";
+import { Router } from "@angular/router";
+import { takeUntil } from "rxjs/operators";
 import {
     ChangeEmailData,
     ChangePasswordData,
     ChangeProfileData,
-} from '@api-interfaces';
+} from "@api-interfaces";
 
 @Component({
-    selector: 'cargonaut-profile',
-    templateUrl: './profile.component.html',
-    styleUrls: ['./profile.component.scss'],
+    selector: "cargonaut-profile",
+    templateUrl: "./profile.component.html",
+    styleUrls: ["./profile.component.scss"],
 })
 export class ProfileComponent implements OnInit, OnDestroy {
     /**
@@ -29,11 +29,11 @@ export class ProfileComponent implements OnInit, OnDestroy {
     /**
      * The current selected nav
      */
-    activeNavLink: 'password' | 'email' | 'delete' | 'profile' = 'profile';
+    activeNavLink: "password" | "email" | "delete" | "profile" = "profile";
     /**
      * User provider
      */
-    provider = '';
+    provider = "";
     /**
      * Loading state
      */
@@ -67,13 +67,13 @@ export class ProfileComponent implements OnInit, OnDestroy {
             await this.authService.reauthenticateUser(data.oldPassword);
             await this.authService.updatePassword(data.newPassword);
             this.alertService.addAlert({
-                type: 'success',
-                message: 'Passwort erfolgreich geändert',
+                type: "success",
+                message: "Passwort erfolgreich geändert",
             });
         } catch (e) {
             if (e instanceof Error) {
                 this.alertService.addAlert({
-                    type: 'error',
+                    type: "error",
                     message: e.message,
                 });
             }
@@ -93,14 +93,14 @@ export class ProfileComponent implements OnInit, OnDestroy {
             await this.authService.updateEmail(data.newEmail);
             await this.authService.sendEmailVerification();
             this.alertService.addAlert({
-                type: 'success',
+                type: "success",
                 message:
-                    'E-Mail erfolgreich geändert. Bitte bestätige deine neue E-Mail.',
+                    "E-Mail erfolgreich geändert. Bitte bestätige deine neue E-Mail.",
             });
         } catch (e) {
             if (e instanceof Error) {
                 this.alertService.addAlert({
-                    type: 'error',
+                    type: "error",
                     message: e.message,
                 });
             }
@@ -116,15 +116,15 @@ export class ProfileComponent implements OnInit, OnDestroy {
         this.loading = true;
         try {
             await this.authService.deleteProfile();
-            await this.router.navigate(['/']);
+            await this.router.navigate(["/"]);
             this.alertService.addAlert({
-                type: 'success',
-                message: 'Profil erfolgreich gelöscht',
+                type: "success",
+                message: "Profil erfolgreich gelöscht",
             });
         } catch (e) {
             if (e instanceof Error) {
                 this.alertService.addAlert({
-                    type: 'error',
+                    type: "error",
                     message: e.message,
                 });
             }
@@ -142,13 +142,13 @@ export class ProfileComponent implements OnInit, OnDestroy {
         try {
             await this.authService.updateProfile(data.displayName);
             this.alertService.addAlert({
-                type: 'success',
-                message: 'Profil erfolgreich bearbeitet',
+                type: "success",
+                message: "Profil erfolgreich bearbeitet",
             });
         } catch (e) {
             if (e instanceof Error) {
                 this.alertService.addAlert({
-                    type: 'error',
+                    type: "error",
                     message: e.message,
                 });
             }
@@ -161,7 +161,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
      *
      * @param nav {'password' | 'email' | 'delete' | 'profile} Active navigation
      */
-    setActiveLink(nav: 'password' | 'email' | 'delete' | 'profile'): void {
+    setActiveLink(nav: "password" | "email" | "delete" | "profile"): void {
         this.activeNavLink = nav;
         this.checkProvider();
     }

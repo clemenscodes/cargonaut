@@ -1,16 +1,16 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
 import {
     AngularFirestore,
     AngularFirestoreCollection,
-} from '@angular/fire/compat/firestore';
-import { Offer } from '@api-interfaces';
-import { map, Observable } from 'rxjs';
+} from "@angular/fire/compat/firestore";
+import { Offer } from "@api-interfaces";
+import { map, Observable } from "rxjs";
 @Injectable({
-    providedIn: 'root',
+    providedIn: "root",
 })
 export class OfferService {
     offersCollection: AngularFirestoreCollection<Offer> =
-        this.afs.collection<Offer>('offers', (ref) => ref.limit(5));
+        this.afs.collection<Offer>("offers", (ref) => ref.limit(5));
     offers: Observable<Offer[]>;
     constructor(public afs: AngularFirestore) {
         this.offers = this.offersCollection.snapshotChanges().pipe(

@@ -31,6 +31,20 @@
         <fa-icon icon="address-card"></fa-icon>
     </div>
 
+    <div
+        class="form-error"
+        *ngIf="
+            displayName.invalid && (displayName.dirty || displayName.touched)
+        "
+    >
+        <div class="form-error-message">
+            <p>
+                <fa-icon icon="exclamation-circle"></fa-icon>
+                Ungültiger Benutzername
+            </p>
+        </div>
+    </div>
+
     <div class="form-input">
         <input
             type="text"
@@ -39,6 +53,18 @@
             required
         />
         <fa-icon icon="calendar-alt"></fa-icon>
+    </div>
+
+    <div
+        class="form-error"
+        *ngIf="birthDate.invalid && (birthDate.dirty || birthDate.touched)"
+    >
+        <div class="form-error-message">
+            <p>
+                <fa-icon icon="exclamation-circle"></fa-icon>
+                Falsches Datum
+            </p>
+        </div>
     </div>
 
     <div class="form-input">
@@ -80,7 +106,23 @@
         <div class="form-error-message">
             <p>
                 <fa-icon icon="exclamation-circle"></fa-icon>
-                Das Passwort muss mindestens 6 Zeichen haben
+                Mindestens ein großer Buchstabe
+            </p>
+            <p>
+                <fa-icon icon="exclamation-circle"></fa-icon>
+                Mindestens ein kleiner Buchstabe
+            </p>
+            <p>
+                <fa-icon icon="exclamation-circle"></fa-icon>
+                Mindestens ein Sonderzeichen
+            </p>
+            <p>
+                <fa-icon icon="exclamation-circle"></fa-icon>
+                Mindestens 8 Zeichen
+            </p>
+            <p>
+                <fa-icon icon="exclamation-circle"></fa-icon>
+                Mindestens eine Zahl
             </p>
         </div>
     </div>

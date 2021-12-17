@@ -1,9 +1,9 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { VehicleModule } from '../vehicle.module';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
+import { VehicleModule } from "../vehicle.module";
 
-import { VehicleComponent } from './vehicle.component';
+import { VehicleComponent } from "./vehicle.component";
 
-describe('VehicleComponent', () => {
+describe("VehicleComponent", () => {
     let component: VehicleComponent;
     let fixture: ComponentFixture<VehicleComponent>;
 
@@ -19,7 +19,7 @@ describe('VehicleComponent', () => {
         fixture.detectChanges();
     });
 
-    it('should create', () => {
+    it("should create", () => {
         expect(component).toBeTruthy();
     });
 });

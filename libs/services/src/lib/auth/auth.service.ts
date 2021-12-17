@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { BehaviorSubject } from 'rxjs';
-import firebase from 'firebase/compat/app';
+import { Injectable } from "@angular/core";
+import { AngularFireAuth } from "@angular/fire/compat/auth";
+import { BehaviorSubject } from "rxjs";
+import firebase from "firebase/compat/app";
 import {
     getAuth,
     UserCredential,
@@ -10,12 +10,12 @@ import {
     updateEmail,
     updateProfile,
     sendEmailVerification,
-} from 'firebase/auth';
-import { User } from '@api-interfaces';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
+} from "firebase/auth";
+import { User } from "@api-interfaces";
+import { AngularFirestore } from "@angular/fire/compat/firestore";
 
 @Injectable({
-    providedIn: 'root',
+    providedIn: "root",
 })
 export class AuthService {
     /**
@@ -39,15 +39,12 @@ export class AuthService {
      * Constructor of auth service
      * @param auth {AngularFireAuth}
      */
-    constructor(
-        private auth: AngularFireAuth,
-        private afs: AngularFirestore,
-    ) {
+    constructor(private auth: AngularFireAuth, private afs: AngularFirestore) {
         this.auth.authState.subscribe(async (user) => {
             if (user) {
                 this.user = user;
                 const token = await user.getIdToken(true);
-                localStorage.setItem('idToken', token);
+                localStorage.setItem("idToken", token);
                 this.profileData = await this.getProfileData();
                 this.authState.next(user);
             } else {
@@ -79,7 +76,7 @@ export class AuthService {
         if (userCredential.user) {
             await userCredential.user.sendEmailVerification();
             const token = await userCredential.user.getIdToken(true);
-            localStorage.setItem('idToken', token);
+            localStorage.setItem("idToken", token);
             const { emailVerified, uid } = userCredential.user;
             const user = {
                 uid,
@@ -96,6 +93,7 @@ export class AuthService {
             ).data();
             if (doc) {
                 this.afs.collection(`/users`).doc(uid).update(user);
+                await this.updateProfile(displayName);
             }
             return;
         }
@@ -114,7 +112,7 @@ export class AuthService {
         );
         if (user.user) {
             const token = await user.user.getIdToken(true);
-            localStorage.setItem('idToken', token);
+            localStorage.setItem("idToken", token);
         }
     }
 
@@ -127,7 +125,7 @@ export class AuthService {
         );
         if (user.user) {
             const token = await user.user.getIdToken(true);
-            localStorage.setItem('idToken', token);
+            localStorage.setItem("idToken", token);
         }
     }
 
@@ -174,7 +172,7 @@ export class AuthService {
     sendEmailVerification(): Promise<void> {
         const user = getAuth().currentUser;
         if (!user) {
-            throw new Error('Kein Benutzer gefunden');
+            throw new Error("Kein Benutzer gefunden");
         }
         return sendEmailVerification(user);
     }
@@ -185,10 +183,10 @@ export class AuthService {
      */
     async deleteProfile(): Promise<void> {
         if (!this.user) {
-            throw new Error('Kein Benutzer gefunden');
+            throw new Error("Kein Benutzer gefunden");
         }
         await this.logout();
-        return await this.afs.collection('/users').doc(this.user.uid).delete();
+        return await this.afs.collection("/users").doc(this.user.uid).delete();
     }
 
     /**
@@ -200,7 +198,7 @@ export class AuthService {
     updateProfile(displayName?: string): Promise<void> {
         const user = getAuth().currentUser;
         if (!user) {
-            throw new Error('Kein Benutzer gefunden');
+            throw new Error("Kein Benutzer gefunden");
         }
         return updateProfile(user, {
             displayName: displayName,
@@ -215,7 +213,7 @@ export class AuthService {
     updateEmail(newEmail: string): Promise<void> {
         const user = getAuth().currentUser;
         if (!user) {
-            throw new Error('Kein Benutzer gefunden');
+            throw new Error("Kein Benutzer gefunden");
         }
         return updateEmail(user, newEmail);
     }
@@ -228,7 +226,7 @@ export class AuthService {
     updatePassword(newPassword: string): Promise<void> {
         const user = getAuth().currentUser;
         if (!user) {
-            throw new Error('Kein Benutzer gefunden');
+            throw new Error("Kein Benutzer gefunden");
         }
         return updatePassword(user, newPassword);
     }
@@ -242,7 +240,7 @@ export class AuthService {
     reauthenticateUser(password: string): Promise<UserCredential> {
         const user = getAuth().currentUser;
         if (!user || !user.email) {
-            throw new Error('Keinen Benutzer gefunden');
+            throw new Error("Keinen Benutzer gefunden");
         }
         const credential = firebase.auth.EmailAuthProvider.credential(
             user.email,
@@ -265,7 +263,7 @@ export class AuthService {
             return;
         }
         return await this.afs
-            .collection<User>('/users')
+            .collection<User>("/users")
             .doc(user.uid)
             .ref.get()
             .then((user) => {
@@ -281,9 +279,9 @@ export class AuthService {
      */
     getCurrentUser(): User {
         if (this.user) {
-            const displayName = this.user.displayName || '';
-            const email = this.user.email || '';
-            const photoURL = this.user.photoURL || '';
+            const displayName = this.user.displayName || "";
+            const email = this.user.email || "";
+            const photoURL = this.user.photoURL || "";
             const emailVerified = this.user.emailVerified;
             return {
                 uid: this.user.uid,

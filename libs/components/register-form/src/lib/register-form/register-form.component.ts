@@ -1,17 +1,18 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
 import {
     AbstractControl,
     FormBuilder,
     FormControl,
     FormGroup,
     Validators,
-} from '@angular/forms';
-import { AlertService, AuthService } from '@services';
-import { Router } from '@angular/router';
+} from "@angular/forms";
+import { AlertService, AuthService } from "@services";
+import { Router } from "@angular/router";
+import { NAME_REGEX, PASSWORD_REGEX, USERNAME_REGEX } from "@utils";
 @Component({
-    selector: 'cargonaut-register-form',
-    templateUrl: './register-form.component.html',
-    styleUrls: ['./register-form.component.scss'],
+    selector: "cargonaut-register-form",
+    templateUrl: "./register-form.component.html",
+    styleUrls: ["./register-form.component.scss"],
 })
 export class RegisterFormComponent {
     /**
@@ -37,13 +38,28 @@ export class RegisterFormComponent {
         private router: Router
     ) {
         this.registerForm = this.fb.group({
-            firstName: new FormControl('', [Validators.required]),
-            lastName: new FormControl('', [Validators.required]),
-            birthDate: new FormControl('', [Validators.required]),
-            displayName: new FormControl('', [Validators.required]),
-            email: new FormControl('', [Validators.email, Validators.required]),
-            password: new FormControl('', [
-                Validators.minLength(6),
+            firstName: new FormControl("", [
+                Validators.pattern(NAME_REGEX),
+                Validators.required,
+            ]),
+            lastName: new FormControl("", [
+                Validators.pattern(NAME_REGEX),
+                Validators.required,
+            ]),
+            birthDate: new FormControl("", [
+                // Validators.pattern(DATE_REGEX),
+                Validators.maxLength(10),
+                Validators.required,
+            ]),
+            displayName: new FormControl("", [
+                Validators.maxLength(15),
+                Validators.pattern(USERNAME_REGEX),
+                Validators.required,
+            ]),
+            email: new FormControl("", [Validators.email, Validators.required]),
+            password: new FormControl("", [
+                Validators.minLength(8),
+                Validators.pattern(PASSWORD_REGEX),
                 Validators.required,
             ]),
         });
@@ -107,17 +123,17 @@ export class RegisterFormComponent {
             this.loading = false;
             this.registerForm.reset();
             this.alertService.addAlert({
-                type: 'success',
+                type: "success",
                 message:
-                    'Erfolgreich registriert und eingeloggt. Bitte bestätige deine E-Mail.',
+                    "Erfolgreich registriert und eingeloggt. Bitte bestätige deine E-Mail.",
             });
-            await this.router.navigate(['/profile']);
+            await this.router.navigate(["/profile"]);
         } catch (e) {
             if (e instanceof Error) {
                 this.loading = false;
                 this.registerForm.reset();
                 this.alertService.addAlert({
-                    type: 'error',
+                    type: "error",
                     message: e.message,
                 });
             }

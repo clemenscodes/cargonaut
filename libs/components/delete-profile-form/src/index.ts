@@ -1,1 +1,1 @@
-export * from './lib/delete-profile-form.module';
+export * from "./lib/delete-profile-form.module";

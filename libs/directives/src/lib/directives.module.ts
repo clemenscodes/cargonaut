@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { DropZoneDirective } from './drop-zone.directive';
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { DropZoneDirective } from "./drop-zone.directive";
 
 @NgModule({
     imports: [CommonModule],

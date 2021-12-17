@@ -1,15 +1,15 @@
-import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { DashboardComponent } from './dashboard.component';
+import { NgModule } from "@angular/core";
+import { RouterModule } from "@angular/router";
+import { DashboardComponent } from "./dashboard.component";
 import {
     redirectUnauthorizedTo,
     canActivate,
-} from '@angular/fire/compat/auth-guard';
+} from "@angular/fire/compat/auth-guard";
 
-const redirectUnauthenticatedToHome = () => redirectUnauthorizedTo(['/']);
+const redirectUnauthenticatedToHome = () => redirectUnauthorizedTo(["/"]);
 
 const route = {
-    path: 'dashboard',
+    path: "dashboard",
     component: DashboardComponent,
     ...canActivate(redirectUnauthenticatedToHome),
 };
@@ -17,7 +17,7 @@ const route = {
 const routes = [route];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+    imports: [RouterModule.forChild(routes)],
+    exports: [RouterModule],
 })
-export class DashboardRoutingModule { }
+export class DashboardRoutingModule {}

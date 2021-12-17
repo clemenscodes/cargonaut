@@ -47,6 +47,7 @@
             "@request": ["libs/components/request/src/index.ts"],
             "@services": ["libs/services/src/index.ts"],
             "@upload": ["libs/components/upload/src/index.ts"],
+            "@utils": ["libs/utils/src/index.ts"],
             "@vehicle": ["libs/components/vehicle/src/index.ts"]
         }
     },

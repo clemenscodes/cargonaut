@@ -1,20 +1,20 @@
-import { Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Injectable } from "@angular/core";
+import { AngularFirestore } from "@angular/fire/compat/firestore";
 import {
     AngularFireStorage,
     AngularFireUploadTask,
-} from '@angular/fire/compat/storage';
-import { UploadTaskSnapshot } from '@angular/fire/compat/storage/interfaces';
-import { AlertService } from '../alert/alert.service';
-import { AuthService } from '../auth/auth.service';
+} from "@angular/fire/compat/storage";
+import { UploadTaskSnapshot } from "@angular/fire/compat/storage/interfaces";
+import { AlertService } from "../alert/alert.service";
+import { AuthService } from "../auth/auth.service";
 
 @Injectable({
-    providedIn: 'root',
+    providedIn: "root",
 })
 export class UploadService {
-    private basePath = '/images';
+    private basePath = "/images";
     file!: File;
-    url = '';
+    url = "";
     constructor(
         private authService: AuthService,
         private alertService: AlertService,
@@ -26,8 +26,8 @@ export class UploadService {
     startUpload(event: any) {
         this.file = event.target.files[0];
         if (this.file) {
-            if (this.file.type.split('/')[0] !== 'image') {
-                console.error('Man kann nur Bilder hochladen.');
+            if (this.file.type.split("/")[0] !== "image") {
+                console.error("Man kann nur Bilder hochladen.");
                 return;
             }
             const path = `${this.basePath}/${new Date().getTime()}_${
@@ -37,13 +37,13 @@ export class UploadService {
             this.task.snapshotChanges().subscribe(async (snap) => {
                 if (snap && snap?.bytesTransferred === snap?.totalBytes) {
                     const user = this.authService.getCurrentUser();
-                    await this.afs.collection('/photos').add({
+                    await this.afs.collection("/photos").add({
                         path,
                         size: snap.totalBytes,
                     });
                     const url = await this.getUrl(snap);
                     console.log(url);
-                    this.afs.collection('/users').doc(user.uid).update({
+                    this.afs.collection("/users").doc(user.uid).update({
                         photoURL: url,
                     });
                     location.reload();
@@ -51,8 +51,8 @@ export class UploadService {
             });
         }
         this.alertService.addAlert({
-            type: 'success',
-            message: 'Profilfoto erfolgreich hinzugefügt',
+            type: "success",
+            message: "Profilfoto erfolgreich hinzugefügt",
         });
     }
 

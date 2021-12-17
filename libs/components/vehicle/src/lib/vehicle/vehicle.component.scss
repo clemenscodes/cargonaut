@@ -1,10 +1,10 @@
-@import '../../../../../../apps/cargonaut/src/styles/variables';
+@import "../../../../../../apps/cargonaut/src/styles/variables";
 
 .vehicle {
     background: $white;
     display: flex;
     flex-direction: column;
-    padding: 3rem;;
+    padding: 3rem;
     text-align: center;
     padding: 2rem;
     border-radius: 2px;
@@ -44,11 +44,14 @@
                         max-height: 5rem;
                         margin-left: 2rem;
                     }
-                    fa-icon[icon='trash'] {
-                        color: rgb(190, 15, 23)
+                    fa-icon[icon="trash"] {
+                        color: rgb(190, 15, 23);
                     }
                     fa-icon {
                         cursor: pointer;
+                        &:hover {
+                            filter: brightness(200%);
+                        }
                     }
                 }
             }

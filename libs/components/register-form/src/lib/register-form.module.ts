@@ -1,12 +1,12 @@
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RegisterFormComponent } from './register-form/register-form.component';
-import { AlertModule } from '@alert';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { RegisterFormComponent } from "./register-form/register-form.component";
+import { AlertModule } from "@alert";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import {
     FontAwesomeModule,
     FaIconLibrary,
-} from '@fortawesome/angular-fontawesome';
+} from "@fortawesome/angular-fontawesome";
 import {
     faEnvelope,
     faLock,
@@ -16,8 +16,8 @@ import {
     faCalendarAlt,
     faAddressCard,
     faExclamationTriangle,
-} from '@fortawesome/free-solid-svg-icons';
-import { RouterModule } from '@angular/router';
+} from "@fortawesome/free-solid-svg-icons";
+import { RouterModule } from "@angular/router";
 
 @NgModule({
     imports: [
