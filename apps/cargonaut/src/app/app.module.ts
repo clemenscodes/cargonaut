@@ -6,6 +6,7 @@ import { AppComponent } from "./app.component";
 import { AppRoutingModule } from "./app-routing.module";
 import { CoreModule } from "@core";
 import { environment } from "@env";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
     declarations: [AppComponent],
@@ -18,6 +19,7 @@ import { environment } from "@env";
             enabled: environment.production,
             registrationStrategy: "registerWhenStable:30000",
         }),
+        BrowserAnimationsModule,
     ],
     providers: [],
     bootstrap: [AppComponent],
