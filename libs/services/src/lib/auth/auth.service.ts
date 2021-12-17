@@ -93,7 +93,7 @@ export class AuthService {
                 await this.afs.collection(`/users`).doc<User>(uid).ref.get()
             ).data();
             if (doc) {
-                this.afs.collection(`/users`).doc(uid).update(user);
+                await this.afs.collection(`/users`).doc(uid).set(user);
             }
             return;
         }
