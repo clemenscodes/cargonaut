@@ -1,15 +1,15 @@
-import { TestBed } from '@angular/core/testing';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { AngularFireStorage } from '@angular/fire/compat/storage';
-import { AuthService } from '../auth/auth.service';
-import { UploadService } from './upload.service';
+import { TestBed } from "@angular/core/testing";
+import { AngularFirestore } from "@angular/fire/compat/firestore";
+import { AngularFireStorage } from "@angular/fire/compat/storage";
+import { AuthService } from "../auth/auth.service";
+import { UploadService } from "./upload.service";
 
-describe('UploadService', () => {
+describe("UploadService", () => {
     let service: UploadService;
     const mockUser = {
         user: {
-            email: 'email',
-            displayName: '',
+            email: "email",
+            displayName: "",
             sendEmailVerification: jest.fn(),
             getIdToken: jest.fn(),
         },
@@ -40,7 +40,7 @@ describe('UploadService', () => {
         service = TestBed.inject(UploadService);
     });
 
-    it('should be created', () => {
+    it("should be created", () => {
         expect(service).toBeTruthy();
     });
 });

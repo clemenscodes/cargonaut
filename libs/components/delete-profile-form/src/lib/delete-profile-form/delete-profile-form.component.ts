@@ -1,9 +1,9 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from "@angular/core";
 
 @Component({
-    selector: 'cargonaut-delete-profile-form',
-    templateUrl: './delete-profile-form.component.html',
-    styleUrls: ['./delete-profile-form.component.scss'],
+    selector: "cargonaut-delete-profile-form",
+    templateUrl: "./delete-profile-form.component.html",
+    styleUrls: ["./delete-profile-form.component.scss"],
 })
 export class DeleteProfileFormComponent {
     @Output() deleteProfileEvent = new EventEmitter();

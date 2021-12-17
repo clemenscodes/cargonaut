@@ -1,17 +1,17 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from "@angular/core";
 import {
     AbstractControl,
     FormBuilder,
     FormControl,
     FormGroup,
     Validators,
-} from '@angular/forms';
-import { ChangeProfileData } from '@api-interfaces';
+} from "@angular/forms";
+import { ChangeProfileData } from "@api-interfaces";
 
 @Component({
-    selector: 'cargonaut-change-profile-form',
-    templateUrl: './change-profile-form.component.html',
-    styleUrls: ['./change-profile-form.component.scss'],
+    selector: "cargonaut-change-profile-form",
+    templateUrl: "./change-profile-form.component.html",
+    styleUrls: ["./change-profile-form.component.scss"],
 })
 export class ChangeProfileFormComponent {
     /**
@@ -21,7 +21,7 @@ export class ChangeProfileFormComponent {
     /**
      * User display name
      */
-    @Input() userDisplayName: string | null = '';
+    @Input() userDisplayName: string | null = "";
     /**
      * Loading state
      */
@@ -39,7 +39,7 @@ export class ChangeProfileFormComponent {
      */
     constructor(private fb: FormBuilder) {
         this.changeProfileForm = this.fb.group({
-            displayName: new FormControl('', [
+            displayName: new FormControl("", [
                 Validators.maxLength(15),
                 Validators.required,
             ]),

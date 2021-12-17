@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
-import { AuthService } from '@services';
-import { Subscription } from 'rxjs';
+import { Component } from "@angular/core";
+import { AuthService } from "@services";
+import { Subscription } from "rxjs";
 
 @Component({
-    selector: 'cargonaut-footer',
-    templateUrl: './footer.component.html',
-    styleUrls: ['./footer.component.scss'],
+    selector: "cargonaut-footer",
+    templateUrl: "./footer.component.html",
+    styleUrls: ["./footer.component.scss"],
 })
 export class FooterComponent {
     /**

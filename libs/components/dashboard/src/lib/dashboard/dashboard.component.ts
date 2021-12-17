@@ -1,12 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { faPlusCircle } from '@fortawesome/free-solid-svg-icons/faPlusCircle';
-import { OfferService } from '@services';
+import { Component } from "@angular/core";
+import { faPlusCircle } from "@fortawesome/free-solid-svg-icons/faPlusCircle";
 
 @Component({
-  selector: 'cargonaut-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+    selector: "cargonaut-dashboard",
+    templateUrl: "./dashboard.component.html",
+    styleUrls: ["./dashboard.component.scss"],
 })
 export class DashboardComponent {
-    public faPlusCircle = faPlusCircle;
+    faPlusCircle = faPlusCircle;
 }

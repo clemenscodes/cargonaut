@@ -1,4 +1,4 @@
-import { Timestamp } from 'firebase-admin/firestore';
+import { Timestamp } from "firebase-admin/firestore";
 export interface Message {
     message: string;
 }
@@ -17,7 +17,7 @@ export interface Environment {
 }
 
 export interface Alert {
-    type: 'error' | 'success' | 'neutral' | 'warn';
+    type: "error" | "success" | "neutral" | "warn";
     message: string;
 }
 
@@ -42,7 +42,7 @@ export interface ChangeEmailData {
     newEmail: string;
 }
 export interface ChangeProfileData {
-    displayName?: string;
+    displayName: string;
     //photoURL?: string;
     //firstName?: string;
     //lastName?: string;
@@ -56,9 +56,9 @@ export interface Ratings {
 export type Rating = 1 | 2 | 3 | 4 | 5;
 
 export enum Status {
-    toBeStarted = 'toBeStarted',
-    started = 'started',
-    finishe = 'finished',
+    toBeStarted = "toBeStarted",
+    started = "started",
+    finishe = "finished",
 }
 
 export interface Request {
@@ -98,21 +98,22 @@ export interface Driver {
 }
 
 export enum ServiceKind {
-    taxi = 'Mitfahrgelegenheit',
-    transport = 'Transport',
+    taxi = "Mitfahrgelegenheit",
+    transport = "Transport",
 }
 
 export enum VehicleKind {
-    mini = 'Miniwagen',
-    compact = 'Kompaktwagen',
-    combi = 'Kombi',
-    cabrio = 'Cabrio',
-    suv = 'SUV',
-    van = 'Van',
-    use = 'Nutzfahrzeug',
+    Miniwagen = "Miniwagen",
+    Kompaktwagen = "Kompaktwagen",
+    Kombi = "Kombi",
+    Cabrio = "Cabrio",
+    SUV = "SUV",
+    Van = "Van",
+    Nutzfahrzeug = "Nutzfahrzeug",
 }
 
 export interface Vehicle {
+    photoURL: string;
     userId: string;
     mark: string;
     kind: VehicleKind;

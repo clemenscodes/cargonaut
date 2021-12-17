@@ -1,9 +1,9 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { DeleteProfileFormComponent } from './delete-profile-form.component';
-import { DeleteProfileFormModule } from '../delete-profile-form.module';
+import { DeleteProfileFormComponent } from "./delete-profile-form.component";
+import { DeleteProfileFormModule } from "../delete-profile-form.module";
 
-describe('DeleteProfileFormComponent', () => {
+describe("DeleteProfileFormComponent", () => {
     let component: DeleteProfileFormComponent;
     let fixture: ComponentFixture<DeleteProfileFormComponent>;
 
@@ -19,12 +19,12 @@ describe('DeleteProfileFormComponent', () => {
         fixture.detectChanges();
     });
 
-    it('should create', () => {
+    it("should create", () => {
         expect(component).toBeTruthy();
     });
 
-    it('should emit event on form submit', () => {
-        jest.spyOn(component.deleteProfileEvent, 'emit');
+    it("should emit event on form submit", () => {
+        jest.spyOn(component.deleteProfileEvent, "emit");
         component.deleteProfile();
         expect(component.deleteProfileEvent.emit).toHaveBeenCalled();
     });

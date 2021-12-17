@@ -1,1 +1,58 @@
-<p>vehicle works!</p>
+<div class="vehicle">
+    <h1>Deine Fahrzeuge</h1>
+    <div *ngFor="let vehicle of this.vehicles | async" class="container">
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Foto</th>
+                        <th>Marke</th>
+                        <th>Art</th>
+                        <th>Baujahr</th>
+                        <th>Sitze</th>
+                        <th>Stauraum</th>
+                        <th>Bearbeiten</th>
+                        <th>Löschen</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td
+                            *ngIf="
+                                vehicle.photoURL !== undefined;
+                                else noPicture
+                            "
+                        >
+                            <img
+                                [src]="vehicle.photoURL"
+                                alt="Foto des Autos"
+                            />
+                        </td>
+                        <ng-template #noPicture>
+                            <td>Kein Foto</td>
+                        </ng-template>
+                        <td>{{ vehicle.manufacturer }}</td>
+                        <td>{{ vehicle.kind }}</td>
+                        <td>{{ vehicle.constructionYear }}</td>
+                        <td>{{ vehicle.seats }}</td>
+                        <td>{{ vehicle.volume }} Liter</td>
+                        <td>
+                            <fa-icon
+                                (click)="editVehicle()"
+                                icon="pen"
+                                size="lg"
+                            ></fa-icon>
+                        </td>
+                        <td>
+                            <fa-icon
+                                (click)="deleteVehicle()"
+                                icon="trash"
+                                size="lg"
+                            ></fa-icon>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

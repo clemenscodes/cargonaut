@@ -1,16 +1,16 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { AuthService } from '@services';
-import { of } from 'rxjs';
-import { FooterModule } from '../footer.module';
-import { RouterTestingModule } from '@angular/router/testing';
-import { FooterComponent } from './footer.component';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
+import { AuthService } from "@services";
+import { of } from "rxjs";
+import { FooterModule } from "../footer.module";
+import { RouterTestingModule } from "@angular/router/testing";
+import { FooterComponent } from "./footer.component";
 
-describe('FooterComponent', () => {
+describe("FooterComponent", () => {
     let component: FooterComponent;
     let fixture: ComponentFixture<FooterComponent>;
     const mockUser = {
-        email: 'mail@example.com',
-        displayName: 'Max',
+        email: "mail@example.com",
+        displayName: "Max",
         emailVerified: false,
         photoURL: undefined,
     };
@@ -33,7 +33,7 @@ describe('FooterComponent', () => {
         fixture.detectChanges();
     });
 
-    it('should create', () => {
+    it("should create", () => {
         expect(component).toBeTruthy();
     });
 });

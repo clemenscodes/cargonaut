@@ -1,11 +1,11 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { ProfileComponent } from './profile/profile.component';
-import { ProfileRoutingModule } from './profile/profile-routing.module';
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { ProfileComponent } from "./profile/profile.component";
+import { ProfileRoutingModule } from "./profile/profile-routing.module";
 import {
     FontAwesomeModule,
     FaIconLibrary,
-} from '@fortawesome/angular-fontawesome';
+} from "@fortawesome/angular-fontawesome";
 import {
     faUser,
     faEnvelope,
@@ -15,12 +15,12 @@ import {
     faLock,
     faLink,
     faUserTag,
-} from '@fortawesome/free-solid-svg-icons';
-import { ChangePasswordFormModule } from '@change-password-form';
-import { ChangeEmailFormModule } from '@change-email-form';
-import { ChangeProfileFormModule } from '@change-profile-form';
-import { DeleteProfileFormModule } from '@delete-profile-form';
-import { UploadModule } from '@upload';
+} from "@fortawesome/free-solid-svg-icons";
+import { ChangePasswordFormModule } from "@change-password-form";
+import { ChangeEmailFormModule } from "@change-email-form";
+import { ChangeProfileFormModule } from "@change-profile-form";
+import { DeleteProfileFormModule } from "@delete-profile-form";
+import { UploadModule } from "@upload";
 
 @NgModule({
     imports: [

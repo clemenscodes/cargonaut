@@ -1,33 +1,33 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ProfileComponent } from './profile.component';
-import { of } from 'rxjs';
-import { ProfileModule } from '../profile.module';
-import { AuthService, UploadService } from '@services';
-import { Location } from '@angular/common';
-import { RouterTestingModule } from '@angular/router/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
+import { ProfileComponent } from "./profile.component";
+import { of } from "rxjs";
+import { ProfileModule } from "../profile.module";
+import { AuthService, UploadService } from "@services";
+import { Location } from "@angular/common";
+import { RouterTestingModule } from "@angular/router/testing";
 
-describe('ProfileComponent', () => {
+describe("ProfileComponent", () => {
     let component: ProfileComponent;
     let fixture: ComponentFixture<ProfileComponent>;
     const mockUser = {
-        email: 'mail@example.com',
-        displayName: 'Max',
+        email: "mail@example.com",
+        displayName: "Max",
         emailVerified: false,
         photoURL: undefined,
     };
     const mockProfileData = {
-        email: 'mail@example.com',
-        displayName: 'Max',
+        email: "mail@example.com",
+        displayName: "Max",
         emailVerified: false,
         photoURL: undefined,
-        firstName: 'Max',
-        lastName: 'Mustermann',
-        birthDate: '01.01.2000',
-        uid: 'kjaflafjlsjflasfljsflf',
+        firstName: "Max",
+        lastName: "Mustermann",
+        birthDate: "01.01.2000",
+        uid: "kjaflafjlsjflasfljsflf",
     };
     const authServiceMock = {
         user: {
-            providerData: [{ providerId: 'password' }],
+            providerData: [{ providerId: "password" }],
         },
         authState$: of(mockUser),
         reauthenticateUser: jest.fn(),
@@ -56,88 +56,88 @@ describe('ProfileComponent', () => {
         fixture.detectChanges();
     });
 
-    it('should create', () => {
+    it("should create", () => {
         expect(component).toBeTruthy();
     });
 
-    it('should subscribe to authState$ on init', () => {
-        const spy = jest.spyOn(authServiceMock['authState$'], 'subscribe');
+    it("should subscribe to authState$ on init", () => {
+        const spy = jest.spyOn(authServiceMock["authState$"], "subscribe");
         component.ngOnInit();
         expect(spy).toHaveBeenCalled();
     });
 
-    it('should get user on component init', () => {
+    it("should get user on component init", () => {
         component.ngOnInit();
         expect(component.user).toBe(mockUser);
     });
 
-    it('should render the display name of the user', () => {
+    it("should render the display name of the user", () => {
         const el: HTMLParagraphElement =
             fixture.debugElement.nativeElement.querySelector(
-                '.profile-user-name p'
+                ".profile-user-name p"
             );
         expect(el.textContent).toContain(component.user?.displayName);
     });
 
-    it('should render times circle icon if email not verified', () => {
+    it("should render times circle icon if email not verified", () => {
         const icon = fixture.debugElement.nativeElement.querySelector(
             'fa-icon[icon="times-circle"]'
         );
         expect(icon).not.toBeNull();
     });
 
-    it('should unsubscribe from observable on component destroy', () => {
-        jest.spyOn(component['destroy$'], 'complete');
+    it("should unsubscribe from observable on component destroy", () => {
+        jest.spyOn(component["destroy$"], "complete");
         component.ngOnDestroy();
-        expect(component['destroy$'].complete).toHaveBeenCalledTimes(1);
+        expect(component["destroy$"].complete).toHaveBeenCalledTimes(1);
     });
 
-    it('should check provider and set its id data', () => {
+    it("should check provider and set its id data", () => {
         component.checkProvider();
-        expect(component.provider).toEqual('password');
+        expect(component.provider).toEqual("password");
     });
 
-    it('should set the active nav link', () => {
-        component.setActiveLink('password');
-        expect(component.activeNavLink).toEqual('password');
+    it("should set the active nav link", () => {
+        component.setActiveLink("password");
+        expect(component.activeNavLink).toEqual("password");
     });
 
-    it('should call auth service to reauthenticate user before updating the password', () => {
-        const reAuthSpy = jest.spyOn(authServiceMock, 'reauthenticateUser');
+    it("should call auth service to reauthenticate user before updating the password", () => {
+        const reAuthSpy = jest.spyOn(authServiceMock, "reauthenticateUser");
         component.changePassword({
-            oldPassword: 'password',
-            newPassword: 'newPassword',
+            oldPassword: "password",
+            newPassword: "newPassword",
         });
         expect(reAuthSpy).toHaveBeenCalled();
     });
 
-    it('should call auth service to reauthenticate user before updating the email', () => {
-        const reAuthSpy = jest.spyOn(authServiceMock, 'reauthenticateUser');
+    it("should call auth service to reauthenticate user before updating the email", () => {
+        const reAuthSpy = jest.spyOn(authServiceMock, "reauthenticateUser");
         component.changeEmail({
-            password: 'password',
-            newEmail: 'test@example.com',
+            password: "password",
+            newEmail: "test@example.com",
         });
         expect(reAuthSpy).toHaveBeenCalled();
     });
 
-    it('should call auth service to update profile', () => {
-        const spy = jest.spyOn(authServiceMock, 'updateProfile');
+    it("should call auth service to update profile", () => {
+        const spy = jest.spyOn(authServiceMock, "updateProfile");
         component.changeProfile({
-            displayName: 'myName',
+            displayName: "myName",
         });
         expect(spy).toHaveBeenCalled();
     });
 
-    it('should call auth service to delete profile', () => {
-        const spy = jest.spyOn(authServiceMock, 'deleteProfile');
+    it("should call auth service to delete profile", () => {
+        const spy = jest.spyOn(authServiceMock, "deleteProfile");
         component.deleteProfile();
         expect(spy).toHaveBeenCalled();
     });
 
-    it('should route to /home after deleteProfile call', () => {
+    it("should route to /home after deleteProfile call", () => {
         const location = TestBed.inject(Location);
         component.deleteProfile().then(() => {
-            expect(location.path()).toBe('/');
+            expect(location.path()).toBe("/");
         });
     });
 });
