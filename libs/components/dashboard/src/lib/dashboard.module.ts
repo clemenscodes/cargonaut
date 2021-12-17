@@ -5,12 +5,14 @@ import { DashboardRoutingModule } from "./dashboard/dashboard-routing.module";
 import { MatTabsModule } from "@angular/material/tabs";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { MatDialogModule } from "@angular/material/dialog";
 
 @NgModule({
     imports: [
         CommonModule,
         DashboardRoutingModule,
         MatTabsModule,
+        MatDialogModule,
         FontAwesomeModule,
         BrowserAnimationsModule,
     ],
