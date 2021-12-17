@@ -4,7 +4,6 @@ import { AngularFireAuth } from "@angular/fire/compat/auth";
 import { RouterTestingModule } from "@angular/router/testing";
 import { of } from "rxjs";
 import { AngularFirestore } from "@angular/fire/compat/firestore";
-
 describe("AuthServiceService", () => {
     let service: AuthService;
     const email = "email";
@@ -33,6 +32,7 @@ describe("AuthServiceService", () => {
         applyActionCode: jest.fn(),
         confirmPasswordReset: jest.fn(),
         signOut: jest.fn(),
+        currentUser: jest.fn().mockResolvedValue(mockUser),
     };
     const dataMock = {
         data: jest.fn(),

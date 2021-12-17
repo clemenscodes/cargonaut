@@ -42,7 +42,7 @@ export interface ChangeEmailData {
     newEmail: string;
 }
 export interface ChangeProfileData {
-    displayName?: string;
+    displayName: string;
     //photoURL?: string;
     //firstName?: string;
     //lastName?: string;

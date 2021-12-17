@@ -8,7 +8,7 @@ import {
 } from "@angular/forms";
 import { AlertService, AuthService } from "@services";
 import { Router } from "@angular/router";
-import { DATE_REGEX, NAME_REGEX, PASSWORD_REGEX, USERNAME_REGEX } from "@utils";
+import { NAME_REGEX, PASSWORD_REGEX, USERNAME_REGEX } from "@utils";
 @Component({
     selector: "cargonaut-register-form",
     templateUrl: "./register-form.component.html",
@@ -115,8 +115,8 @@ export class RegisterFormComponent {
                 bd: this.birthDate.value,
                 fn: this.firstName.value,
                 ln: this.lastName.value,
-                dn: this.displayName.value
-            })
+                dn: this.displayName.value,
+            });
             this.loading = true;
             await this.authService.register(
                 this.email.value,
@@ -124,7 +124,7 @@ export class RegisterFormComponent {
                 this.displayName.value,
                 this.firstName.value,
                 this.lastName.value,
-                this.birthDate.value,
+                this.birthDate.value
             );
             this.loading = false;
             this.registerForm.reset();

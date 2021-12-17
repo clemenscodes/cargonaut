@@ -17,7 +17,7 @@ import { VehicleModule } from "@vehicle";
 import { UploadModule } from "@upload";
 import { AngularFirestoreModule } from "@angular/fire/compat/firestore";
 import { AngularFireStorageModule } from "@angular/fire/compat/storage";
-import { DashboardModule } from "@cargonaut/dashboard";
+import { DashboardModule } from "@dashboard";
 
 @NgModule({
     exports: [

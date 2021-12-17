@@ -29,8 +29,7 @@ const routes: Routes = [
     },
     {
         path: "dashboard",
-        loadChildren: () =>
-            import("@cargonaut/dashboard").then((m) => m.DashboardModule),
+        loadChildren: () => import("@dashboard").then((m) => m.DashboardModule),
     },
 ];
 

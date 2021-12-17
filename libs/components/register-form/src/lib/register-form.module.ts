@@ -19,7 +19,7 @@ import {
     faExclamationTriangle,
 } from "@fortawesome/free-solid-svg-icons";
 import { RouterModule } from "@angular/router";
-import { MatNativeDateModule } from '@angular/material/core';
+import { MatNativeDateModule } from "@angular/material/core";
 
 @NgModule({
     imports: [

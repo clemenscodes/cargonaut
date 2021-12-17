@@ -8,7 +8,6 @@ import {
     reauthenticateWithCredential,
     updatePassword,
     updateEmail,
-    updateProfile,
     sendEmailVerification,
 } from "firebase/auth";
 import { User } from "@api-interfaces";
@@ -195,14 +194,12 @@ export class AuthService {
      * @param displayName {string} The new display name
      * @param photoURL {string} The new icon code
      */
-    updateProfile(displayName?: string): Promise<void> {
-        const user = getAuth().currentUser;
+    updateProfile(displayName: string): Promise<void> {
+        const user = this.getCurrentUser();
         if (!user) {
             throw new Error("Kein Benutzer gefunden");
         }
-        return updateProfile(user, {
-            displayName: displayName,
-        });
+        return this.afs.collection("/users").doc(user.uid).update(displayName);
     }
 
     /**
