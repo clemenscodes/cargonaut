@@ -1,6 +1,6 @@
-@import '_variables';
-@import '_mixins';
-@import '_containers';
+@import "_variables";
+@import "_mixins";
+@import "_containers";
 
 .profile {
     @include flex-center;
@@ -89,10 +89,10 @@
     p {
         margin: 0;
     }
-    fa-icon[icon='check-circle'] {
+    fa-icon[icon="check-circle"] {
         color: $success;
     }
-    fa-icon[icon='times-circle'] {
+    fa-icon[icon="times-circle"] {
         color: $error;
     }
 }

@@ -1,0 +1,60 @@
+@import "../../../../../../apps/cargonaut/src/styles/variables";
+
+.vehicle {
+    background: $white;
+    display: flex;
+    flex-direction: column;
+    padding: 3rem;
+    text-align: center;
+    padding: 2rem;
+    border-radius: 2px;
+    h1 {
+        position: relative;
+        margin-top: 6rem;
+    }
+    table {
+        margin-top: 2rem;
+        word-wrap: break-word;
+        display: table;
+        table-layout: fixed;
+        box-shadow: rgba(0, 0, 0, 0.34) 0 2px 18px;
+        width: 100%;
+        padding-bottom: 4rem;
+        thead {
+            th {
+                position: relative;
+                text-align: center;
+                font-weight: normal;
+                width: 100%;
+                padding: 0.8rem;
+                padding-top: 1rem;
+                margin: 0.4rem;
+            }
+        }
+        tbody {
+            word-wrap: break-word;
+            tr {
+                page-break-inside: avoid;
+                td {
+                    padding: 1rem;
+                    padding-bottom: 2rem;
+                    margin: 1rem;
+                    img {
+                        max-width: 5rem;
+                        max-height: 5rem;
+                        margin-left: 2rem;
+                    }
+                    fa-icon[icon="trash"] {
+                        color: rgb(190, 15, 23);
+                    }
+                    fa-icon {
+                        cursor: pointer;
+                        &:hover {
+                            filter: brightness(200%);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

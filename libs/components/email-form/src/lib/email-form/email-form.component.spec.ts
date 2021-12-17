@@ -1,9 +1,9 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { EmailFormModule } from '../email-form.module';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
+import { EmailFormModule } from "../email-form.module";
 
-import { EmailFormComponent } from './email-form.component';
+import { EmailFormComponent } from "./email-form.component";
 
-describe('EmailFormComponent', () => {
+describe("EmailFormComponent", () => {
     let component: EmailFormComponent;
     let fixture: ComponentFixture<EmailFormComponent>;
 
@@ -19,7 +19,7 @@ describe('EmailFormComponent', () => {
         fixture.detectChanges();
     });
 
-    it('should create', () => {
+    it("should create", () => {
         expect(component).toBeTruthy();
     });
 });

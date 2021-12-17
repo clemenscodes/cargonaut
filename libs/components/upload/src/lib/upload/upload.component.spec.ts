@@ -1,9 +1,9 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { UploadService } from '@services';
-import { UploadModule } from '../upload.module';
-import { UploadComponent } from './upload.component';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
+import { UploadService } from "@services";
+import { UploadModule } from "../upload.module";
+import { UploadComponent } from "./upload.component";
 
-describe('UploadComponent', () => {
+describe("UploadComponent", () => {
     let component: UploadComponent;
     let fixture: ComponentFixture<UploadComponent>;
     const uploadServiceMock = {};
@@ -12,7 +12,7 @@ describe('UploadComponent', () => {
             imports: [UploadModule],
             providers: [
                 { provide: UploadService, useValue: uploadServiceMock },
-            ]
+            ],
         }).compileComponents();
     });
 
@@ -22,7 +22,7 @@ describe('UploadComponent', () => {
         fixture.detectChanges();
     });
 
-    it('should create', () => {
+    it("should create", () => {
         expect(component).toBeTruthy();
     });
 });

@@ -1,11 +1,12 @@
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
-import { AngularFireModule } from '@angular/fire/compat';
-import { ServiceWorkerModule } from '@angular/service-worker';
-import { AppComponent } from './app.component';
-import { AppRoutingModule } from './app-routing.module';
-import { CoreModule } from '@core';
-import { environment } from '@env';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from "@angular/core";
+import { HttpClientModule } from "@angular/common/http";
+import { AngularFireModule } from "@angular/fire/compat";
+import { ServiceWorkerModule } from "@angular/service-worker";
+import { AppComponent } from "./app.component";
+import { AppRoutingModule } from "./app-routing.module";
+import { CoreModule } from "@core";
+import { environment } from "@env";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 @NgModule({
     declarations: [AppComponent],
@@ -14,10 +15,11 @@ import { environment } from '@env';
         AppRoutingModule,
         HttpClientModule,
         AngularFireModule.initializeApp(environment.firebase),
-        ServiceWorkerModule.register('ngsw-worker.js', {
+        ServiceWorkerModule.register("ngsw-worker.js", {
             enabled: environment.production,
-            registrationStrategy: 'registerWhenStable:30000',
+            registrationStrategy: "registerWhenStable:30000",
         }),
+        BrowserAnimationsModule,
     ],
     providers: [],
     bootstrap: [AppComponent],
