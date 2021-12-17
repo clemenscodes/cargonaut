@@ -88,12 +88,12 @@ export class AuthService {
                 birthDate,
                 rating: 0,
             };
+            await this.updateProfile(displayName);
             const doc = (
                 await this.afs.collection(`/users`).doc<User>(uid).ref.get()
             ).data();
             if (doc) {
                 this.afs.collection(`/users`).doc(uid).update(user);
-                await this.updateProfile(displayName);
             }
             return;
         }
