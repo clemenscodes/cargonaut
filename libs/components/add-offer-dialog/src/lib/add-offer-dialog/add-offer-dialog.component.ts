@@ -130,12 +130,11 @@ export class AddOfferDialogComponent {
     }
     addOffer() {
         const { uid } = this.authService.getCurrentUser();
-
         this.offer = {
             seats: this.seats.value,
             price: this.price.value,
             volume: this.volume.value,
-            date: Timestamp.fromDate(this.date.value),
+            date: this.date.value ? Timestamp.fromDate(this.date.value) : Timestamp.now(),
             startAddress: {
                 street: this.startStreet.value,
                 city: this.startCity.value,
