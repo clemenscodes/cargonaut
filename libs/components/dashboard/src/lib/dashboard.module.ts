@@ -6,12 +6,14 @@ import { MatTabsModule } from "@angular/material/tabs";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MatDialogModule } from "@angular/material/dialog";
+import { OfferModule } from '@offer';
 
 @NgModule({
     imports: [
         CommonModule,
         DashboardRoutingModule,
         MatTabsModule,
+        OfferModule,
         MatDialogModule,
         FontAwesomeModule,
         BrowserAnimationsModule,
