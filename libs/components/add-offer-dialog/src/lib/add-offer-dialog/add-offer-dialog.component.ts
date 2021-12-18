@@ -1,3 +1,4 @@
+import { Timestamp } from "firebase/firestore";
 import { Component } from "@angular/core";
 import {
     AbstractControl,
@@ -129,11 +130,12 @@ export class AddOfferDialogComponent {
     }
     addOffer() {
         const { uid } = this.authService.getCurrentUser();
+
         this.offer = {
             seats: this.seats.value,
             price: this.price.value,
             volume: this.volume.value,
-            date: this.date.value,
+            date: Timestamp.fromDate(this.date.value),
             startAddress: {
                 street: this.startStreet.value,
                 city: this.startCity.value,

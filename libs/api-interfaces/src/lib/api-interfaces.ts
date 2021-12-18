@@ -1,3 +1,4 @@
+import { Timestamp } from "firebase/firestore";
 export interface Message {
     message: string;
 }
@@ -79,7 +80,7 @@ export interface Address {
 export interface Offer {
     userId: string;
     offerId?: string;
-    date: Date;
+    date: Timestamp;
     price: number;
     status: Status;
     serviceKind: ServiceKind;
@@ -124,7 +125,7 @@ export interface Vehicle {
 
 export class Offer {
     userId: string;
-    date: Date;
+    date: Timestamp;
     price: number;
     status: Status;
     serviceKind: ServiceKind;
@@ -135,7 +136,7 @@ export class Offer {
 
     constructor(
         userId: string,
-        date: Date,
+        date: Timestamp,
         price: number,
         status: Status,
         serviceKind: ServiceKind,
