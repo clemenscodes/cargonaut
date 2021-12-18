@@ -16,11 +16,11 @@
         "resolveJsonModule": true,
         "baseUrl": ".",
         "paths": {
-            "@alert": ["libs/components/alert/src/index.ts"],
-            "@api-interfaces": ["libs/api-interfaces/src/index.ts"],
             "@add-offer-dialog": [
                 "libs/components/add-offer-dialog/src/index.ts"
             ],
+            "@alert": ["libs/components/alert/src/index.ts"],
+            "@api-interfaces": ["libs/api-interfaces/src/index.ts"],
             "@change-email-form": [
                 "libs/components/change-email-form/src/index.ts"
             ],
@@ -44,6 +44,7 @@
             "@login": ["libs/components/login/src/index.ts"],
             "@login-form": ["libs/components/login-form/src/index.ts"],
             "@offer": ["libs/components/offer/src/index.ts"],
+            "@offer-item": ["libs/components/offer-item/src/index.ts"],
             "@profile": ["libs/components/profile/src/index.ts"],
             "@register": ["libs/components/register/src/index.ts"],
             "@register-form": ["libs/components/register-form/src/index.ts"],

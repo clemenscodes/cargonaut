@@ -50,12 +50,23 @@
                                 <div class="row">
                                     <div class="col">
                                         <!--Open Offer Cards-->
-                                        <cargonaut-offer></cargonaut-offer>
+                                        <div
+                                            *ngFor="
+                                                let offer of this.offers | async
+                                            "
+                                            class="container"
+                                        >
+                                            <cargonaut-offer-item
+                                                [offer]="offer"
+                                            ></cargonaut-offer-item>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col">
-                                        <a class="btn" (click)="openAddOfferDialog()"
+                                        <a
+                                            class="btn"
+                                            (click)="openAddOfferDialog()"
                                             ><fa-icon
                                                 class="primary-color"
                                                 [icon]="faPlusCircle"

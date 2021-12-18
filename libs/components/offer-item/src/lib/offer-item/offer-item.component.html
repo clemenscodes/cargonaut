@@ -1,0 +1,33 @@
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th>Status</th>
+                <th>Von</th>
+                <th>Nach</th>
+                <th>Datum</th>
+                <th>Dienstleistung</th>
+                <th>Sitze</th>
+                <th>Stauraum</th>
+                <th>Preis</th>
+                <th>Fahrer</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td *ngIf="offer.status === 'toBeStarted'; else full">Frei</td>
+                <ng-template #full>
+                    <td>Voll</td>
+                </ng-template>
+                <td>{{ offer.startAddress.city }}</td>
+                <td>{{ offer.targetAddress.city }}</td>
+                <td>{{ offer.date.toDate() | date }}</td>
+                <td>{{ offer.serviceKind }}</td>
+                <td>{{ offer.seats }}</td>
+                <td>{{ offer.volume }}l</td>
+                <td>€ {{ offer.price }}</td>
+                <td>{{ offer.userId }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -158,6 +158,7 @@
                         "main": "apps/cargonaut/src/main.ts",
                         "polyfills": "apps/cargonaut/src/polyfills.ts",
                         "tsConfig": "apps/cargonaut/tsconfig.app.json",
+                        "aot": true,
                         "inlineStyleLanguage": "scss",
                         "assets": [
                             "apps/cargonaut/src/favicon.ico",
@@ -669,6 +670,32 @@
                         "lintFilePatterns": [
                             "libs/components/offer/src/**/*.ts",
                             "libs/components/offer/src/**/*.html"
+                        ]
+                    }
+                }
+            },
+            "tags": []
+        },
+        "offer-item": {
+            "projectType": "library",
+            "root": "libs/components/offer-item",
+            "sourceRoot": "libs/components/offer-item/src",
+            "prefix": "cargonaut",
+            "architect": {
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "outputs": ["coverage/libs/components/offer-item"],
+                    "options": {
+                        "jestConfig": "libs/components/offer-item/jest.config.js",
+                        "passWithNoTests": true
+                    }
+                },
+                "lint": {
+                    "builder": "@nrwl/linter:eslint",
+                    "options": {
+                        "lintFilePatterns": [
+                            "libs/components/offer-item/src/**/*.ts",
+                            "libs/components/offer-item/src/**/*.html"
                         ]
                     }
                 }

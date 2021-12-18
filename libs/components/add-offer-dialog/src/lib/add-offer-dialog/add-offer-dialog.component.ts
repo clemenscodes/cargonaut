@@ -134,7 +134,9 @@ export class AddOfferDialogComponent {
             seats: this.seats.value,
             price: this.price.value,
             volume: this.volume.value,
-            date: this.date.value ? Timestamp.fromDate(this.date.value) : Timestamp.now(),
+            date: this.date.value
+                ? Timestamp.fromDate(this.date.value)
+                : Timestamp.now(),
             startAddress: {
                 street: this.startStreet.value,
                 city: this.startCity.value,

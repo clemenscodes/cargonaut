@@ -1,8 +1,12 @@
 <div class="vehicle">
     <h1>Deine Fahrzeuge</h1>
     <div *ngFor="let vehicle of this.vehicles | async" class="container">
-        <div  class="row" >
-            <div *ngIf="vehicle.photoURL.length > 0" class="col-3" style="background-image: url({{vehicle.photoURL}});"></div>
+        <div class="row">
+            <div
+                *ngIf="vehicle.photoURL.length > 0"
+                class="col-3"
+                style="background-image: url({{ vehicle.photoURL }});"
+            ></div>
             <div class="col">
                 <table>
                     <thead>
@@ -42,50 +46,54 @@
                 </table>
             </div>
         </div>
-<ng-template #NoPicture>
-<div *ngIf="vehicle.photoURL !== undefined; else NoPicture" class="row" >
-            <div class="col-3" style="background-image: url({{vehicle.photoURL}});"></div>
-            <div class="col-9">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Marke</th>
-                            <th>Art</th>
-                            <th>Baujahr</th>
-                            <th>Sitze</th>
-                            <th>Stauraum</th>
-                            <th>Bearbeiten</th>
-                            <th>Löschen</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>{{ vehicle.manufacturer }}</td>
-                            <td>{{ vehicle.kind }}</td>
-                            <td>{{ vehicle.constructionYear }}</td>
-                            <td>{{ vehicle.seats }}</td>
-                            <td>{{ vehicle.volume }} Liter</td>
-                            <td>
-                                <fa-icon
-                                    (click)="editVehicle()"
-                                    icon="pen"
-                                    size="lg"
-                                ></fa-icon>
-                            </td>
-                            <td>
-                                <fa-icon
-                                    (click)="deleteVehicle()"
-                                    icon="trash"
-                                    size="lg"
-                                ></fa-icon>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+        <ng-template #NoPicture>
+            <div
+                *ngIf="vehicle.photoURL !== undefined; else NoPicture"
+                class="row"
+            >
+                <div
+                    class="col-3"
+                    style="background-image: url({{ vehicle.photoURL }});"
+                ></div>
+                <div class="col-9">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Marke</th>
+                                <th>Art</th>
+                                <th>Baujahr</th>
+                                <th>Sitze</th>
+                                <th>Stauraum</th>
+                                <th>Bearbeiten</th>
+                                <th>Löschen</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{ vehicle.manufacturer }}</td>
+                                <td>{{ vehicle.kind }}</td>
+                                <td>{{ vehicle.constructionYear }}</td>
+                                <td>{{ vehicle.seats }}</td>
+                                <td>{{ vehicle.volume }} Liter</td>
+                                <td>
+                                    <fa-icon
+                                        (click)="editVehicle()"
+                                        icon="pen"
+                                        size="lg"
+                                    ></fa-icon>
+                                </td>
+                                <td>
+                                    <fa-icon
+                                        (click)="deleteVehicle()"
+                                        icon="trash"
+                                        size="lg"
+                                    ></fa-icon>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-        </div>
-
-</ng-template>
-
+        </ng-template>
     </div>
 </div>
