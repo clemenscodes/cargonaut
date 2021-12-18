@@ -1,5 +1,8 @@
-import { Timestamp } from "firebase/firestore";
 import { Component } from "@angular/core";
+import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
+import { Offer, ServiceKind, Status } from "@api-interfaces";
+import { Timestamp } from "firebase/firestore";
+import { AuthService } from "@services";
 import {
     AbstractControl,
     FormBuilder,
@@ -7,26 +10,19 @@ import {
     FormGroup,
     Validators,
 } from "@angular/forms";
-import { MatDialogRef } from "@angular/material/dialog";
-import { Offer, ServiceKind, Status } from "@api-interfaces";
-import { AuthService, OfferService } from "@services";
 
 @Component({
-    selector: "cargonaut-add-offer-dialog",
-    templateUrl: "./add-offer-dialog.component.html",
-    styleUrls: ["./add-offer-dialog.component.scss"],
+    selector: "cargonaut-add-offer-modal",
+    templateUrl: "./add-offer-modal.component.html",
+    styleUrls: ["./add-offer-modal.component.scss"],
 })
-export class AddOfferDialogComponent {
-    /**
-     * Add Offer Form Group
-     */
+export class AddOfferModalComponent {
     offerForm!: FormGroup;
     offer!: Offer;
     constructor(
-        public dialogRef: MatDialogRef<AddOfferDialogComponent>,
-        private fb: FormBuilder,
+        public activeModal: NgbActiveModal,
         private authService: AuthService,
-        private offerService: OfferService
+        private fb: FormBuilder
     ) {
         this.offerForm = this.fb.group({
             seats: new FormControl(5, [Validators.required]),
@@ -125,7 +121,7 @@ export class AddOfferDialogComponent {
     get targetZipCode(): AbstractControl {
         return this.offerForm.controls.targetZipCode;
     }
-    addOffer() {
+    save(): void {
         const { uid } = this.authService.getCurrentUser();
         this.offer = {
             seats: this.seats.value,
@@ -146,15 +142,12 @@ export class AddOfferDialogComponent {
                 house: this.targetHouse.value,
                 zipCode: this.targetZipCode.value,
             },
-            serviceKind: this.serviceKind.value,
+            serviceKind:
+                this.seats.value > 0 ? ServiceKind.taxi : ServiceKind.transport,
             status: Status.toBeStarted,
             userId: uid,
         };
         console.log(this.offer);
-        this.offerService.addOffer(this.offer);
-    }
-    onCancelClick(): void {
-        console.log("onCancelClick");
-        this.dialogRef.close();
+        this.activeModal.close(this.offer);
     }
 }

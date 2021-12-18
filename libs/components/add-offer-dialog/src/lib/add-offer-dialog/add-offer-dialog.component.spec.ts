@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from "@angular/core/testing";
-
+import { AddOfferDialogModule } from '../add-offer-dialog.module';
 import { AddOfferDialogComponent } from "./add-offer-dialog.component";
 
 describe("AddOfferDialogComponent", () => {
@@ -8,7 +8,7 @@ describe("AddOfferDialogComponent", () => {
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            declarations: [AddOfferDialogComponent],
+            imports: [AddOfferDialogModule],
         }).compileComponents();
     });
 

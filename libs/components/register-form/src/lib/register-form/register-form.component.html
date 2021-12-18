@@ -46,22 +46,13 @@
     </div>
 
     <div class="date-picker">
-        <mat-form-field appearance="fill">
-            <mat-datepicker-toggle
-                matSuffix
-                [for]="picker"
-            ></mat-datepicker-toggle>
-            <input
-                matInput
-                [matDatepicker]="picker"
-                formControlName="birthDate"
-                placeholder="Geburtsdatum"
-                required
-            />
-            <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
+        <input
+            type="date"
+            formControlName="birthDate"
+            placeholder="Geburtsdatum"
+            required
+        />
     </div>
-
     <div
         class="form-error"
         *ngIf="birthDate.invalid && (birthDate.dirty || birthDate.touched)"

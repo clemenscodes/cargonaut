@@ -650,6 +650,32 @@
             },
             "tags": []
         },
+        "models": {
+            "projectType": "library",
+            "root": "libs/components/models",
+            "sourceRoot": "libs/components/models/src",
+            "prefix": "cargonaut",
+            "architect": {
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "outputs": ["coverage/libs/components/models"],
+                    "options": {
+                        "jestConfig": "libs/components/models/jest.config.js",
+                        "passWithNoTests": true
+                    }
+                },
+                "lint": {
+                    "builder": "@nrwl/linter:eslint",
+                    "options": {
+                        "lintFilePatterns": [
+                            "libs/components/models/src/**/*.ts",
+                            "libs/components/models/src/**/*.html"
+                        ]
+                    }
+                }
+            },
+            "tags": []
+        },
         "offer": {
             "projectType": "library",
             "root": "libs/components/offer",

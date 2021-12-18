@@ -21,6 +21,11 @@
             ],
             "@alert": ["libs/components/alert/src/index.ts"],
             "@api-interfaces": ["libs/api-interfaces/src/index.ts"],
+            "@add-offer-modal": [
+                "libs/components/add-offer-modal/src/index.ts"
+            ],
+            "@cargonaut/dashboard": ["libs/components/dashboard/src/index.ts"],
+            "@cargonaut/models": ["libs/components/models/src/index.ts"],
             "@change-email-form": [
                 "libs/components/change-email-form/src/index.ts"
             ],
