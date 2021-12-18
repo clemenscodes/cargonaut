@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Offer, ServiceKind, Status } from '@api-interfaces';
-import { Timestamp } from 'firebase-admin/firestore';
+import { Timestamp } from 'firebase/firestore';
 
 @Component({
   selector: 'cargonaut-add-offer-modal',

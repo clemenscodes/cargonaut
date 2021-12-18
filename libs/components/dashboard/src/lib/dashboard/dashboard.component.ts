@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons/faPlusCircle';
 import { OfferService } from '@services';
-import { AddOfferModalComponent } from '../../../../add-offer-modal/src/lib/add-offer-modal/add-offer-modal.component';
+import { AddOfferModalComponent } from '@add-offer-modal';
 import { Offer } from '@api-interfaces';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
