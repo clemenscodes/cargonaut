@@ -4,6 +4,9 @@ import { AddOfferDialogComponent } from "./add-offer-dialog/add-offer-dialog.com
 import { MatDialogModule } from "@angular/material/dialog";
 import { BrowserModule } from "@angular/platform-browser";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+
+import { MatDatepickerModule } from "@angular/material/datepicker";
+import { MatNativeDateModule } from '@angular/material/core';
 @NgModule({
     imports: [
         CommonModule,
@@ -11,6 +14,8 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
         FormsModule,
         ReactiveFormsModule,
         BrowserModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
     ],
     declarations: [AddOfferDialogComponent],
     exports: [AddOfferDialogComponent],

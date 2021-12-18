@@ -12,10 +12,10 @@ export class DashboardComponent {
     faPlusCircle = faPlusCircle;
     constructor(public dialog: MatDialog) {}
     openAddOfferDialog() {
-        const dialogRef = this.dialog.open(AddOfferDialogComponent);
-        dialogRef.afterClosed().subscribe((result) => {
-            console.log(`The dialog was closed with result: ${result}`);
+        this.dialog.open(AddOfferDialogComponent, {
+            width: "70%",
+            height: "70%",
+            disableClose: true,
         });
-        console.log("openAddOfferDialog");
     }
 }

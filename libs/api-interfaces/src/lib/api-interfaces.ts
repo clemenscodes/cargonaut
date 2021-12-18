@@ -1,4 +1,3 @@
-import { Timestamp } from "firebase-admin/firestore";
 export interface Message {
     message: string;
 }
@@ -78,9 +77,9 @@ export interface Address {
 }
 
 export interface Offer {
-    offerId: string;
     userId: string;
-    date: Timestamp;
+    offerId?: string;
+    date: Date;
     price: number;
     status: Status;
     serviceKind: ServiceKind;
@@ -88,7 +87,6 @@ export interface Offer {
     targetAddress: Address;
     seats: number;
     volume: number;
-    rating: Rating;
 }
 
 export interface Driver {
@@ -122,4 +120,38 @@ export interface Vehicle {
     constructionYear: number;
     seats: number;
     volume: number;
+}
+
+export class Offer {
+    userId: string;
+    date: Date;
+    price: number;
+    status: Status;
+    serviceKind: ServiceKind;
+    startAddress: Address;
+    targetAddress: Address;
+    seats: number;
+    volume: number;
+
+    constructor(
+        userId: string,
+        date: Date,
+        price: number,
+        status: Status,
+        serviceKind: ServiceKind,
+        startAddress: Address,
+        targetAddress: Address,
+        seats: number,
+        volume: number
+    ) {
+        this.userId = userId;
+        this.date = date;
+        this.price = price;
+        this.status = status;
+        this.serviceKind = serviceKind;
+        this.startAddress = startAddress;
+        this.targetAddress = targetAddress;
+        this.seats = seats;
+        this.volume = volume;
+    }
 }
