@@ -128,7 +128,7 @@ export class AddOfferModalComponent {
             price: this.price.value,
             volume: this.volume.value,
             date: this.date.value
-                ? Timestamp.fromDate(this.date.value)
+                ? Timestamp.fromDate(new Date(this.date.value))
                 : Timestamp.now(),
             startAddress: {
                 street: this.startStreet.value,

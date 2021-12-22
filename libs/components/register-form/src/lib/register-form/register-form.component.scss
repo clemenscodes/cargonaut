@@ -3,16 +3,29 @@
 fa-icon {
     color: black;
 }
-mat-form-field {
-    input {
-        margin-top: 2rem;
-        margin-left: 0.4rem;
-        border: none;
-    }
-    mat-datepicker-toggle {
-        color: rgb(189, 0, 0);
-    }
+
+::-webkit-calendar-picker-indicator {
+    transform: scale(1.2);
+    cursor: pointer;
+    position: absolute;
+    padding-right: 40rem;
+    transition: 0.25s;
 }
-.date-picker {
-    border-bottom: 1px solid $darkgreen;
+
+input[type="date"]:not(.has-value):before {
+    color: $gray-600;
+    content: attr(placeholder);
+}
+
+input[type=date]:required:invalid::-webkit-datetime-edit {
+    color: transparent;
+}
+
+input[type=date]:focus::-webkit-calendar-picker-indicator {
+    color: $darkgreen !important;
+    filter: invert(23%) sepia(13%) saturate(7045%) hue-rotate(146deg) brightness(99%) contrast(101%);
+}
+
+input[type=date]:focus::-webkit-datetime-edit {
+    color: black !important;
 }

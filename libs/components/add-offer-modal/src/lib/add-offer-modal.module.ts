@@ -4,6 +4,17 @@ import { AddOfferModalComponent } from "./add-offer-modal/add-offer-modal.compon
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { BrowserModule } from "@angular/platform-browser";
+import { FaIconLibrary } from "@fortawesome/angular-fontawesome";
+import {
+    faEnvelope,
+    faLock,
+    faExclamationCircle,
+    faCheckCircle,
+    faTimesCircle,
+    faAddressCard,
+    faExclamationTriangle,
+    faCalendarAlt,
+} from "@fortawesome/free-solid-svg-icons";
 
 @NgModule({
     imports: [
@@ -16,4 +27,17 @@ import { BrowserModule } from "@angular/platform-browser";
     declarations: [AddOfferModalComponent],
     exports: [AddOfferModalComponent],
 })
-export class AddOfferModalModule {}
+export class AddOfferModalModule {
+    constructor(library: FaIconLibrary) {
+        library.addIcons(
+            faEnvelope,
+            faLock,
+            faExclamationCircle,
+            faCheckCircle,
+            faTimesCircle,
+            faAddressCard,
+            faExclamationTriangle,
+            faCalendarAlt
+        );
+    }
+}

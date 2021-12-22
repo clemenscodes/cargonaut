@@ -1,6 +1,5 @@
 <form class="app-form" (ngSubmit)="register()" [formGroup]="registerForm">
     <h1>Registrieren</h1>
-
     <div class="form-input">
         <input
             type="text"
@@ -10,7 +9,6 @@
         />
         <fa-icon icon="address-card"></fa-icon>
     </div>
-
     <div class="form-input">
         <input
             type="text"
@@ -45,11 +43,15 @@
         </div>
     </div>
 
-    <div class="date-picker">
+    <div class="form-input">
         <input
             type="date"
             formControlName="birthDate"
+            class="date-picker"
             placeholder="Geburtsdatum"
+            onfocus="(this.placeholder='')"
+            onchange="this.classList.toggle('has-value',this.value);"
+            onblur="(this.placeholder='Geburtsdatum')"
             required
         />
     </div>

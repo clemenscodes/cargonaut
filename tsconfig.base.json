@@ -16,9 +16,6 @@
         "resolveJsonModule": true,
         "baseUrl": ".",
         "paths": {
-            "@add-offer-dialog": [
-                "libs/components/add-offer-dialog/src/index.ts"
-            ],
             "@alert": ["libs/components/alert/src/index.ts"],
             "@api-interfaces": ["libs/api-interfaces/src/index.ts"],
             "@add-offer-modal": [
