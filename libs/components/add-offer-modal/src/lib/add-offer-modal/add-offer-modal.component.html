@@ -1,160 +1,160 @@
 <form [formGroup]="offerForm">
     <div class="modal-header">
-        <h3 class="modal-title">Füge ein neues Angebot hinzu</h3>
-        <button
-            type="button"
-            class="close"
-            aria-label="Close"
-            (click)="activeModal.dismiss()"
-        >
-            <span aria-hidden="true">&times;</span>
-        </button>
+        <h2 class="col-12 text-center title">
+            Neues Angebot
+            <button
+                type="button"
+                class="close"
+                aria-label="Close"
+                (click)="activeModal.dismiss()"
+            >
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </h2>
     </div>
     <div class="modal-body">
-        <form class="add-offer-form" [formGroup]="offerForm">
-            <div class="row">
-                <div class="col">
-                    <h3>Angaben zur Fahrt</h3>
-                    <div class="form-group">
-                        <label for="dateInput">Datum</label>
-                        <input
-                            type="date"
-                            class="form-control"
-                            formControlName="date"
-                            id="dateInput"
-                            required
-                        />
-                    </div>
-                    <div class="form-group">
-                        <label for="priceInput">Preis</label>
-                        <input
-                            type="number"
-                            class="form-control"
-                            formControlName="price"
-                            id="priceInput"
-                            placeholder="0"
-                            required
-                        />
-                    </div>
-                    <div class="form-group">
-                        <label for="seatsInput">Verfügbare Sitze</label>
-                        <input
-                            type="number"
-                            class="form-control"
-                            formControlName="seats"
-                            id="seatsInput"
-                            placeholder="0"
-                            required
-                        />
-                    </div>
-                    <div class="form-group">
-                        <label for="volumeInput">Verfügbares Volumen</label>
-                        <input
-                            type="number"
-                            class="form-control"
-                            id="volumeInput"
-                            formControlName="volume"
-                            placeholder="0"
-                            required
-                        />
-                    </div>
+        <div class="row">
+            <div class="col">
+                <h3>Angaben zur Fahrt</h3>
+                <div class="form-group">
+                    <label for="dateInput">Datum</label>
+                    <input
+                        type="date"
+                        class="form-control"
+                        formControlName="date"
+                        id="dateInput"
+                        required
+                    />
                 </div>
-                <div class="col">
-                    <h3>Start Addresse</h3>
-                    <div class="form-group">
-                        <label for="startCityInput">Stadt</label>
-                        <input
-                            type="text"
-                            class="form-control"
-                            id="startCityInput"
-                            placeholder="Stadt"
-                            formControlName="startCity"
-                            required
-                        />
-                    </div>
-                    <div class="form-group">
-                        <label for="startStreetInput">Straße</label>
-                        <input
-                            type="text"
-                            class="form-control"
-                            id="startStreetInput"
-                            placeholder="Straße"
-                            formControlName="startStreet"
-                            required
-                        />
-                    </div>
-                    <div class="form-group">
-                        <label for="startHouseInput">Hausnummer</label>
-                        <input
-                            type="number"
-                            class="form-control"
-                            id="startHouseInput"
-                            placeholder="Hausnummer"
-                            formControlName="startHouse"
-                            required
-                        />
-                    </div>
-                    <div class="form-group">
-                        <label for="startZipCodeInput">PLZ</label>
-                        <input
-                            type="number"
-                            class="form-control"
-                            id="startZipCodeInput"
-                            placeholder="PLZ"
-                            formControlName="startZipCode"
-                            required
-                        />
-                    </div>
+                <div class="form-group">
+                    <label for="priceInput">Preis</label>
+                    <input
+                        type="number"
+                        class="form-control"
+                        formControlName="price"
+                        id="priceInput"
+                        placeholder="0"
+                        required
+                    />
                 </div>
-                <div class="col">
-                    <h3>Ziel Addresse</h3>
-                    <div class="form-group">
-                        <label for="targetCityInput">Stadt</label>
-                        <input
-                            type="text"
-                            class="form-control"
-                            id="targetCityInput"
-                            placeholder="Stadt"
-                            formControlName="targetCity"
-                            required
-                        />
-                    </div>
-                    <div class="form-group">
-                        <label for="targetStreetInput">Straße</label>
-                        <input
-                            type="text"
-                            class="form-control"
-                            id="targetAddressInput"
-                            placeholder="Straße"
-                            formControlName="targetStreet"
-                            required
-                        />
-                    </div>
-                    <div class="form-group">
-                        <label for="targetHouseInput">Hausnummer</label>
-                        <input
-                            type="number"
-                            class="form-control"
-                            id="targetHouseInput"
-                            placeholder="Hausnummer"
-                            formControlName="targetHouse"
-                            required
-                        />
-                    </div>
-                    <div class="form-group">
-                        <label for="targetZipCodeInput">PLZ</label>
-                        <input
-                            type="number"
-                            class="form-control"
-                            id="targetZipCodeInput"
-                            placeholder="PLZ"
-                            formControlName="targetZipCode"
-                            required
-                        />
-                    </div>
+                <div class="form-group">
+                    <label for="seatsInput">Verfügbare Sitze</label>
+                    <input
+                        type="number"
+                        class="form-control"
+                        formControlName="seats"
+                        id="seatsInput"
+                        placeholder="0"
+                        required
+                    />
+                </div>
+                <div class="form-group">
+                    <label for="volumeInput">Verfügbares Volumen</label>
+                    <input
+                        type="number"
+                        class="form-control"
+                        id="volumeInput"
+                        formControlName="volume"
+                        placeholder="0"
+                        required
+                    />
                 </div>
             </div>
-        </form>
+            <div class="col">
+                <h3>Start Addresse</h3>
+                <div class="form-group">
+                    <label for="startCityInput">Stadt</label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="startCityInput"
+                        placeholder="Stadt"
+                        formControlName="startCity"
+                        required
+                    />
+                </div>
+                <div class="form-group">
+                    <label for="startStreetInput">Straße</label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="startStreetInput"
+                        placeholder="Straße"
+                        formControlName="startStreet"
+                        required
+                    />
+                </div>
+                <div class="form-group">
+                    <label for="startHouseInput">Hausnummer</label>
+                    <input
+                        type="number"
+                        class="form-control"
+                        id="startHouseInput"
+                        placeholder="Hausnummer"
+                        formControlName="startHouse"
+                        required
+                    />
+                </div>
+                <div class="form-group">
+                    <label for="startZipCodeInput">PLZ</label>
+                    <input
+                        type="number"
+                        class="form-control"
+                        id="startZipCodeInput"
+                        placeholder="PLZ"
+                        formControlName="startZipCode"
+                        required
+                    />
+                </div>
+            </div>
+            <div class="col">
+                <h3>Ziel Addresse</h3>
+                <div class="form-group">
+                    <label for="targetCityInput">Stadt</label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="targetCityInput"
+                        placeholder="Stadt"
+                        formControlName="targetCity"
+                        required
+                    />
+                </div>
+                <div class="form-group">
+                    <label for="targetStreetInput">Straße</label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="targetAddressInput"
+                        placeholder="Straße"
+                        formControlName="targetStreet"
+                        required
+                    />
+                </div>
+                <div class="form-group">
+                    <label for="targetHouseInput">Hausnummer</label>
+                    <input
+                        type="number"
+                        class="form-control"
+                        id="targetHouseInput"
+                        placeholder="Hausnummer"
+                        formControlName="targetHouse"
+                        required
+                    />
+                </div>
+                <div class="form-group">
+                    <label for="targetZipCodeInput">PLZ</label>
+                    <input
+                        type="number"
+                        class="form-control"
+                        id="targetZipCodeInput"
+                        placeholder="PLZ"
+                        formControlName="targetZipCode"
+                        required
+                    />
+                </div>
+            </div>
+        </div>
     </div>
     <div class="modal-footer">
         <button

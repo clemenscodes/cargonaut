@@ -52,7 +52,8 @@
                                         <!--Open Offer Cards-->
                                         <div
                                             *ngFor="
-                                                let offer of offerService.offers | async
+                                                let offer of offerService.offers
+                                                    | async
                                             "
                                             class="container"
                                         >
@@ -64,9 +65,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col">
-                                        <a
-                                            class="btn"
-                                            (click)="addOffer()"
+                                        <a class="btn" (click)="addOffer()"
                                             ><fa-icon
                                                 class="primary-color"
                                                 [icon]="faPlusCircle"

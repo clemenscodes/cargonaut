@@ -17,15 +17,16 @@ input[type="date"]:not(.has-value):before {
     content: attr(placeholder);
 }
 
-input[type=date]:required:invalid::-webkit-datetime-edit {
+input[type="date"]:required:invalid::-webkit-datetime-edit {
     color: transparent;
 }
 
-input[type=date]:focus::-webkit-calendar-picker-indicator {
+input[type="date"]:focus::-webkit-calendar-picker-indicator {
     color: $darkgreen !important;
-    filter: invert(23%) sepia(13%) saturate(7045%) hue-rotate(146deg) brightness(99%) contrast(101%);
+    filter: invert(23%) sepia(13%) saturate(7045%) hue-rotate(146deg)
+        brightness(99%) contrast(101%);
 }
 
-input[type=date]:focus::-webkit-datetime-edit {
+input[type="date"]:focus::-webkit-datetime-edit {
     color: black !important;
 }

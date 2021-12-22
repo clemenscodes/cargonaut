@@ -1,4 +1,10 @@
-.disabled-btn {
-    opacity: 70%;
-    pointer-events: none;
+form {
+    .title {
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
+    .disabled-btn {
+        opacity: 70%;
+        pointer-events: none;
+    }
 }

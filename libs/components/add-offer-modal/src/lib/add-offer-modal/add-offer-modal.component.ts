@@ -17,7 +17,7 @@ import {
     styleUrls: ["./add-offer-modal.component.scss"],
 })
 export class AddOfferModalComponent {
-    offerForm!: FormGroup;
+    offerForm: FormGroup;
     offer!: Offer;
     constructor(
         public activeModal: NgbActiveModal,
@@ -25,25 +25,19 @@ export class AddOfferModalComponent {
         private fb: FormBuilder
     ) {
         this.offerForm = this.fb.group({
-            seats: new FormControl(5, [Validators.required]),
-            volume: new FormControl(400, [Validators.required]),
+            seats: new FormControl(0, [Validators.required]),
+            volume: new FormControl(0, [Validators.required]),
             date: new FormControl("", [Validators.required]),
-            price: new FormControl(30, [Validators.required]),
-            serviceKind: new FormControl(ServiceKind.taxi, [
-                Validators.required,
-            ]),
-            startStreet: new FormControl("Marburger Straße", [
-                Validators.required,
-            ]),
-            startCity: new FormControl("Gießen", [Validators.required]),
-            startHouse: new FormControl(1, [Validators.required]),
-            startZipCode: new FormControl(35390, [Validators.required]),
-            targetStreet: new FormControl("Krofdorfer Straße", [
-                Validators.required,
-            ]),
-            targetCity: new FormControl("Gießen", [Validators.required]),
-            targetHouse: new FormControl(12, [Validators.required]),
-            targetZipCode: new FormControl(35398, [Validators.required]),
+            price: new FormControl(0, [Validators.required]),
+            serviceKind: new FormControl("", [Validators.required]),
+            startStreet: new FormControl("", [Validators.required]),
+            startCity: new FormControl("", [Validators.required]),
+            startHouse: new FormControl(0, [Validators.required]),
+            startZipCode: new FormControl(0, [Validators.required]),
+            targetStreet: new FormControl("", [Validators.required]),
+            targetCity: new FormControl("", [Validators.required]),
+            targetHouse: new FormControl(0, [Validators.required]),
+            targetZipCode: new FormControl(0, [Validators.required]),
         });
     }
     get seats(): AbstractControl {

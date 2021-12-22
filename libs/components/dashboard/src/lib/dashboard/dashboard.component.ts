@@ -18,7 +18,7 @@ export class DashboardComponent {
     ) {}
     public async addOffer() {
         const modalReference = this.modalService.open(AddOfferModalComponent, {
-            size: 'xl'
+            size: "xl",
         });
 
         try {

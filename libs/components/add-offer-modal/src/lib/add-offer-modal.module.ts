@@ -19,13 +19,13 @@ import {
 @NgModule({
     imports: [
         CommonModule,
-        FormsModule,
         BrowserModule,
+        FormsModule,
         ReactiveFormsModule,
         NgbModule,
     ],
     declarations: [AddOfferModalComponent],
-    exports: [AddOfferModalComponent],
+    exports: [AddOfferModalComponent, ReactiveFormsModule],
 })
 export class AddOfferModalModule {
     constructor(library: FaIconLibrary) {
