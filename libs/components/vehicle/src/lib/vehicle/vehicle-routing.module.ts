@@ -6,10 +6,10 @@ import {
     canActivate,
 } from '@angular/fire/compat/auth-guard';
 
-const redirectUnauthenticatedToHome = () => redirectUnauthorizedTo(['/']);
+const redirectUnauthenticatedToHome = () => redirectUnauthorizedTo(["/"]);
 
 const route = {
-    path: 'vehicle',
+    path: "vehicle",
     component: VehicleComponent,
     ...canActivate(redirectUnauthenticatedToHome),
 };
