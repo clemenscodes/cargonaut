@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { Component } from "@angular/core";
+import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
 import { AuthService } from "@services";
 import {
     AbstractControl,
@@ -16,7 +16,7 @@ import {
 })
 export class AddVehicleModalComponent {
     vehicleForm: FormGroup;
-    vehicle!: Vehicle;
+    vehicle!: {};
     constructor(
         public activeModal: NgbActiveModal,
         private authService: AuthService,
