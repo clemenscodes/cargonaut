@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import { Vehicle } from "@api-interfaces";
 import { VehicleService } from "@services";
+import { AddVehicleModalComponent } from "@add-vehicle-modal";
 import { Observable } from "rxjs";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 
