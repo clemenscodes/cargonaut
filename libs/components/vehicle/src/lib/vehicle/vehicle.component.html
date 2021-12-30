@@ -29,14 +29,14 @@
                             <td>{{ vehicle.volume }} Liter</td>
                             <td>
                                 <fa-icon
-                                    (click)="editVehicle()"
+                                    (click)="editVehicle(vehicle)"
                                     icon="pen"
                                     size="lg"
                                 ></fa-icon>
                             </td>
                             <td>
                                 <fa-icon
-                                    (click)="deleteVehicle()"
+                                    (click)="deleteVehicle(vehicle)"
                                     icon="trash"
                                     size="lg"
                                 ></fa-icon>

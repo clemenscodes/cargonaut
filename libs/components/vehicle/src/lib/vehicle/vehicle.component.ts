@@ -33,10 +33,11 @@ export class VehicleComponent {
         }
     }
 
-    editVehicle() {
+    editVehicle(vehicle: Vehicle) {
         console.log("editVehicle");
     }
-    deleteVehicle() {
+    deleteVehicle(vehicle: Vehicle) {
         console.log("deleteVehicle");
+        this.vehicleService.deleteVehicle(vehicle);
     }
 }

@@ -112,6 +112,7 @@ export enum VehicleKind {
 }
 
 export interface Vehicle {
+    vehicleId: string;
     photoURL: string;
     userId: string;
     mark: string;

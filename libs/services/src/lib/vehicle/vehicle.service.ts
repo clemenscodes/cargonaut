@@ -34,7 +34,12 @@ export class VehicleService {
             )
         );
     }
+
     addVehicle(vehicle: Vehicle) {
         this.vehiclesCollection.add(vehicle);
+    }
+
+    deleteVehicle(vehicle: Vehicle) {
+        this.vehiclesCollection.doc(vehicle.vehicleId).delete();
     }
 }
