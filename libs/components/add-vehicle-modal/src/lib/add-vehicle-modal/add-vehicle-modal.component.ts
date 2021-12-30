@@ -2,6 +2,8 @@ import { Component } from "@angular/core";
 import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
 import { AuthService } from "@services";
 import { Vehicle, VehicleKind } from "@api-interfaces";
+import { AngularFirestore } from "@angular/fire/compat/firestore";
+
 import {
     AbstractControl,
     FormBuilder,
@@ -21,6 +23,7 @@ export class AddVehicleModalComponent {
     constructor(
         public activeModal: NgbActiveModal,
         private authService: AuthService,
+        private afs: AngularFirestore,
         private fb: FormBuilder
     ) {
         this.vehicleForm = this.fb.group({
@@ -54,6 +57,7 @@ export class AddVehicleModalComponent {
     save(): void {
         const { uid } = this.authService.getCurrentUser();
         this.vehicle = {
+            vehicleId: this.afs.createId(),
             photoURL: "",
             userId: uid,
             mark: this.marke.value,
