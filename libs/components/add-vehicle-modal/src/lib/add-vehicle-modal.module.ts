@@ -3,6 +3,7 @@ import { CommonModule } from "@angular/common";
 import { AddVehicleModalComponent } from './add-vehicle-modal/add-vehicle-modal.component';
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { BrowserModule } from "@angular/platform-browser";
 import { FaIconLibrary } from "@fortawesome/angular-fontawesome";
 import {
     faEnvelope,
@@ -20,9 +21,10 @@ import {
 @NgModule({
     imports: [
         CommonModule,
-        ReactiveFormsModule,
+        BrowserModule,
         FormsModule,
-        NgbModule
+        ReactiveFormsModule,
+        NgbModule,
     ],
     declarations: [
         AddVehicleModalComponent

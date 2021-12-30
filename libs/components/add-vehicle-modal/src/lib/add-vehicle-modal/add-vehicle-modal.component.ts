@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
 import { AuthService } from "@services";
+import { Vehicle, VehicleKind } from "@api-interfaces";
 import {
     AbstractControl,
     FormBuilder,
@@ -16,7 +17,7 @@ import {
 })
 export class AddVehicleModalComponent {
     vehicleForm: FormGroup;
-    vehicle!: {};
+    vehicle!: Vehicle;
     constructor(
         public activeModal: NgbActiveModal,
         private authService: AuthService,
@@ -53,8 +54,16 @@ export class AddVehicleModalComponent {
     save(): void {
         const { uid } = this.authService.getCurrentUser();
         this.vehicle = {
-            //todo vehicle
-        }
+            photoURL: "",
+            userId: uid,
+            mark: this.marke.value,
+            kind: VehicleKind.Cabrio,
+            manufacturer: "",
+            model: "",
+            constructionYear: this.baujahr.value,
+            seats: this.sitze.value,
+            volume: this.stauraum.value
+        };
         console.log(this.vehicle);
         this.activeModal.close(this.vehicle);
     }
