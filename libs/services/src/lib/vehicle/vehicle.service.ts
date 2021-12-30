@@ -39,6 +39,19 @@ export class VehicleService {
         this.vehiclesCollection.add(vehicle);
     }
 
+    editVehicle(vehicle: Vehicle) {
+        this.vehiclesCollection.doc(vehicle.vehicleId).update({
+            photoURL: vehicle.photoURL,
+            mark: vehicle.mark,
+            kind: vehicle.kind,
+            manufacturer: vehicle.manufacturer,
+            model: vehicle.model,
+            constructionYear: vehicle.constructionYear,
+            seats: vehicle.seats,
+            volume: vehicle.volume
+        });
+    }
+
     deleteVehicle(vehicle: Vehicle) {
         this.vehiclesCollection.doc(vehicle.vehicleId).delete();
     }

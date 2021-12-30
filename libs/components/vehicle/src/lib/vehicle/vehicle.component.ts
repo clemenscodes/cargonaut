@@ -33,11 +33,19 @@ export class VehicleComponent {
         }
     }
 
-    editVehicle(vehicle: Vehicle) {
-        console.log("editVehicle");
+    public async editVehicle(vehicle: Vehicle) {
+        const modalReference = this.modalService.open(AddVehicleModalComponent, {
+            size: "xl",
+        });
+        try {
+            const resultVehicle: Vehicle = await modalReference.result;
+            this.vehicleService.editVehicle(resultVehicle);
+        }
+        catch (error) {
+            console.log(error);
+        }
     }
-    deleteVehicle(vehicle: Vehicle) {
-        console.log("deleteVehicle");
+    public deleteVehicle(vehicle: Vehicle) {
         this.vehicleService.deleteVehicle(vehicle);
     }
 }
