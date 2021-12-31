@@ -5,7 +5,9 @@
             <div
                 *ngIf="vehicle.photoURL.length > 0"
                 class="col-3"
-                style="background-image: url({{ vehicle.photoURL }});"
+                [ngStyle]="{
+                    'background-image': 'url(' + vehicle.photoURL + ')'
+                }"
             ></div>
             <div class="col">
                 <table>
@@ -53,7 +55,9 @@
             >
                 <div
                     class="col-3"
-                    style="background-image: url({{ vehicle.photoURL }});"
+                    [ngStyle]="{
+                        'background-image': 'url(' + vehicle.photoURL + ')'
+                    }"
                 ></div>
                 <div class="col-9">
                     <table>
@@ -96,8 +100,5 @@
             </div>
         </ng-template>
     </div>
-    <a class="btn" (click)="addVehicle()">
-        Fahrzeug hinzufügen
-    </a>
-      
+    <a class="btn" (click)="addVehicle()"> Fahrzeug hinzufügen </a>
 </div>

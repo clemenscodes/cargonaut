@@ -24,11 +24,6 @@
             ],
             "@alert": ["libs/components/alert/src/index.ts"],
             "@api-interfaces": ["libs/api-interfaces/src/index.ts"],
-            "@cargonaut/dashboard": ["libs/components/dashboard/src/index.ts"],
-            "@cargonaut/models": ["libs/components/models/src/index.ts"],
-            "@cargonaut/vehicle-item": [
-                "libs/components/vehicle-item/src/index.ts"
-            ],
             "@change-email-form": [
                 "libs/components/change-email-form/src/index.ts"
             ],

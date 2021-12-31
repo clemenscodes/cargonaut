@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { AddVehicleModalComponent } from './add-vehicle-modal/add-vehicle-modal.component';
+import { AddVehicleModalComponent } from "./add-vehicle-modal/add-vehicle-modal.component";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { BrowserModule } from "@angular/platform-browser";
@@ -16,8 +16,6 @@ import {
     faCalendarAlt,
 } from "@fortawesome/free-solid-svg-icons";
 
-
-
 @NgModule({
     imports: [
         CommonModule,
@@ -26,10 +24,8 @@ import {
         ReactiveFormsModule,
         NgbModule,
     ],
-    declarations: [
-        AddVehicleModalComponent
-    ],
-    exports: [AddVehicleModalComponent, ReactiveFormsModule],
+    declarations: [AddVehicleModalComponent],
+    exports: [AddVehicleModalComponent],
 })
 export class AddVehicleModalModule {
     constructor(library: FaIconLibrary) {
