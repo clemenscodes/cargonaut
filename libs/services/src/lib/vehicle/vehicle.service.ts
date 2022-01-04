@@ -6,6 +6,8 @@ import {
 import { Vehicle } from "@api-interfaces";
 import { map, Observable } from "rxjs";
 import { AuthService } from "../auth/auth.service";
+import { deleteDoc, doc} from "firebase/firestore";
+
 
 @Injectable({
     providedIn: "root",
@@ -52,6 +54,12 @@ export class VehicleService {
     }
 
     deleteVehicle(vehicle: Vehicle) {
-        this.vehiclesCollection.doc(vehicle.vehicleId).delete();
+        this.vehiclesCollection.ref.onSnapshot((snap) => {
+            snap.forEach((item) => {
+                console.log("item id: " + item.data()['vehicleId']);
+                console.log("expected vehicle id: " + vehicle.vehicleId);
+                if(item.data()["vehicleId"] === vehicle.vehicleId) item.ref.delete();
+            });
+        });
     }
 }
