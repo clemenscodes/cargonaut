@@ -44,7 +44,6 @@ export class VehicleService {
             photoURL: vehicle.photoURL,
             mark: vehicle.mark,
             kind: vehicle.kind,
-            manufacturer: vehicle.manufacturer,
             model: vehicle.model,
             constructionYear: vehicle.constructionYear,
             seats: vehicle.seats,

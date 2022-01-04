@@ -62,7 +62,6 @@ export class AddVehicleModalComponent {
             userId: uid,
             mark: this.marke.value,
             kind: VehicleKind.Cabrio,
-            manufacturer: "",
             model: "",
             constructionYear: this.baujahr.value,
             seats: this.sitze.value,

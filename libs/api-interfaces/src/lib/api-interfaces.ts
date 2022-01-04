@@ -117,7 +117,6 @@ export interface Vehicle {
     userId: string;
     mark: string;
     kind: VehicleKind;
-    manufacturer: string;
     model: string;
     constructionYear: number;
     seats: number;
