@@ -1,7 +1,8 @@
-import { Component } from "@angular/core";
+import { Component, Inject } from "@angular/core";
 import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
 import { AuthService } from "@services";
 import { Vehicle, VehicleKind } from "@api-interfaces";
+import { VehicleService } from "@services";
 import { AngularFirestore } from "@angular/fire/compat/firestore";
 
 import {
@@ -11,6 +12,7 @@ import {
     FormGroup,
     Validators,
 } from "@angular/forms";
+import { FaStackItemSizeDirective } from "@fortawesome/angular-fontawesome";
 
 @Component({
   selector: 'cargonaut-add-vehicle-modal',
@@ -23,17 +25,33 @@ export class AddVehicleModalComponent {
     constructor(
         public activeModal: NgbActiveModal,
         private authService: AuthService,
+        public vehicleService: VehicleService,
         private afs: AngularFirestore,
-        private fb: FormBuilder
+        private fb: FormBuilder,
     ) {
-        this.vehicleForm = this.fb.group({
-            marke: new FormControl("", [Validators.required]),
-            art: new FormControl("", [Validators.required]),
-            baujahr: new FormControl(0, [Validators.required]),
-            sitze: new FormControl(0, [Validators.required]),
-            stauraum: new FormControl(0, [Validators.required]),
-        });
+
+        if(this.vehicleService.editMode == true){
+            this.vehicleForm = this.fb.group({
+                marke: new FormControl(this.vehicleService.vehicleToEdit.mark, [Validators.required]),
+                art: new FormControl(this.vehicleService.vehicleToEdit.kind, [Validators.required]),
+                baujahr: new FormControl(this.vehicleService.vehicleToEdit.constructionYear, [Validators.required]),
+                sitze: new FormControl(this.vehicleService.vehicleToEdit.seats, [Validators.required]),
+                stauraum: new FormControl(this.vehicleService.vehicleToEdit.volume, [Validators.required]),
+            });
+        }
+        else{
+            this.vehicleForm = this.fb.group({
+                marke: new FormControl("", [Validators.required]),
+                art: new FormControl("", [Validators.required]),
+                baujahr: new FormControl(0, [Validators.required]),
+                sitze: new FormControl(0, [Validators.required]),
+                stauraum: new FormControl(0, [Validators.required]),
+            });
+        }
+
+
     }
+
     get marke(): AbstractControl {
         return this.vehicleForm.controls.marke;
     }
@@ -55,19 +73,36 @@ export class AddVehicleModalComponent {
     }
 
     save(): void {
-        const { uid } = this.authService.getCurrentUser();
-        this.vehicle = {
-            vehicleId: this.afs.createId(),
-            photoURL: "",
-            userId: uid,
-            mark: this.marke.value,
-            kind: VehicleKind.Cabrio,
-            model: "",
-            constructionYear: this.baujahr.value,
-            seats: this.sitze.value,
-            volume: this.stauraum.value
-        };
-        console.log(this.vehicle);
+        if(this.vehicleService.editMode == true){
+            this.vehicle = {
+                vehicleId: this.vehicleService.vehicleToEdit.vehicleId,
+                photoURL: this.vehicleService.vehicleToEdit.photoURL,
+                userId: this.vehicleService.vehicleToEdit.userId,
+                mark: this.marke.value,
+                kind: VehicleKind.Cabrio,
+                model: "",
+                constructionYear: this.baujahr.value,
+                seats: this.sitze.value,
+                volume: this.stauraum.value
+            };
+            console.log(this.vehicleService.vehicleToEdit);
+            console.log(this.vehicle);
+        }
+        else{
+            const { uid } = this.authService.getCurrentUser();
+            this.vehicle = {
+                vehicleId: this.afs.createId(),
+                photoURL: "",
+                userId: uid,
+                mark: this.marke.value,
+                kind: VehicleKind.Cabrio,
+                model: "",
+                constructionYear: this.baujahr.value,
+                seats: this.sitze.value,
+                volume: this.stauraum.value
+            };
+            console.log(this.vehicle);
+        }
         this.activeModal.close(this.vehicle);
     }
 

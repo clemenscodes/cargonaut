@@ -1,5 +1,5 @@
 <form [formGroup]="vehicleForm">
-    <div class="modal-header">
+    <div *ngIf="!vehicleService.editMode; else editHeader" class="modal-header">
         <h2 class="col-12 text-center title">
             Neues Fahrzeug
             <button
@@ -12,6 +12,21 @@
             </button>
         </h2>
     </div>
+    <ng-template #editHeader>
+        <div class="modal-header">
+            <h2 class="col-12 text-center title">
+                Fahrzeug bearbeiten
+                <button
+                        type="button"
+                        class="close"
+                        aria-label="Close"
+                        (click)="activeModal.dismiss()"
+                >
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </h2>
+        </div>
+    </ng-template>
     <div class="modal-body">
         <div class="form-group">
             <label for="markeInput">Marke</label>
@@ -65,8 +80,6 @@
         <button
                 type="button"
                 class="btn btn-success"
-                [class.disabled-btn]="!vehicleForm.valid"
-                [disabled]="!vehicleForm.valid"
                 (click)="save()"
         >
             Erstellen
