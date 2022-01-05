@@ -22,6 +22,7 @@ import { FaStackItemSizeDirective } from "@fortawesome/angular-fontawesome";
 export class AddVehicleModalComponent {
     vehicleForm: FormGroup;
     vehicle!: Vehicle;
+    vehicleKindNames: VehicleKind[] = Object.values(VehicleKind);
     constructor(
         public activeModal: NgbActiveModal,
         private authService: AuthService,
@@ -79,7 +80,7 @@ export class AddVehicleModalComponent {
                 photoURL: this.vehicleService.vehicleToEdit.photoURL,
                 userId: this.vehicleService.vehicleToEdit.userId,
                 mark: this.marke.value,
-                kind: VehicleKind.Cabrio,
+                kind: this.art.value,
                 model: "",
                 constructionYear: this.baujahr.value,
                 seats: this.sitze.value,
@@ -95,7 +96,7 @@ export class AddVehicleModalComponent {
                 photoURL: "",
                 userId: uid,
                 mark: this.marke.value,
-                kind: VehicleKind.Cabrio,
+                kind: this.art.value,
                 model: "",
                 constructionYear: this.baujahr.value,
                 seats: this.sitze.value,

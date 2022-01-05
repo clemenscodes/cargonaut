@@ -38,11 +38,14 @@
         </div>
         <div class="form-group">
             <label for="artInput">Art</label>
-            <input type="text"
-                   class="form-control"
-                   formControlName="art"
-                   id="artInput"
-                   required />
+            <select type="text"
+                    class="form-control"
+                    formControlName="art"
+                    id="artInput"
+                    required
+            >
+                    <option *ngFor="let kind of vehicleKindNames">{{kind}}</option>
+            </select>
         </div>
         <div class="form-group">
             <label for="baujahrInput">Baujahr</label>
