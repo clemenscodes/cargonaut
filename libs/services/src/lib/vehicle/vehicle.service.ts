@@ -6,8 +6,6 @@ import {
 import { Vehicle, VehicleKind } from "@api-interfaces";
 import { map, Observable } from "rxjs";
 import { AuthService } from "../auth/auth.service";
-import { deleteDoc, doc} from "firebase/firestore";
-import { signInWithEmailAndPassword } from "firebase/auth";
 
 
 @Injectable({
@@ -17,7 +15,7 @@ export class VehicleService {
     vehicles: Observable<Vehicle[]>;
     vehiclesCollection: AngularFirestoreCollection<Vehicle>;
     vehicleToEdit: Vehicle;
-    editMode: boolean = false;
+    editMode = false;
     constructor(
         private afs: AngularFirestore,
         private authService: AuthService

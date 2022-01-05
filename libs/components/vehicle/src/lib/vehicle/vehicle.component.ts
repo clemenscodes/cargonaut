@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { Vehicle, VehicleKind } from "@api-interfaces";
+import { Vehicle} from "@api-interfaces";
 import { VehicleService } from "@services";
 import { AddVehicleModalComponent } from "../../../../add-vehicle-modal/src/lib/add-vehicle-modal/add-vehicle-modal.component";
 import { Observable } from "rxjs";
