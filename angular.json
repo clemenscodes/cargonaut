@@ -1,32 +1,6 @@
 {
     "version": 1,
     "projects": {
-        "add-vehicle-modal": {
-            "projectType": "library",
-            "root": "libs/components/add-vehicle-modal",
-            "sourceRoot": "libs/components/add-vehicle-modal/src",
-            "prefix": "cargonaut",
-            "architect": {
-                "test": {
-                    "builder": "@nrwl/jest:jest",
-                    "outputs": ["coverage/libs/components/add-vehicle-modal"],
-                    "options": {
-                        "jestConfig": "libs/components/add-vehicle-modal/jest.config.js",
-                        "passWithNoTests": true
-                    }
-                },
-                "lint": {
-                    "builder": "@nrwl/linter:eslint",
-                    "options": {
-                        "lintFilePatterns": [
-                            "libs/components/add-vehicle-modal/src/**/*.ts",
-                            "libs/components/add-vehicle-modal/src/**/*.html"
-                        ]
-                    }
-                }
-            },
-            "tags": []
-        },
         "alert": {
             "projectType": "library",
             "root": "libs/components/alert",

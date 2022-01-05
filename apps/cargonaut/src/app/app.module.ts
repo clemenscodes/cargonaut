@@ -7,7 +7,6 @@ import { AppRoutingModule } from "./app-routing.module";
 import { CoreModule } from "@core";
 import { environment } from "@env";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { VehicleComponent } from "libs/components/vehicle/src/lib/vehicle/vehicle.component";
 
 @NgModule({
     declarations: [AppComponent],

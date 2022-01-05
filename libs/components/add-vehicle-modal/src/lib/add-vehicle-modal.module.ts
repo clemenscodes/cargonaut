@@ -25,7 +25,7 @@ import {
         NgbModule,
     ],
     declarations: [AddVehicleModalComponent],
-    exports: [AddVehicleModalComponent],
+    exports: [AddVehicleModalComponent, ReactiveFormsModule],
 })
 export class AddVehicleModalModule {
     constructor(library: FaIconLibrary) {

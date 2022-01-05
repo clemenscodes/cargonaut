@@ -1,4 +1,4 @@
-import { Component, Inject } from "@angular/core";
+import { Component } from "@angular/core";
 import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
 import { AuthService } from "@services";
 import { Vehicle, VehicleKind } from "@api-interfaces";
@@ -12,7 +12,6 @@ import {
     FormGroup,
     Validators,
 } from "@angular/forms";
-import { FaStackItemSizeDirective } from "@fortawesome/angular-fontawesome";
 
 @Component({
   selector: 'cargonaut-add-vehicle-modal',
