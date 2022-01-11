@@ -101,12 +101,16 @@ button {
 
 /* Importing Bootstrap SCSS file. */
 @import "~bootstrap/scss/bootstrap";
+@import "styles/_bootswatch";
 
 html,
 body {
-    height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 body {
     margin: 0;
+    overflow: auto;
     font-family: Roboto, "Helvetica Neue", sans-serif;
+    padding-bottom: 7rem;
 }
