@@ -7,7 +7,6 @@ import { Vehicle, VehicleKind } from "@api-interfaces";
 import { map, Observable } from "rxjs";
 import { AuthService } from "../auth/auth.service";
 
-
 @Injectable({
     providedIn: "root",
 })
@@ -25,7 +24,7 @@ export class VehicleService {
             "vehicles",
             (ref) => ref.where("userId", "==", uid)
         );
-        this.vehicleToEdit = { 
+        this.vehicleToEdit = {
             vehicleId: "",
             photoURL: "",
             userId: "",
@@ -34,7 +33,7 @@ export class VehicleService {
             model: "",
             constructionYear: 0,
             seats: 0,
-            volume: 0
+            volume: 0,
         };
         this.vehicles = this.vehiclesCollection.snapshotChanges().pipe(
             map((vehicles) =>
@@ -56,15 +55,17 @@ export class VehicleService {
     editVehicle() {
         this.vehiclesCollection.ref.onSnapshot((snap) => {
             snap.forEach((item) => {
-                console.log("item id: " + item.data()['vehicleId']);
-                console.log("expected vehicle id: " + this.vehicleToEdit.vehicleId);
-                if(item.data()["vehicleId"] === this.vehicleToEdit.vehicleId) {
+                console.log("item id: " + item.data()["vehicleId"]);
+                console.log(
+                    "expected vehicle id: " + this.vehicleToEdit.vehicleId
+                );
+                if (item.data()["vehicleId"] === this.vehicleToEdit.vehicleId) {
                     item.ref.update({
-                        "mark": this.vehicleToEdit.mark,
-                        "kind": this.vehicleToEdit.kind,
-                        "constructionYear": this.vehicleToEdit.constructionYear,
-                        "seats": this.vehicleToEdit.seats,
-                        "volume": this.vehicleToEdit.volume
+                        mark: this.vehicleToEdit.mark,
+                        kind: this.vehicleToEdit.kind,
+                        constructionYear: this.vehicleToEdit.constructionYear,
+                        seats: this.vehicleToEdit.seats,
+                        volume: this.vehicleToEdit.volume,
                     });
                 }
             });
@@ -74,9 +75,10 @@ export class VehicleService {
     deleteVehicle(vehicle: Vehicle) {
         this.vehiclesCollection.ref.onSnapshot((snap) => {
             snap.forEach((item) => {
-                console.log("item id: " + item.data()['vehicleId']);
+                console.log("item id: " + item.data()["vehicleId"]);
                 console.log("expected vehicle id: " + vehicle.vehicleId);
-                if(item.data()["vehicleId"] === vehicle.vehicleId) item.ref.delete();
+                if (item.data()["vehicleId"] === vehicle.vehicleId)
+                    item.ref.delete();
             });
         });
     }

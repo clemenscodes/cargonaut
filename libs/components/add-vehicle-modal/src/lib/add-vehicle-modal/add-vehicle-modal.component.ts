@@ -14,9 +14,9 @@ import {
 } from "@angular/forms";
 
 @Component({
-  selector: 'cargonaut-add-vehicle-modal',
-  templateUrl: './add-vehicle-modal.component.html',
-  styleUrls: ['./add-vehicle-modal.component.scss']
+    selector: "cargonaut-add-vehicle-modal",
+    templateUrl: "./add-vehicle-modal.component.html",
+    styleUrls: ["./add-vehicle-modal.component.scss"],
 })
 export class AddVehicleModalComponent {
     vehicleForm: FormGroup;
@@ -27,19 +27,30 @@ export class AddVehicleModalComponent {
         private authService: AuthService,
         public vehicleService: VehicleService,
         private afs: AngularFirestore,
-        private fb: FormBuilder,
+        private fb: FormBuilder
     ) {
-
-        if(this.vehicleService.editMode == true){
+        if (this.vehicleService.editMode == true) {
             this.vehicleForm = this.fb.group({
-                marke: new FormControl(this.vehicleService.vehicleToEdit.mark, [Validators.required]),
-                art: new FormControl(this.vehicleService.vehicleToEdit.kind, [Validators.required]),
-                baujahr: new FormControl(this.vehicleService.vehicleToEdit.constructionYear, [Validators.required]),
-                sitze: new FormControl(this.vehicleService.vehicleToEdit.seats, [Validators.required]),
-                stauraum: new FormControl(this.vehicleService.vehicleToEdit.volume, [Validators.required]),
+                marke: new FormControl(this.vehicleService.vehicleToEdit.mark, [
+                    Validators.required,
+                ]),
+                art: new FormControl(this.vehicleService.vehicleToEdit.kind, [
+                    Validators.required,
+                ]),
+                baujahr: new FormControl(
+                    this.vehicleService.vehicleToEdit.constructionYear,
+                    [Validators.required]
+                ),
+                sitze: new FormControl(
+                    this.vehicleService.vehicleToEdit.seats,
+                    [Validators.required]
+                ),
+                stauraum: new FormControl(
+                    this.vehicleService.vehicleToEdit.volume,
+                    [Validators.required]
+                ),
             });
-        }
-        else{
+        } else {
             this.vehicleForm = this.fb.group({
                 marke: new FormControl("", [Validators.required]),
                 art: new FormControl("", [Validators.required]),
@@ -48,8 +59,6 @@ export class AddVehicleModalComponent {
                 stauraum: new FormControl(0, [Validators.required]),
             });
         }
-
-
     }
 
     get marke(): AbstractControl {
@@ -73,7 +82,7 @@ export class AddVehicleModalComponent {
     }
 
     save(): void {
-        if(this.vehicleService.editMode == true){
+        if (this.vehicleService.editMode == true) {
             this.vehicle = {
                 vehicleId: this.vehicleService.vehicleToEdit.vehicleId,
                 photoURL: this.vehicleService.vehicleToEdit.photoURL,
@@ -83,12 +92,11 @@ export class AddVehicleModalComponent {
                 model: "",
                 constructionYear: this.baujahr.value,
                 seats: this.sitze.value,
-                volume: this.stauraum.value
+                volume: this.stauraum.value,
             };
             console.log(this.vehicleService.vehicleToEdit);
             console.log(this.vehicle);
-        }
-        else{
+        } else {
             const { uid } = this.authService.getCurrentUser();
             this.vehicle = {
                 vehicleId: this.afs.createId(),
@@ -99,13 +107,10 @@ export class AddVehicleModalComponent {
                 model: "",
                 constructionYear: this.baujahr.value,
                 seats: this.sitze.value,
-                volume: this.stauraum.value
+                volume: this.stauraum.value,
             };
             console.log(this.vehicle);
         }
         this.activeModal.close(this.vehicle);
     }
-
- 
-
 }

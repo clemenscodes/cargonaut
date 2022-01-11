@@ -3,10 +3,10 @@
         <h2 class="col-12 text-center title">
             Neues Fahrzeug
             <button
-                    type="button"
-                    class="close"
-                    aria-label="Close"
-                    (click)="activeModal.dismiss()"
+                type="button"
+                class="close"
+                aria-label="Close"
+                (click)="activeModal.dismiss()"
             >
                 <span aria-hidden="true">&times;</span>
             </button>
@@ -17,10 +17,10 @@
             <h2 class="col-12 text-center title">
                 Fahrzeug bearbeiten
                 <button
-                        type="button"
-                        class="close"
-                        aria-label="Close"
-                        (click)="activeModal.dismiss()"
+                    type="button"
+                    class="close"
+                    aria-label="Close"
+                    (click)="activeModal.dismiss()"
                 >
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -30,61 +30,68 @@
     <div class="modal-body">
         <div class="form-group">
             <label for="markeInput">Marke</label>
-            <input type="text"
-                   class="form-control"
-                   formControlName="marke"
-                   id="markeInput"
-                   required />
+            <input
+                type="text"
+                class="form-control"
+                formControlName="marke"
+                id="markeInput"
+                required
+            />
         </div>
         <div class="form-group">
             <label for="artInput">Art</label>
-            <select type="text"
-                    class="form-control"
-                    formControlName="art"
-                    id="artInput"
-                    required
+            <select
+                type="text"
+                class="form-control"
+                formControlName="art"
+                id="artInput"
+                required
             >
-                    <option *ngFor="let kind of vehicleKindNames">{{kind}}</option>
+                <option *ngFor="let kind of vehicleKindNames">
+                    {{ kind }}
+                </option>
             </select>
         </div>
         <div class="form-group">
             <label for="baujahrInput">Baujahr</label>
-            <input type="number"
-                   class="form-control"
-                   formControlName="baujahr"
-                   id="baujahrInput"
-                   required />
+            <input
+                type="number"
+                class="form-control"
+                formControlName="baujahr"
+                id="baujahrInput"
+                required
+            />
         </div>
         <div class="form-group">
             <label for="sitzeInput">Sitze</label>
-            <input type="number"
-                   class="form-control"
-                   formControlName="sitze"
-                   id="sitzeInput"
-                   required />
+            <input
+                type="number"
+                class="form-control"
+                formControlName="sitze"
+                id="sitzeInput"
+                required
+            />
         </div>
         <div class="form-group">
             <label for="stauraumInput">Stauraum</label>
-            <input type="number"
-                   class="form-control"
-                   formControlName="stauraum"
-                   id="stauraumInput"
-                   required />
+            <input
+                type="number"
+                class="form-control"
+                formControlName="stauraum"
+                id="stauraumInput"
+                required
+            />
         </div>
     </div>
     <div class="modal-footer">
         <button
-                type="button"
-                class="btn btn-outline-dark"
-                (click)="activeModal.dismiss()"
+            type="button"
+            class="btn btn-outline-dark"
+            (click)="activeModal.dismiss()"
         >
             Schließen
         </button>
-        <button
-                type="button"
-                class="btn btn-success"
-                (click)="save()"
-        >
+        <button type="button" class="btn btn-success" (click)="save()">
             Erstellen
         </button>
     </div>

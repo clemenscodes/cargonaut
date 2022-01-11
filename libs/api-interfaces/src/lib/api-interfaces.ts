@@ -74,7 +74,7 @@ export interface Address {
     street: string;
     house: number;
     zipCode: number;
-    city: string
+    city: string;
 }
 
 export interface Offer {
