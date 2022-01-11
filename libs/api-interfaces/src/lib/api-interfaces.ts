@@ -74,7 +74,7 @@ export interface Address {
     street: string;
     house: number;
     zipCode: number;
-    city: string
+    city: string;
 }
 
 export interface Offer {
@@ -112,11 +112,11 @@ export enum VehicleKind {
 }
 
 export interface Vehicle {
+    vehicleId: string;
     photoURL: string;
     userId: string;
     mark: string;
     kind: VehicleKind;
-    manufacturer: string;
     model: string;
     constructionYear: number;
     seats: number;

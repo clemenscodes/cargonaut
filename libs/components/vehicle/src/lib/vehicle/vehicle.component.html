@@ -5,7 +5,9 @@
             <div
                 *ngIf="vehicle.photoURL.length > 0"
                 class="col-3"
-                style="background-image: url({{ vehicle.photoURL }});"
+                [ngStyle]="{
+                    'background-image': 'url(' + vehicle.photoURL + ')'
+                }"
             ></div>
             <div class="col">
                 <table>
@@ -22,21 +24,21 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>{{ vehicle.manufacturer }}</td>
+                            <td>{{ vehicle.mark }}</td>
                             <td>{{ vehicle.kind }}</td>
                             <td>{{ vehicle.constructionYear }}</td>
                             <td>{{ vehicle.seats }}</td>
                             <td>{{ vehicle.volume }} Liter</td>
                             <td>
                                 <fa-icon
-                                    (click)="editVehicle()"
+                                    (click)="editVehicle(vehicle)"
                                     icon="pen"
                                     size="lg"
                                 ></fa-icon>
                             </td>
                             <td>
                                 <fa-icon
-                                    (click)="deleteVehicle()"
+                                    (click)="deleteVehicle(vehicle)"
                                     icon="trash"
                                     size="lg"
                                 ></fa-icon>
@@ -53,7 +55,9 @@
             >
                 <div
                     class="col-3"
-                    style="background-image: url({{ vehicle.photoURL }});"
+                    [ngStyle]="{
+                        'background-image': 'url(' + vehicle.photoURL + ')'
+                    }"
                 ></div>
                 <div class="col-9">
                     <table>
@@ -70,21 +74,21 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>{{ vehicle.manufacturer }}</td>
+                                <td>{{ vehicle.mark }}</td>
                                 <td>{{ vehicle.kind }}</td>
                                 <td>{{ vehicle.constructionYear }}</td>
                                 <td>{{ vehicle.seats }}</td>
                                 <td>{{ vehicle.volume }} Liter</td>
                                 <td>
                                     <fa-icon
-                                        (click)="editVehicle()"
+                                        (click)="editVehicle(vehicle)"
                                         icon="pen"
                                         size="lg"
                                     ></fa-icon>
                                 </td>
                                 <td>
                                     <fa-icon
-                                        (click)="deleteVehicle()"
+                                        (click)="deleteVehicle(vehicle)"
                                         icon="trash"
                                         size="lg"
                                     ></fa-icon>
@@ -96,4 +100,5 @@
             </div>
         </ng-template>
     </div>
+    <a class="btn" (click)="addVehicle()"> Fahrzeug hinzufügen </a>
 </div>

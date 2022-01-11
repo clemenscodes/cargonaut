@@ -25,19 +25,18 @@ export class AddOfferModalComponent {
         private fb: FormBuilder
     ) {
         this.offerForm = this.fb.group({
-            seats: new FormControl(0, [Validators.required]),
-            volume: new FormControl(0, [Validators.required]),
+            seats: new FormControl("", [Validators.required]),
+            volume: new FormControl("", [Validators.required]),
             date: new FormControl("", [Validators.required]),
-            price: new FormControl(0, [Validators.required]),
-            serviceKind: new FormControl("", [Validators.required]),
+            price: new FormControl("", [Validators.required]),
             startStreet: new FormControl("", [Validators.required]),
             startCity: new FormControl("", [Validators.required]),
-            startHouse: new FormControl(0, [Validators.required]),
-            startZipCode: new FormControl(0, [Validators.required]),
+            startHouse: new FormControl("", [Validators.required]),
+            startZipCode: new FormControl("", [Validators.required]),
             targetStreet: new FormControl("", [Validators.required]),
             targetCity: new FormControl("", [Validators.required]),
-            targetHouse: new FormControl(0, [Validators.required]),
-            targetZipCode: new FormControl(0, [Validators.required]),
+            targetHouse: new FormControl("", [Validators.required]),
+            targetZipCode: new FormControl("", [Validators.required]),
         });
     }
     get seats(): AbstractControl {

@@ -3,7 +3,7 @@ import {
     AngularFirestore,
     AngularFirestoreCollection,
 } from "@angular/fire/compat/firestore";
-import { Vehicle } from "@api-interfaces";
+import { Vehicle, VehicleKind } from "@api-interfaces";
 import { map, Observable } from "rxjs";
 import { AuthService } from "../auth/auth.service";
 
@@ -13,6 +13,8 @@ import { AuthService } from "../auth/auth.service";
 export class VehicleService {
     vehicles: Observable<Vehicle[]>;
     vehiclesCollection: AngularFirestoreCollection<Vehicle>;
+    vehicleToEdit: Vehicle;
+    editMode = false;
     constructor(
         private afs: AngularFirestore,
         private authService: AuthService
@@ -22,6 +24,17 @@ export class VehicleService {
             "vehicles",
             (ref) => ref.where("userId", "==", uid)
         );
+        this.vehicleToEdit = {
+            vehicleId: "",
+            photoURL: "",
+            userId: "",
+            mark: "",
+            kind: VehicleKind.Cabrio,
+            model: "",
+            constructionYear: 0,
+            seats: 0,
+            volume: 0,
+        };
         this.vehicles = this.vehiclesCollection.snapshotChanges().pipe(
             map((vehicles) =>
                 vehicles.map((v) => {
@@ -34,7 +47,39 @@ export class VehicleService {
             )
         );
     }
+
     addVehicle(vehicle: Vehicle) {
         this.vehiclesCollection.add(vehicle);
+    }
+
+    editVehicle() {
+        this.vehiclesCollection.ref.onSnapshot((snap) => {
+            snap.forEach((item) => {
+                console.log("item id: " + item.data()["vehicleId"]);
+                console.log(
+                    "expected vehicle id: " + this.vehicleToEdit.vehicleId
+                );
+                if (item.data()["vehicleId"] === this.vehicleToEdit.vehicleId) {
+                    item.ref.update({
+                        mark: this.vehicleToEdit.mark,
+                        kind: this.vehicleToEdit.kind,
+                        constructionYear: this.vehicleToEdit.constructionYear,
+                        seats: this.vehicleToEdit.seats,
+                        volume: this.vehicleToEdit.volume,
+                    });
+                }
+            });
+        });
+    }
+
+    deleteVehicle(vehicle: Vehicle) {
+        this.vehiclesCollection.ref.onSnapshot((snap) => {
+            snap.forEach((item) => {
+                console.log("item id: " + item.data()["vehicleId"]);
+                console.log("expected vehicle id: " + vehicle.vehicleId);
+                if (item.data()["vehicleId"] === vehicle.vehicleId)
+                    item.ref.delete();
+            });
+        });
     }
 }
