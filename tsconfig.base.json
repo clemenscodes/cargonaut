@@ -16,6 +16,12 @@
         "resolveJsonModule": true,
         "baseUrl": ".",
         "paths": {
+            "@add-offer-modal": [
+                "libs/components/add-offer-modal/src/index.ts"
+            ],
+            "@add-vehicle-modal": [
+                "libs/components/add-vehicle-modal/src/index.ts"
+            ],
             "@alert": ["libs/components/alert/src/index.ts"],
             "@api-interfaces": ["libs/api-interfaces/src/index.ts"],
             "@change-email-form": [
@@ -41,6 +47,7 @@
             "@login": ["libs/components/login/src/index.ts"],
             "@login-form": ["libs/components/login-form/src/index.ts"],
             "@offer": ["libs/components/offer/src/index.ts"],
+            "@offer-item": ["libs/components/offer-item/src/index.ts"],
             "@profile": ["libs/components/profile/src/index.ts"],
             "@register": ["libs/components/register/src/index.ts"],
             "@register-form": ["libs/components/register-form/src/index.ts"],

@@ -8,12 +8,14 @@ import {
     FontAwesomeModule,
 } from "@fortawesome/angular-fontawesome";
 import { faPen, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { AddVehicleModalModule } from "@add-vehicle-modal";
 
 @NgModule({
     imports: [
         CommonModule,
         FontAwesomeModule,
         VehicleRoutingModule,
+        AddVehicleModalModule,
         ServicesModule,
     ],
     declarations: [VehicleComponent],

@@ -1,5 +1,9 @@
 import { Component } from "@angular/core";
 import { faPlusCircle } from "@fortawesome/free-solid-svg-icons/faPlusCircle";
+import { OfferService } from "@services";
+import { AddOfferModalComponent } from "@add-offer-modal";
+import { Offer } from "@api-interfaces";
+import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
     selector: "cargonaut-dashboard",
@@ -7,5 +11,22 @@ import { faPlusCircle } from "@fortawesome/free-solid-svg-icons/faPlusCircle";
     styleUrls: ["./dashboard.component.scss"],
 })
 export class DashboardComponent {
-    faPlusCircle = faPlusCircle;
+    public faPlusCircle = faPlusCircle;
+    constructor(
+        public offerService: OfferService,
+        private modalService: NgbModal
+    ) {}
+    public async addOffer() {
+        const modalReference = this.modalService.open(AddOfferModalComponent, {
+            size: "xl",
+        });
+
+        try {
+            const resultOffer: Offer = await modalReference.result;
+            //TODO: add resultOffer to Firestore
+            this.offerService.addOffer(resultOffer);
+        } catch (error) {
+            console.log(error);
+        }
+    }
 }

@@ -1,15 +1,15 @@
-import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { VehicleComponent } from './vehicle.component';
+import { NgModule } from "@angular/core";
+import { RouterModule } from "@angular/router";
+import { VehicleComponent } from "./vehicle.component";
 import {
     redirectUnauthorizedTo,
     canActivate,
-} from '@angular/fire/compat/auth-guard';
+} from "@angular/fire/compat/auth-guard";
 
-const redirectUnauthenticatedToHome = () => redirectUnauthorizedTo(['/']);
+const redirectUnauthenticatedToHome = () => redirectUnauthorizedTo(["/"]);
 
 const route = {
-    path: 'vehicle',
+    path: "vehicle",
     component: VehicleComponent,
     ...canActivate(redirectUnauthenticatedToHome),
 };

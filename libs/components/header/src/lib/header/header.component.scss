@@ -1,5 +1,5 @@
-@import '_variables';
-@import '_mixins';
+@import "_variables";
+@import "_mixins";
 
 header {
     position: relative;
@@ -8,7 +8,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 3rem;
+    height: 4rem;
     padding: 0 1rem;
     box-shadow: 0 2px 0.5vw #000000;
     z-index: 101;
@@ -23,6 +23,10 @@ header {
         padding: 0 1rem;
     }
     nav {
+        form {
+            position: relative;
+            margin-left: 4rem;
+        }
         a {
             transition: 0.25s;
             cursor: pointer;
@@ -34,9 +38,17 @@ header {
                 color: $light;
             }
         }
+        fa-icon[icon="sign-out-alt"] {
+            cursor: pointer;
+            color: $darkgreen;
+            margin-left: 3rem;
+            transition: 0.25s;
+            &:hover {
+                color: $darkgreen;
+            }
+        }
         fa-icon {
             cursor: pointer;
-            margin-left: 2rem;
             color: $darkgreen;
             transition: 0.25s;
             &:hover {
