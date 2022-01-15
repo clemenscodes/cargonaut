@@ -1,6 +1,32 @@
 {
     "version": 1,
     "projects": {
+        "add-request-modal": {
+            "projectType": "library",
+            "root": "libs/components/add-request-modal",
+            "sourceRoot": "libs/components/add-request-modal/src",
+            "prefix": "cargonaut",
+            "architect": {
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "outputs": ["coverage/libs/components/add-request-modal"],
+                    "options": {
+                        "jestConfig": "libs/components/add-request-modal/jest.config.js",
+                        "passWithNoTests": true
+                    }
+                },
+                "lint": {
+                    "builder": "@nrwl/linter:eslint",
+                    "options": {
+                        "lintFilePatterns": [
+                            "libs/components/add-request-modal/src/**/*.ts",
+                            "libs/components/add-request-modal/src/**/*.html"
+                        ]
+                    }
+                }
+            },
+            "tags": []
+        },
         "alert": {
             "projectType": "library",
             "root": "libs/components/alert",
@@ -774,6 +800,32 @@
                         "lintFilePatterns": [
                             "libs/components/request/src/**/*.ts",
                             "libs/components/request/src/**/*.html"
+                        ]
+                    }
+                }
+            },
+            "tags": []
+        },
+        "request-item": {
+            "projectType": "library",
+            "root": "libs/components/request-item",
+            "sourceRoot": "libs/components/request-item/src",
+            "prefix": "cargonaut",
+            "architect": {
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "outputs": ["coverage/libs/components/request-item"],
+                    "options": {
+                        "jestConfig": "libs/components/request-item/jest.config.js",
+                        "passWithNoTests": true
+                    }
+                },
+                "lint": {
+                    "builder": "@nrwl/linter:eslint",
+                    "options": {
+                        "lintFilePatterns": [
+                            "libs/components/request-item/src/**/*.ts",
+                            "libs/components/request-item/src/**/*.html"
                         ]
                     }
                 }
