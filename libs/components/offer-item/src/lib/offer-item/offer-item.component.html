@@ -28,6 +28,18 @@
                 <td>€ {{ offer.price }}</td>
                 <td>{{ offer.userId }}</td>
             </tr>
+            <tr *ngIf="isOfferListItem===true">
+                <td>
+                    <form>
+                        <button
+                        type="submit"
+                        class="green-btn"
+                    >
+                        Ich bin interessiert!
+                    </button>
+                    </form>
+                </td>
+            </tr>
         </tbody>
     </table>
 </div>

@@ -7,5 +7,11 @@ import { Offer } from "@api-interfaces";
     styleUrls: ["./offer-item.component.scss"],
 })
 export class OfferItemComponent {
+
+
     @Input() offer!: Offer;
+    @Input() isOfferListItem!: boolean;
+
 }
+
+
