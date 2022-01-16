@@ -24,7 +24,7 @@
             ],
             "@alert": ["libs/components/alert/src/index.ts"],
             "@api-interfaces": ["libs/api-interfaces/src/index.ts"],
-            "@cargonaut/add-request-modal": [
+            "@add-request-modal": [
                 "libs/components/add-request-modal/src/index.ts"
             ],
             "@cargonaut/request-item": [
