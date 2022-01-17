@@ -48,8 +48,25 @@
                     >
                     Angebot löschen
                     </button>
-                    <button *ngIf="unacceptedRequestExists()">Miau</button>
-
+                    <div *ngFor="let request of this.requestService.requests | async">
+                        <button *ngIf="request.offerId === offer.offerId"
+                        type="submit"
+                        class="green-btn"
+                        (click)="addPassenger(request)"
+                        >Mitfahrer bestätigen
+                        </button>
+                    </div>
+                    <h2>Mitfahrer</h2>
+                    <div *ngFor="let passenger of this.passengers; index as i">
+                        {{passenger}}
+                    </div> <!-- block für Mitfahrer-->
+                    <button
+                    type="submit"
+                    class="green-btn"
+                    (click)="startDrive(offer)"
+                    >
+                    Auto voll
+                    </button>
                 </td>
                 <td *ngSwitchCase="'dashboard_requestlist'">
                     <button

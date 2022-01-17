@@ -118,6 +118,9 @@ export class RequestService {
         };
         this.seats = [];
         this.volume = [];
+        
+        //this.deleteRequest(this.offerToRequest);
+
     }
     addRequest(request: Request) {
         this.requestCollection.add(request);
@@ -125,19 +128,6 @@ export class RequestService {
     getRequest(id: string) {
         return this.requestCollection.doc(id);
     }
-
-    hasUnnacceptedRequest(offer: Offer){
-        let res = false;
-        this.requestCollection.ref.onSnapshot((snap) => {
-            snap.forEach((item) => {
-                if(item.data()["offerId"] === offer.offerId && item.data()["accepted"] == false){
-                    res = true;
-                }
-            })
-        });
-        return res;
-    }
-
 
     async deleteRequest(offer: Offer){
         //should modify Observable requestsByUser

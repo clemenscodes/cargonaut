@@ -19,7 +19,15 @@
                             <div class="container-fluid p-4">
                                 <div class="row">
                                     <div class="col">
-                                        <!--Active Offer Cards-->
+                                       <div *ngFor="let offer of offerService.offersByUser | async">
+                                           <div *ngIf="offer.status === 'started'">
+                                                <div>bing</div>
+                                                <cargonaut-offer-item
+                                                    [itemType]="'dashboard_offerlist_started'"
+                                                    [offer]="offer"
+                                                ></cargonaut-offer-item>
+                                           </div>
+                                       </div>
                                     </div>
                                 </div>
                             </div>
@@ -57,10 +65,12 @@
                                             "
                                             class="container"
                                         >
+                                        <div *ngIf="offer.status === 'toBeStarted'">
                                             <cargonaut-offer-item
-                                                [itemType]="'dashboard_offerlist'"
-                                                [offer]="offer"
+                                            [itemType]="'dashboard_offerlist'"
+                                            [offer]="offer"
                                             ></cargonaut-offer-item>
+                                        </div>
                                         </div>
                                     </div>
                                 </div>

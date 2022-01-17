@@ -53,4 +53,18 @@ export class OfferService {
         });
     }
 
+
+    editOffer(offer: Offer) {
+        this.offersCollection.ref.onSnapshot((snap) => {
+            snap.forEach((item) => {
+                if (item.data()["offerId"] === offer.offerId) {
+                    item.ref.update({
+                        status: offer.status
+                    });
+                }
+            });
+        });
+    }
+
+
 }

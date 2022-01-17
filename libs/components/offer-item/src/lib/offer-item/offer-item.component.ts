@@ -1,5 +1,5 @@
 import { Component, Input } from "@angular/core";
-import { Offer, Request} from "@api-interfaces";
+import { Offer, Request, User, Status} from "@api-interfaces";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { AddRequestModalComponent } from "@add-request-modal";
 import { RequestService } from "@services";
@@ -16,15 +16,19 @@ export class OfferItemComponent {
 
     @Input() offer!: Offer;
     @Input() itemType!: string;
+    
+ 
+    public passengers: Array<string>;
 
     constructor( 
         private modalService: NgbModal,
-        private requestService: RequestService,
-        private offerService: OfferService
+        public requestService: RequestService,
+        private offerService: OfferService,
     )
     {
-
+        this.passengers = new Array<string>();
     }
+
 
 
     public async createRequest(offer: Offer) {
@@ -53,10 +57,17 @@ export class OfferItemComponent {
         this.requestService.deleteRequest(offer);
     }
 
-    public unacceptedRequestExists(){
-        return this.requestService.hasUnnacceptedRequest(this.offer);
+    public async addPassenger(request: Request){
+        if(!this.passengers.includes(request.userId)){
+            this.passengers.push(request.userId);
+        }
     }
 
+    public async startDrive(offer: Offer){
+        offer.status = Status.started;
+        this.offerService.editOffer(offer);
+    }
+    
 }
 
 
