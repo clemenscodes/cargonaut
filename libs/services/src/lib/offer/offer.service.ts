@@ -37,6 +37,7 @@ export class OfferService {
                 )
         );
     }
+    
     addOffer(offer: Offer) {
         this.offersCollection.add(offer);
     }
