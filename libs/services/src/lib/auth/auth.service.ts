@@ -81,13 +81,13 @@ export class AuthService {
                 uid,
                 email,
                 emailVerified,
-                displayName,
+                photoURL: "",
                 firstName,
                 lastName,
                 birthDate,
-                rating: 0,
+                displayName,
+                rating: 5,
             };
-            await this.updateProfile(displayName);
             const doc = (
                 await this.afs.collection(`/users`).doc<User>(uid).ref.get()
             ).data();
@@ -184,8 +184,9 @@ export class AuthService {
         if (!this.user) {
             throw new Error("Kein Benutzer gefunden");
         }
-        await this.logout();
-        return await this.afs.collection("/users").doc(this.user.uid).delete();
+        await this.afs.collection("/users").doc(this.user.uid).delete();
+        return await this.logout();
+
     }
 
     /**
@@ -194,12 +195,13 @@ export class AuthService {
      * @param displayName {string} The new display name
      * @param photoURL {string} The new icon code
      */
-    updateProfile(displayName: string): Promise<void> {
+    async updateProfile(displayName: string): Promise<void> {
         const user = this.getCurrentUser();
         if (!user) {
             throw new Error("Kein Benutzer gefunden");
         }
-        return this.afs.collection("/users").doc(user.uid).update(displayName);
+        console.log("updating username to " + displayName);
+        return await this.afs.collection("/users").doc(user.uid).update({"displayName": displayName});
     }
 
     /**
