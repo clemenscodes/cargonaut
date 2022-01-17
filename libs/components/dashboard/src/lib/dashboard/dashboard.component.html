@@ -58,8 +58,7 @@
                                             class="container"
                                         >
                                             <cargonaut-offer-item
-                                                [isOfferListItem]="false"
-                                                [isRequestListItem]="false"
+                                                [itemType]="'dashboard_offerlist'"
                                                 [offer]="offer"
                                             ></cargonaut-offer-item>
                                         </div>
@@ -80,12 +79,11 @@
                             </div>
                         </mat-tab>
                         <mat-tab label="Anfragen">
-                            <div *ngFor="let offer of offerService.offers | async" class="container-fluid p-4">
+                            <div *ngFor="let offer of requestService.requestsByUser | async" class="container-fluid p-4">
                                 <cargonaut-offer-item
-                                [isOfferListItem]="false"
-                                [isRequestListItem]="true"
+                                [itemType]="'dashboard_requestlist'"
                                 [offer]="offer"
-                            ></cargonaut-offer-item>
+                                ></cargonaut-offer-item>
                             </div>
                         </mat-tab>
                     </mat-tab-group>

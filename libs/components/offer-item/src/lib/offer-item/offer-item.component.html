@@ -14,6 +14,8 @@
             </tr>
         </thead>
         <tbody>
+            <!-- Angebotsliste in Angebote, Anfrageliste in Dashboard, Angebotsliste in Dashboad -->
+
             <tr>
                 <td *ngIf="offer.status === 'toBeStarted'; else full">Frei</td>
                 <ng-template #full>
@@ -28,20 +30,17 @@
                 <td>€ {{ offer.price }}</td>
                 <td>{{ offer.userId }}</td>
             </tr>
-            <tr *ngIf="isOfferListItem===true && isRequestListItem===false; else req">
-                <td>
+            <tr [ngSwitch]="itemType">
+                <td *ngSwitchCase="'offer_offerlist'">
                     <button
                     type="submit"
                     class="green-btn"
                     (click)="createRequest(offer)"
-                >
+                    >
                     Ich bin interessiert!
-                </button>
-
+                    </button>
                 </td>
-            </tr>
-            <ng-template #req>
-                <td>
+                <td *ngSwitchCase="'dashboard_offerlist'">
                     <button
                     type="submit"
                     class="green-btn"
@@ -49,8 +48,19 @@
                     >
                     Angebot löschen
                     </button>
+                    <button *ngIf="unacceptedRequestExists()">Miau</button>
+
                 </td>
-            </ng-template>
+                <td *ngSwitchCase="'dashboard_requestlist'">
+                    <button
+                    type="submit"
+                    class="green-btn"
+                    (click)="deleteRequest(offer)"
+                    >
+                    Anfrage löschen
+                    </button>
+                </td>
+            </tr>
         </tbody>
     </table>
 </div>

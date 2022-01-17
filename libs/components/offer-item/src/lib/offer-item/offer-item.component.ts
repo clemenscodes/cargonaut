@@ -15,8 +15,7 @@ export class OfferItemComponent {
 
 
     @Input() offer!: Offer;
-    @Input() isOfferListItem!: boolean;
-    @Input() isRequestListItem!: boolean;
+    @Input() itemType!: string;
 
     constructor( 
         private modalService: NgbModal,
@@ -29,6 +28,7 @@ export class OfferItemComponent {
 
 
     public async createRequest(offer: Offer) {
+        console.log("in create request: pushing to offerToRequest: " + offer.offerId);
         this.requestService.setOfferToRequest(offer);
         const modalReference = this.modalService.open(
             AddRequestModalComponent,
@@ -47,6 +47,14 @@ export class OfferItemComponent {
 
     public async deleteOffer(offer: Offer){
         this.offerService.deleteOffer(offer);
+    }
+
+    public async deleteRequest(offer: Offer){
+        this.requestService.deleteRequest(offer);
+    }
+
+    public unacceptedRequestExists(){
+        return this.requestService.hasUnnacceptedRequest(this.offer);
     }
 
 }
