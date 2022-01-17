@@ -1,5 +1,5 @@
 import { Component, Input } from "@angular/core";
-import { Offer } from "@api-interfaces";
+import { Offer, Request} from "@api-interfaces";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { AddRequestModalComponent } from "@add-request-modal";
 import { RequestService } from "@services";
@@ -16,6 +16,7 @@ export class OfferItemComponent {
 
     @Input() offer!: Offer;
     @Input() isOfferListItem!: boolean;
+    @Input() isRequestListItem!: boolean;
 
     constructor( 
         private modalService: NgbModal,
@@ -35,6 +36,13 @@ export class OfferItemComponent {
                 size: "xl",
             }
         );
+
+        try {
+            const resultRequest: Request = await modalReference.result;
+            this.requestService.addRequest(resultRequest);
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     public async deleteOffer(offer: Offer){

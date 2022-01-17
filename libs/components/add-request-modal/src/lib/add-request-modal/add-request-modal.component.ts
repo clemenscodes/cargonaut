@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
 import { AuthService, RequestService } from "@services";
-import { Request } from "@api-interfaces";
+import { Request, Status } from "@api-interfaces";
 import { AngularFirestore } from "@angular/fire/compat/firestore";
 
 import {
@@ -43,8 +43,23 @@ export class AddRequestModalComponent  {
     }
 
     save(): void {
-      this.activeModal.close({});
+      //offer modal receives needed seats and storage
 
+      //offering person: receives a request with seats, storage and user name in the related offer
+      //                   possibility to accept or reject
+      //requesting person: receives reference of the offer card in the own requests section
+      const { uid } = this.authService.getCurrentUser();
+      this.request = {
+          userId: uid,
+          offerId: this.requestService.offerToRequest.offerId,
+          seats: this.seats.value,
+          volume: this.volume.value,
+          status: Status.toBeStarted,
+          accepted: false,
+
+
+      };
+      this.activeModal.close(this.request);
     }
 
 }

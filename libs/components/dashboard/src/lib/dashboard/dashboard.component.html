@@ -59,6 +59,7 @@
                                         >
                                             <cargonaut-offer-item
                                                 [isOfferListItem]="false"
+                                                [isRequestListItem]="false"
                                                 [offer]="offer"
                                             ></cargonaut-offer-item>
                                         </div>
@@ -79,8 +80,12 @@
                             </div>
                         </mat-tab>
                         <mat-tab label="Anfragen">
-                            <div class="container-fluid p-4">
-                                <!--Open Request Cards-->
+                            <div *ngFor="let offer of offerService.offers | async" class="container-fluid p-4">
+                                <cargonaut-offer-item
+                                [isOfferListItem]="false"
+                                [isRequestListItem]="true"
+                                [offer]="offer"
+                            ></cargonaut-offer-item>
                             </div>
                         </mat-tab>
                     </mat-tab-group>

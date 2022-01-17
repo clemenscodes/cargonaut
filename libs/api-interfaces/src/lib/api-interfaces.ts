@@ -80,7 +80,7 @@ export interface Address {
 export interface Offer {
     userId: string;
     displayName?: string;
-    offerId?: string;
+    offerId: string;
     date: Timestamp;
     price: number;
     status: Status;

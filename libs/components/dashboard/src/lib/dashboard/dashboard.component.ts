@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 import { faPlusCircle } from "@fortawesome/free-solid-svg-icons/faPlusCircle";
-import { OfferService } from "@services";
+import { OfferService, RequestService } from "@services";
 import { AddOfferModalComponent } from "@add-offer-modal";
 import { Offer } from "@api-interfaces";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
@@ -14,6 +14,7 @@ export class DashboardComponent {
     public faPlusCircle = faPlusCircle;
     constructor(
         public offerService: OfferService,
+        public requestService: RequestService,
         private modalService: NgbModal
     ) {}
     public async addOffer() {

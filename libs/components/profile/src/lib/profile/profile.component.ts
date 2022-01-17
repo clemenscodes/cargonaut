@@ -139,6 +139,8 @@ export class ProfileComponent implements OnInit, OnDestroy {
      */
     async changeProfile(data: ChangeProfileData): Promise<void> {
         this.loading = true;
+        console.log("new displayname " + data.displayName);
+        console.log("user  " + JSON.stringify(this.user?.displayName));
         try {
             await this.authService.updateProfile(data.displayName);
             this.alertService.addAlert({
