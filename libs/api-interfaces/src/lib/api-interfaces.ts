@@ -56,9 +56,11 @@ export interface Ratings {
 export type Rating = 1 | 2 | 3 | 4 | 5;
 
 export enum Status {
+    preparing="preparing",
     toBeStarted = "toBeStarted",
     started = "started",
-    finishe = "finished",
+    finished = "finished",
+    rated = "rated"
 }
 
 export interface Request {

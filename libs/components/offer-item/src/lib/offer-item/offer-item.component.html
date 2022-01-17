@@ -14,13 +14,13 @@
             </tr>
         </thead>
         <tbody>
-            <!-- Angebotsliste in Angebote, Anfrageliste in Dashboard, Angebotsliste in Dashboad -->
-
             <tr>
-                <td *ngIf="offer.status === 'toBeStarted'; else full">Frei</td>
-                <ng-template #full>
-                    <td>Voll</td>
-                </ng-template>
+                <td [ngSwitch]="offer.status">
+                    <span *ngSwitchCase="'preparing'">Mitfahrersuche</span>
+                    <span *ngSwitchCase="'toBeStarted'">Fahrt hat noch nicht begonnen</span>
+                    <span *ngSwitchCase="'started'">Fahrer unterwegs</span>
+                    <span *ngSwitchCase="'finished'">Abgeschlossen</span>
+                </td>
                 <td>{{ offer.startAddress.city }}</td>
                 <td>{{ offer.targetAddress.city }}</td>
                 <td>{{ offer.date.toDate() | date }}</td>
@@ -65,7 +65,7 @@
                     class="green-btn"
                     (click)="startDrive(offer)"
                     >
-                    Auto voll
+                    Fahrt vorbereiten
                     </button>
                 </td>
                 <td *ngSwitchCase="'dashboard_requestlist'">
@@ -75,6 +75,24 @@
                     (click)="deleteRequest(offer)"
                     >
                     Anfrage löschen
+                    </button>
+                </td>
+                <td *ngSwitchCase="'dashboard_offerlist_started'">
+                    <button
+                    type="submit"
+                    class="green-btn"
+                    (click)="finishDrive(offer)"
+                    >
+                    Fahrt abschließen
+                    </button>
+                </td>
+                <td *ngSwitchCase="'dashboard_offerlist_finished'">
+                    <button
+                    type="submit"
+                    class="green-btn"
+                    (click)="rate(offer)"
+                    >
+                    Fahrt bewerten
                     </button>
                 </td>
             </tr>

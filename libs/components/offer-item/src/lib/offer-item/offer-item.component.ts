@@ -67,6 +67,17 @@ export class OfferItemComponent {
         offer.status = Status.started;
         this.offerService.editOffer(offer);
     }
+
+    public async finishDrive(offer: Offer){
+        offer.status = Status.finished;
+        this.offerService.editOffer(offer);
+    }
+
+    public async rate(offer: Offer){
+        offer.status = Status.rated;
+        this.offerService.editOffer(offer);
+    }
+    
     
 }
 
