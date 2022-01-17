@@ -49,6 +49,7 @@ export class AddRequestModalComponent  {
       //                   possibility to accept or reject
       //requesting person: receives reference of the offer card in the own requests section
       const { uid } = this.authService.getCurrentUser();
+      console.log("pushing request related to offerId " + this.requestService.offerToRequest.offerId);
       this.request = {
           userId: uid,
           offerId: this.requestService.offerToRequest.offerId,
@@ -56,8 +57,6 @@ export class AddRequestModalComponent  {
           volume: this.volume.value,
           status: Status.toBeStarted,
           accepted: false,
-
-
       };
       this.activeModal.close(this.request);
     }
