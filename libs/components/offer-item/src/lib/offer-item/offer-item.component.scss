@@ -11,6 +11,7 @@ table {
     box-shadow: rgba(0, 0, 0, 0.34) 0 2px 18px;
     padding-bottom: 4rem;
     thead {
+        width: 0.9vw;
         th {
             text-align: center;
             font-weight: normal;
@@ -20,6 +21,7 @@ table {
         }
     }
     tbody {
+        width: 0.9vw;
         word-wrap: break-word;
         tr {
             page-break-inside: avoid;
@@ -30,4 +32,12 @@ table {
             }
         }
     }
+}
+
+table {
+    border-radius: 1rem;
+}
+
+.offer-item:hover {
+    transform: scale(1.1);
 }

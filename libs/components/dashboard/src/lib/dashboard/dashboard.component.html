@@ -20,6 +20,17 @@
                                 <div class="row">
                                     <div class="col">
                                         <!--Active Offer Cards-->
+                                        <div
+                                            *ngFor="
+                                                let offer of offerService.offers
+                                                    | async
+                                            "
+                                            class="container"
+                                        >
+                                            <cargonaut-offer-item
+                                                [offer]="offer" *ngIf="offer.status != 'toBeStarted'"
+                                            ></cargonaut-offer-item>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -58,11 +69,12 @@
                                             class="container"
                                         >
                                             <cargonaut-offer-item
-                                                [offer]="offer"
+                                                [offer]="offer" *ngIf="offer.status === 'toBeStarted'"
                                             ></cargonaut-offer-item>
                                         </div>
                                     </div>
                                 </div>
+                                <hr />
                                 <div class="row">
                                     <div class="col">
                                         <a class="btn" (click)="addOffer()"

@@ -1,4 +1,4 @@
-<div>
+<div class="container-fluid offer-item">
     <table>
         <thead>
             <tr>
@@ -31,3 +31,73 @@
         </tbody>
     </table>
 </div>
+
+<!-- <div class="container">
+    <div class="row">
+        <div class="col-1-md">
+            <div class="d-flex flex-column">
+                <h5>Status</h5>
+                <p *ngIf="offer.status === 'toBeStarted'; else full">Frei</p>
+                <ng-template #full>
+                    <p>Voll</p>
+                </ng-template>
+            </div>
+        </div>
+        <div class="col-1-md">
+            <div class="d-flex flex-column">
+                <h5>Von</h5>
+                <td>{{ offer.startAddress.city }}</td>
+
+            </div>
+        </div>
+        <div class="col-1-md">
+            <div class="d-flex flex-column">
+                <h5>Nach</h5>
+                <td>{{ offer.targetAddress.city }}</td>
+
+            </div>
+        </div>
+        <div class="col-2-md">
+            <div class="d-flex flex-column">
+                <h5>Datum</h5>
+                <td>{{ offer.date.toDate() | date }}</td>
+
+            </div>
+        </div>
+        <div class="col-2-md">
+            <div class="d-flex flex-column">
+                <h5>Dienstleistung</h5>
+                <td>{{ offer.serviceKind }}</td>
+
+            </div>
+        </div>
+        <div class="col-1-md">
+            <div class="d-flex flex-column">
+                <h5>Sitze</h5>
+                <td>{{ offer.seats }}</td>
+
+            </div>
+        </div>
+        <div class="col-1-md">
+            <div class="d-flex flex-column">
+                <h5>Stauraum</h5>
+                <td>{{ offer.volume }} Liter</td>
+
+            </div>
+        </div>
+        <div class="col-1-md">
+            <div class="d-flex flex-column">
+                <h5>Preis</h5>
+                <td>€ {{ offer.price }}</td>
+
+            </div>
+        </div>
+        <div class="col-2-md">
+            <div class="d-flex flex-column">
+                <h5>Fahrer</h5>
+                <td>{{ offer.userId }}</td>
+
+            </div>
+        </div>
+    </div>
+</div> -->
