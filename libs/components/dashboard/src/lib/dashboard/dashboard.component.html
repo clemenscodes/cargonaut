@@ -28,7 +28,7 @@
                                             class="container"
                                         >
                                             <cargonaut-offer-item
-                                                [offer]="offer" *ngIf="offer.status != 'toBeStarted'"
+                                                [offer]="offer" *ngIf="offer.status !== 'toBeStarted'"
                                             ></cargonaut-offer-item>
                                         </div>
                                     </div>
