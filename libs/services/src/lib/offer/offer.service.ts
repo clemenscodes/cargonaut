@@ -13,6 +13,8 @@ import { AuthService } from "../auth/auth.service";
 export class OfferService {
     offersCollection: AngularFirestoreCollection<Offer> =
         this.afs.collection<Offer>("offers", (ref) => ref.limit(5));
+    requestsCollection: AngularFirestoreCollection<Offer> =
+        this.afs.collection<Offer>("requests", (ref) => ref.limit(5));
     offers: Observable<Offer[]>;
     offersByUser: Observable<Offer[]>;
     constructor(public afs: AngularFirestore, public auth: AuthService) {
@@ -39,6 +41,36 @@ export class OfferService {
     }
     addOffer(offer: Offer) {
         this.offersCollection.add(offer);
+    }
+
+    updateOfferStatus(offer: Offer) {
+        this.offersCollection.ref.onSnapshot((snap) => {
+            snap.forEach((item) => {
+                console.log("item id: " + item.data()["offerId"]);
+                console.log(
+                    "expected offerId: " + offer.offerId
+                );
+                if (item.data()["offerId"] === offer.offerId) {
+                    item.ref.update({
+                        status: offer.status
+                    });
+                }
+            });
+        });
+
+        this.requestsCollection.ref.onSnapshot((snap) => {
+            snap.forEach((item) => {
+                console.log("item id: " + item.data()["offerId"]);
+                console.log(
+                    "expected req-offerId: " + offer.offerId
+                );
+                if (item.data()["offerId"] === offer.offerId) {
+                    item.ref.update({
+                        status: offer.status
+                    });
+                }
+            });
+        });
     }
 
     deleteOffer(offer: Offer) {

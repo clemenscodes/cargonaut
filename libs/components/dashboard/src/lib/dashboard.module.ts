@@ -6,6 +6,7 @@ import { MatTabsModule } from "@angular/material/tabs";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { OfferModule } from "@offer";
+import { DashboardInactiveOfferModule } from "@cargonaut/dashboard-inactive-offer";
 import { AddOfferModalModule } from "@add-offer-modal";
 import { OfferItemModule } from "@offer-item";
 
@@ -17,6 +18,7 @@ import { OfferItemModule } from "@offer-item";
         OfferModule,
         FontAwesomeModule,
         OfferItemModule,
+        DashboardInactiveOfferModule,
         AddOfferModalModule,
         BrowserAnimationsModule,
     ],

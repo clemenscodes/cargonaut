@@ -1,6 +1,6 @@
 <div class="offer">
     <h1>Alle Angebote</h1>
     <div *ngFor="let offer of offerService.offers | async" class="container">
-        <cargonaut-offer-item [isOfferListItem]="true" [isRequestListItem]="false" [offer]="offer"></cargonaut-offer-item>
+        <cargonaut-offer-item *ngIf="offer.status === 'toBeStarted'" [isOfferListItem]="true" [isRequestListItem]="false" [offer]="offer"></cargonaut-offer-item>
     </div>
 </div>

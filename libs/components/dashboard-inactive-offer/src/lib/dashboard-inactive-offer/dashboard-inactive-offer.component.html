@@ -1,0 +1,46 @@
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th>Status</th>
+                <th>Von</th>
+                <th>Nach</th>
+                <th>Datum</th>
+                <th>Dienstleistung</th>
+                <th>Sitze</th>
+                <th>Stauraum</th>
+                <th>Preis</th>
+                <th>Fahrer</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <ng-container *ngIf="offer.status === 'toBeStarted'; else display_status">
+                        <a class="btn" (click)="updateStatus(offer)">START</a>
+                    </ng-container>
+                    <ng-template #display_status>
+                        <a class="btn" (click)="showStatus(offer)">SHOW</a>
+                    </ng-template>
+                </td>
+                <td>{{ offer.startAddress.city }}</td>
+                <td>{{ offer.targetAddress.city }}</td>
+                <td>{{ offer.date.toDate() | date }}</td>
+                <td>{{ offer.serviceKind }}</td>
+                <td>{{ offer.seats }}</td>
+                <td>{{ offer.volume }} Liter</td>
+                <td>€ {{ offer.price }}</td>
+                <td>{{ offer.userId }}</td>
+            </tr>
+                <td>
+                    <button
+                        type="submit"
+                        class="green-btn"
+                        (click)="deleteOffer(offer)"
+                    >
+                        Angebot löschen
+                    </button>
+                </td>
+        </tbody>
+    </table>
+</div>

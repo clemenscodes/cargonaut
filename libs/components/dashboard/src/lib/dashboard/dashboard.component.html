@@ -20,6 +20,17 @@
                                 <div class="row">
                                     <div class="col">
                                         <!--Active Offer Cards-->
+                                        <div
+                                            *ngFor="
+                                                let offer of offerService.offersByUser
+                                                    | async
+                                            "
+                                            class="container"
+                                        >
+                                            <cargonaut-dashboard-inactive-offer *ngIf="offer.status !== 'toBeStarted'"
+                                                [offer]="offer"
+                                            ></cargonaut-dashboard-inactive-offer>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -57,11 +68,9 @@
                                             "
                                             class="container"
                                         >
-                                            <cargonaut-offer-item
-                                                [isOfferListItem]="false"
-                                                [isRequestListItem]="false"
+                                            <cargonaut-dashboard-inactive-offer *ngIf="offer.status === 'toBeStarted'"
                                                 [offer]="offer"
-                                            ></cargonaut-offer-item>
+                                            ></cargonaut-dashboard-inactive-offer>
                                         </div>
                                     </div>
                                 </div>
