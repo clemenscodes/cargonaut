@@ -32,7 +32,7 @@
                 <td>€ {{ offer.price }}</td>
                 <td>{{ offer.userId }}</td>
             </tr>
-                <td>
+                <td *ngIf="offer.status === 'toBeStarted'">
                     <button
                         type="submit"
                         class="green-btn"

@@ -27,7 +27,7 @@
                                             "
                                             class="container"
                                         >
-                                            <cargonaut-dashboard-inactive-offer *ngIf="offer.status !== 'toBeStarted'"
+                                            <cargonaut-dashboard-inactive-offer *ngIf="offer.status !== 'toBeStarted' && offer.status !== 'finished'"
                                                 [offer]="offer"
                                             ></cargonaut-dashboard-inactive-offer>
                                         </div>
