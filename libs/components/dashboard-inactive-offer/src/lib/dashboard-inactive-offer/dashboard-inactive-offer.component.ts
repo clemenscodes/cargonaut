@@ -12,11 +12,14 @@ import { StatusModalComponent } from "libs/components/status-modal/src/lib/statu
 export class DashboardInactiveOfferComponent{
     @Input() offer!: Offer;
 
+    public offerCreatorName: string | undefined;
+
     constructor( 
         private offerService: OfferService,
         public dialog: MatDialog
     )
     {
+        this.offerCreatorName = this.offer.displayName;
 
     }
 
