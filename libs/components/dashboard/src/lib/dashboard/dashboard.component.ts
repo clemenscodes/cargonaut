@@ -4,7 +4,6 @@ import { OfferService, RequestService } from "@services";
 import { AddOfferModalComponent } from "@add-offer-modal";
 import { Offer } from "@api-interfaces";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
-import { Status } from "../../../../../api-interfaces/src/lib/api-interfaces";
 
 @Component({
     selector: "cargonaut-dashboard",

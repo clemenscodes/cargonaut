@@ -3,9 +3,8 @@ import {
     AngularFirestore,
     AngularFirestoreCollection,
 } from '@angular/fire/compat/firestore';
-import { Request, Status, Offer, ServiceKind, User} from '@api-interfaces';
+import { Request, Status, Offer, ServiceKind} from '@api-interfaces';
 import { Timestamp } from 'firebase/firestore';
-import { request } from 'http';
 import { map, Observable } from 'rxjs';
 import { AuthService } from '../auth/auth.service';
 import { OfferService } from '../offer/offer.service';
