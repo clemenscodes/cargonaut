@@ -7,6 +7,8 @@ import { AppRoutingModule } from "./app-routing.module";
 import { CoreModule } from "@core";
 import { environment } from "@env";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { RequestService } from "@services";
+import { OfferService } from "@services";
 
 @NgModule({
     declarations: [AppComponent],
@@ -21,7 +23,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
         }),
         BrowserAnimationsModule,
     ],
-    providers: [],
+    providers: [RequestService, OfferService],
     bootstrap: [AppComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

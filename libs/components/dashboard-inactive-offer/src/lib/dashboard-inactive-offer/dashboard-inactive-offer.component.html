@@ -30,7 +30,7 @@
                 <td>{{ offer.seats }}</td>
                 <td>{{ offer.volume }} Liter</td>
                 <td>€ {{ offer.price }}</td>
-                <td>{{ offer.userId }}</td>
+                <td>{{ offer.displayName }}</td>
 
                 <td *ngIf="offer.status === 'toBeStarted'">
                     <button
