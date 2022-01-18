@@ -1,7 +1,8 @@
 import { Component, Input } from "@angular/core";
 import { Offer, Status} from "@api-interfaces";
-import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { OfferService } from "@services";
+import { MatDialog } from '@angular/material/dialog';
+import { StatusModalComponent } from "libs/components/status-modal/src/lib/status-modal/status-modal.component";
 
 @Component({
   selector: 'cargonaut-dashboard-inactive-offer',
@@ -9,12 +10,11 @@ import { OfferService } from "@services";
   styleUrls: ['./dashboard-inactive-offer.component.scss']
 })
 export class DashboardInactiveOfferComponent{
-
     @Input() offer!: Offer;
 
     constructor( 
         private offerService: OfferService,
-        private modalService: NgbModal
+        public dialog: MatDialog
     )
     {
 
@@ -33,8 +33,15 @@ export class DashboardInactiveOfferComponent{
     }
 
     public async showStatus(offer: Offer) {
-        const modalReference = this.modalService.open(StatusModalComponent, {
-            size: "xl",
+        const dialogRef = this.dialog.open(StatusModalComponent, {
+            height: '200px',
+            width: '320px',
+            panelClass: 'status-box',
+            data: offer
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+            console.log(`Dialog result: ${result}`);
         });
     }
 
@@ -43,8 +50,5 @@ export class DashboardInactiveOfferComponent{
         this.offerService.deleteOffer(offer);
     }
 
-}
-function StatusModalComponent(StatusModalComponent: any, arg1: { size: string; }) {
-    throw new Error("Function not implemented.");
 }
 

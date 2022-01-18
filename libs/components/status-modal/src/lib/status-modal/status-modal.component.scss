@@ -1,0 +1,76 @@
+mat-dialog-content {
+    overflow: visible;
+    height: auto;
+    width: 100%;
+    --status-bar-gap: 20px;
+    --status-dot-size: 2rem;
+    padding: 0;
+    margin: 0;
+}
+
+.status-box {
+    background-color: rgb(235, 235, 235);
+    padding: 20px;
+    width: fit-content;
+    text-align: center;
+}
+
+.status-bar {
+    position: relative;
+    display: flex;
+    margin: 20px 0; 
+}
+
+.status-dot {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background-color: red;
+    margin: 0 20px;
+    height: 2rem;
+    width: 2rem;
+    border-radius: 100%;
+}
+
+.status-dot:first-child {
+    margin-left: 40px;
+}
+
+.status-dot.active {
+    background-color: green;
+}
+
+.status-bar .status-dot:not(:first-child).active::after {
+    content: "";
+    position: absolute;
+    right: 50%;
+    width: calc(2rem + 40px);
+    height: 1rem;
+    background-color: green;
+    z-index: 0;
+}
+
+.status-dot fa-icon {
+    position: relative;
+    color: white;
+    z-index: 1;
+}
+
+.dismiss-btn {
+    padding: 0.2rem;
+    border-radius: 10px;
+    background-color: rgb(49, 49, 49);
+    border: 2px solid rgb(49, 49, 49);
+    color: white;
+    border: 0;
+    margin: 0 5px;
+}
+
+.next-status-btn {
+    padding: 0.2rem;
+    border-radius: 10px;
+    background-color: white;
+    border: 2px solid rgb(49, 49, 49);
+    margin: 0 5px;
+}
