@@ -2,8 +2,6 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { AddRequestModalComponent } from "./add-request-modal/add-request-modal.component";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
-import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
-
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { BrowserModule } from "@angular/platform-browser";
 import { FaIconLibrary } from "@fortawesome/angular-fontawesome";
@@ -24,7 +22,6 @@ import {
       FormsModule,
       ReactiveFormsModule,
       NgbModule,
-      NgbActiveModal
   ],
   declarations: [AddRequestModalComponent],
   exports: [AddRequestModalComponent, ReactiveFormsModule],
