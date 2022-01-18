@@ -19,16 +19,22 @@
             "@add-offer-modal": [
                 "libs/components/add-offer-modal/src/index.ts"
             ],
+            "@add-request-modal": [
+                "libs/components/add-request-modal/src/index.ts"
+            ],
             "@add-vehicle-modal": [
                 "libs/components/add-vehicle-modal/src/index.ts"
             ],
             "@alert": ["libs/components/alert/src/index.ts"],
             "@api-interfaces": ["libs/api-interfaces/src/index.ts"],
-            "@add-request-modal": [
-                "libs/components/add-request-modal/src/index.ts"
+            "@cargonaut/dashboard-inactive-offer": [
+                "libs/components/dashboard-inactive-offer/src/index.ts"
             ],
             "@cargonaut/request-item": [
                 "libs/components/request-item/src/index.ts"
+            ],
+            "@cargonaut/status-modal": [
+                "libs/components/status-modal/src/index.ts"
             ],
             "@change-email-form": [
                 "libs/components/change-email-form/src/index.ts"

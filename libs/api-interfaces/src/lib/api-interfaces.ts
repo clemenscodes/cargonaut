@@ -58,7 +58,8 @@ export type Rating = 1 | 2 | 3 | 4 | 5;
 export enum Status {
     toBeStarted = "toBeStarted",
     started = "started",
-    finishe = "finished",
+    arrived = "arrived",
+    finished = "finished",
 }
 
 export interface Request {
