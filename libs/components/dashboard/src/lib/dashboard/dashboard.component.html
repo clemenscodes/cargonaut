@@ -27,7 +27,8 @@
                                             "
                                             class="container"
                                         >
-                                            <cargonaut-dashboard-inactive-offer *ngIf="offer.status !== 'toBeStarted' && offer.status !== 'finished'"
+                                            <cargonaut-dashboard-inactive-offer
+                                                *ngIf="offer.status !== 'toBeStarted' && offer.status !== 'finished'"
                                                 [offer]="offer"
                                             ></cargonaut-dashboard-inactive-offer>
                                         </div>
@@ -69,7 +70,7 @@
                                             class="container"
                                         >
                                             <cargonaut-dashboard-inactive-offer *ngIf="offer.status === 'toBeStarted'"
-                                                [offer]="offer"
+                                                                                [offer]="offer"
                                             ></cargonaut-dashboard-inactive-offer>
                                         </div>
                                     </div>
@@ -77,7 +78,8 @@
                                 <div class="row">
                                     <div class="col">
                                         <a class="btn" (click)="addOffer()"
-                                            ><fa-icon
+                                        >
+                                            <fa-icon
                                                 class="primary-color"
                                                 [icon]="faPlusCircle"
                                                 size="lg"
@@ -89,12 +91,19 @@
                             </div>
                         </mat-tab>
                         <mat-tab label="Anfragen">
-                            <div *ngFor="let offer of offerService.offers | async" class="container-fluid p-4">
-                                <cargonaut-offer-item
-                                [isOfferListItem]="false"
-                                [isRequestListItem]="true"
-                                [offer]="offer"
-                            ></cargonaut-offer-item>
+                            <div class="container-fluid p-4">
+                                <div class="row">
+                                    <div class="col">
+                                        <div *ngFor="let offer of offerService.offers | async"
+                                            class="container">
+                                            <cargonaut-offer-item
+                                                [isOfferListItem]="false"
+                                                [isRequestListItem]="true"
+                                                [offer]="offer"
+                                            ></cargonaut-offer-item>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </mat-tab>
                     </mat-tab-group>
