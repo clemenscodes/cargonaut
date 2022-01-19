@@ -154,6 +154,6 @@ describe("AuthServiceService", () => {
     it("should logout authenticated user by call of deleteProfile", () => {
         const spy = jest.spyOn(angularFireAuthMock, "signOut");
         service.deleteProfile();
-        expect(spy).toHaveBeenCalledTimes(2);
+        expect(spy).toHaveBeenCalledTimes(1);
     });
 });

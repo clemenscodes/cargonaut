@@ -143,7 +143,6 @@ export class AddOfferModalComponent {
             status: Status.toBeStarted,
             userId: user.uid,
             offerId: this.afs.createId(),
-
         };
         console.log(this.offer);
         this.activeModal.close(this.offer);
