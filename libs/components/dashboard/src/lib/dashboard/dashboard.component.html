@@ -20,7 +20,7 @@
                                 <div class="row">
                                     <div class="col">
                                         <!--Active Offer Cards-->
-                                        <!-- <div
+                                         <div
                                             *ngFor="
                                                 let offer of offerService.offersByUser
                                                     | async
@@ -35,7 +35,7 @@
                                                 "
                                                 [offer]="offer"
                                             ></cargonaut-dashboard-inactive-offer>
-                                        </div> -->
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -66,7 +66,7 @@
                                 <div class="row">
                                     <div class="col">
                                         <!--Open Offer Cards-->
-                                        <!-- <div
+                                        <div
                                             *ngFor="
                                                 let offer of offerService.offersByUser
                                                     | async
@@ -80,20 +80,18 @@
                                                 "
                                                 [offer]="offer"
                                             ></cargonaut-dashboard-inactive-offer>
-                                        </div> -->
-                                        <div
-                                            *ngFor="
-                                                let offer of offerService.offers
-                                                    | async
-                                            "
-                                            class="container"
-                                        >
-                                            <cargonaut-offer-item
-                                                [isOfferListItem]="false"
-                                                [isRequestListItem]="true"
-                                                [offer]="offer"
-                                            ></cargonaut-offer-item>
                                         </div>
+<!--                                        <div-->
+<!--                                            *ngFor="-->
+<!--                                                let offer of offerService.offers-->
+<!--                                                    | async-->
+<!--                                            "-->
+<!--                                            class="container"-->
+<!--                                        >-->
+<!--                                            <cargonaut-dashboard-inactive-offer-->
+<!--                                                [offer]="offer"-->
+<!--                                            ></cargonaut-dashboard-inactive-offer>-->
+<!--                                        </div>-->
 
                                     </div>
                                 </div>

@@ -15,7 +15,7 @@ export class DashboardInactiveOfferComponent {
     public offerCreatorName: string | undefined;
 
     constructor(private offerService: OfferService, public dialog: MatDialog) {
-        this.offerCreatorName = this.offer.displayName;
+        // this.offerCreatorName = this.offer.displayName;
     }
 
     public updateStatus(offer: Offer) {
