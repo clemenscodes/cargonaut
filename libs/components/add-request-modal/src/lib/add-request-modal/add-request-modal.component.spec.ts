@@ -1,25 +1,30 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
+import { AddRequestModalComponent } from "./add-request-modal.component";
+import { AddRequestModalModule } from "../add-request-modal.module";
+import { AuthService, RequestService } from "@services";
 
-import { AddRequestModalComponent } from './add-request-modal.component';
+describe("AddRequestModalComponent", () => {
+    let component: AddRequestModalComponent;
+    let fixture: ComponentFixture<AddRequestModalComponent>;
+    const authServiceMock = {};
+    const requestServiceMock = {};
+    beforeEach(async () => {
+        await TestBed.configureTestingModule({
+            imports: [AddRequestModalModule],
+            providers: [
+                { provide: AuthService, useValue: authServiceMock },
+                { provide: RequestService, useValue: requestServiceMock },
+            ],
+        }).compileComponents();
+    });
 
-describe('AddRequestModalComponent', () => {
-  let component: AddRequestModalComponent;
-  let fixture: ComponentFixture<AddRequestModalComponent>;
+    beforeEach(() => {
+        fixture = TestBed.createComponent(AddRequestModalComponent);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+    });
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ AddRequestModalComponent ]
-    })
-    .compileComponents();
-  });
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(AddRequestModalComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    it("should create", () => {
+        expect(component).toBeTruthy();
+    });
 });

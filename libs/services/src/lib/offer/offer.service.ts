@@ -28,14 +28,19 @@ export class OfferService {
         );
 
         this.offersByUser = this.offersCollection.snapshotChanges().pipe(
-            map((elements) => 
-                elements.filter((el) => el.payload.doc.data().userId === this.auth.getCurrentUser().uid)
-                        .map((el) => {
-                            const data = el.payload.doc.data() as Offer;
-                            const id = el.payload.doc.id;
-                            return { id, ...data };
-                        }) 
-                )
+            map((elements) =>
+                elements
+                    .filter(
+                        (el) =>
+                            el.payload.doc.data().userId ===
+                            this.auth.getCurrentUser().uid
+                    )
+                    .map((el) => {
+                        const data = el.payload.doc.data() as Offer;
+                        const id = el.payload.doc.id;
+                        return { id, ...data };
+                    })
+            )
         );
     }
     addOffer(offer: Offer) {
@@ -46,12 +51,10 @@ export class OfferService {
         this.offersCollection.ref.onSnapshot((snap) => {
             snap.forEach((item) => {
                 console.log("item id: " + item.data()["offerId"]);
-                console.log(
-                    "expected offerId: " + offer.offerId
-                );
+                console.log("expected offerId: " + offer.offerId);
                 if (item.data()["offerId"] === offer.offerId) {
                     item.ref.update({
-                        status: offer.status
+                        status: offer.status,
                     });
                 }
             });
@@ -60,12 +63,10 @@ export class OfferService {
         this.requestsCollection.ref.onSnapshot((snap) => {
             snap.forEach((item) => {
                 console.log("item id: " + item.data()["offerId"]);
-                console.log(
-                    "expected req-offerId: " + offer.offerId
-                );
+                console.log("expected req-offerId: " + offer.offerId);
                 if (item.data()["offerId"] === offer.offerId) {
                     item.ref.update({
-                        status: offer.status
+                        status: offer.status,
                     });
                 }
             });
@@ -77,10 +78,8 @@ export class OfferService {
             snap.forEach((item) => {
                 console.log("item id: " + item.data()["offerId"]);
                 console.log("expected offer id: " + offer.offerId);
-                if (item.data()["offerId"] === offer.offerId)
-                    item.ref.delete();
+                if (item.data()["offerId"] === offer.offerId) item.ref.delete();
             });
         });
     }
-
 }

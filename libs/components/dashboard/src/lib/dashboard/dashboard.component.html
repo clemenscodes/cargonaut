@@ -28,7 +28,11 @@
                                             class="container"
                                         >
                                             <cargonaut-dashboard-inactive-offer
-                                                *ngIf="offer.status !== 'toBeStarted' && offer.status !== 'finished'"
+                                                *ngIf="
+                                                    offer.status !==
+                                                        'toBeStarted' &&
+                                                    offer.status !== 'finished'
+                                                "
                                                 [offer]="offer"
                                             ></cargonaut-dashboard-inactive-offer>
                                         </div>
@@ -69,16 +73,19 @@
                                             "
                                             class="container"
                                         >
-                                            <cargonaut-dashboard-inactive-offer *ngIf="offer.status === 'toBeStarted'"
-                                                                                [offer]="offer"
+                                            <cargonaut-dashboard-inactive-offer
+                                                *ngIf="
+                                                    offer.status ===
+                                                    'toBeStarted'
+                                                "
+                                                [offer]="offer"
                                             ></cargonaut-dashboard-inactive-offer>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col">
-                                        <a class="btn" (click)="addOffer()"
-                                        >
+                                        <a class="btn" (click)="addOffer()">
                                             <fa-icon
                                                 class="primary-color"
                                                 [icon]="faPlusCircle"
@@ -94,8 +101,13 @@
                             <div class="container-fluid p-4">
                                 <div class="row">
                                     <div class="col">
-                                        <div *ngFor="let offer of offerService.offers | async"
-                                            class="container">
+                                        <div
+                                            *ngFor="
+                                                let offer of offerService.offers
+                                                    | async
+                                            "
+                                            class="container"
+                                        >
                                             <cargonaut-offer-item
                                                 [isOfferListItem]="false"
                                                 [isRequestListItem]="true"
@@ -133,8 +145,13 @@
                                             "
                                             class="container"
                                         >
-                                            <cargonaut-dashboard-inactive-offer *ngIf="offer.status !== 'toBeStarted' && offer.status !== 'started'"
-                                                                                [offer]="offer"
+                                            <cargonaut-dashboard-inactive-offer
+                                                *ngIf="
+                                                    offer.status !==
+                                                        'toBeStarted' &&
+                                                    offer.status !== 'started'
+                                                "
+                                                [offer]="offer"
                                             ></cargonaut-dashboard-inactive-offer>
                                         </div>
                                     </div>
@@ -144,8 +161,7 @@
                         <mat-tab label="Anfragen">
                             <div class="container-fluid p-4">
                                 <div class="row">
-                                    <div class="col">
-                                    </div>
+                                    <div class="col"></div>
                                 </div>
                             </div>
                         </mat-tab>

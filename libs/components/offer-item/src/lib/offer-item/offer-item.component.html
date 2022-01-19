@@ -27,7 +27,12 @@
                 <td>{{ offer.volume }} Liter</td>
                 <td>€ {{ offer.price }}</td>
                 <td>{{ offer.displayName }}</td>
-                <td *ngIf="isOfferListItem===true && isRequestListItem===false; else req">
+                <td
+                    *ngIf="
+                        isOfferListItem === true && isRequestListItem === false;
+                        else req
+                    "
+                >
                     <button
                         type="submit"
                         class="btn"
@@ -35,7 +40,6 @@
                     >
                         Ich bin interessiert!
                     </button>
-
                 </td>
                 <ng-template #req>
                     <td>

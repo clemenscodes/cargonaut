@@ -3,13 +3,13 @@
         <h2 class="col-12 text-center title">
             Neue Anfrage
             <button
-            type="button"
-            class="close"
-            aria-label="Close"
-            (click)="activeModal.dismiss()"
-        >
-            <span aria-hidden="true">&times;</span>
-        </button>
+                type="button"
+                class="close"
+                aria-label="Close"
+                (click)="activeModal.dismiss()"
+            >
+                <span aria-hidden="true">&times;</span>
+            </button>
         </h2>
     </div>
     <div class="modal-body">
@@ -22,7 +22,9 @@
                 id="sitzeInput"
                 required
             >
-                <option *ngFor="let num of this.requestService.seats; let i = index">
+                <option
+                    *ngFor="let num of this.requestService.seats; let i = index"
+                >
                     {{ i }}
                 </option>
             </select>
@@ -36,7 +38,12 @@
                 id="stauraumInput"
                 required
             >
-                <option *ngFor="let num of this.requestService.volume; let i = index">
+                <option
+                    *ngFor="
+                        let num of this.requestService.volume;
+                        let i = index
+                    "
+                >
                     {{ i }}
                 </option>
             </select>
@@ -44,16 +51,14 @@
     </div>
     <div class="modal-footer">
         <button
-        type="button"
-        class="btn btn-outline-dark"
-        (click)="activeModal.dismiss()"
-    >
-        Schließen
-    </button>
-    <button type="button" class="btn btn-success" (click)="save()">
-        Erstellen
-    </button>
+            type="button"
+            class="btn btn-outline-dark"
+            (click)="activeModal.dismiss()"
+        >
+            Schließen
+        </button>
+        <button type="button" class="btn btn-success" (click)="save()">
+            Erstellen
+        </button>
     </div>
-
-
 </form>

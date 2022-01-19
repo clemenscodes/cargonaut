@@ -186,7 +186,6 @@ export class AuthService {
         }
         await this.afs.collection("/users").doc(this.user.uid).delete();
         return await this.logout();
-
     }
 
     /**
@@ -201,7 +200,10 @@ export class AuthService {
             throw new Error("Kein Benutzer gefunden");
         }
         console.log("updating username to " + displayName);
-        return await this.afs.collection("/users").doc(user.uid).update({"displayName": displayName});
+        return await this.afs
+            .collection("/users")
+            .doc(user.uid)
+            .update({ displayName: displayName });
     }
 
     /**

@@ -16,7 +16,12 @@
         <tbody>
             <tr>
                 <td>
-                    <ng-container *ngIf="offer.status === 'toBeStarted'; else display_status">
+                    <ng-container
+                        *ngIf="
+                            offer.status === 'toBeStarted';
+                            else display_status
+                        "
+                    >
                         <a class="btn" (click)="updateStatus(offer)">START</a>
                     </ng-container>
                     <ng-template #display_status>

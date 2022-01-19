@@ -1,16 +1,16 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
 import {
     AngularFirestore,
     AngularFirestoreCollection,
-} from '@angular/fire/compat/firestore';
-import { Request, Status, Offer, ServiceKind} from '@api-interfaces';
-import { Timestamp } from 'firebase/firestore';
-import { map, Observable } from 'rxjs';
-import { AuthService } from '../auth/auth.service';
-import { OfferService } from '../offer/offer.service';
+} from "@angular/fire/compat/firestore";
+import { Request, Status, Offer, ServiceKind } from "@api-interfaces";
+import { Timestamp } from "firebase/firestore";
+import { map, Observable } from "rxjs";
+import { AuthService } from "../auth/auth.service";
+// import { OfferService } from '../offer/offer.service';
 
 @Injectable({
-    providedIn: 'root',
+    providedIn: "root",
 })
 export class RequestService {
     private requestCollection: AngularFirestoreCollection<Request>;
@@ -20,11 +20,10 @@ export class RequestService {
 
     requests: Observable<Request[]>;
     constructor(
-        private readonly afs: AngularFirestore, 
-        private auth: AuthService,
-        private offerService: OfferService
+        private readonly afs: AngularFirestore,
+        private auth: AuthService // private offerService: OfferService
     ) {
-        this.requestCollection = this.afs.collection<Request>('requests');
+        this.requestCollection = this.afs.collection<Request>("requests");
         this.requests = this.requestCollection.snapshotChanges().pipe(
             map((actions) =>
                 actions.map((a) => {
@@ -38,7 +37,7 @@ export class RequestService {
             displayName: "",
             userId: "",
             offerId: "",
-            date: new Timestamp(0,0),
+            date: new Timestamp(0, 0),
             price: 0,
             status: Status.toBeStarted,
             serviceKind: ServiceKind.taxi,
@@ -46,16 +45,16 @@ export class RequestService {
                 street: "",
                 house: 0,
                 zipCode: 0,
-                city: ""
+                city: "",
             },
             targetAddress: {
                 street: "",
                 house: 0,
                 zipCode: 0,
-                city: ""
+                city: "",
             },
             seats: 0,
-            volume: 0
+            volume: 0,
         };
         this.seats = [];
         this.volume = [];
@@ -67,14 +66,17 @@ export class RequestService {
         return this.requestCollection.doc(id);
     }
 
-    getRequestedOffers(){
+    getRequestedOffers() {
         //get requests of current user -> get related offers, return as collection
         const user = this.auth.getCurrentUser();
 
-
-//query to observable
-        const requestsOfCurrentUser = this.requestCollection.ref.where("userId", "==", user.uid);
-        console.log("requests: " +requestsOfCurrentUser);
+        //query to observable
+        const requestsOfCurrentUser = this.requestCollection.ref.where(
+            "userId",
+            "==",
+            user.uid
+        );
+        console.log("requests: " + requestsOfCurrentUser);
 
         /*
         this.offerService.offersCollection.ref.onSnapshot((snap) => {
@@ -95,25 +97,23 @@ export class RequestService {
 
                     };
                     requestedOffers.
-                }  
+                }
             });
         });
         */
         //return requestedOffers;
     }
 
-
-    setOfferToRequest(offer: Offer){
+    setOfferToRequest(offer: Offer) {
         this.offerToRequest = offer;
         this.seats = [...Array(offer.seats).keys()];
         //increase each by 1
-        for (let i = 0; i < this.seats.length; i++){
+        for (let i = 0; i < this.seats.length; i++) {
             this.seats[i] += 1;
         }
         this.volume = [...Array(offer.volume).keys()];
-        for (let i = 0; i < this.seats.length; i++){
+        for (let i = 0; i < this.seats.length; i++) {
             this.volume[i] += 1;
         }
     }
-
 }

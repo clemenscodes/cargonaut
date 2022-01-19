@@ -1,10 +1,10 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { OfferService } from '@services';
-import { of } from 'rxjs';
-import { OfferModule } from '../offer.module';
-import { OfferComponent } from './offer.component';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
+import { OfferService, RequestService } from "@services";
+import { of } from "rxjs";
+import { OfferModule } from "../offer.module";
+import { OfferComponent } from "./offer.component";
 
-describe('OfferComponent', () => {
+describe("OfferComponent", () => {
     let component: OfferComponent;
     let fixture: ComponentFixture<OfferComponent>;
     const dateMock = {
@@ -13,24 +13,24 @@ describe('OfferComponent', () => {
     const data = [
         {
             date: dateMock,
-            id: 'bNjxciF9zbDvolm0WYVN',
+            id: "bNjxciF9zbDvolm0WYVN",
             price: 20,
             seats: 5,
-            serviceKind: 'Mitfahrgelegenheit',
+            serviceKind: "Mitfahrgelegenheit",
             startAddress: {
                 house: 12,
-                city: 'Gießen',
+                city: "Gießen",
                 zipCode: 35398,
-                street: 'Marburger Straße',
+                street: "Marburger Straße",
             },
-            status: 'toBeStarted',
+            status: "toBeStarted",
             targetAddress: {
-                street: 'Marktplatz',
+                street: "Marktplatz",
                 house: 1,
                 zipCode: 35390,
-                city: 'Gießen',
+                city: "Gießen",
             },
-            userId: ' 9QUaNf5bRWMuyOUBYVcE5cXnWeC3',
+            userId: " 9QUaNf5bRWMuyOUBYVcE5cXnWeC3",
             volume: 460,
         },
     ];
@@ -38,10 +38,16 @@ describe('OfferComponent', () => {
     const offerServiceMock = {
         offers: offersMock,
     };
+    const requestServiceMock = {
+        // offers: offersMock,
+    };
     beforeEach(async () => {
         await TestBed.configureTestingModule({
             imports: [OfferModule],
-            providers: [{ provide: OfferService, useValue: offerServiceMock }],
+            providers: [
+                { provide: OfferService, useValue: offerServiceMock },
+                { provide: RequestService, useValue: requestServiceMock },
+            ],
         }).compileComponents();
     });
 
@@ -51,7 +57,7 @@ describe('OfferComponent', () => {
         fixture.detectChanges();
     });
 
-    it('should create', () => {
+    it("should create", () => {
         expect(component).toBeTruthy();
     });
 });
