@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from "@angular/core/testing";
 import { Offer, ServiceKind, Status } from "@api-interfaces";
+import { OfferService, RequestService } from "@services";
 import { Timestamp } from "firebase/firestore";
 import { OfferItemModule } from "../offer-item.module";
 import { OfferItemComponent } from "./offer-item.component";
@@ -30,9 +31,15 @@ describe("OfferItemComponent", () => {
         volume: 460,
     };
 
+    const requestServiceMock = {};
+    const offerServiceMock = {};
     beforeEach(async () => {
         await TestBed.configureTestingModule({
             imports: [OfferItemModule],
+            providers: [
+                { provide: RequestService, useValue: requestServiceMock },
+                { provide: OfferService, useValue: offerServiceMock },
+            ],
         }).compileComponents();
     });
 

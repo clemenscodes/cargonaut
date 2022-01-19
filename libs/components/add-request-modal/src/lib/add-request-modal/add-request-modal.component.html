@@ -1,0 +1,64 @@
+<form [formGroup]="requestForm">
+    <div class="modal-header">
+        <h2 class="col-12 text-center title">
+            Neue Anfrage
+            <button
+                type="button"
+                class="close"
+                aria-label="Close"
+                (click)="activeModal.dismiss()"
+            >
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </h2>
+    </div>
+    <div class="modal-body">
+        <div class="form-group">
+            <label for="sitzeInput">Benötigte Sitzplätze</label>
+            <select
+                type="number"
+                class="form-control"
+                formControlName="sitze"
+                id="sitzeInput"
+                required
+            >
+                <option
+                    *ngFor="let num of this.requestService.seats; let i = index"
+                >
+                    {{ i }}
+                </option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="stauraumInput">Benötigter Stauraum</label>
+            <select
+                type="number"
+                class="form-control"
+                formControlName="stauraum"
+                id="stauraumInput"
+                required
+            >
+                <option
+                    *ngFor="
+                        let num of this.requestService.volume;
+                        let i = index
+                    "
+                >
+                    {{ i }}
+                </option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button
+            type="button"
+            class="btn btn-outline-dark"
+            (click)="activeModal.dismiss()"
+        >
+            Schließen
+        </button>
+        <button type="button" class="btn btn-success" (click)="save()">
+            Erstellen
+        </button>
+    </div>
+</form>

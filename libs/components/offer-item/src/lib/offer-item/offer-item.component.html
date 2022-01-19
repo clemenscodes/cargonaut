@@ -26,7 +26,32 @@
                 <td>{{ offer.seats }}</td>
                 <td>{{ offer.volume }} Liter</td>
                 <td>€ {{ offer.price }}</td>
-                <td>{{ offer.userId }}</td>
+                <td>{{ offer.displayName }}</td>
+                <td
+                    *ngIf="
+                        isOfferListItem === true && isRequestListItem === false;
+                        else req
+                    "
+                >
+                    <button
+                        type="submit"
+                        class="btn"
+                        (click)="createRequest(offer)"
+                    >
+                        Ich bin interessiert!
+                    </button>
+                </td>
+                <ng-template #req>
+                    <td>
+                        <button
+                            type="submit"
+                            class="del-btn"
+                            (click)="deleteOffer(offer)"
+                        >
+                            DELETE
+                        </button>
+                    </td>
+                </ng-template>
             </tr>
         </tbody>
     </table>

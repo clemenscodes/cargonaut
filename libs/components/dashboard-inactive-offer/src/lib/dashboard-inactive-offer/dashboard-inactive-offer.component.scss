@@ -1,0 +1,56 @@
+@import "../../../../../../apps/cargonaut/src/styles/variables";
+@import "../../../../../../apps/cargonaut/src/styles/mixins";
+
+h1 {
+    position: relative;
+}
+table {
+    margin-top: 2rem;
+    position: relative;
+    word-wrap: break-word;
+    box-shadow: rgba(0, 0, 0, 0.34) 0 2px 18px;
+    padding-bottom: 4rem;
+    min-width: 100%;
+    max-width: 100%;
+    table-layout: fixed;
+    thead {
+        th {
+            width: 25%;
+            text-align: center;
+            font-weight: normal;
+            padding: 0.8rem;
+            padding-top: 1rem;
+            margin: 0.4rem;
+        }
+    }
+    tbody {
+        word-wrap: break-word;
+        tr {
+            page-break-inside: avoid;
+            td {
+                padding: 1rem;
+                padding-bottom: 2rem;
+                margin: 1rem;
+            }
+        }
+    }
+}
+
+td a.btn {
+    background-color: #005b52;
+    color: white;
+    font-weight: 400;
+    padding: 1rem;
+    border-radius: 1rem;
+}
+
+.del-btn {
+    background-color: $error;
+    color: white;
+    font-weight: 400;
+    padding: 1rem;
+    border-radius: 1rem;
+    border: none;
+    margin: 1rem;
+    margin-top: 0px;
+}

@@ -2,6 +2,7 @@ import { Component } from "@angular/core";
 import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
 import { Offer, ServiceKind, Status } from "@api-interfaces";
 import { Timestamp } from "firebase/firestore";
+import { AngularFirestore } from "@angular/fire/compat/firestore";
 import { AuthService } from "@services";
 import {
     AbstractControl,
@@ -22,7 +23,8 @@ export class AddOfferModalComponent {
     constructor(
         public activeModal: NgbActiveModal,
         private authService: AuthService,
-        private fb: FormBuilder
+        private fb: FormBuilder,
+        private afs: AngularFirestore
     ) {
         this.offerForm = this.fb.group({
             seats: new FormControl("", [Validators.required]),
@@ -115,8 +117,9 @@ export class AddOfferModalComponent {
         return this.offerForm.controls.targetZipCode;
     }
     save(): void {
-        const { uid } = this.authService.getCurrentUser();
+        const user = this.authService.getCurrentUser();
         this.offer = {
+            displayName: user.displayName,
             seats: this.seats.value,
             price: this.price.value,
             volume: this.volume.value,
@@ -138,7 +141,8 @@ export class AddOfferModalComponent {
             serviceKind:
                 this.seats.value > 0 ? ServiceKind.taxi : ServiceKind.transport,
             status: Status.toBeStarted,
-            userId: uid,
+            userId: user.uid,
+            offerId: this.afs.createId(),
         };
         console.log(this.offer);
         this.activeModal.close(this.offer);

@@ -5,14 +5,18 @@ import {
 } from "@angular/fire/compat/firestore";
 import { Offer } from "@api-interfaces";
 import { map, Observable } from "rxjs";
+import { AuthService } from "../auth/auth.service";
 @Injectable({
     providedIn: "root",
 })
 export class OfferService {
     offersCollection: AngularFirestoreCollection<Offer> =
         this.afs.collection<Offer>("offers", (ref) => ref.limit(5));
+    requestsCollection: AngularFirestoreCollection<Offer> =
+        this.afs.collection<Offer>("requests", (ref) => ref.limit(5));
     offers: Observable<Offer[]>;
-    constructor(public afs: AngularFirestore) {
+    offersByUser: Observable<Offer[]>;
+    constructor(public afs: AngularFirestore, public auth: AuthService) {
         this.offers = this.offersCollection.snapshotChanges().pipe(
             map((actions) =>
                 actions.map((a) => {
@@ -22,8 +26,60 @@ export class OfferService {
                 })
             )
         );
+
+        this.offersByUser = this.offersCollection.snapshotChanges().pipe(
+            map((elements) =>
+                elements
+                    .filter(
+                        (el) =>
+                            el.payload.doc.data().userId ===
+                            this.auth.getCurrentUser().uid
+                    )
+                    .map((el) => {
+                        const data = el.payload.doc.data() as Offer;
+                        const id = el.payload.doc.id;
+                        return { id, ...data };
+                    })
+            )
+        );
     }
     addOffer(offer: Offer) {
         this.offersCollection.add(offer);
+    }
+
+    updateOfferStatus(offer: Offer) {
+        this.offersCollection.ref.onSnapshot((snap) => {
+            snap.forEach((item) => {
+                console.log("item id: " + item.data()["offerId"]);
+                console.log("expected offerId: " + offer.offerId);
+                if (item.data()["offerId"] === offer.offerId) {
+                    item.ref.update({
+                        status: offer.status,
+                    });
+                }
+            });
+        });
+
+        this.requestsCollection.ref.onSnapshot((snap) => {
+            snap.forEach((item) => {
+                console.log("item id: " + item.data()["offerId"]);
+                console.log("expected req-offerId: " + offer.offerId);
+                if (item.data()["offerId"] === offer.offerId) {
+                    item.ref.update({
+                        status: offer.status,
+                    });
+                }
+            });
+        });
+    }
+
+    deleteOffer(offer: Offer) {
+        this.offersCollection.ref.onSnapshot((snap) => {
+            snap.forEach((item) => {
+                console.log("item id: " + item.data()["offerId"]);
+                console.log("expected offer id: " + offer.offerId);
+                if (item.data()["offerId"] === offer.offerId) item.ref.delete();
+            });
+        });
     }
 }
